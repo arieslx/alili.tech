@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="默认情况下，create-react-app中的ES6模块使用相对路径，这适用于您要导入的文件在文件树中相对比较近的情况： import { createGoal } from ‘./actions’ import { selectAuth } from ‘./selectors’; import App from ‘../App’; 但是当你开始处理深度嵌套的树结构时，你就会发现使用相对路径是">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Create-React App的使用绝对导入">
+<meta property="og:url" content="https://alili.tech/archive/8a1e87e3/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="默认情况下，create-react-app中的ES6模块使用相对路径，这适用于您要导入的文件在文件树中相对比较近的情况： import { createGoal } from ‘./actions’ import { selectAuth } from ‘./selectors’; import App from ‘../App’; 但是当你开始处理深度嵌套的树结构时，你就会发现使用相对路径是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01837865899c4318c4.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01d63ed268bfaa299c.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01ea4f581bd313267d.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01ebd1e70323eabfaa.png">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Create-React App的使用绝对导入">
+<meta name="twitter:description" content="默认情况下，create-react-app中的ES6模块使用相对路径，这适用于您要导入的文件在文件树中相对比较近的情况： import { createGoal } from ‘./actions’ import { selectAuth } from ‘./selectors’; import App from ‘../App’; 但是当你开始处理深度嵌套的树结构时，你就会发现使用相对路径是">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t01837865899c4318c4.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>Create-React App的使用绝对导入 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/8a1e87e3/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/8a1e87e3/",
+      "appid": "1613049289050283", 
+      "title": "Create-React App的使用绝对导入 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:04"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/31cd5561/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/25e884f1/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/8a1e87e3/&text=Create-React App的使用绝对导入" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/8a1e87e3/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/8a1e87e3/&text=Create-React App的使用绝对导入" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/8a1e87e3/&title=Create-React App的使用绝对导入" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/8a1e87e3/&is_video=false&description=Create-React App的使用绝对导入" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Create-React App的使用绝对导入&body=Check out this article: https://alili.tech/archive/8a1e87e3/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/8a1e87e3/&title=Create-React App的使用绝对导入" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/8a1e87e3/&title=Create-React App的使用绝对导入" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/8a1e87e3/&title=Create-React App的使用绝对导入" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/8a1e87e3/&title=Create-React App的使用绝对导入" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">1.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        Create-React App的使用绝对导入
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-18T00:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p><img src="https://p0.ssl.qhimg.com/t01837865899c4318c4.png" alt=""></p>
+<p>默认情况下，create-react-app中的ES6模块使用相对路径，这适用于您要导入的文件在文件树中相对比较近的情况：</p>
+<pre><code class="hljs capnproto"><span class="hljs-keyword">import</span> { createGoal } <span class="hljs-keyword">from</span> ‘./actions’
+</code></pre><pre><code class="hljs actionscript"><span class="hljs-meta"><span class="hljs-meta-keyword">import</span> { selectAuth } from ‘./selectors’;</span>
+</code></pre><pre><code class="hljs clean"><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> ‘../App’;
+</code></pre><p>但是当你开始处理深度嵌套的树结构时，你就会发现使用相对路径是真的让人痛苦不堪，因为你最终会出现点状综合征：</p>
+<pre><code class="hljs clean"><span class="hljs-keyword">import</span> { editUser } <span class="hljs-keyword">from</span> ‘../../../AppContainer/actions’;
+</code></pre><pre><code class="hljs clean"><span class="hljs-keyword">import</span> { selectAuth } <span class="hljs-keyword">from</span> ‘../../../AppContainer/selectors;
+</code></pre><p>当你决定移动该文件时会发生什么？ 或者，也许你想在另一个文件中导入相同的模块？</p>
+<p>计算第一次遍历需要多少个点的时间非常繁琐，但现在您必须重新计算每一次，因为当您更改文件的位置时，还会相对于其他文件更改其相对路径。</p>
+<p>如果有一种方法每次都以相同的方式导入文件，无论文件与另一文件相关的位置如何？ 这个时候绝对引入就派上用场了：</p>
+<pre><code class="hljs gradle"><span class="hljs-keyword">import</span> { editUser } <span class="hljs-keyword">from</span> ‘containers<span class="hljs-regexp">/AppContainer/</span>actions’;
+</code></pre><pre><code class="hljs gradle"><span class="hljs-keyword">import</span> { selectAuth } <span class="hljs-keyword">from</span> ‘containers<span class="hljs-regexp">/AppContainer/</span>selectors;
+</code></pre><p>无论你从哪里导入这些文件，路径都是一样的。 不用计算要用多少个点。</p>
+<p><strong>在Create-React-App中实现绝对导入</strong></p>
+<p>在深入了解一堆github issue之后，我终于完成了在create-react-app应用程序中实现绝对导入所需的步骤，最终完成了两个步骤：</p>
+<ol>
+<li>在根级目录创建'.<strong> env </strong>'文件（与package.json的级别相同）</li>
+<li>设置一个环境变量， ‘<strong>NODE_PATH</strong>’ to ‘<strong>src</strong>/’</li>
+</ol>
+<p>就是这样</p>
+<p>据我所知，create-react-app的配置方式是它的webpack配置会自动选取'.env'文件并读取'NODE_PATH'环境变量，然后可用于绝对导入.</p>
+<p>自定义环境变量在开发和生产过程中都可以使用，因为变量是在构建时嵌入的，而不是运行时嵌入的，所以你的应用程序可以通过'process.env'访问它的环境：</p>
+<p><a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables</a></p>
+<p>The discussions:</p>
+<p><a href="https://github.com/facebookincubator/create-react-app/issues/253" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/facebookincubator/create-react-app/issues/253</a></p>
+<p><a href="https://github.com/facebookincubator/create-react-app/issues/102" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/facebookincubator/create-react-app/issues/102</a></p>
+<p>The pull requests:</p>
+<p><a href="https://github.com/storybooks/storybook/pull/528/files" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/storybooks/storybook/pull/528/files</a></p>
+<p><a href="https://github.com/facebookincubator/create-react-app/pull/342/files" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/facebookincubator/create-react-app/pull/342/files</a></p>
+<p>以下是从相对导入转换为绝对导入的快速示例。 首先我们创建我们的文件和文件夹。</p>
+<p><img src="https://p0.ssl.qhimg.com/t01d63ed268bfaa299c.png" alt=""></p>
+<p>我们的AppContainer用来加载AppRoutes。</p>
+<p>注意它是如何使用相对导入的。 我们需要绝对路径引入。</p>
+<ol>
+<li>在根级目录创建'.<strong> env </strong>'文件（与package.json的级别相同）</li>
+<li>设置一个环境变量， ‘<strong>NODE_PATH</strong>’ to ‘<strong>src</strong>/’</li>
+</ol>
+<p><img src="https://p0.ssl.qhimg.com/t01ea4f581bd313267d.png" alt=""></p>
+<p>现在我们可以使用绝对导入。</p>
+<p>它工作得很好。</p>
+<p><img src="https://p0.ssl.qhimg.com/t01ebd1e70323eabfaa.png" alt=""></p>
+<p><strong>结论</strong></p>
+<p>绝对导入可以为您节省大量时间，不再那么头痛，因为您无需在导入或更改文件位置时随时考虑您需要的点数。 感谢create-react-app，设置一个允许你做到这一点的环境非常简单.</p>
+<p><em>我是一位开发人员，他记录了我遇到的新工具和概念，并发现足够有趣以供分享。 请点击该按钮和/或留下评论，以便我可以写出更适合您兴趣的内容.</em></p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/absolute-imports-with-create-react-app" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/absolute-imports-with-create-react-app</a><br>原文标题: Create-React App的使用绝对导入<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/8a1e87e3/">https://alili.tech/archive/8a1e87e3/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">1.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li></ol>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

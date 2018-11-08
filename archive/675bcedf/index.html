@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x7B80;&amp;#x8A00;&amp;#x5E03;&amp;#x5C40;&amp;#x7684;&amp;#x4F20;&amp;#x7EDF;&amp;#x89E3;&amp;#x51B3;&amp;#x65B9;&amp;#x6848;&amp;#x662F;&amp;#x57FA;&amp;#x4E8E;&amp;#x76D2;&amp;#x72B6;&amp;#x6A21;&amp;#x578B;&amp;#xFF0C;&amp;#x4F9D;&amp;#x8D56; display + position + float &amp;#x6">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【基础知识】Flex-弹性布局原来如此简单！！">
+<meta property="og:url" content="https://alili.tech/archive/675bcedf/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x7B80;&amp;#x8A00;&amp;#x5E03;&amp;#x5C40;&amp;#x7684;&amp;#x4F20;&amp;#x7EDF;&amp;#x89E3;&amp;#x51B3;&amp;#x65B9;&amp;#x6848;&amp;#x662F;&amp;#x57FA;&amp;#x4E8E;&amp;#x76D2;&amp;#x72B6;&amp;#x6A21;&amp;#x578B;&amp;#xFF0C;&amp;#x4F9D;&amp;#x8D56; display + position + float &amp;#x6">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143746?w=690&h=143">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143747?w=695&h=239">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143748?w=692&h=542">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143749?w=692&h=435">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143750?w=690&h=528">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143751?w=692&h=989">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143752?w=691&h=1412">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143753?w=691&h=284">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143754?w=691&h=254">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143755?w=690&h=347">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143756?w=690&h=244">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000014143757?w=689&h=829">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.539Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【基础知识】Flex-弹性布局原来如此简单！！">
+<meta name="twitter:description" content="&amp;#x7B80;&amp;#x8A00;&amp;#x5E03;&amp;#x5C40;&amp;#x7684;&amp;#x4F20;&amp;#x7EDF;&amp;#x89E3;&amp;#x51B3;&amp;#x65B9;&amp;#x6848;&amp;#x662F;&amp;#x57FA;&amp;#x4E8E;&amp;#x76D2;&amp;#x72B6;&amp;#x6A21;&amp;#x578B;&amp;#xFF0C;&amp;#x4F9D;&amp;#x8D56; display + position + float &amp;#x6">
+<meta name="twitter:image" content="https://static.alili.tech/img/remote/1460000014143746?w=690&h=143">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>【基础知识】Flex-弹性布局原来如此简单！！ | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/675bcedf/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/675bcedf/",
+      "appid": "1613049289050283", 
+      "title": "【基础知识】Flex-弹性布局原来如此简单！！ | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:51"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/c9ac83df/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/5af40378/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/675bcedf/&text=【基础知识】Flex-弹性布局原来如此简单！！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/675bcedf/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/675bcedf/&text=【基础知识】Flex-弹性布局原来如此简单！！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/675bcedf/&title=【基础知识】Flex-弹性布局原来如此简单！！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/675bcedf/&is_video=false&description=【基础知识】Flex-弹性布局原来如此简单！！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【基础知识】Flex-弹性布局原来如此简单！！&body=Check out this article: https://alili.tech/archive/675bcedf/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/675bcedf/&title=【基础知识】Flex-弹性布局原来如此简单！！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/675bcedf/&title=【基础知识】Flex-弹性布局原来如此简单！！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/675bcedf/&title=【基础知识】Flex-弹性布局原来如此简单！！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/675bcedf/&title=【基础知识】Flex-弹性布局原来如此简单！！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">简言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">1 基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">2 Flex容器属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 flex容器定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 flex-direction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader5"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 flex-wrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader6"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 flex-flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader7"><span class="toc-number">3.5.</span> <span class="toc-text">2.5 justify-content</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader8"><span class="toc-number">3.6.</span> <span class="toc-text">2.6 align-items</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader9"><span class="toc-number">3.7.</span> <span class="toc-text">2.7 align-content</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader10"><span class="toc-number">4.</span> <span class="toc-text">3 Flex项目属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader11"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader12"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 flex-grow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader13"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 flex-shrink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader14"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 flex-basis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader15"><span class="toc-number">4.5.</span> <span class="toc-text">3.5 flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader16"><span class="toc-number">4.6.</span> <span class="toc-text">3.6 align-self</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader17"><span class="toc-number">5.</span> <span class="toc-text">4 兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader18"><span class="toc-number">6.</span> <span class="toc-text">5 相关资源</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        【基础知识】Flex-弹性布局原来如此简单！！
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-03T02:30:13.000Z" itemprop="datePublished">2018-11-03</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h2 id="articleHeader0">&#x7B80;&#x8A00;</h2><p>&#x5E03;&#x5C40;&#x7684;&#x4F20;&#x7EDF;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x662F;&#x57FA;&#x4E8E;&#x76D2;&#x72B6;&#x6A21;&#x578B;&#xFF0C;&#x4F9D;&#x8D56; <code>display</code> + <code>position</code> + <code>float</code> &#x65B9;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x7075;&#x6D3B;&#x6027;&#x8F83;&#x5DEE;&#x3002;2009&#x5E74;&#xFF0C;W3C&#x63D0;&#x51FA;&#x4E86;&#x4E00;&#x79CD;&#x65B0;&#x7684;&#x65B9;&#x6848;-Flex&#xFF0C;Flex&#x662F;Flexible Box&#x7684;&#x7F29;&#x5199;&#xFF0C;&#x610F;&#x4E3A;&#x201D;&#x5F39;&#x6027;&#x5E03;&#x5C40;&#x201D;&#x3002;Flex&#x53EF;&#x4EE5;&#x7B80;&#x4FBF;&#x3001;&#x5B8C;&#x6574;&#x3001;&#x54CD;&#x5E94;&#x5F0F;&#x5730;&#x5B9E;&#x73B0;&#x591A;&#x79CD;&#x9875;&#x9762;&#x5E03;&#x5C40;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C31;&#x4ECE;&#x57FA;&#x7840;&#x8BED;&#x6CD5;&#x5F00;&#x59CB;&#xFF0C;&#x4E00;&#x8D77;&#x6765;&#x611F;&#x53D7;&#x4E0B;Flex&#x7684;&#x9B45;&#x529B;&#x5427;&#xFF01;</p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143746?w=690&amp;h=143" src="https://static.alili.tech/img/remote/1460000014143746?w=690&amp;h=143" alt="flex &#x8BED;&#x6CD5;" title="flex &#x8BED;&#x6CD5;" style="cursor:pointer;display:inline"></span></p><h2 id="articleHeader1">1 &#x57FA;&#x672C;&#x6982;&#x5FF5;</h2><p>&#x91C7;&#x7528; Flex &#x5E03;&#x5C40;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x79F0;&#x4E3A; Flex &#x5BB9;&#x5668;&#xFF08;flex container&#xFF09;&#xFF0C;&#x7B80;&#x79F0;&quot;&#x5BB9;&#x5668;&quot;&#x3002;&#x5B83;&#x7684;&#x6240;&#x6709;&#x5B50;&#x5143;&#x7D20;&#x81EA;&#x52A8;&#x6210;&#x4E3A;&#x5BB9;&#x5668;&#x6210;&#x5458;&#xFF0C;&#x79F0;&#x4E3A; Flex &#x9879;&#x76EE;&#xFF08;flex item&#xFF09;&#xFF0C;&#x7B80;&#x79F0;&quot;&#x9879;&#x76EE;&quot;&#x3002;</p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143747?w=695&amp;h=239" src="https://static.alili.tech/img/remote/1460000014143747?w=695&amp;h=239" alt="Flexbox&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x793A;&#x610F;&#x56FE;" title="Flexbox&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x793A;&#x610F;&#x56FE;" style="cursor:pointer;display:inline"></span></p><p>&#x5BB9;&#x5668;&#x9ED8;&#x8BA4;&#x5B58;&#x5728;&#x4E24;&#x6839;&#x8F74;&#xFF1A;&#x6C34;&#x5E73;&#x7684;&#x4E3B;&#x8F74;&#xFF08;main axis&#xFF09;&#x548C;&#x5782;&#x76F4;&#x7684;&#x4EA4;&#x53C9;&#x8F74;&#xFF08;cross axis&#xFF09;&#x3002;&#x4E3B;&#x8F74;&#x7684;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;&#xFF08;&#x4E0E;&#x8FB9;&#x6846;&#x7684;&#x4EA4;&#x53C9;&#x70B9;&#xFF09;&#x53EB;&#x505A;main start&#xFF0C;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#x53EB;&#x505A;main end&#xFF1B;&#x4EA4;&#x53C9;&#x8F74;&#x7684;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;&#x53EB;&#x505A;cross start&#xFF0C;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#x53EB;&#x505A;cross end&#x3002;</p><p>Flex&#x9879;&#x76EE;&#x9ED8;&#x8BA4;&#x6CBF;&#x4E3B;&#x8F74;&#x6392;&#x5217;&#x3002;&#x5355;&#x4E2A;&#x9879;&#x76EE;&#x5360;&#x636E;&#x7684;&#x4E3B;&#x8F74;&#x7A7A;&#x95F4;&#x53EB;&#x505A;main size&#xFF0C;&#x5360;&#x636E;&#x7684;&#x4EA4;&#x53C9;&#x8F74;&#x7A7A;&#x95F4;&#x53EB;&#x505A;cross size&#x3002;</p><p>Flex&#x5C5E;&#x6027;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#xFF0C;&#x4E00;&#x90E8;&#x5206;&#x4F5C;&#x7528;&#x4E8E;&#x5BB9;&#x5668;&#x79F0;&#x5BB9;&#x5668;&#x5C5E;&#x6027;&#xFF0C;&#x53E6;&#x4E00;&#x90E8;&#x5206;&#x4F5C;&#x7528;&#x4E8E;&#x9879;&#x76EE;&#x79F0;&#x4E3A;&#x9879;&#x76EE;&#x5C5E;&#x6027;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C31;&#x5206;&#x90E8;&#x7684;&#x6765;&#x4ECB;&#x7ECD;&#x5B83;&#x4EEC;&#x3002;</p><h2 id="articleHeader2">2 Flex&#x5BB9;&#x5668;&#x5C5E;&#x6027;</h2><h3 id="articleHeader3">2.1 flex&#x5BB9;&#x5668;&#x5B9A;&#x4E49;</h3><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".box {
+  display: flex; /* &#x6216;&#x8005; inline-flex */
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.box</span> {
+  <span class="hljs-attribute">display</span>: flex; <span class="hljs-comment">/* &#x6216;&#x8005; inline-flex */</span>
+}</code></pre><p>&#x4E0A;&#x8FF0;&#x5199;&#x6CD5;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;flex&#x5BB9;&#x5668;&#xFF0C;&#x6839;&#x636E;&#x8BBE;&#x503C;&#x7684;&#x4E0D;&#x540C;&#x53EF;&#x4EE5;&#x662F;&#x5757;&#x72B6;&#x5BB9;&#x5668;&#x6216;&#x5185;&#x8054;&#x5BB9;&#x5668;&#x3002;&#x8FD9;&#x4F7F;&#x5F97;&#x76F4;&#x63A5;&#x5B50;&#x7ED3;&#x70B9;&#x62E5;&#x6709;&#x4E86;&#x4E00;&#x4E2A;flex&#x4E0A;&#x4E0B;&#x6587;&#x3002;</p><h3 id="articleHeader4">2.2 <code>flex-direction</code></h3><p><code>flex-direction</code>&#x5C5E;&#x6027;&#x51B3;&#x5B9A;&#x4E3B;&#x8F74;&#x7684;&#x65B9;&#x5411;&#xFF08;&#x5373;&#x9879;&#x76EE;&#x7684;&#x6392;&#x5217;&#x65B9;&#x5411;&#xFF09;&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".box {
+    flex-direction: row | row-reverse | column | column-reverse;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.box</span> {
+    <span class="hljs-attribute">flex-direction</span>: row | row-reverse | column | column-reverse;
+}</code></pre><ul><li><code>row</code> &#x8868;&#x793A;&#x4ECE;&#x5DE6;&#x5411;&#x53F3;&#x6392;&#x5217;</li><li><code>row-reverse</code> &#x8868;&#x793A;&#x4ECE;&#x53F3;&#x5411;&#x5DE6;&#x6392;&#x5217;</li><li><code>column</code> &#x8868;&#x793A;&#x4ECE;&#x4E0A;&#x5411;&#x4E0B;&#x6392;&#x5217;</li><li><code>column-reverse</code> &#x8868;&#x793A;&#x4ECE;&#x4E0B;&#x5411;&#x4E0A;&#x6392;&#x5217;</li></ul><p><strong>&#x6F14;&#x793A;&#x7A0B;&#x5E8F;&#xFF1A;</strong></p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143748?w=692&amp;h=542" src="https://static.alili.tech/img/remote/1460000014143748?w=692&amp;h=542" alt="flex-direction" title="flex-direction" style="cursor:pointer;display:inline"></span></p><p><a href="http://www.42du.cn/run/86" rel="external nofollow noopener noreferrer" target="_blank">&#x6F14;&#x793A;&#x4EE3;&#x7801;</a></p><h3 id="articleHeader5">2.3 <code>flex-wrap</code></h3><p>&#x7F3A;&#x7701;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Flex&#x9879;&#x76EE;&#x90FD;&#x6392;&#x5728;&#x4E00;&#x6761;&#x7EBF;&#xFF08;&#x53C8;&#x79F0;&quot;&#x8F74;&#x7EBF;&quot;&#xFF09;&#x4E0A;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>flex-wrap</code>&#x5C5E;&#x6027;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x8BA9;Flex&#x9879;&#x76EE;&#x6362;&#x884C;&#x6392;&#x5217;&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".box {
+    flex-wrap: nowrap | wrap | wrap-reverse;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.box</span> {
+    <span class="hljs-attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse;
+}</code></pre><ul><li><code>nowrap</code>(&#x7F3A;&#x7701;)&#xFF1A;&#x6240;&#x6709;Flex&#x9879;&#x76EE;&#x5355;&#x884C;&#x6392;&#x5217;</li><li><code>wrap</code>&#xFF1A;&#x6240;&#x6709;Flex&#x9879;&#x76EE;&#x591A;&#x884C;&#x6392;&#x5217;&#xFF0C;&#x6309;&#x4ECE;&#x4E0A;&#x5230;&#x4E0B;&#x7684;&#x987A;&#x5E8F;</li><li><code>wrap-reverse</code>&#xFF1A;&#x6240;&#x6709;Flex&#x9879;&#x76EE;&#x591A;&#x884C;&#x6392;&#x5217;&#xFF0C;&#x6309;&#x4ECE;&#x4E0B;&#x5230;&#x4E0A;&#x7684;&#x987A;&#x5E8F;</li></ul><p><strong>&#x6F14;&#x793A;&#x7A0B;&#x5E8F;&#xFF1A;</strong></p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143749?w=692&amp;h=435" src="https://static.alili.tech/img/remote/1460000014143749?w=692&amp;h=435" alt="flex-wrap" title="flex-wrap" style="cursor:pointer;display:inline"></span></p><p><a class="button" href="http://www.42du.cn/run/87" target="_blank" rel="external nofollow noopener noreferrer">&#x6F14;&#x793A;&#x4EE3;&#x7801;</a></p><p>&#x89C2;&#x5BDF;&#x4E0A;&#x8FF0;&#x6F14;&#x793A;&#x7A0B;&#x5E8F; &#xFF0C;&#x7406;&#x89E3;&#x4E0D;&#x540C;&#x5C5E;&#x6027;&#x7684;&#x542B;&#x4E49;&#x3002;&#x70B9;&#x51FB;&#x6F14;&#x793A;&#x533A;&#x57DF;&#xFF0C;&#x53EF;&#x542F;&#x52A8;&#x6216;&#x505C;&#x6B62;&#x6F14;&#x793A;&#x3002;</p><h3 id="articleHeader6">2.4 <code>flex-flow</code></h3><p><code>flex-flow</code>&#x5C5E;&#x6027;&#x662F;<code>flex-direction</code>&#x5C5E;&#x6027;&#x548C;<code>flex-wrap</code>&#x5C5E;&#x6027;&#x7684;&#x7B80;&#x5199;&#x5F62;&#x5F0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;<code>row nowrap</code></p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".box {
+    flex-flow: &lt;&#x2018;flex-direction&#x2019;&gt; || &lt;&#x2018;flex-wrap&#x2019;&gt;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.box</span> {
+    <span class="hljs-attribute">flex-flow</span>: &lt;&#x2018;flex-direction&#x2019;&gt; || &lt;&#x2018;flex-wrap&#x2019;&gt;
+}</code></pre><h3 id="articleHeader7">2.5 <code>justify-content</code></h3><p><code>justify-content</code>&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x4E86;&#x9879;&#x76EE;&#x5728;&#x4E3B;&#x8F74;&#x4E0A;&#x7684;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&#x53CA;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x7684;&#x5206;&#x914D;&#x65B9;&#x5F0F;&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".box  {
+    justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.box</span>  {
+    <span class="hljs-attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around | space-evenly;
+}</code></pre><ul><li><code>flex-start</code>(&#x7F3A;&#x7701;)&#xFF1A;&#x4ECE;&#x542F;&#x70B9;&#x7EBF;&#x5F00;&#x59CB;&#x987A;&#x5E8F;&#x6392;&#x5217;</li><li><code>flex-end</code>&#xFF1A;&#x76F8;&#x5BF9;&#x7EC8;&#x70B9;&#x7EBF;&#x987A;&#x5E8F;&#x6392;&#x5217;</li><li><code>center</code>&#xFF1A;&#x5C45;&#x4E2D;&#x6392;&#x5217;</li><li><code>space-between</code>&#xFF1A;&#x9879;&#x76EE;&#x5747;&#x5300;&#x5206;&#x5E03;&#xFF0C;&#x7B2C;&#x4E00;&#x9879;&#x5728;&#x542F;&#x70B9;&#x7EBF;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x9879;&#x5728;&#x7EC8;&#x70B9;&#x7EBF;</li><li><code>space-around</code>&#xFF1A;&#x9879;&#x76EE;&#x5747;&#x5300;&#x5206;&#x5E03;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x4E24;&#x4FA7;&#x6709;&#x76F8;&#x540C;&#x7684;&#x7559;&#x767D;&#x7A7A;&#x95F4;&#xFF0C;&#x76F8;&#x90BB;&#x9879;&#x76EE;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x662F;&#x4E24;&#x4E2A;&#x9879;&#x76EE;&#x4E4B;&#x95F4;&#x7559;&#x767D;&#x7684;&#x548C;</li><li><code>space-evenly</code>&#xFF1A;&#x9879;&#x76EE;&#x5747;&#x5300;&#x5206;&#x5E03;&#xFF0C;&#x6240;&#x6709;&#x9879;&#x76EE;&#x4E4B;&#x95F4;&#x53CA;&#x9879;&#x76EE;&#x4E0E;&#x8FB9;&#x6846;&#x4E4B;&#x95F4;&#x8DDD;&#x79BB;&#x76F8;&#x7B49;</li></ul><p><strong>&#x6F14;&#x793A;&#x7A0B;&#x5E8F;&#xFF1A;</strong></p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143750?w=690&amp;h=528" src="https://static.alili.tech/img/remote/1460000014143750?w=690&amp;h=528" alt="justify-content" title="justify-content" style="cursor:pointer;display:inline"></span></p><p><a class="button" href="http://www.42du.cn/run/88" target="_blank" rel="external nofollow noopener noreferrer">&#x6F14;&#x793A;&#x4EE3;&#x7801;</a></p><h3 id="articleHeader8">2.6 <code>align-items</code></h3><p><code>align-items</code>&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x9879;&#x76EE;&#x5728;&#x4EA4;&#x53C9;&#x8F74;&#x4E0A;&#x7684;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".box {
+  align-items: stretch | flex-start | flex-end | center | baseline;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.box</span> {
+  <span class="hljs-attribute">align-items</span>: stretch | flex-start | flex-end | center | baseline;
+}</code></pre><ul><li><code>stretch</code>(&#x7F3A;&#x7701;)&#xFF1A;&#x4EA4;&#x53C9;&#x8F74;&#x65B9;&#x5411;&#x62C9;&#x4F38;&#x663E;&#x793A;</li><li><code>flex-start</code>&#xFF1A;&#x9879;&#x76EE;&#x6309;&#x4EA4;&#x53C9;&#x8F74;&#x8D77;&#x70B9;&#x7EBF;&#x5BF9;&#x9F50;</li><li><code>flex-end</code>&#xFF1A;&#x9879;&#x76EE;&#x6309;&#x4EA4;&#x53C9;&#x8F74;&#x7EC8;&#x70B9;&#x7EBF;&#x5BF9;&#x9F50;</li><li><code>center</code>&#xFF1A;&#x4EA4;&#x53C9;&#x8F74;&#x65B9;&#x5411;&#x9879;&#x76EE;&#x4E2D;&#x95F4;&#x5BF9;&#x9F50;</li><li><code>baseline</code>&#xFF1A;&#x4EA4;&#x53C9;&#x8F74;&#x65B9;&#x5411;&#x6309;&#x7B2C;&#x4E00;&#x884C;&#x6587;&#x5B57;&#x57FA;&#x7EBF;&#x5BF9;&#x9F50;</li></ul><p><strong>&#x6F14;&#x793A;&#x7A0B;&#x5E8F;&#xFF1A;</strong></p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143751?w=692&amp;h=989" src="https://static.alili.tech/img/remote/1460000014143751?w=692&amp;h=989" alt="align-items" title="align-items" style="cursor:pointer"></span></p><p><a class="button" href="http://www.42du.cn/run/89" target="_blank" rel="external nofollow noopener noreferrer">&#x6F14;&#x793A;&#x4EE3;&#x7801;</a></p><h3 id="articleHeader9">2.7 <code>align-content</code></h3><p><code>align-content</code>&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x4E86;&#x5728;&#x4EA4;&#x53C9;&#x8F74;&#x65B9;&#x5411;&#x7684;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&#x53CA;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x5206;&#x914D;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x4E3B;&#x8F74;&#x4E0A;<code>justify-content</code>&#x7684;&#x4F5C;&#x7528;&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".box {
+    align-content: stretch | flex-start | flex-end | center | space-between | space-around ;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.box</span> {
+    <span class="hljs-attribute">align-content</span>: stretch | flex-start | flex-end | center | space-between | space-around ;
+}</code></pre><ul><li><code>stretch</code> (&#x7F3A;&#x7701;)&#xFF1A;&#x62C9;&#x4F38;&#x663E;&#x793A;</li><li><code>flex-start</code>&#xFF1A;&#x4ECE;&#x542F;&#x70B9;&#x7EBF;&#x5F00;&#x59CB;&#x987A;&#x5E8F;&#x6392;&#x5217;</li><li><code>flex-end</code>&#xFF1A;&#x76F8;&#x5BF9;&#x7EC8;&#x70B9;&#x7EBF;&#x987A;&#x5E8F;&#x6392;&#x5217;</li><li><code>center</code>&#xFF1A;&#x5C45;&#x4E2D;&#x6392;&#x5217;</li><li><code>space-between</code>&#xFF1A;&#x9879;&#x76EE;&#x5747;&#x5300;&#x5206;&#x5E03;&#xFF0C;&#x7B2C;&#x4E00;&#x9879;&#x5728;&#x542F;&#x70B9;&#x7EBF;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x9879;&#x5728;&#x7EC8;&#x70B9;&#x7EBF;</li><li><code>space-around</code>&#xFF1A;&#x9879;&#x76EE;&#x5747;&#x5300;&#x5206;&#x5E03;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x4E24;&#x4FA7;&#x6709;&#x76F8;&#x540C;&#x7684;&#x7559;&#x767D;&#x7A7A;&#x95F4;&#xFF0C;&#x76F8;&#x90BB;&#x9879;&#x76EE;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x662F;&#x4E24;&#x4E2A;&#x9879;&#x76EE;&#x4E4B;&#x95F4;&#x7559;&#x767D;&#x7684;&#x548C;</li></ul><p><strong>&#x6F14;&#x793A;&#x7A0B;&#x5E8F;&#xFF1A;</strong></p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143752?w=691&amp;h=1412" src="https://static.alili.tech/img/remote/1460000014143752?w=691&amp;h=1412" alt="align-content" title="align-content" style="cursor:pointer;display:inline"></span></p><p><a class="button" href="http://www.42du.cn/run/90" target="_blank" rel="external nofollow noopener noreferrer">&#x6F14;&#x793A;&#x4EE3;&#x7801;</a></p><h2 id="articleHeader10">3 Flex&#x9879;&#x76EE;&#x5C5E;&#x6027;</h2><h3 id="articleHeader11">3.1 <code>order</code></h3><p>&#x7F3A;&#x7701;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Flex&#x9879;&#x76EE;&#x662F;&#x6309;&#x7167;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x6392;&#x5217;&#x7684;&#x3002;&#x7136;&#x800C;<code>order</code>&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x9879;&#x76EE;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".item {
+  order: &lt;integer&gt;; /* &#x7F3A;&#x7701; 0 */
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">order</span>: &lt;integer&gt;; <span class="hljs-comment">/* &#x7F3A;&#x7701; 0 */</span>
+}</code></pre><p>&#x6309;<code>order</code>&#x503C;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x987A;&#x5E8F;&#x6392;&#x5217;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x8D1F;&#x503C;&#xFF0C;&#x7F3A;&#x7701;&#x4E3A;0&#x3002;</p><p><strong>&#x6F14;&#x793A;&#x7A0B;&#x5E8F;&#xFF1A;</strong></p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143753?w=691&amp;h=284" src="https://static.alili.tech/img/remote/1460000014143753?w=691&amp;h=284" alt="order" title="order" style="cursor:pointer"></span></p><p><a class="button" href="http://www.42du.cn/run/91" target="_blank" rel="external nofollow noopener noreferrer">&#x6F14;&#x793A;&#x4EE3;&#x7801;</a></p><h3 id="articleHeader12">3.2 <code>flex-grow</code></h3><p><code>flex-grow</code>&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x9879;&#x76EE;&#x7684;&#x653E;&#x5927;&#x6BD4;&#x4F8B;&#xFF0C;<code>flex-grow</code> &#x503C;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x4F4D;&#x7684;&#x6B63;&#x6574;&#x6570;&#xFF0C;&#x8868;&#x793A;&#x653E;&#x5927;&#x7684;&#x6BD4;&#x4F8B;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;0&#xFF0C;&#x5373;&#x5982;&#x679C;&#x5B58;&#x5728;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#xFF0C;&#x4E5F;&#x4E0D;&#x653E;&#x5927;&#xFF0C;&#x8D1F;&#x503C;&#x65E0;&#x6548;&#x3002;</p><p>&#x5982;&#x679C;&#x6240;&#x6709;&#x9879;&#x76EE;&#x7684;flex-grow&#x5C5E;&#x6027;&#x90FD;&#x4E3A;1&#xFF0C;&#x5219;&#x5B83;&#x4EEC;&#x5C06;&#x7B49;&#x5206;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#xFF08;&#x5982;&#x679C;&#x6709;&#x7684;&#x8BDD;&#xFF09;&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x7684;flex-grow&#x5C5E;&#x6027;&#x4E3A;2&#xFF0C;&#x5176;&#x4ED6;&#x9879;&#x76EE;&#x90FD;&#x4E3A;1&#xFF0C;&#x5219;&#x524D;&#x8005;&#x5360;&#x636E;&#x7684;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#x5C06;&#x6BD4;&#x5176;&#x4ED6;&#x9879;&#x591A;&#x4E00;&#x500D;&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".item {
+  flex-grow: &lt;number&gt;; /* &#x7F3A;&#x7701; 0 */
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-grow</span>: &lt;number&gt;; <span class="hljs-comment">/* &#x7F3A;&#x7701; 0 */</span>
+}</code></pre><p><strong>&#x6F14;&#x793A;&#x7A0B;&#x5E8F;&#xFF1A;</strong></p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143754?w=691&amp;h=254" src="https://static.alili.tech/img/remote/1460000014143754?w=691&amp;h=254" alt="flex-grow" title="flex-grow" style="cursor:pointer"></span></p><p><a class="button" href="http://www.42du.cn/run/92" target="_blank" rel="external nofollow noopener noreferrer">&#x6F14;&#x793A;&#x4EE3;&#x7801;</a></p><h3 id="articleHeader13">3.3 <code>flex-shrink</code></h3><p><code>flex-shrink</code>&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x4E86;&#x9879;&#x76EE;&#x7684;&#x7F29;&#x5C0F;&#x6BD4;&#x4F8B;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;1&#xFF0C;&#x5373;&#x5982;&#x679C;&#x7A7A;&#x95F4;&#x4E0D;&#x8DB3;&#xFF0C;&#x8BE5;&#x9879;&#x76EE;&#x5C06;&#x7F29;&#x5C0F;&#x3002;0&#x8868;&#x793A;&#x4E0D;&#x7F29;&#x5C0F;&#xFF0C;&#x8D1F;&#x503C;&#x65E0;&#x6548;&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".item {
+  flex-shrink: &lt;number&gt;; /* &#x7F3A;&#x7701; 1 */
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-shrink</span>: &lt;number&gt;; <span class="hljs-comment">/* &#x7F3A;&#x7701; 1 */</span>
+}</code></pre><p><strong>&#x6F14;&#x793A;&#x7A0B;&#x5E8F;&#xFF1A;</strong></p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143755?w=690&amp;h=347" src="https://static.alili.tech/img/remote/1460000014143755?w=690&amp;h=347" alt="flex-shrink" title="flex-shrink" style="cursor:pointer;display:inline"></span></p><p><a class="button" href="http://www.42du.cn/run/93" target="_blank" rel="external nofollow noopener noreferrer">&#x6F14;&#x793A;&#x4EE3;&#x7801;</a></p><h3 id="articleHeader14">3.4 <code>flex-basis</code></h3><p><code>flex-basis</code>&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x9879;&#x76EE;&#x5728;&#x5206;&#x914D;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x4E4B;&#x524D;&#x7684;&#x7F3A;&#x7701;&#x5C3A;&#x5BF8;&#x3002;&#x5C5E;&#x6027;&#x503C;&#x53EF;&#x4EE5;&#x662F;&#x957F;&#x5EA6;&#xFF08;20%&#xFF0C;10rem&#x7B49;&#xFF09;&#x6216;&#x8005;&#x5173;&#x952E;&#x5B57;<code>auto</code>&#x3002;&#x5B83;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;auto&#xFF0C;&#x5373;&#x9879;&#x76EE;&#x7684;&#x672C;&#x6765;&#x5927;&#x5C0F;&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".item {
+  flex-basis: &lt;length&gt; | auto; /* &#x7F3A;&#x7701; auto */
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="hljs-comment">/* &#x7F3A;&#x7701; auto */</span>
+}</code></pre><p><strong>&#x6F14;&#x793A;&#x7A0B;&#x5E8F;&#xFF1A;</strong></p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143756?w=690&amp;h=244" src="https://static.alili.tech/img/remote/1460000014143756?w=690&amp;h=244" alt="flex-basis" title="flex-basis" style="cursor:pointer"></span></p><p><a class="button" href="http://www.42du.cn/run/94" target="_blank" rel="external nofollow noopener noreferrer">&#x6F14;&#x793A;&#x4EE3;&#x7801;</a></p><h3 id="articleHeader15">3.5 <code>flex</code></h3><p><code>flex</code>&#x5C5E;&#x6027;&#x662F;<code>flex-grow</code>, <code>flex-shrink</code> &#x548C;<code>flex-basis</code>&#x7684;&#x7B80;&#x5199;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;0 1 auto&#x3002;&#x540E;&#x4E24;&#x4E2A;&#x662F;&#x53EF;&#x9009;&#x5C5E;&#x6027;&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".item {
+  flex: none | [ &lt;&apos;flex-grow&apos;&gt; &lt;&apos;flex-shrink&apos;&gt;? || &lt;&apos;flex-basis&apos;&gt; ]
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex</span>: none | [ &lt;<span class="hljs-string">&apos;flex-grow&apos;</span>&gt; &lt;<span class="hljs-string">&apos;flex-shrink&apos;</span>&gt;? || &lt;<span class="hljs-string">&apos;flex-basis&apos;</span>&gt; ]
+}</code></pre><p>&#x4E00;&#x822C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x7B80;&#x5199;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5206;&#x522B;&#x5B9A;&#x4E49;&#x6BCF;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x3002;</p><h3 id="articleHeader16">3.6 <code>align-self</code></h3><p><code>align-self</code>&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x9879;&#x76EE;&#x7684;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x8986;&#x76D6;align-items&#x5C5E;&#x6027;&#x3002;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;auto&#xFF0C;&#x8868;&#x793A;&#x7EE7;&#x627F;&#x7236;&#x5143;&#x7D20;&#x7684;align-items&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x7236;&#x5143;&#x7D20;&#xFF0C;&#x5219;&#x7B49;&#x540C;&#x4E8E;stretch&#x3002;</p><p><strong>&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".item {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;
+}</code></pre><p>&#x9664;&#x4E86;auto&#x503C;&#x4EE5;&#x5916;&#xFF0C;<code>align-self</code>&#x5C5E;&#x6027;&#x4E0E;&#x5BB9;&#x5668;&#x7684;<code>align-items</code>&#x5C5E;&#x6027;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#x3002;</p><p><strong>&#x6F14;&#x793A;&#x7A0B;&#x5E8F;&#xFF1A;</strong></p><p><span class="img-wrap"><img data-src="/img/remote/1460000014143757?w=689&amp;h=829" src="https://static.alili.tech/img/remote/1460000014143757?w=689&amp;h=829" alt="align-self" title="align-self" style="cursor:pointer;display:inline"></span></p><p><a class="button" href="http://www.42du.cn/run/95" target="_blank" rel="external nofollow noopener noreferrer">&#x6F14;&#x793A;&#x4EE3;&#x7801;</a></p><h2 id="articleHeader17">4 &#x517C;&#x5BB9;&#x6027;</h2><table><thead><tr><th>Chrome</th><th>Safari</th><th>Firefox</th><th>Opera</th><th>IE</th><th>Android</th><th>iOS</th></tr></thead><tbody><tr><td>21+</td><td>6.1+</td><td>22+</td><td>12.1+</td><td>11+</td><td>4.4+</td><td>7.1+</td></tr></tbody></table><p>Flexbox&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x524D;&#x7F00;&#x4EE5;&#x652F;&#x6301;&#x5927;&#x591A;&#x6570;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x3002;&#x751A;&#x81F3;&#x8FD8;&#x5B58;&#x5728;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x7684;&#x5C5E;&#x6027;&#x540D;&#x79F0;&#x6216;&#x5C5E;&#x6027;&#x503C;&#x3002;&#x8FD9;&#x5C31;&#x9700;&#x8981;<a href="https://github.com/postcss/autoprefixer" rel="external nofollow noopener noreferrer" target="_blank">Autoprefixer</a>&#x6216;&#x7C7B;&#x4F3C;&#x7684;CSS&#x540E;&#x5904;&#x7406;&#x5668;&#x7684;&#x8F85;&#x52A9;&#xFF0C;&#x5177;&#x4F53;&#x5185;&#x5BB9;&#x8BF7;&#x53C2;&#x8003;&#x76F8;&#x5173;&#x6587;&#x6863;&#x3002;</p><h2 id="articleHeader18">5 &#x76F8;&#x5173;&#x8D44;&#x6E90;</h2><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" rel="external nofollow noopener noreferrer" target="_blank">A Complete Guide to Flexbox</a></p><p><a href="http://www.w3.org/TR/css3-flexbox/" rel="external nofollow noopener noreferrer" target="_blank">Flexbox in the CSS specifications</a></p><p><a href="https://developer.mozilla.org/en-US/docs/CSS/Tutorials/Using_CSS_flexible_boxes" rel="external nofollow noopener noreferrer" target="_blank">Flexbox at MDN</a></p><p><a href="http://www.runoob.com/w3cnote/flex-grammar.html" rel="external nofollow noopener noreferrer" target="_blank">Flex &#x5E03;&#x5C40;&#x8BED;&#x6CD5;&#x6559;&#x7A0B;</a></p>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>【基础知识】Flex-弹性布局原来如此简单！！</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000014143741" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000014143741</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/675bcedf/">https://alili.tech/archive/675bcedf/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">简言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">1 基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">2 Flex容器属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 flex容器定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 flex-direction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader5"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 flex-wrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader6"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 flex-flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader7"><span class="toc-number">3.5.</span> <span class="toc-text">2.5 justify-content</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader8"><span class="toc-number">3.6.</span> <span class="toc-text">2.6 align-items</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader9"><span class="toc-number">3.7.</span> <span class="toc-text">2.7 align-content</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader10"><span class="toc-number">4.</span> <span class="toc-text">3 Flex项目属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader11"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader12"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 flex-grow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader13"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 flex-shrink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader14"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 flex-basis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader15"><span class="toc-number">4.5.</span> <span class="toc-text">3.5 flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader16"><span class="toc-number">4.6.</span> <span class="toc-text">3.6 align-self</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader17"><span class="toc-number">5.</span> <span class="toc-text">4 兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader18"><span class="toc-number">6.</span> <span class="toc-text">5 相关资源</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

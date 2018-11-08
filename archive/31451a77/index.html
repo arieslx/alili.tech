@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x642D;&amp;#x5EFA;&amp;#x81EA;&amp;#x5DF1;&amp;#x7684;&amp;#x524D;&amp;#x7AEF;&amp;#x811A;&amp;#x624B;&amp;#x67B6;&amp;#x4E00;&amp;#x822C;&amp;#x65B0;&amp;#x5F00;&amp;#x53D1;&amp;#x4E00;&amp;#x4E2A;&amp;#x9879;&amp;#x76EE;&amp;#x65F6;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x4F1A;&amp;#x9996;">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端进阶（13） - 搭建自己的前端脚手架">
+<meta property="og:url" content="https://alili.tech/archive/31451a77/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x642D;&amp;#x5EFA;&amp;#x81EA;&amp;#x5DF1;&amp;#x7684;&amp;#x524D;&amp;#x7AEF;&amp;#x811A;&amp;#x624B;&amp;#x67B6;&amp;#x4E00;&amp;#x822C;&amp;#x65B0;&amp;#x5F00;&amp;#x53D1;&amp;#x4E00;&amp;#x4E2A;&amp;#x9879;&amp;#x76EE;&amp;#x65F6;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x4F1A;&amp;#x9996;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.583Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端进阶（13） - 搭建自己的前端脚手架">
+<meta name="twitter:description" content="&amp;#x642D;&amp;#x5EFA;&amp;#x81EA;&amp;#x5DF1;&amp;#x7684;&amp;#x524D;&amp;#x7AEF;&amp;#x811A;&amp;#x624B;&amp;#x67B6;&amp;#x4E00;&amp;#x822C;&amp;#x65B0;&amp;#x5F00;&amp;#x53D1;&amp;#x4E00;&amp;#x4E2A;&amp;#x9879;&amp;#x76EE;&amp;#x65F6;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x4F1A;&amp;#x9996;">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>前端进阶（13） - 搭建自己的前端脚手架 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/31451a77/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/31451a77/",
+      "appid": "1613049289050283", 
+      "title": "前端进阶（13） - 搭建自己的前端脚手架 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:44"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/382a9e67/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/74f94a1/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/31451a77/&text=前端进阶（13） - 搭建自己的前端脚手架" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/31451a77/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/31451a77/&text=前端进阶（13） - 搭建自己的前端脚手架" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/31451a77/&title=前端进阶（13） - 搭建自己的前端脚手架" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/31451a77/&is_video=false&description=前端进阶（13） - 搭建自己的前端脚手架" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=前端进阶（13） - 搭建自己的前端脚手架&body=Check out this article: https://alili.tech/archive/31451a77/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/31451a77/&title=前端进阶（13） - 搭建自己的前端脚手架" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/31451a77/&title=前端进阶（13） - 搭建自己的前端脚手架" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/31451a77/&title=前端进阶（13） - 搭建自己的前端脚手架" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/31451a77/&title=前端进阶（13） - 搭建自己的前端脚手架" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">搭建自己的前端脚手架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">1.1.</span> <span class="toc-text">1. package.json: npm 项目文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 main: 项目入口文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 bin: 配置命令行可执行文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 scripts: 配置项目命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">1.2.</span> <span class="toc-text">2. README.md: 项目说明文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader6"><span class="toc-number">1.3.</span> <span class="toc-text">3. CHANGELOG.md: 版本更新记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader7"><span class="toc-number">1.4.</span> <span class="toc-text">4. .gitignore: git 忽略配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader8"><span class="toc-number">1.5.</span> <span class="toc-text">5. .editorconfig: 编辑器配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader9"><span class="toc-number">1.6.</span> <span class="toc-text">6. .npmrc: npm 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader10"><span class="toc-number">1.7.</span> <span class="toc-text">7. .npmignore: npm 忽略配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader11"><span class="toc-number">1.8.</span> <span class="toc-text">8. .eslintrc, .eslintignore: eslint 相关配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader12"><span class="toc-number">1.9.</span> <span class="toc-text">9. .stylelintrc, .stylelintignore: stylelint 相关配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader13"><span class="toc-number">1.10.</span> <span class="toc-text">10. .prettierrc, .prettierignore: prettier 相关配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader14"><span class="toc-number">1.11.</span> <span class="toc-text">11. .babelrc: babel 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader15"><span class="toc-number">1.12.</span> <span class="toc-text">12. webpack.config.js: webpack 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader16"><span class="toc-number">1.13.</span> <span class="toc-text">13. rollup.config.js: rollup 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader17"><span class="toc-number">1.14.</span> <span class="toc-text">14. gulpfile.js: gulp 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader18"><span class="toc-number">1.15.</span> <span class="toc-text">15. jest.config.js: jest 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader19"><span class="toc-number">1.16.</span> <span class="toc-text">16. .gitattributes: git 属性配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader20"><span class="toc-number">1.17.</span> <span class="toc-text">17. .travis.yml: travis 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader21"><span class="toc-number">1.18.</span> <span class="toc-text">18. appveyor.yml: appveyor 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader22"><span class="toc-number">1.19.</span> <span class="toc-text">19. 后续</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        前端进阶（13） - 搭建自己的前端脚手架
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-07T02:30:16.000Z" itemprop="datePublished">2018-11-07</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1 id="articleHeader0">&#x642D;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x524D;&#x7AEF;&#x811A;&#x624B;&#x67B6;</h1><p>&#x4E00;&#x822C;&#x65B0;&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x9996;&#x5148;&#x642D;&#x5EFA;&#x597D;&#x4E00;&#x4E2A;&#x811A;&#x624B;&#x67B6;&#xFF0C;&#x7136;&#x540E;&#x624D;&#x4F1A;&#x5F00;&#x59CB;&#x5199;&#x4EE3;&#x7801;&#x3002;&#x642D;&#x5EFA;&#x811A;&#x624B;&#x67B6;&#x53EF;&#x4EE5;&#x7528; <a href="https://github.com/facebook/create-react-app" rel="external nofollow noopener noreferrer" target="_blank">create-react-app</a>&#x3001;<a href="https://github.com/vuejs/vue-cli" rel="external nofollow noopener noreferrer" target="_blank">vue-cli</a>&#x3001;<a href="http://yeoman.io/" rel="external nofollow noopener noreferrer" target="_blank">yeoman</a> &#x7B49;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528; <a href="https://github.com/h5bp/html5-boilerplate" rel="external nofollow noopener noreferrer" target="_blank">html5-boilerplate</a>&#x3001;<a href="https://github.com/react-boilerplate/react-boilerplate" rel="external nofollow noopener noreferrer" target="_blank">react-boilerplate</a>&#x3001;<a href="https://github.com/sahat/hackathon-starter" rel="external nofollow noopener noreferrer" target="_blank">hackathon-starter</a> &#x7B49;&#x6A21;&#x677F;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x90FD;&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x4F60;&#x7684;&#x4E2A;&#x6027;&#x5316;&#x9700;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x642D;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x524D;&#x7AEF;&#x811A;&#x624B;&#x67B6;&#x3002;</p><p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x811A;&#x624B;&#x67B6;&#x5305;&#x62EC;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5B9A;&#x4E49;&#x3001;&#x5FC5;&#x8981;&#x7684;&#x9879;&#x76EE;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E0E;&#x5DE5;&#x5177;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3001;&#x5DE5;&#x5177;&#x4E0E;&#x547D;&#x4EE4;&#x3002;</p><p>&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x7684;&#x811A;&#x624B;&#x67B6;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="|-- /                              &#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;
+    |-- src/                       &#x6E90;&#x4EE3;&#x7801;&#x76EE;&#x5F55;
+    |-- package.json               npm &#x9879;&#x76EE;&#x6587;&#x4EF6;
+    |-- README.md                  &#x9879;&#x76EE;&#x8BF4;&#x660E;&#x6587;&#x4EF6;
+    |-- CHANGELOG.md               &#x7248;&#x672C;&#x66F4;&#x65B0;&#x8BB0;&#x5F55;
+    |-- .gitignore                 git &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- .editorconfig              &#x7F16;&#x8F91;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- .npmrc                     npm &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- .npmignore                 npm &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- .eslintrc                  eslint &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- .eslintignore              eslint &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- .stylelintrc               stylelint &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- .stylelintignore           stylelint &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- .prettierrc                prettier &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- .prettierignore            prettier &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    
+    |-- .babelrc                   babel &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- webpack.config.js          webpack &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- rollup.config.js           rollup &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- gulpfile.js                gulp &#x914D;&#x7F6E;&#x6587;&#x4EF6;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs 1c"><code><span class="hljs-string">|-- /                              &#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;</span>
+    <span class="hljs-string">|-- src/                       &#x6E90;&#x4EE3;&#x7801;&#x76EE;&#x5F55;</span>
+    <span class="hljs-string">|-- package.json               npm &#x9879;&#x76EE;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- README.md                  &#x9879;&#x76EE;&#x8BF4;&#x660E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- CHANGELOG.md               &#x7248;&#x672C;&#x66F4;&#x65B0;&#x8BB0;&#x5F55;</span>
+    <span class="hljs-string">|-- .gitignore                 git &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- .editorconfig              &#x7F16;&#x8F91;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- .npmrc                     npm &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- .npmignore                 npm &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- .eslintrc                  eslint &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- .eslintignore              eslint &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- .stylelintrc               stylelint &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- .stylelintignore           stylelint &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- .prettierrc                prettier &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- .prettierignore            prettier &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    
+    <span class="hljs-string">|-- .babelrc                   babel &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- webpack.config.js          webpack &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- rollup.config.js           rollup &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- gulpfile.js                gulp &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span></code></pre><p>&#x4E00;&#x4E9B;&#x6269;&#x5C55;&#x7684;&#x811A;&#x624B;&#x67B6;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="|-- /                              &#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;
+    |-- bin/                       bin &#x76EE;&#x5F55;
+    |-- test/                      &#x6D4B;&#x8BD5;&#x76EE;&#x5F55;
+    |-- docs/                      &#x6587;&#x6863;&#x76EE;&#x5F55;
+    |-- jest.config.js             jest &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- .gitattributes             git &#x5C5E;&#x6027;&#x914D;&#x7F6E;
+    |-- .travis.yml                travis &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    |-- appveyor.yml               appveyor &#x914D;&#x7F6E;&#x6587;&#x4EF6;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs 1c"><code><span class="hljs-string">|-- /                              &#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;</span>
+    <span class="hljs-string">|-- bin/                       bin &#x76EE;&#x5F55;</span>
+    <span class="hljs-string">|-- test/                      &#x6D4B;&#x8BD5;&#x76EE;&#x5F55;</span>
+    <span class="hljs-string">|-- docs/                      &#x6587;&#x6863;&#x76EE;&#x5F55;</span>
+    <span class="hljs-string">|-- jest.config.js             jest &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- .gitattributes             git &#x5C5E;&#x6027;&#x914D;&#x7F6E;</span>
+    <span class="hljs-string">|-- .travis.yml                travis &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+    <span class="hljs-string">|-- appveyor.yml               appveyor &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span></code></pre><h2 id="articleHeader1">1. <code>package.json</code>: npm &#x9879;&#x76EE;&#x6587;&#x4EF6;</h2><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="{
+  &quot;name&quot;: &quot;name&quot;,                  &#x9879;&#x76EE;&#x540D;&#x5B57;
+  &quot;version&quot;: &quot;0.0.1&quot;,              &#x7248;&#x672C;
+  &quot;main&quot;: &quot;index.js&quot;,              &#x5165;&#x53E3;&#x6587;&#x4EF6;
+  &quot;bin&quot;: &quot;bin/bin.js&quot;,             bin &#x6587;&#x4EF6;
+  &quot;description&quot;: &quot;description&quot;,    &#x63CF;&#x8FF0;
+  &quot;repository&quot;: {                  
+    &quot;type&quot;: &quot;git&quot;,
+    &quot;url&quot;: &quot;url&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;homepage&quot;: &quot;homepage&quot;,          &#x4E3B;&#x9875;
+  &quot;readmeFilename&quot;: &quot;README.md&quot;,
+  &quot;devDependencies&quot;: {             &#x5DE5;&#x5177;&#x4F9D;&#x8D56;
+    &quot;babel-eslint&quot;: &quot;^8.2.6&quot;,
+    &quot;eslint&quot;: &quot;^4.19.1&quot;,
+    &quot;husky&quot;: &quot;^0.14.3&quot;,
+    &quot;lint-staged&quot;: &quot;^7.2.0&quot;,
+    &quot;prettier&quot;: &quot;^1.14.0&quot;,
+    &quot;stylelint&quot;: &quot;^9.3.0&quot;,
+    &quot;eslint-config-airbnb&quot;: &quot;^17.0.0&quot;,
+    &quot;eslint-config-prettier&quot;: &quot;^2.9.0&quot;,
+    &quot;eslint-plugin-babel&quot;: &quot;^5.1.0&quot;,
+    &quot;eslint-plugin-import&quot;: &quot;^2.13.0&quot;,
+    &quot;eslint-plugin-jsx-a11y&quot;: &quot;^6.1.0&quot;,
+    &quot;eslint-plugin-prettier&quot;: &quot;^2.6.2&quot;,
+    &quot;eslint-plugin-react&quot;: &quot;^7.10.0&quot;,
+    &quot;stylelint-config-prettier&quot;: &quot;^3.3.0&quot;,
+    &quot;stylelint-config-standard&quot;: &quot;^18.2.0&quot;
+  },
+  &quot;scripts&quot;: {                     &#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x547D;&#x4EE4;
+    &quot;precommit&quot;: &quot;npm run lint-staged&quot;,
+    &quot;prettier&quot;: &quot;prettier --write \&quot;./**/*.{js,jsx,css,less,md,json}\&quot;&quot;,
+    &quot;eslint&quot;: &quot;eslint .&quot;,
+    &quot;eslint:fix&quot;: &quot;eslint . --fix&quot;,
+    &quot;stylelint&quot;: &quot;stylelint \&quot;./**/*.{css,less}\&quot;&quot;,
+    &quot;stylelint:fix&quot;: &quot;stylelint \&quot;./**/*.{css,less}\&quot; --fix&quot;,
+    &quot;lint-staged&quot;: &quot;lint-staged&quot;
+  },
+  &quot;lint-staged&quot;: {                 &#x5BF9;&#x63D0;&#x4EA4;&#x7684;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x4E0E;&#x77EB;&#x6B63;
+    &quot;**/*.{js,jsx}&quot;: [
+      &quot;eslint --fix&quot;,
+      &quot;prettier --write&quot;,
+      &quot;git add&quot;
+    ],
+    &quot;**/*.{css,less}&quot;: [
+      &quot;stylelint --fix&quot;,
+      &quot;prettier --write&quot;,
+      &quot;git add&quot;
+    ],
+    &quot;**/*.{md,json}&quot;: [
+      &quot;prettier --write&quot;,
+      &quot;git add&quot;
+    ]
+  },
+  &quot;engines&quot;: {                     &#x8FD0;&#x884C;&#x65F6;&#x5BF9; node &#x7248;&#x672C;&#x7684;&#x8981;&#x6C42;
+    &quot;node&quot;: &quot;&gt;=8.0.0&quot;
+  },
+  &quot;dependencies&quot;: {}               &#x5F00;&#x53D1;&#x4F9D;&#x8D56;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs xquery"><code>{
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;name&quot;</span>,                  &#x9879;&#x76EE;&#x540D;&#x5B57;
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.0.1&quot;</span>,              &#x7248;&#x672C;
+  <span class="hljs-string">&quot;main&quot;</span>: <span class="hljs-string">&quot;index.js&quot;</span>,              &#x5165;&#x53E3;&#x6587;&#x4EF6;
+  <span class="hljs-string">&quot;bin&quot;</span>: <span class="hljs-string">&quot;bin/bin.js&quot;</span>,             bin &#x6587;&#x4EF6;
+  <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;description&quot;</span>,    &#x63CF;&#x8FF0;
+  <span class="hljs-string">&quot;repository&quot;</span>: {                  
+    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;git&quot;</span>,
+    <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;url&quot;</span>
+  },
+  <span class="hljs-string">&quot;keywords&quot;</span>: [],
+  <span class="hljs-string">&quot;homepage&quot;</span>: <span class="hljs-string">&quot;homepage&quot;</span>,          &#x4E3B;&#x9875;
+  <span class="hljs-string">&quot;readmeFilename&quot;</span>: <span class="hljs-string">&quot;README.md&quot;</span>,
+  <span class="hljs-string">&quot;devDependencies&quot;</span>: {             &#x5DE5;&#x5177;&#x4F9D;&#x8D56;
+    <span class="hljs-string">&quot;babel-eslint&quot;</span>: <span class="hljs-string">&quot;^8.2.6&quot;</span>,
+    <span class="hljs-string">&quot;eslint&quot;</span>: <span class="hljs-string">&quot;^4.19.1&quot;</span>,
+    <span class="hljs-string">&quot;husky&quot;</span>: <span class="hljs-string">&quot;^0.14.3&quot;</span>,
+    <span class="hljs-string">&quot;lint-staged&quot;</span>: <span class="hljs-string">&quot;^7.2.0&quot;</span>,
+    <span class="hljs-string">&quot;prettier&quot;</span>: <span class="hljs-string">&quot;^1.14.0&quot;</span>,
+    <span class="hljs-string">&quot;stylelint&quot;</span>: <span class="hljs-string">&quot;^9.3.0&quot;</span>,
+    <span class="hljs-string">&quot;eslint-config-airbnb&quot;</span>: <span class="hljs-string">&quot;^17.0.0&quot;</span>,
+    <span class="hljs-string">&quot;eslint-config-prettier&quot;</span>: <span class="hljs-string">&quot;^2.9.0&quot;</span>,
+    <span class="hljs-string">&quot;eslint-plugin-babel&quot;</span>: <span class="hljs-string">&quot;^5.1.0&quot;</span>,
+    <span class="hljs-string">&quot;eslint-plugin-import&quot;</span>: <span class="hljs-string">&quot;^2.13.0&quot;</span>,
+    <span class="hljs-string">&quot;eslint-plugin-jsx-a11y&quot;</span>: <span class="hljs-string">&quot;^6.1.0&quot;</span>,
+    <span class="hljs-string">&quot;eslint-plugin-prettier&quot;</span>: <span class="hljs-string">&quot;^2.6.2&quot;</span>,
+    <span class="hljs-string">&quot;eslint-plugin-react&quot;</span>: <span class="hljs-string">&quot;^7.10.0&quot;</span>,
+    <span class="hljs-string">&quot;stylelint-config-prettier&quot;</span>: <span class="hljs-string">&quot;^3.3.0&quot;</span>,
+    <span class="hljs-string">&quot;stylelint-config-standard&quot;</span>: <span class="hljs-string">&quot;^18.2.0&quot;</span>
+  },
+  <span class="hljs-string">&quot;scripts&quot;</span>: {                     &#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x547D;&#x4EE4;
+    <span class="hljs-string">&quot;precommit&quot;</span>: <span class="hljs-string">&quot;npm run lint-staged&quot;</span>,
+    <span class="hljs-string">&quot;prettier&quot;</span>: <span class="hljs-string">&quot;prettier --write \&quot;</span>./**/*.{js,jsx,css,less,md,json}\<span class="hljs-string">&quot;&quot;</span>,
+    <span class="hljs-string">&quot;eslint&quot;</span>: <span class="hljs-string">&quot;eslint .&quot;</span>,
+    <span class="hljs-string">&quot;eslint:fix&quot;</span>: <span class="hljs-string">&quot;eslint . --fix&quot;</span>,
+    <span class="hljs-string">&quot;stylelint&quot;</span>: <span class="hljs-string">&quot;stylelint \&quot;</span>./**/*.{css,less}\<span class="hljs-string">&quot;&quot;</span>,
+    <span class="hljs-string">&quot;stylelint:fix&quot;</span>: <span class="hljs-string">&quot;stylelint \&quot;</span>./**/*.{css,less}\<span class="hljs-string">&quot; --fix&quot;</span>,
+    <span class="hljs-string">&quot;lint-staged&quot;</span>: <span class="hljs-string">&quot;lint-staged&quot;</span>
+  },
+  <span class="hljs-string">&quot;lint-staged&quot;</span>: {                 &#x5BF9;&#x63D0;&#x4EA4;&#x7684;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x4E0E;&#x77EB;&#x6B63;
+    <span class="hljs-string">&quot;**/*.{js,jsx}&quot;</span>: [
+      <span class="hljs-string">&quot;eslint --fix&quot;</span>,
+      <span class="hljs-string">&quot;prettier --write&quot;</span>,
+      <span class="hljs-string">&quot;git add&quot;</span>
+    ],
+    <span class="hljs-string">&quot;**/*.{css,less}&quot;</span>: [
+      <span class="hljs-string">&quot;stylelint --fix&quot;</span>,
+      <span class="hljs-string">&quot;prettier --write&quot;</span>,
+      <span class="hljs-string">&quot;git add&quot;</span>
+    ],
+    <span class="hljs-string">&quot;**/*.{md,json}&quot;</span>: [
+      <span class="hljs-string">&quot;prettier --write&quot;</span>,
+      <span class="hljs-string">&quot;git add&quot;</span>
+    ]
+  },
+  <span class="hljs-string">&quot;engines&quot;</span>: {                     &#x8FD0;&#x884C;&#x65F6;&#x5BF9; node &#x7248;&#x672C;&#x7684;&#x8981;&#x6C42;
+    <span class="hljs-string">&quot;node&quot;</span>: <span class="hljs-string">&quot;&gt;=8.0.0&quot;</span>
+  },
+  <span class="hljs-string">&quot;dependencies&quot;</span>: {}               &#x5F00;&#x53D1;&#x4F9D;&#x8D56;
+}</code></pre><h3 id="articleHeader2">1.1 <code>main</code>: &#x9879;&#x76EE;&#x5165;&#x53E3;&#x6587;&#x4EF6;</h3><p>&#x5982;&#x679C;&#x4F60;&#x5C06;&#x5F53;&#x524D;&#x7684;&#x9879;&#x76EE;&#x53D1;&#x5E03;&#x4E3A;&#x4E00;&#x4E2A; npm &#x5305;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x7684;&#x5305;&#x5728;&#x5F15;&#x7528;&#x4F60;&#x7684;&#x5305;&#x65F6;&#xFF0C;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x5C31;&#x4F1A;&#x53BB;&#x627E; <code>main</code> &#x5B57;&#x6BB5;&#x5B9A;&#x4E49;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C;&#x8BE6;&#x7EC6;&#x53C2;&#x8003; <a href="https://docs.npmjs.com/files/package.json#main" rel="external nofollow noopener noreferrer" target="_blank">package.json#main</a>&#x3002;</p><p>&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x7279;&#x6B8A;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C;&#x53C2;&#x8003; <a href="https://github.com/senntyou/blogs/blob/master/extend/3.md" rel="external nofollow noopener noreferrer" target="_blank">package.json &#x975E;&#x5B98;&#x65B9;&#x5B57;&#x6BB5;&#x96C6;&#x5408;</a>&#x3002;</p><h3 id="articleHeader3">1.2 <code>bin</code>: &#x914D;&#x7F6E;&#x547D;&#x4EE4;&#x884C;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;</h3><p>&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x5C06;&#x5F53;&#x524D;&#x7684;&#x9879;&#x76EE;&#x5B89;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://docs.npmjs.com/files/package.json#bin" rel="external nofollow noopener noreferrer" target="_blank">package.json#bin</a>&#x3002;</p><h3 id="articleHeader4">1.3 <code>scripts</code>: &#x914D;&#x7F6E;&#x9879;&#x76EE;&#x547D;&#x4EE4;</h3><p>&#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x7684;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x7528; <code>npm run</code> &#x6765;&#x8C03;&#x7528;&#x3002;&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684;&#x51E0;&#x4E2A;&#x547D;&#x4EE4;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="npm run prettier
+npm run eslint
+npm run eslint:fix
+npm run stylelint
+npm run stylelint:fix" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs dockerfile"><code>npm <span class="hljs-keyword">run</span><span class="bash"> prettier
+</span>npm <span class="hljs-keyword">run</span><span class="bash"> eslint
+</span>npm <span class="hljs-keyword">run</span><span class="bash"> eslint:fix
+</span>npm <span class="hljs-keyword">run</span><span class="bash"> stylelint
+</span>npm <span class="hljs-keyword">run</span><span class="bash"> stylelint:fix</span></code></pre><p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x8FD8;&#x53EF;&#x80FD;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#x7684;&#x4E00;&#x4E9B;&#x547D;&#x4EE4;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="{
+  &quot;test&quot;: &quot;&quot;,                      &#x6D4B;&#x8BD5;  
+  &quot;build&quot;: &quot;&quot;,                     &#x6784;&#x5EFA;
+  &quot;dev&quot;: &quot;&quot;,                       &#x5F00;&#x53D1;
+  ...
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs clean"><code>{
+  <span class="hljs-string">&quot;test&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,                      &#x6D4B;&#x8BD5;  
+  <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,                     &#x6784;&#x5EFA;
+  <span class="hljs-string">&quot;dev&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,                       &#x5F00;&#x53D1;
+  ...
+}</code></pre><h2 id="articleHeader5">2. <code>README.md</code>: &#x9879;&#x76EE;&#x8BF4;&#x660E;&#x6587;&#x4EF6;</h2><p>&#x9879;&#x76EE;&#x8BF4;&#x660E;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C;&#x5305;&#x62EC;&#x6587;&#x6863;&#x3002;&#x4E00;&#x822C; git &#x9879;&#x76EE; web &#x7AEF;&#x9996;&#x9875;&#x663E;&#x793A;&#x7684;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5305;&#x62EC; <a href="https://github.com" rel="external nofollow noopener noreferrer" target="_blank">github</a>&#x3001;<a href="https://bitbucket.org/" rel="external nofollow noopener noreferrer" target="_blank">bitbucket</a>&#x3001;<a href="https://gitlab.com/" rel="external nofollow noopener noreferrer" target="_blank">gitlab</a>&#x3002;</p><p>&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x662F; <a href="https://daringfireball.net/projects/markdown/" rel="external nofollow noopener noreferrer" target="_blank">markdown</a>&#xFF0C;&#x5177;&#x4F53;&#x4ECB;&#x7ECD;&#x4E0E;&#x8BED;&#x6CD5;&#x53EF;&#x4EE5;&#x53C2;&#x8003; <a href="https://www.markdownguide.org/" rel="external nofollow noopener noreferrer" target="_blank">https://www.markdownguide.org/</a>&#x3002;</p><h2 id="articleHeader6">3. <code>CHANGELOG.md</code>: &#x7248;&#x672C;&#x66F4;&#x65B0;&#x8BB0;&#x5F55;</h2><p>&#x4E00;&#x822C;&#x9879;&#x76EE;&#x90FD;&#x4F1A;&#x6709;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x4E8E;&#x8BB0;&#x5F55;&#x7248;&#x672C;&#x66F4;&#x65B0;&#x53CA;&#x76F8;&#x5E94;&#x7684;&#x529F;&#x80FD;&#x53D8;&#x5316;&#xFF0C;&#x6BD4;&#x5982; <a href="https://github.com/facebook/react/blob/master/CHANGELOG.md" rel="external nofollow noopener noreferrer" target="_blank">react &#x7684; CHANGELOG</a>&#x3002;</p><p>&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x4E5F;&#x662F; <code>markdown</code>&#x3002;</p><h2 id="articleHeader7">4. <code>.gitignore</code>: git &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x54EA;&#x4E9B;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;&#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C; git &#x7248;&#x672C;&#x63A7;&#x5236;&#x3002;</p><p>&#x6BD4;&#x5982;:</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".DS_STORE
+node_modules
+build/
+*.log*
+.idea
+.vscode" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs x86asm"><code><span class="hljs-meta">.DS_STORE</span>
+node_modules
+build/
+*.log*
+<span class="hljs-meta">.idea</span>
+<span class="hljs-meta">.vscode</span></code></pre><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://git-scm.com/docs/gitignore" rel="external nofollow noopener noreferrer" target="_blank">https://git-scm.com/docs/gitignore</a>&#x3002;</p><h2 id="articleHeader8">5. <code>.editorconfig</code>: &#x7F16;&#x8F91;&#x5668;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x7F16;&#x8F91;&#x5668;&#x7279;&#x5B9A;&#x7684;&#x914D;&#x7F6E;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x5BF9; <code>tab</code> &#x7684;&#x5B9A;&#x4E49;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x53EF;&#x80FD;&#x662F; 2 &#x4E2A;&#x7A7A;&#x683C;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F; 4 &#x4E2A;&#x6216;&#x8005; 8 &#x4E2A;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x9700;&#x8981;&#x7528;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x6765;&#x7EDF;&#x4E00;&#x914D;&#x7F6E;&#x7F16;&#x8F91;&#x5668;&#x3002;</p><p>&#x6BD4;&#x5982;:</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="# http://editorconfig.org
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs ini"><code><span class="hljs-comment"># http://editorconfig.org</span>
+<span class="hljs-attr">root</span> = <span class="hljs-literal">true</span>
+<span class="hljs-section">
+[*]</span>
+<span class="hljs-attr">indent_style</span> = space
+<span class="hljs-attr">indent_size</span> = <span class="hljs-number">2</span>
+<span class="hljs-attr">end_of_line</span> = lf
+<span class="hljs-attr">charset</span> = utf-<span class="hljs-number">8</span>
+<span class="hljs-attr">trim_trailing_whitespace</span> = <span class="hljs-literal">true</span>
+<span class="hljs-attr">insert_final_newline</span> = <span class="hljs-literal">true</span>
+<span class="hljs-section">
+[*.md]</span>
+<span class="hljs-attr">trim_trailing_whitespace</span> = <span class="hljs-literal">false</span></code></pre><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="http://editorconfig.org" rel="external nofollow noopener noreferrer" target="_blank">http://editorconfig.org</a>&#x3002;</p><h2 id="articleHeader9">6. <code>.npmrc</code>: npm &#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x6BD4;&#x5982;:</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="package-lock=false" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs ini"><code style="word-break:break-word;white-space:initial"><span class="hljs-attr">package-lock</span>=<span class="hljs-literal">false</span></code></pre><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://www.npmjs.com.cn/files/npmrc/" rel="external nofollow noopener noreferrer" target="_blank">https://www.npmjs.com.cn/files/npmrc/</a>&#x3002;</p><h2 id="articleHeader10">7. <code>.npmignore</code>: npm &#x5FFD;&#x7565;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package" rel="external nofollow noopener noreferrer" target="_blank">keeping-files-out-of-your-package</a>&#x3002;</p><h2 id="articleHeader11">8. <code>.eslintrc, .eslintignore</code>: eslint &#x76F8;&#x5173;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x7528;&#x4E8E; <code>js, jsx</code> &#x4EE3;&#x7801;&#x68C0;&#x67E5;&#x4E0E;&#x77EB;&#x6B63;&#xFF0C;&#x8BA9;&#x4F60;&#x7F16;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x7B26;&#x5408;&#x7279;&#x5B9A;&#x7684;&#x89C4;&#x8303;&#x4E0E;&#x98CE;&#x683C;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://eslint.org/" rel="external nofollow noopener noreferrer" target="_blank">https://eslint.org/</a>&#x3002;</p><h2 id="articleHeader12">9. <code>.stylelintrc, .stylelintignore</code>: stylelint &#x76F8;&#x5173;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x7528;&#x4E8E; <code>css, less, scss</code> &#x4EE3;&#x7801;&#x68C0;&#x67E5;&#x4E0E;&#x77EB;&#x6B63;&#xFF0C;&#x8BA9;&#x4F60;&#x7F16;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x7B26;&#x5408;&#x7279;&#x5B9A;&#x7684;&#x89C4;&#x8303;&#x4E0E;&#x98CE;&#x683C;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://stylelint.io/" rel="external nofollow noopener noreferrer" target="_blank">https://stylelint.io/</a>&#x3002;</p><h2 id="articleHeader13">10. <code>.prettierrc, .prettierignore</code>: prettier &#x76F8;&#x5173;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x4F18;&#x5316; <code>js, jsx, css, less, scss, md, json</code> &#x7B49;&#x6587;&#x4EF6;&#x7684;&#x683C;&#x5F0F;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://prettier.io/" rel="external nofollow noopener noreferrer" target="_blank">https://prettier.io/</a>&#x3002;</p><h2 id="articleHeader14">11. <code>.babelrc</code>: babel &#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p><code>es6 -&gt; es5</code> &#x8F6C;&#x7801;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://babeljs.io/" rel="external nofollow noopener noreferrer" target="_blank">https://babeljs.io/</a>&#x3002;</p><h2 id="articleHeader15">12. <code>webpack.config.js</code>: webpack &#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x524D;&#x7AEF;&#x6253;&#x5305;&#x5DE5;&#x5177;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://webpack.js.org/" rel="external nofollow noopener noreferrer" target="_blank">https://webpack.js.org/</a>&#x3002;</p><h2 id="articleHeader16">13. <code>rollup.config.js</code>: rollup &#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x53E6;&#x4E00;&#x4E2A;&#x524D;&#x7AEF;&#x6253;&#x5305;&#x5DE5;&#x5177;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://rollupjs.org/" rel="external nofollow noopener noreferrer" target="_blank">https://rollupjs.org/</a>&#x3002;</p><h2 id="articleHeader17">14. <code>gulpfile.js</code>: gulp &#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x524D;&#x7AEF;&#x6587;&#x4EF6;&#x6D41;&#x64CD;&#x4F5C;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://www.gulpjs.com/" rel="external nofollow noopener noreferrer" target="_blank">https://www.gulpjs.com/</a>&#x3002;</p><h2 id="articleHeader18">15. <code>jest.config.js</code>: jest &#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x524D;&#x7AEF;&#x6D4B;&#x8BD5;&#x7EC4;&#x4EF6;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://jestjs.io/" rel="external nofollow noopener noreferrer" target="_blank">https://jestjs.io/</a>&#x3002;</p><h2 id="articleHeader19">16. <code>.gitattributes</code>: git &#x5C5E;&#x6027;&#x914D;&#x7F6E;</h2><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://git-scm.com/docs/gitattributes" rel="external nofollow noopener noreferrer" target="_blank">https://git-scm.com/docs/gitattributes</a>&#x3002;</p><h2 id="articleHeader20">17. <code>.travis.yml</code>: travis &#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x4E00;&#x4E2A;&#x6301;&#x7EED;&#x96C6;&#x6210;&#x670D;&#x52A1;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://www.travis-ci.org/" rel="external nofollow noopener noreferrer" target="_blank">https://www.travis-ci.org/</a>&#x3002;</p><h2 id="articleHeader21">18. <code>appveyor.yml</code>: appveyor &#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2><p>&#x53C8;&#x4E00;&#x4E2A;&#x6301;&#x7EED;&#x96C6;&#x6210;&#x670D;&#x52A1;&#x3002;</p><p>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x53C2;&#x8003; <a href="https://www.appveyor.com/" rel="external nofollow noopener noreferrer" target="_blank">https://www.appveyor.com/</a>&#x3002;</p><h2 id="articleHeader22">19. &#x540E;&#x7EED;</h2><p>&#x66F4;&#x591A;&#x535A;&#x5BA2;&#xFF0C;&#x67E5;&#x770B; <a href="https://github.com/senntyou/blogs" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/senntyou/blogs</a></p><p>&#x4F5C;&#x8005;&#xFF1A;<a href="https://github.com/senntyou" rel="external nofollow noopener noreferrer" target="_blank">&#x6DF1;&#x4E88;&#x4E4B; (@senntyou)</a></p><p>&#x7248;&#x6743;&#x58F0;&#x660E;&#xFF1A;&#x81EA;&#x7531;&#x8F6C;&#x8F7D;-&#x975E;&#x5546;&#x7528;-&#x975E;&#x884D;&#x751F;-&#x4FDD;&#x6301;&#x7F72;&#x540D;&#xFF08;<a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" rel="external nofollow noopener noreferrer" target="_blank">&#x521B;&#x610F;&#x5171;&#x4EAB;3.0&#x8BB8;&#x53EF;&#x8BC1;</a>&#xFF09;</p>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>前端进阶（13） - 搭建自己的前端脚手架</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016481132" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016481132</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/31451a77/">https://alili.tech/archive/31451a77/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">搭建自己的前端脚手架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">1.1.</span> <span class="toc-text">1. package.json: npm 项目文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 main: 项目入口文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 bin: 配置命令行可执行文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 scripts: 配置项目命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">1.2.</span> <span class="toc-text">2. README.md: 项目说明文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader6"><span class="toc-number">1.3.</span> <span class="toc-text">3. CHANGELOG.md: 版本更新记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader7"><span class="toc-number">1.4.</span> <span class="toc-text">4. .gitignore: git 忽略配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader8"><span class="toc-number">1.5.</span> <span class="toc-text">5. .editorconfig: 编辑器配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader9"><span class="toc-number">1.6.</span> <span class="toc-text">6. .npmrc: npm 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader10"><span class="toc-number">1.7.</span> <span class="toc-text">7. .npmignore: npm 忽略配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader11"><span class="toc-number">1.8.</span> <span class="toc-text">8. .eslintrc, .eslintignore: eslint 相关配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader12"><span class="toc-number">1.9.</span> <span class="toc-text">9. .stylelintrc, .stylelintignore: stylelint 相关配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader13"><span class="toc-number">1.10.</span> <span class="toc-text">10. .prettierrc, .prettierignore: prettier 相关配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader14"><span class="toc-number">1.11.</span> <span class="toc-text">11. .babelrc: babel 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader15"><span class="toc-number">1.12.</span> <span class="toc-text">12. webpack.config.js: webpack 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader16"><span class="toc-number">1.13.</span> <span class="toc-text">13. rollup.config.js: rollup 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader17"><span class="toc-number">1.14.</span> <span class="toc-text">14. gulpfile.js: gulp 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader18"><span class="toc-number">1.15.</span> <span class="toc-text">15. jest.config.js: jest 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader19"><span class="toc-number">1.16.</span> <span class="toc-text">16. .gitattributes: git 属性配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader20"><span class="toc-number">1.17.</span> <span class="toc-text">17. .travis.yml: travis 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader21"><span class="toc-number">1.18.</span> <span class="toc-text">18. appveyor.yml: appveyor 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader22"><span class="toc-number">1.19.</span> <span class="toc-text">19. 后续</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li></ol>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

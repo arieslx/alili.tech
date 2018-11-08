@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x8BD5;&amp;#x8BD1;&amp;#x4E86;Keith J.Grant&amp;#x7684;CSS&amp;#x597D;&amp;#x4E66;&amp;#x300A;CSS in Depth&amp;#x300B;&amp;#xFF0C;&amp;#x5176;&amp;#x4E2D;&amp;#x7684;&amp;#x7B2C;&amp;#x4E8C;&amp;#x7AE0;&amp;#x300A;Working with">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="视口相关单位的应用 —— 别说你懂CSS相对单位">
+<meta property="og:url" content="https://alili.tech/archive/d6d1ad5/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x8BD5;&amp;#x8BD1;&amp;#x4E86;Keith J.Grant&amp;#x7684;CSS&amp;#x597D;&amp;#x4E66;&amp;#x300A;CSS in Depth&amp;#x300B;&amp;#xFF0C;&amp;#x5176;&amp;#x4E2D;&amp;#x7684;&amp;#x7B2C;&amp;#x4E8C;&amp;#x7AE0;&amp;#x300A;Working with">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000015738812?w=564&h=432">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="视口相关单位的应用 —— 别说你懂CSS相对单位">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x8BD5;&amp;#x8BD1;&amp;#x4E86;Keith J.Grant&amp;#x7684;CSS&amp;#x597D;&amp;#x4E66;&amp;#x300A;CSS in Depth&amp;#x300B;&amp;#xFF0C;&amp;#x5176;&amp;#x4E2D;&amp;#x7684;&amp;#x7B2C;&amp;#x4E8C;&amp;#x7AE0;&amp;#x300A;Working with">
+<meta name="twitter:image" content="https://static.alili.tech/img/remote/1460000015738812?w=564&h=432">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>视口相关单位的应用 —— 别说你懂CSS相对单位 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/d6d1ad5/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/d6d1ad5/",
+      "appid": "1613049289050283", 
+      "title": "视口相关单位的应用 —— 别说你懂CSS相对单位 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:55"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/55035adf/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/4cdf36d6/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/d6d1ad5/&text=视口相关单位的应用 —— 别说你懂CSS相对单位" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/d6d1ad5/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/d6d1ad5/&text=视口相关单位的应用 —— 别说你懂CSS相对单位" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/d6d1ad5/&title=视口相关单位的应用 —— 别说你懂CSS相对单位" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/d6d1ad5/&is_video=false&description=视口相关单位的应用 —— 别说你懂CSS相对单位" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=视口相关单位的应用 —— 别说你懂CSS相对单位&body=Check out this article: https://alili.tech/archive/d6d1ad5/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/d6d1ad5/&title=视口相关单位的应用 —— 别说你懂CSS相对单位" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/d6d1ad5/&title=视口相关单位的应用 —— 别说你懂CSS相对单位" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/d6d1ad5/&title=视口相关单位的应用 —— 别说你懂CSS相对单位" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/d6d1ad5/&title=视口相关单位的应用 —— 别说你懂CSS相对单位" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">2.4 视口相关单位（viewport-relative units）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">1.1.</span> <span class="toc-text">笔记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">1.2.</span> <span class="toc-text">CSS3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">1.3.</span> <span class="toc-text">2.4.1 在font-size上使用vw</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">1.4.</span> <span class="toc-text">2.4.2 在font-size上使用calc()</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        视口相关单位的应用 —— 别说你懂CSS相对单位
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-30T02:30:12.000Z" itemprop="datePublished">2018-10-30</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>&#x524D;&#x6BB5;&#x65F6;&#x95F4;&#x8BD5;&#x8BD1;&#x4E86;Keith J.Grant&#x7684;CSS&#x597D;&#x4E66;&#x300A;CSS in Depth&#x300B;&#xFF0C;&#x5176;&#x4E2D;&#x7684;&#x7B2C;&#x4E8C;&#x7AE0;<a href="https://livebook.manning.com/#!/book/css-in-depth/chapter-2" rel="external nofollow noopener noreferrer" target="_blank">&#x300A;Working with relative units&#x300B;</a>&#xFF0C;&#x4E66;&#x4E2D;&#x5BF9;relative units&#x7684;&#x8BB2;&#x89E3;&#x548C;&#x4E3E;&#x4F8B;&#x53EF;&#x4EE5;&#x8BF4;&#x76F8;&#x5F53;&#x5168;&#x9762;&#xFF0C;&#x770B;&#x5B8C;&#x4E4B;&#x540E;&#x53D1;&#x73B0;&#x81EA;&#x5DF1;&#x5E76;&#x4E0D;&#x592A;&#x61C2;CSS&#x76F8;&#x5BF9;&#x5355;&#x4F4D;&#xFF0C;&#x4E5F;&#x5E0C;&#x671B;&#x5206;&#x4EAB;&#x7ED9;&#x5927;&#x5BB6;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x4E86;&#x8FD9;&#x4E2A;&#x8BD1;&#x6587;&#x7CFB;&#x5217;&#x3002;&#xFF08;&#x82E5;&#x6709;&#x52D8;&#x8BEF;&#x6216;&#x7FFB;&#x8BD1;&#x5EFA;&#x8BAE;&#xFF0C;&#x6B22;&#x8FCE; <a href="https://github.com/YuyingWu/blog/tree/dev/source/_posts" rel="external nofollow noopener noreferrer" target="_blank">Github PR</a> ^_^&#xFF09;</p><p>&#x300A;&#x522B;&#x8BF4;&#x4F60;&#x61C2;CSS&#x76F8;&#x5BF9;&#x5355;&#x4F4D;&#x300B;&#x7CFB;&#x5217;&#x8BD1;&#x6587;&#xFF1A;</p><ol><li><a href="https://zhuanlan.zhihu.com/p/39270696" rel="external nofollow noopener noreferrer" target="_blank">&#x5982;&#x4F55;&#x66F4;&#x6109;&#x5FEB;&#x5730;&#x4F7F;&#x7528;em</a></li><li><a href="https://zhuanlan.zhihu.com/p/39811831" rel="external nofollow noopener noreferrer" target="_blank">&#x5982;&#x4F55;&#x66F4;&#x6109;&#x5FEB;&#x5730;&#x4F7F;&#x7528;rem</a></li><li><a href="https://zhuanlan.zhihu.com/p/39812336" rel="external nofollow noopener noreferrer" target="_blank">&#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#x7684;&#x5E94;&#x7528;</a> [&#x672C;&#x6587;]</li><li><a href="https://zhuanlan.zhihu.com/p/40402007" rel="external nofollow noopener noreferrer" target="_blank">&#x65E0;&#x5355;&#x4F4D;&#x6570;&#x5B57;&#x548C;&#x884C;&#x9AD8;</a></li><li><a href="https://zhuanlan.zhihu.com/p/40990723" rel="external nofollow noopener noreferrer" target="_blank">CSS&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;</a></li></ol><p>&#x672C;&#x6587;&#x5BF9;&#x5E94;&#x7684;&#x7AE0;&#x8282;&#x76EE;&#x5F55;&#xFF1A;</p><ul><li><p>2.4 &#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#xFF08;viewport-relative units&#xFF09;</p><ul><li>CSS3</li><li>2.4.1 &#x5728;font-size&#x4E0A;&#x4F7F;&#x7528;vw</li><li>2.4.2 &#x5728;font-size&#x4E0A;&#x4F7F;&#x7528;calc()</li></ul></li></ul><hr><h2 id="articleHeader0">2.4 &#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#xFF08;viewport-relative units&#xFF09;</h2><p>&#x4F60;&#x5DF2;&#x7ECF;&#x5B66;&#x5B8C;em&#x548C;rem&#x4E86;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x662F;&#x4EE5;<code>font-size</code>&#x4E3A;&#x57FA;&#x51C6;&#x503C;&#x7684;&#xFF0C;&#x4F46;&#x76F8;&#x5BF9;&#x5355;&#x4F4D;&#x4E0D;&#x53EA;&#x5B83;&#x4EEC;&#x3002;&#x8FD8;&#x6709;&#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#xFF0C;&#x4F9D;&#x8D56;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x89C6;&#x53E3;&#x5927;&#x5C0F;&#x6765;&#x5B9A;&#x4E49;&#x957F;&#x5EA6;&#x7684;&#x3002;</p><blockquote>&#x89C6;&#x53E3;&#xFF08;viewport&#xFF09; &#x2014;&#x2014; &#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7A97;&#x53E3;&#x4E2D;&#x7528;&#x6765;&#x6E32;&#x67D3;&#x9875;&#x9762;&#x7684;&#x53EF;&#x89C6;&#x533A;&#x57DF;&#xFF0C;&#x8FD9;&#x4E0D;&#x5305;&#x62EC;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x5730;&#x5740;&#x680F;&#x3001;&#x5DE5;&#x5177;&#x680F;&#x3001;&#x72B6;&#x6001;&#x680F;&#x7B49;&#xFF08;&#x5982;&#x679C;&#x6709;&#x7684;&#x8BDD;&#xFF09;&#x3002;</blockquote><p>&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x719F;&#x6089;&#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#x7684;&#x8BDD;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x3002;</p><ul><li>vh &#x2014;&#x2014; &#x89C6;&#x53E3;&#x9AD8;&#x5EA6;&#x7684;1/100</li><li>vw &#x2014;&#x2014; &#x89C6;&#x53E3;&#x5BBD;&#x5EA6;&#x7684;1/100</li><li>vmin &#x2014;&#x2014; &#x89C6;&#x533A;&#x5BBD;&#x5EA6;&#x6216;&#x9AD8;&#x5EA6;&#x8F83;&#x5C0F;&#x503C;&#x7684;1/100&#xFF08;IE9&#x652F;&#x6301;&#x7684;&#x662F;vm&#xFF09;</li><li>vmax &#x2014;&#x2014; &#x89C6;&#x533A;&#x5BBD;&#x5EA6;&#x6216;&#x9AD8;&#x5EA6;&#x8F83;&#x5927;&#x503C;&#x7684;1/100&#xFF08;&#x5728;&#x5199;&#x672C;&#x4E66;&#x65F6;&#xFF0C;IE&#x6216;&#x8005;Edge&#x90FD;&#x4E0D;&#x652F;&#x6301;&#xFF09;</li></ul><p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;50vw&#x7B49;&#x4E8E;&#x89C6;&#x53E3;&#x5BBD;&#x5EA6;&#x7684;&#x4E00;&#x534A;&#xFF0C;&#x800C;25vh&#x7B49;&#x4E8E;&#x89C6;&#x53E3;&#x9AD8;&#x5EA6;&#x7684;25%&#x3002;vmin&#x4F9D;&#x8D56;&#x4E24;&#x8005;&#xFF08;&#x5BBD;&#x6216;&#x9AD8;&#xFF09;&#x7684;&#x8F83;&#x5C0F;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x786E;&#x4FDD;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4E0D;&#x7BA1;&#x5728;&#x6A2A;&#x5C4F;&#x8FD8;&#x662F;&#x7AD6;&#x5C4F;&#x4E0B;&#x9002;&#x5E94;&#x5C4F;&#x5E55;&#x5C55;&#x793A;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x4F1A;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#xFF1A;&#x5982;&#x679C;&#x662F;&#x6A2A;&#x5C4F;&#xFF0C;vmin&#x7684;&#x57FA;&#x51C6;&#x503C;&#x662F;&#x5C4F;&#x5E55;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x7AD6;&#x5C4F;&#xFF0C;&#x5B83;&#x7684;&#x57FA;&#x51C6;&#x503C;&#x662F;&#x5C4F;&#x5E55;&#x7684;&#x5BBD;&#x5EA6;&#x3002;</p><p>&#x56FE;2.10&#x5C55;&#x793A;&#x4E86;&#x4E00;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#x7684;&#x5143;&#x7D20;&#x5728;&#x4E0D;&#x540C;&#x5C4F;&#x5E55;&#x5C3A;&#x5BF8;&#x4E0B;&#x7684;&#x89C6;&#x53E3;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x5BBD;&#x548C;&#x9AD8;&#x7684;&#x503C;&#x90FD;&#x58F0;&#x660E;&#x4E3A;90vmin&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5BBD;&#x9AD8;&#x8F83;&#x5C0F;&#x503C;&#x7684;90%&#x3002;&#x8FB9;&#x957F;&#x7684;&#x503C;&#x7B49;&#x4E8E;&#xFF0C;&#x6A2A;&#x5C4F;&#x60C5;&#x51B5;&#x4E0B;&#x9AD8;&#x5EA6;&#x7684;90%&#xFF0C;&#x6216;&#x8005;&#x7AD6;&#x5C4F;&#x60C5;&#x51B5;&#x4E0B;&#x5BBD;&#x5EA6;&#x7684;90%&#x3002;</p><p>[ &#x56FE; 2.10 &#x5982;&#x679C;&#x628A;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5BBD;&#x9AD8;&#x5B9A;&#x4E49;&#x6210;90vmin&#xFF0C;&#x5B83;&#x603B;&#x4F1A;&#x5C55;&#x793A;&#x6210;&#x4E00;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#xFF0C;&#x8FB9;&#x957F;&#x7A0D;&#x5C0F;&#x4E8E;&#x5C4F;&#x5E55;&#x7684;&#x89C6;&#x53E3;&#xFF0C;&#x4E0D;&#x7BA1;&#x5B83;&#x7684;&#x5C3A;&#x5BF8;&#x6216;&#x65B9;&#x5411;&#x600E;&#x6837;&#x3002; ]</p><p><span class="img-wrap"><img data-src="/img/remote/1460000015738812?w=564&amp;h=432" src="https://static.alili.tech/img/remote/1460000015738812?w=564&amp;h=432" alt="&quot;&#x56FE; 2.10&quot;" title="&quot;&#x56FE; 2.10&quot;" style="cursor:pointer;display:inline"></span></p><p>&#x5728;&#x4EE3;&#x7801;&#x7247;&#x6BB5;2.18&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x6837;&#x5F0F;&#xFF0C;&#x6E32;&#x67D3;&#x4E86;&#x4E00;&#x4E2A;&#x9002;&#x5E94;&#x5C4F;&#x5E55;&#x5C3A;&#x5BF8;&#x7684;&#x5927;&#x6B63;&#x65B9;&#x5F62;&#xFF0C;&#x4E0D;&#x7BA1;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x5C3A;&#x5BF8;&#x662F;&#x591A;&#x5C11;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6DFB;&#x52A0;<code>&lt;div class=&quot;square&quot;&gt;</code>&#xFF0C;&#x518D;&#x770B;&#x770B;&#x9875;&#x9762;&#x6548;&#x679C;&#x3002;</p><p>[ &#x4EE3;&#x7801;&#x7247;&#x6BB5; 2.18 &#x8FB9;&#x957F;&#x4F7F;&#x7528;<code>vmin</code>&#x7684;&#x6B63;&#x65B9;&#x5F62;&#x5143;&#x7D20; ]</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".square {
+  width: 90vmin;
+  height: 90vmin;
+  background-color: #369;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs css"><code><span class="hljs-selector-class">.square</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">90vmin</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">90vmin</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#369</span>;
+}</code></pre><p>&#x5982;&#x679C;&#x60F3;&#x505A;&#x4E00;&#x4E2A;&#x5927;&#x82F1;&#x96C4;&#x56FE;&#x7247;&#x5145;&#x6EE1;&#x5C4F;&#x5E55;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x89C6;&#x53E3;&#x76F8;&#x5173;&#x957F;&#x5EA6;&#x6700;&#x5408;&#x9002;&#x4E0D;&#x8FC7;&#x3002;&#x4F60;&#x7684;&#x56FE;&#x7247;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x4E2A;&#x957F;&#x6761;&#x5F62;&#x7684;&#x5BB9;&#x5668;&#x5185;&#xFF0C;&#x628A;&#x56FE;&#x7247;&#x7684;&#x9AD8;&#x5EA6;&#x8BBE;&#x4E3A;100vh&#xFF0C;&#x90A3;&#x5B83;&#x7684;&#x9AD8;&#x5EA6;&#x5C31;&#x4F1A;&#x8DDF;&#x89C6;&#x53E3;&#x9AD8;&#x5EA6;&#x4E00;&#x6837;&#x3002;</p><blockquote><h3 id="articleHeader1">&#x7B14;&#x8BB0;</h3><p>&#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#x5BF9;&#x4E8E;&#x5927;&#x591A;&#x6570;&#x6D4F;&#x89C8;&#x5668;&#x8FD8;&#x662F;&#x4E00;&#x9879;&#x6BD4;&#x8F83;&#x65B0;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x4F60;&#x8BD5;&#x56FE;&#x628A;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x548C;&#x5176;&#x4ED6;&#x6837;&#x5F0F;&#x6DF7;&#x642D;&#x65F6;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x4E00;&#x4E9B;&#x5F88;&#x5947;&#x602A;&#x7684;bug&#x3002;&#x8BE6;&#x60C5;&#x53C2;&#x8003;<a href="http://caniuse.com/#feat=viewport-units" rel="external nofollow noopener noreferrer" target="_blank">http://caniuse.com/#feat=viewport-units</a>&#x5217;&#x8868;&#x4E2D;&#x7684;&#x201C;&#x5DF2;&#x77E5;&#x95EE;&#x9898;&#xFF08;Known Issues&#xFF09;&#x201D;</p><h3 id="articleHeader2">CSS3</h3><p>&#x672C;&#x7AE0;&#x63D0;&#x5230;&#x7684;&#x5F88;&#x591A;&#x5355;&#x4F4D;&#x7C7B;&#x578B;&#xFF0C;&#x5176;&#x5B9E;&#x5E76;&#x4E0D;&#x5728;&#x65E9;&#x671F;&#x7684;CSS&#x7248;&#x672C;&#x91CC;&#xFF08;&#x5C24;&#x5176;&#x662F;rem&#x548C;&#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#xFF09;&#x3002;&#x5728;&#x8FD9;&#x95E8;&#x8BED;&#x8A00;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x66F4;&#x65B0;&#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5B83;&#x4EEC;&#x6162;&#x6162;&#x88AB;&#x52A0;&#x8FDB;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x6700;&#x65B0;&#x7684;&#x7248;&#x672C;&#x79F0;&#x4F5C;CSS3&#x3002;<br>&#xA0;<br>&#x5728;&#x4E8C;&#x5341;&#x4E16;&#x7EAA;&#x672B;&#x4E8C;&#x5341;&#x4E00;&#x4E16;&#x7EAA;&#x521D;&#xFF0C;&#x5728;CSS&#x89C4;&#x8303;&#x7684;&#x521D;&#x7248;&#x53D1;&#x5E03;&#x4E4B;&#x540E;&#x7684;&#x5F88;&#x957F;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x53EA;&#x6709;&#x5F88;&#x5C0F;&#x7684;&#x6539;&#x52A8;&#x3002;&#x5728;1998&#x5E74;5&#x6708;&#x4EFD;&#xFF0C;W3C&#xFF08;World Wide Web Consortium&#xFF09;&#x53D1;&#x5E03;&#x4E86;CSS 2&#x89C4;&#x8303;&#x3002;&#x4E0D;&#x4E45;&#x4E4B;&#x540E;&#xFF0C;&#x4FEE;&#x6B63;&#x7248;&#x672C;2&#x4E2D;&#x95EE;&#x9898;&#x548C;&#x7F3A;&#x9677;&#x7684;2.1&#x7248;&#x672C;&#x5F00;&#x59CB;&#x4E86;&#xFF0C;CSS 2.1&#x7684;&#x5DE5;&#x4F5C;&#x6301;&#x7EED;&#x4E86;&#x597D;&#x591A;&#x5E74;&#xFF0C;&#x4F46;&#x5E76;&#x6CA1;&#x6709;&#x6DFB;&#x52A0;&#x4EC0;&#x4E48;&#x4EE4;&#x4EBA;&#x5370;&#x8C61;&#x6DF1;&#x523B;&#x7684;&#x7279;&#x6027;&#x3002;&#x76F4;&#x5230;2011&#x5E74;4&#x6708;&#x4EFD;&#xFF0C;&#x7248;&#x672C;2.1&#x7EC8;&#x4E8E;&#x88AB;&#x786E;&#x8BA4;&#x4E3A;&#x201C;&#x63D0;&#x8BAE;&#x63A8;&#x8350;&#x6807;&#x51C6;&#x201D;&#xFF08;Proposed Recommendation&#xFF09;&#x3002;&#x5230;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x6D4F;&#x89C8;&#x5668;&#x5BF9;CSS 2.1&#x7684;&#x7279;&#x6027;&#x5DF2;&#x7ECF;&#x652F;&#x6301;&#x5F97;&#x5F88;&#x597D;&#x4E86;&#xFF0C;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x53C8;&#x52AA;&#x529B;&#x5730;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x65B0;&#x7684;&#x7279;&#x6027;&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x65B0;&#x89C4;&#x8303;CSS 3&#x3002;<br>&#xA0;<br>&#x201C;3&#x201D;&#x662F;&#x4E2A;&#x975E;&#x6B63;&#x5F0F;&#x7684;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5E76;&#x6CA1;&#x6709;CSS3&#x89C4;&#x8303;&#x3002;&#x76F8;&#x53CD;&#xFF0C;&#x8FD9;&#x4E2A;&#x89C4;&#x8303;&#x88AB;&#x62C6;&#x6210;&#x591A;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5206;&#x522B;&#x6709;&#x72EC;&#x7ACB;&#x7684;&#x7248;&#x672C;&#x53F7;&#x3002;background&#x548C;border&#x7684;&#x89C4;&#x8303;&#x5DF2;&#x7ECF;&#x4ECE;&#x76D2;&#x6A21;&#x578B;&#xFF08;box model&#xFF09;&#x4EE5;&#x53CA;&#x5C42;&#x53E0;&#x4E0E;&#x7EE7;&#x627F;&#xFF08;cascading and inheritance&#xFF09;&#x89C4;&#x8303;&#x4E2D;&#x72EC;&#x7ACB;&#x51FA;&#x6765;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;W3C&#x5C31;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;CSS&#x67D0;&#x4E2A;&#x6A21;&#x5757;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#x8FED;&#x4EE3;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x540C;&#x65F6;&#x66F4;&#x65B0;&#x5176;&#x4ED6;&#x4E0D;&#x76F8;&#x5173;&#x7684;&#x6A21;&#x5757;&#x7684;&#x5185;&#x5BB9;&#x3002;&#x5728;&#x8FD9;&#x4E9B;&#x6A21;&#x5757;&#x89C4;&#x8303;&#x91CC;&#xFF0C;&#x5F88;&#x591A;&#x8FD8;&#x505C;&#x7559;&#x5728;&#x7B2C;3&#x7248;&#x672C;&#xFF08;&#x73B0;&#x5728;&#x53EB;&#x201C;&#x7B2C;3&#x7EA7;&#x201D;&#xFF09;&#xFF0C;&#x4F46;&#x6709;&#x7684;&#x6A21;&#x5757;&#xFF08;&#x6BD4;&#x5982;&#x9009;&#x62E9;&#x5668;&#x89C4;&#x8303;&#xFF08;selectors specification&#xFF09;&#xFF09;&#x5DF2;&#x7ECF;&#x5230;&#x7B2C;4&#x7EA7;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x7684;&#x6A21;&#x5757;&#xFF08;&#x6BD4;&#x5982;flexbox&#xFF09;&#x8FD8;&#x5728;&#x7B2C;1&#x7EA7;&#x3002;<br>&#xA0;<br>&#x8FD9;&#x4E9B;&#x65B0;&#x7279;&#x6027;&#x8FDB;&#x5165;&#x4E86;&#x4EBA;&#x4EEC;&#x7684;&#x89C6;&#x91CE;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5728;2009&#x5230;2013&#x5E74;&#x95F4;&#xFF0C;&#x5927;&#x91CF;&#x65B0;&#x7684;CSS&#x7279;&#x6027;&#x6D8C;&#x8FDB;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x3002;&#x5176;&#x4E2D;&#x6709;&#x73B0;&#x5728;&#x6BD4;&#x8F83;&#x51FA;&#x540D;&#x7684;rem&#x548C;&#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#xFF0C;&#x4EE5;&#x53CA;&#x65B0;&#x7684;&#x9009;&#x62E9;&#x5668;&#xFF08;new selectors&#xFF09;&#x3001;&#x5A92;&#x4F53;&#x67E5;&#x8BE2;&#xFF08;media queries&#xFF09;&#x3001;&#x7F51;&#x9875;&#x6587;&#x5B57;&#xFF08;web fonts&#xFF09;&#x3001;&#x5706;&#x5F62;&#x8FB9;&#x6846;&#xFF08;rounded borders&#xFF09;&#x3001;&#x52A8;&#x753B;&#xFF08;animation&#xFF09;&#x3001;&#x53D8;&#x6362;&#xFF08;transitions&#xFF09;&#x3001;&#x53D8;&#x5F62;&#xFF08;transformations&#xFF09;&#x4EE5;&#x53CA;&#x5B9A;&#x4E49;&#x989C;&#x8272;&#x7684;&#x4E0D;&#x540C;&#x65B9;&#x5F0F;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x6BCF;&#x5E74;&#x7684;&#x65B0;&#x7279;&#x6027;&#x7684;&#x6570;&#x91CF;&#x8FD8;&#x5728;&#x9010;&#x5E74;&#x7A33;&#x5B9A;&#x589E;&#x957F;&#x3002;<br>&#xA0;<br>&#x8FD9;&#x610F;&#x5473;&#x7740;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x518D;&#x53EA;&#x8DDF;&#x4E00;&#x4E2A;&#x7279;&#x5B9A;&#x7248;&#x672C;&#x7684;CSS&#x89C4;&#x8303;&#x6253;&#x4EA4;&#x9053;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x5957;&#x6709;&#x751F;&#x547D;&#x7684;&#x6807;&#x51C6;&#xFF0C;&#x6BCF;&#x4E2A;&#x6D4F;&#x89C8;&#x5668;&#x4E5F;&#x5728;&#x6301;&#x7EED;&#x5730;&#x652F;&#x6301;&#x65B0;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x4F1A;&#x5F00;&#x59CB;&#x4F7F;&#x7528;&#x7136;&#x540E;&#x6E10;&#x6E10;&#x4E60;&#x60EF;&#x5B83;&#x4EEC;&#x3002;CSS4&#x5927;&#x6982;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x7684;&#x8BDD;&#xFF0C;&#x5E94;&#x8BE5;&#x4E5F;&#x53EA;&#x662F;&#x4E2A;&#x7528;&#x4E8E;&#x5E02;&#x573A;&#x8425;&#x9500;&#x7684;&#x540D;&#x8BCD;&#x3002;&#x5C3D;&#x7BA1;&#x8FD9;&#x672C;&#x4E66;&#x4E5F;&#x4F1A;&#x63D0;&#x5230;CSS3&#x7684;&#x65B0;&#x7279;&#x6027;&#xFF0C;&#x4F46;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x628A;&#x5B83;&#x4EEC;&#x90FD;&#x642C;&#x51FA;&#x6765;&#xFF0C;&#x5C31;&#x6574;&#x4E2A;&#x7F51;&#x9875;&#x800C;&#x8A00;&#xFF0C;&#x8FD9;&#x4E9B;&#x90FD;&#x662F;CSS&#x3002;</p></blockquote><h3 id="articleHeader3">2.4.1 &#x5728;font-size&#x4E0A;&#x4F7F;&#x7528;vw</h3><p>&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x4E86;&#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#xFF0C;&#x53EF;&#x80FD;&#x6548;&#x679C;&#x6700;&#x4E0D;&#x660E;&#x663E;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x662F;&#x7528;&#x5728;&#x5B57;&#x53F7;&#x5927;&#x5C0F;&#x4E0A;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x6211;&#x53D1;&#x73B0;&#x628A;vh&#x548C;vw&#x7528;&#x5728;&#x5B57;&#x53F7;&#x4E0A;&#x6BD4;&#x5143;&#x7D20;&#x7684;&#x5BBD;&#x6216;&#x8005;&#x9AD8;&#x66F4;&#x5B9E;&#x7528;&#x3002;</p><p>&#x8BD5;&#x60F3;&#x4E00;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x628A;&#x5143;&#x7D20;&#x7684;font-size&#x58F0;&#x660E;&#x4E3A;2vm&#xFF0C;&#x4F1A;&#x600E;&#x4E48;&#x6837;&#xFF1F;&#x53F0;&#x5F0F;&#x673A;&#x5C4F;&#x5E55;&#x5BBD;&#x662F;1200px&#xFF0C;2vm&#x7B49;&#x4E8E;24px&#xFF08;1200 <em>2%&#xFF09;&#x3002;&#x800C;&#x5E73;&#x677F;&#x7535;&#x8111;&#x7684;&#x5C4F;&#x5E55;&#x5BBD;768px&#xFF0C;2vm&#x7EA6;&#x7B49;&#x4E8E;15px&#xFF08;768 </em>2%&#xFF09;&#x3002;&#x5F88;&#x68D2;&#x7684;&#x662F;&#xFF0C;&#x5143;&#x7D20;&#x5728;&#x4E24;&#x4E2A;&#x5C3A;&#x5BF8;&#x4E0B;&#x7F29;&#x653E;&#x81EA;&#x5982;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x4E00;&#x4E2A;&#x7A81;&#x7136;&#x7684;&#x65AD;&#x70B9;&#xFF0C;&#x5143;&#x7D20;&#x4F1A;&#x968F;&#x7740;&#x89C6;&#x53E3;&#x5C3A;&#x5BF8;&#x7684;&#x589E;&#x5927;&#x800C;&#x5E73;&#x6ED1;&#x589E;&#x5927;&#x3002;</p><p>&#x4E0D;&#x5E78;&#x7684;&#x662F;&#xFF0C;24px&#x5BF9;&#x4E8E;&#x5927;&#x5C4F;&#x5E55;&#x6765;&#x8BF4;&#x6709;&#x70B9;&#x592A;&#x5927;&#x4E86;&#x3002;&#x800C;&#x66F4;&#x7CDF;&#x7CD5;&#x7684;&#x662F;&#xFF0C;&#x5728;iPhone6&#x5B83;&#x76F4;&#x63A5;&#x7F29;&#x5C0F;&#x5230;7.5px&#x3002;&#x597D;&#x6D88;&#x606F;&#x662F;&#x7F29;&#x653E;&#x751F;&#x6548;&#x4E86;&#xFF0C;&#x800C;&#x574F;&#x6D88;&#x606F;&#x662F;&#x6781;&#x9650;&#x60C5;&#x51B5;&#x7684;&#x5904;&#x7406;&#x6709;&#x70B9;&#x5DEE;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;CSS&#x7684;&#x65B9;&#x6CD5;<code>calc()</code>&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p><h3 id="articleHeader4">2.4.2 &#x5728;font-size&#x4E0A;&#x4F7F;&#x7528;calc()</h3><p><code>calc()</code>&#x51FD;&#x6570;&#x652F;&#x6301;&#x5BF9;2&#x4E2A;&#x6216;&#x8005;&#x66F4;&#x591A;&#x4E2A;&#x6570;&#x503C;&#x8FDB;&#x884C;&#x57FA;&#x7840;&#x7684;&#x8FD0;&#x7B97;&#x3002;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5BF9;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x5355;&#x4F4D;&#x95F4;&#x7684;&#x8FD0;&#x7B97;&#x5C24;&#x5176;&#x6709;&#x7528;&#x3002;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x652F;&#x6301;&#x52A0;&#xFF08;+&#xFF09;&#x3001;&#x51CF;&#xFF08;-&#xFF09;&#x3001;&#x4E58;&#xFF08;*&#xFF09;&#x548C;&#x9664;&#x4EE5;&#xFF08;/&#xFF09;&#x3002;&#x5176;&#x4E2D;&#xFF0C;&#x52A0;&#x548C;&#x51CF;&#x8FD0;&#x7B97;&#x7B26;&#x5DE6;&#x53F3;&#x5FC5;&#x987B;&#x7559;&#x6709;&#x7A7A;&#x683C;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x5EFA;&#x8BAE;&#x6211;&#x4EEC;&#x6765;&#x57F9;&#x517B;&#x4E00;&#x4E2A;&#x4E60;&#x60EF;&#xFF0C;&#x603B;&#x662F;&#x5728;&#x56DB;&#x4E2A;&#x8FD0;&#x7B97;&#x7B26;&#x7684;&#x4E24;&#x4FA7;&#x90FD;&#x5199;&#x4E0A;&#x7A7A;&#x683C;&#xFF0C;&#x8B6C;&#x5982;<code>calc(1em + 10px)</code>&#x3002;</p><p>&#x4F60;&#x4F1A;&#x5728;&#x4E0B;&#x4E00;&#x4E2A;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;<code>calc()</code>&#x6765;&#x8BA1;&#x7B97;vh&#x5355;&#x4F4D;&#x548C;em&#x5355;&#x4F4D;&#x7684;&#x503C;&#x3002;&#x628A;&#x4F60;&#x7684;&#x6837;&#x5F0F;&#x8868;&#x4E2D;&#x7684;&#x4E0A;&#x4E00;&#x6BB5;&#x8BBE;&#x5B9A;&#x57FA;&#x7840;&#x5B57;&#x53F7;&#x5927;&#x5C0F;&#x7684;&#x4EE3;&#x7801;&#x53BB;&#x6389;&#xFF08;&#x53CA;&#x76F8;&#x5173;&#x7684;&#x5A92;&#x4F53;&#x67E5;&#x8BE2;&#x4EE3;&#x7801;&#xFF09;&#xFF0C;&#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x3002;</p><p>[ &#x4EE3;&#x7801;&#x7247;&#x6BB5; 2.19 &#x5728;font-size&#x4E2D;&#x4F7F;&#x7528;em&#x548C;vh&#x5355;&#x4F4D;&#x8FDB;&#x884C;calc()&#x8FD0;&#x7B97; ]</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=":root {
+  font-size: calc(0.5em + 1vw);
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs css"><code><span class="hljs-selector-pseudo">:root</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-built_in">calc</span>(0.5em + 1vw);
+}</code></pre><p>&#x73B0;&#x5728;&#xFF0C;&#x6253;&#x5F00;&#x9875;&#x9762;&#xFF0C;&#x7F13;&#x6162;&#x5730;&#x6539;&#x53D8;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x5B57;&#x53F7;&#x6539;&#x53D8;&#x7684;&#x8FC7;&#x6E21;&#x5F88;&#x5E73;&#x6ED1;&#x3002;0.5em&#x5728;&#x8FD9;&#x91CC;&#x4EE3;&#x8868;&#x7684;&#x662F;&#x5B57;&#x53F7;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF0C;1vm&#x5219;&#x4EE3;&#x8868;&#x7740;&#x54CD;&#x5E94;&#x5F0F;&#x5730;&#x5F80;&#x4E0A;&#x7D2F;&#x52A0;&#x3002;&#x8FD9;&#x6837;&#x57FA;&#x7840;&#x5B57;&#x53F7;&#x5927;&#x5C0F;&#x5C31;&#x5728;iPhone6&#x7684;11.75px&#x548C;1200px&#x5BBD;&#x6D4F;&#x89C8;&#x5668;&#x7A97;&#x53E3;&#x7684;20px&#x95F4;&#x7F29;&#x653E;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x559C;&#x597D;&#x6539;&#x53D8;&#x8FD9;&#x4E9B;&#x503C;&#x3002;</p><p>&#x4F60;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x54CD;&#x5E94;&#x5F0F;&#x7B56;&#x7565;&#x7684;&#x6838;&#x5FC3;&#x903B;&#x8F91;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x4E00;&#x884C;&#x5A92;&#x4F53;&#x67E5;&#x8BE2;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x9875;&#x9762;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x89C6;&#x53E3;&#x5927;&#x5C0F;&#x5E73;&#x6ED1;&#x7F29;&#x653E;&#xFF0C;&#x4E0D;&#x518D;&#x9700;&#x8981;3&#x6216;4&#x4E2A;&#x786C;&#x7F16;&#x7801;&#x7684;&#x65AD;&#x70B9;&#x3002;</p><p>&#xFF08;&#x540E;&#x4E00;&#x7BC7;<a href="https://zhuanlan.zhihu.com/p/40402007" rel="external nofollow noopener noreferrer" target="_blank">&#x300A;&#x65E0;&#x5355;&#x4F4D;&#x6570;&#x5B57;&#x548C;&#x884C;&#x9AD8;&#x300B;</a>&#x5DF2;&#x540C;&#x6B65;&#x53D1;&#x5E03;&#xFF0C;&#x4E86;&#x89E3;&#x4E00;&#x4E0B; <code>^_^</code> &#xFF09;</p><hr><p>&#x300A;&#x522B;&#x8BF4;&#x4F60;&#x61C2;CSS&#x76F8;&#x5BF9;&#x5355;&#x4F4D;&#x300B;&#x7CFB;&#x5217;&#x8BD1;&#x6587;&#xFF1A;</p><ol><li><a href="https://zhuanlan.zhihu.com/p/39270696" rel="external nofollow noopener noreferrer" target="_blank">&#x5982;&#x4F55;&#x66F4;&#x6109;&#x5FEB;&#x5730;&#x4F7F;&#x7528;em</a></li><li><a href="https://zhuanlan.zhihu.com/p/39811831" rel="external nofollow noopener noreferrer" target="_blank">&#x5982;&#x4F55;&#x66F4;&#x6109;&#x5FEB;&#x5730;&#x4F7F;&#x7528;rem</a></li><li><a href="https://zhuanlan.zhihu.com/p/39812336" rel="external nofollow noopener noreferrer" target="_blank">&#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#x7684;&#x5E94;&#x7528;</a> [&#x672C;&#x6587;]</li><li><a href="https://zhuanlan.zhihu.com/p/40402007" rel="external nofollow noopener noreferrer" target="_blank">&#x65E0;&#x5355;&#x4F4D;&#x6570;&#x5B57;&#x548C;&#x884C;&#x9AD8;</a></li><li><a href="https://zhuanlan.zhihu.com/p/40990723" rel="external nofollow noopener noreferrer" target="_blank">CSS&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;</a></li></ol><p>&#x7AE0;&#x8282;&#xFF1A;</p><ul><li><p>2.1 &#x76F8;&#x5BF9;&#x5355;&#x4F4D;&#x503C;&#x7684;&#x9B54;&#x529B;</p><ul><li>2.1.1 &#x5B8C;&#x7F8E;&#x50CF;&#x7D20;&#x8BBE;&#x8BA1;&#xFF08;pixel-perfect design&#xFF09;&#x7684;&#x6323;&#x624E;</li><li>2.1.2 &#x5B8C;&#x7F8E;&#x50CF;&#x7D20;&#x7F51;&#x9875;&#x7684;&#x7EC8;&#x7ED3;</li><li>&#x50CF;&#x7D20;&#xFF08;pixel&#xFF09;&#x3001;&#x70B9;&#xFF08;point&#xFF09;&#x548C;pc&#xFF08;pica&#xFF09;</li></ul></li><li><p>2.2 em&#x548C;rem</p><ul><li><p>2.2.1 &#x5BF9;font-size&#x4F7F;&#x7528;em</p><ul><li>&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x5185;&#x7528;em&#x540C;&#x65F6;&#x58F0;&#x660E;font-size&#x548C;&#x5176;&#x4ED6;&#x5C5E;&#x6027;</li><li>&#x5B57;&#x53F7;&#x6536;&#x7F29;&#x95EE;&#x9898;</li></ul></li><li><p>2.2.2 &#x5BF9;font-size&#x4F7F;&#x7528;rem</p><ul><li>&#x53EF;&#x7528;&#x6027;&#xFF1A;&#x5BF9;font-size&#x4F7F;&#x7528;&#x76F8;&#x5BF9;&#x957F;&#x5EA6;&#x5355;&#x4F4D;</li></ul></li></ul></li><li><p>2.3 &#x505C;&#x6B62;&#x4F7F;&#x7528;&#x50CF;&#x7D20;&#x601D;&#x7EF4;&#x53BB;&#x601D;&#x8003;</p><ul><li>2.3.1 &#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x5408;&#x7406;&#x7684;&#x5B57;&#x53F7;&#x9ED8;&#x8BA4;&#x503C;</li><li>2.3.2 &#x8BA9;&#x8FD9;&#x4E2A;&#x9762;&#x677F;&#x53D8;&#x5F97;&#x201C;&#x54CD;&#x5E94;&#x5F0F;&#x201D;</li><li>2.3.3 &#x8C03;&#x6574;&#x5355;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x5927;&#x5C0F;</li></ul></li><li><p>2.4 &#x89C6;&#x53E3;&#x76F8;&#x5173;&#x5355;&#x4F4D;&#xFF08;viewport-relative units&#xFF09;</p><ul><li>CSS3</li><li>2.4.1 &#x5728;font-size&#x4E0A;&#x4F7F;&#x7528;vw</li><li>2.4.2 &#x5728;font-size&#x4E0A;&#x4F7F;&#x7528;calc()</li></ul></li><li>2.5 &#x4E0D;&#x5E26;&#x5355;&#x4F4D;&#x7684;&#x6570;&#x5B57;&#xFF08;unitless number&#xFF09;&#x548C;&#x884C;&#x9AD8;&#xFF08;line-height&#xFF09;</li><li><p>2.6 &#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#xFF08;&#x4E5F;&#x53EB;&#x201C;CSS&#x53D8;&#x91CF;&#x201D;&#xFF09;</p><ul><li>2.6.1 &#x52A8;&#x6001;&#x6539;&#x53D8;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x7684;&#x503C;</li><li>2.6.2 &#x901A;&#x8FC7;JavaScript&#x6539;&#x53D8;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x7684;&#x503C;</li><li>2.6.3 &#x521D;&#x63A2;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;</li></ul></li><li>&#x603B;&#x7ED3;</li></ul><blockquote>&#x539F;&#x8457;&#x7248;&#x6743;&#x4FE1;&#x606F;&#xFF1A;<p>&#x4F5C;&#x8005;&#xFF1A;Keith J.Grant<br>&#x4E66;&#x7C4D;&#xFF1A;CSS in Depth<br>&#x7AE0;&#x8282;&#xFF1A;<a href="https://livebook.manning.com/#!/book/css-in-depth/chapter-2" rel="external nofollow noopener noreferrer" target="_blank">Working with relative units</a></p></blockquote><hr><p>&#x7B14;&#x8005; @Yuying Wu&#xFF0C;&#x524D;&#x7AEF;&#x7231;&#x597D;&#x8005; / &#x9F13;&#x52B1;&#x5E08; / &#x65B0;&#x897F;&#x5170;&#x6253;&#x5DE5;&#x5EA6;&#x5047; / &#x94F2;&#x5C4E;&#x5B98;&#x3002;&#x76EE;&#x524D;&#x5C31;&#x804C;&#x4E8E;&#x67D0;&#x5927;&#x578B;&#x7535;&#x5546;&#x7684;B2B&#x524D;&#x7AEF;&#x56E2;&#x961F;&#x3002;</p><p>&#x611F;&#x8C22;&#x4F60;&#x8BFB;&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x5BF9;&#x4E0A;&#x6587;&#x82E5;&#x6709;&#x4EFB;&#x4F55;&#x7591;&#x95EE;&#x6216;&#x5EFA;&#x8BAE;&#xFF0C;&#x6B22;&#x8FCE;&#x7559;&#x8A00;&#x3002;</p><p>&#x5982;&#x679C;&#x4F60;&#x548C;&#x6211;&#x4E00;&#x6837;&#x559C;&#x6B22;&#x524D;&#x7AEF;&#xFF0C;&#x559C;&#x6B22;&#x6363;&#x817E;&#x72EC;&#x7ACB;&#x535A;&#x5BA2;&#x6216;&#x8005;&#x524D;&#x6CBF;&#x6280;&#x672F;&#xFF0C;&#x6216;&#x8005;&#x6709;&#x4EC0;&#x4E48;&#x804C;&#x4E1A;&#x7591;&#x95EE;&#xFF0C;&#x6B22;&#x8FCE;&#x5173;&#x6CE8;&#x6211;&#x4EE5;&#x53CA;&#x5404;&#x79CD;&#x4EA4;&#x6D41;&#x54C8;&#x3002;</p><p>&#x72EC;&#x7ACB;&#x535A;&#x5BA2;&#xFF1A;<a href="http://wuyuying.com/" rel="external nofollow noopener noreferrer" target="_blank">wuyuying.com</a><br>&#x77E5;&#x4E4E;ID&#xFF1A;<a href="https://www.zhihu.com/people/yuying_wu/posts" rel="external nofollow noopener noreferrer" target="_blank">@Yuying Wu</a><br>Github&#xFF1A;<a href="https://github.com/YuyingWu" rel="external nofollow noopener noreferrer" target="_blank">Yuying Wu</a></p>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>视口相关单位的应用 —— 别说你懂CSS相对单位</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000015738809" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000015738809</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/d6d1ad5/">https://alili.tech/archive/d6d1ad5/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">2.4 视口相关单位（viewport-relative units）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">1.1.</span> <span class="toc-text">笔记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">1.2.</span> <span class="toc-text">CSS3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">1.3.</span> <span class="toc-text">2.4.1 在font-size上使用vw</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">1.4.</span> <span class="toc-text">2.4.2 在font-size上使用calc()</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

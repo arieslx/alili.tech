@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="window.sessionStorage&amp;#x548C;window.localStorage&amp;#x63A5;&amp;#x53E3;&amp;#x7528;&amp;#x4E8E;&amp;#x811A;&amp;#x672C;&amp;#x5728;&amp;#x6D4F;&amp;#x89C8;&amp;#x5668;&amp;#x4FDD;&amp;#x5B58;&amp;#x6570;&amp;#x636E;&amp;#x3002;LocalStorage&amp;#x57FA;&amp;#x672C;&amp;#x4">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LocalStorage、SessionStorage">
+<meta property="og:url" content="https://alili.tech/archive/16707ed1/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="window.sessionStorage&amp;#x548C;window.localStorage&amp;#x63A5;&amp;#x53E3;&amp;#x7528;&amp;#x4E8E;&amp;#x811A;&amp;#x672C;&amp;#x5728;&amp;#x6D4F;&amp;#x89C8;&amp;#x5668;&amp;#x4FDD;&amp;#x5B58;&amp;#x6570;&amp;#x636E;&amp;#x3002;LocalStorage&amp;#x57FA;&amp;#x672C;&amp;#x4">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/bVbicNT?w=301&h=53">
+<meta property="og:image" content="https://static.alili.tech/img/bVbicNR?w=484&h=118">
+<meta property="og:image" content="https://static.alili.tech/img/bVbicNI?w=784&h=551">
+<meta property="og:image" content="https://static.alili.tech/img/bVbicOc?w=254&h=51">
+<meta property="og:image" content="https://static.alili.tech/img/bVbicOF?w=469&h=28">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.551Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LocalStorage、SessionStorage">
+<meta name="twitter:description" content="window.sessionStorage&amp;#x548C;window.localStorage&amp;#x63A5;&amp;#x53E3;&amp;#x7528;&amp;#x4E8E;&amp;#x811A;&amp;#x672C;&amp;#x5728;&amp;#x6D4F;&amp;#x89C8;&amp;#x5668;&amp;#x4FDD;&amp;#x5B58;&amp;#x6570;&amp;#x636E;&amp;#x3002;LocalStorage&amp;#x57FA;&amp;#x672C;&amp;#x4">
+<meta name="twitter:image" content="https://static.alili.tech/img/bVbicNT?w=301&h=53">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>LocalStorage、SessionStorage | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/16707ed1/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/16707ed1/",
+      "appid": "1613049289050283", 
+      "title": "LocalStorage、SessionStorage | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:48"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/d70f710e/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/1b00a898/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/16707ed1/&text=LocalStorage、SessionStorage" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/16707ed1/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/16707ed1/&text=LocalStorage、SessionStorage" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/16707ed1/&title=LocalStorage、SessionStorage" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/16707ed1/&is_video=false&description=LocalStorage、SessionStorage" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LocalStorage、SessionStorage&body=Check out this article: https://alili.tech/archive/16707ed1/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/16707ed1/&title=LocalStorage、SessionStorage" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/16707ed1/&title=LocalStorage、SessionStorage" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/16707ed1/&title=LocalStorage、SessionStorage" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/16707ed1/&title=LocalStorage、SessionStorage" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">LocalStorage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">1.1.</span> <span class="toc-text">基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">获取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.3.</span> <span class="toc-text">清除</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">1.2.</span> <span class="toc-text">注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">1.3.</span> <span class="toc-text">使用注意</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.1.</span> <span class="toc-text">localStorage里的数据和js变量有什么区别？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.2.</span> <span class="toc-text">简单的使用实例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">2.</span> <span class="toc-text">SessionStorage</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        LocalStorage、SessionStorage
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-04T02:30:10.000Z" itemprop="datePublished">2018-11-04</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p><code>window.sessionStorage</code>&#x548C;<code>window.localStorage</code>&#x63A5;&#x53E3;&#x7528;&#x4E8E;&#x811A;&#x672C;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x3002;</p><h2 id="articleHeader0">LocalStorage</h2><h3 id="articleHeader1">&#x57FA;&#x672C;&#x4F7F;&#x7528;</h3><h4>&#x8BBE;&#x7F6E;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="window.sessionStorage.setItem(&apos;key&apos;, &apos;value&apos;);
+window.localStorage.setItem(&apos;key&apos;, &apos;value&apos;);" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs coffeescript"><code><span class="hljs-built_in">window</span>.sessionStorage.setItem(<span class="hljs-string">&apos;key&apos;</span>, <span class="hljs-string">&apos;value&apos;</span>);
+<span class="hljs-built_in">window</span>.localStorage.setItem(<span class="hljs-string">&apos;key&apos;</span>, <span class="hljs-string">&apos;value&apos;</span>);</code></pre><h4>&#x83B7;&#x53D6;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="window.sessionStorage.getItem(&apos;key&apos;)
+window.localStorage.getItem(&apos;key&apos;)" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs stylus"><code>window<span class="hljs-selector-class">.sessionStorage</span><span class="hljs-selector-class">.getItem</span>(<span class="hljs-string">&apos;key&apos;</span>)
+window<span class="hljs-selector-class">.localStorage</span><span class="hljs-selector-class">.getItem</span>(<span class="hljs-string">&apos;key&apos;</span>)</code></pre><h4>&#x6E05;&#x9664;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="localStorage.removeItem(&apos;key&apos;);
+window.localStorage.clear()" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs gauss"><code>localStorage.removeItem(&apos;<span class="hljs-built_in">key</span>&apos;);
+<span class="hljs-built_in">window</span>.localStorage.<span class="hljs-keyword">clear</span>()</code></pre><p><a href="https://wangdoc.com/javascript/bom/storage.html" rel="external nofollow noopener noreferrer" target="_blank">&#x5B8C;&#x6574;&#x7528;&#x6CD5;</a></p><h3 id="articleHeader2">&#x6CE8;&#x610F;&#x70B9;</h3><ol><li>localStorage&#x662F;html5&#x6280;&#x672F;&#x63D0;&#x4F9B;&#x7684;API&#xFF0C;html5&#x4E2D;&#x65B0;&#x589E;&#x52A0;&#x7684;&#x6807;&#x7B7E;,&#x6280;&#x672F;(&#x5305;&#x62EC;promise,localStorage&#x7B49;),&#x7EDF;&#x79F0;&#x4E3A;html5</li><li>session&#x662F;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x5B58;&#x7684;hash&#xFF0C;&#x4F46;localStorage&#x5B9E;&#x8D28;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;hash&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x4E0A;&#x7684;hash</li><li>localStorage&#x53EA;&#x80FD;&#x5B58;String&#x7C7B;&#x578B;&#x7684;&#x5B57;&#x7B26;&#x4E32;<br><span class="img-wrap"><img data-src="/img/bVbicNT?w=301&amp;h=53" src="https://static.alili.tech/img/bVbicNT?w=301&amp;h=53" alt="clipboard.png" title="clipboard.png" style="cursor:pointer;display:inline"></span><p><span class="img-wrap"><img data-src="/img/bVbicNR?w=484&amp;h=118" src="https://static.alili.tech/img/bVbicNR?w=484&amp;h=118" alt="clipboard.png" title="clipboard.png" style="cursor:pointer;display:inline"></span></p><p><span class="img-wrap"><img data-src="/img/bVbicNI?w=784&amp;h=551" src="https://static.alili.tech/img/bVbicNI?w=784&amp;h=551" alt="clipboard.png" title="clipboard.png" style="cursor:pointer;display:inline"></span><br>&#x5B58;&#x51FD;&#x6570;&#x4F1A;&#x8F6C;&#x5316;&#x6210;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x5B58;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x53D8;&#x6210;<code>&quot;[object Object]&quot;</code>&#xFF0C;&#x56E0;&#x4E3A;<code>({1:&apos;xxx&apos;}).toString()//&quot;[object Object]&quot;</code><br><span class="img-wrap"><img data-src="/img/bVbicOc?w=254&amp;h=51" src="https://static.alili.tech/img/bVbicOc?w=254&amp;h=51" alt="clipboard.png" title="clipboard.png" style="cursor:pointer;display:inline"></span></p></li><li>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF1A;&#x7528;json&#x6765;&#x5B58;&#x3002;&#x4F8B;&#x5982;&#xFF1A;<code>localStorage.setItem(&apos;jsonString&apos;, JSON.stringify({name: &apos;mtt&apos;}))</code><p><span class="img-wrap"><img data-src="/img/bVbicOF?w=469&amp;h=28" src="https://static.alili.tech/img/bVbicOF?w=469&amp;h=28" alt="clipboard.png" title="clipboard.png" style="cursor:pointer;display:inline"></span></p></li></ol><h3 id="articleHeader3">&#x4F7F;&#x7528;&#x6CE8;&#x610F;</h3><h4>localStorage&#x91CC;&#x7684;&#x6570;&#x636E;&#x548C;js&#x53D8;&#x91CF;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</h4><p>&#x5F53;&#x4E00;&#x4E2A;js&#x53D8;&#x91CF;&#x88AB;&#x4ECE;&#x65B0;&#x8D4B;&#x503C;&#xFF0C;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x5F53;&#x5373;&#x88AB;&#x6539;&#x53D8;&#xFF0C;&#x4F46;&#x5F53;&#x9875;&#x9762;&#x5237;&#x65B0;&#x65F6;&#xFF0C;&#x53D8;&#x91CF;&#x53C8;&#x56DE;&#x5230;&#x6700;&#x521D;&#x7684;&#x72B6;&#x6001;&#x3002;<br>&#x800C;localStorage&#x7684;&#x53D8;&#x91CF;&#x4E0D;&#x5B58;&#x5728;&#x9875;&#x9762;&#x91CC;&#xFF0C;windows&#x7CFB;&#x7EDF;<strong>&#x5B58;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x672C;&#x5730;</strong>&#x7684;C&#x76D8;&#x7684;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x91CC;&#x3002;</p><h4>&#x7B80;&#x5355;&#x7684;&#x4F7F;&#x7528;&#x5B9E;&#x4F8B;</h4><p>&#x60F3;&#x8981;&#x53EA;&#x63D0;&#x793A;&#x7528;&#x6237;&#x4E00;&#x6B21;&#xFF0C;&#x5F53;&#x4E0B;&#x6B21;&#x7528;&#x6237;&#x8FDB;&#x5165;&#x8FD9;&#x4E2A;&#x7F51;&#x7AD9;&#x4E0A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x8DF3;&#x51FA;&#x63D0;&#x793A;&#x6846;&#x3002;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="&lt;script&gt;
+ let already  = localStrorage.getItem(&apos;&#x5DF2;&#x7ECF;&#x63D0;&#x793A;&#x4E86;&apos;)
+ if(!already){
+    alert(&apos;&#x4F60;&#x597D;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x7F51;&#x7AD9;&#x5373;&#x5C06;&#x6539;&#x7248;&#x4E86;&apos;)
+    localStorage.setItem(&apos;&#x5DF2;&#x7ECF;&#x63D0;&#x793A;&#x4E86;&apos;&#xFF0C; true)
+ }
+&lt;/script&gt;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs xml"><code><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+ <span class="hljs-keyword">let</span> already  = localStrorage.getItem(<span class="hljs-string">&apos;&#x5DF2;&#x7ECF;&#x63D0;&#x793A;&#x4E86;&apos;</span>)
+ <span class="hljs-keyword">if</span>(!already){
+    alert(<span class="hljs-string">&apos;&#x4F60;&#x597D;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x7F51;&#x7AD9;&#x5373;&#x5C06;&#x6539;&#x7248;&#x4E86;&apos;</span>)
+    localStorage.setItem(<span class="hljs-string">&apos;&#x5DF2;&#x7ECF;&#x63D0;&#x793A;&#x4E86;&apos;</span>&#xFF0C; <span class="hljs-literal">true</span>)
+ }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre><h3 id="articleHeader4">&#x603B;&#x7ED3;</h3><ol><li>LocalStorage &#x8DDF; HTTP <strong>&#x65E0;&#x5173;</strong>(&#x800C;cookie&#x662F;http&#x7684;&#x4E00;&#x4E2A;&#x5934;)</li><li>&#x53D1;&#x9001;HTTP&#x8BF7;&#x6C42;&#x65F6; &#x4E0D;&#x4F1A;&#x5E26;&#x4E0A; LocalStorage &#x7684;&#x503C;</li><li>&#x53EA;&#x6709;&#x76F8;&#x540C;&#x57DF;&#x540D;&#x7684;&#x9875;&#x9762;&#x624D;&#x80FD;&#x4E92;&#x76F8;&#x8BFB;&#x53D6; LocalStorage&#xFF08;&#x6CA1;&#x6709;&#x540C;&#x6E90;&#x90A3;&#x4E48;&#x4E25;&#x683C;&#xFF09;</li><li>&#x6BCF;&#x4E2A;&#x57DF;&#x540D; localStorage &#x6700;&#x5927;&#x5B58;&#x50A8;&#x91CF;&#x4E3A; 5Mb &#x5DE6;&#x53F3;&#xFF08;&#x6BCF;&#x4E2A;&#x6D4F;&#x89C8;&#x5668;&#x4E0D;&#x4E00;&#x6837;&#xFF09;</li><li>&#x5E38;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x8BB0;&#x5F55;&#x6709;&#x6CA1;&#x6709;&#x63D0;&#x793A;&#x8FC7;&#x7528;&#x6237;&#xFF08;&#x6CA1;&#x6709;&#x7528;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4E0D;&#x80FD;&#x8BB0;&#x5F55;&#x5BC6;&#x7801;&#xFF09;</li><li>LocalStorage &#x6C38;&#x4E45;&#x6709;&#x6548;&#xFF0C;&#x9664;&#x975E;&#x7528;&#x6237;&#x4E3B;&#x52A8;<strong>&#x6E05;&#x7406;&#x7F13;&#x5B58;</strong></li></ol><h2 id="articleHeader5">SessionStorage</h2><p>sessionStorage&#x4FDD;&#x5B58;&#x7684;&#x6570;&#x636E;&#x7528;&#x4E8E;&#x6D4F;&#x89C8;&#x5668;&#x7684;<strong>&#x4E00;&#x6B21;&#x4F1A;&#x8BDD;&#xFF08;session&#xFF09;</strong>&#xFF0C;<strong>&#x5F53;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;</strong>&#xFF08;&#x901A;&#x5E38;&#x662F;<strong>&#x7A97;&#x53E3;&#x5173;&#x95ED;</strong>&#xFF09;&#xFF0C;&#x6570;&#x636E;<strong>&#x88AB;&#x6E05;&#x7A7A;</strong>&#xFF1B;localStorage&#x4FDD;&#x5B58;&#x7684;&#x6570;&#x636E;&#x957F;&#x671F;&#x5B58;&#x5728;&#xFF0C;&#x4E0B;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&#x8BE5;&#x7F51;&#x7AD9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7F51;&#x9875;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BFB;&#x53D6;&#x4EE5;&#x524D;&#x4FDD;&#x5B58;&#x7684;&#x6570;&#x636E;&#x3002;&#x9664;&#x4E86;&#x4FDD;&#x5B58;&#x671F;&#x9650;&#x7684;&#x957F;&#x77ED;&#x4E0D;&#x540C;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;<strong>&#x5176;&#x4ED6;&#x65B9;&#x9762;&#x90FD;&#x4E00;&#x81F4;</strong>&#x3002;</p><p>&#x603B;&#x7ED3;&#xFF1A;SessionStorage &#x5728;<strong>&#x7528;&#x6237;&#x5173;&#x95ED;&#x9875;&#x9762;&#xFF08;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#xFF09;&#x540E;&#x5C31;&#x5931;&#x6548;</strong>&#x3002;&#x5176;&#x4F59;&#x7684;&#x548C;localstorage&#x4E00;&#x6837;</p>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>LocalStorage、SessionStorage</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016693768" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016693768</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/16707ed1/">https://alili.tech/archive/16707ed1/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">LocalStorage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">1.1.</span> <span class="toc-text">基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.1.</span> <span class="toc-text">设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.2.</span> <span class="toc-text">获取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.3.</span> <span class="toc-text">清除</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">1.2.</span> <span class="toc-text">注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">1.3.</span> <span class="toc-text">使用注意</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.1.</span> <span class="toc-text">localStorage里的数据和js变量有什么区别？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.2.</span> <span class="toc-text">简单的使用实例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">2.</span> <span class="toc-text">SessionStorage</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

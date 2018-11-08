@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x5168;&amp;#x6808;&amp;#x7CFB;&amp;#x5217;Vue&amp;#x7248;&amp;#x62C9;&amp;#x52FE;&amp;#xFF0C;&amp;#x5BA2;&amp;#x5B98;&amp;#x4EEC;&amp;#x6765;&amp;#x77A7;&amp;#x77A7;&amp;#x6A21;&amp;#x62DF;&amp;#x62C9;&amp;#x52FE;app&amp;#x7CFB;&amp;#x5217;---vue&amp;#x524D;&amp;#x7AEF;&amp;#x754C;&amp;#x9">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助">
+<meta property="og:url" content="https://alili.tech/archive/a08bccf/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x5168;&amp;#x6808;&amp;#x7CFB;&amp;#x5217;Vue&amp;#x7248;&amp;#x62C9;&amp;#x52FE;&amp;#xFF0C;&amp;#x5BA2;&amp;#x5B98;&amp;#x4EEC;&amp;#x6765;&amp;#x77A7;&amp;#x77A7;&amp;#x6A21;&amp;#x62DF;&amp;#x62C9;&amp;#x52FE;app&amp;#x7CFB;&amp;#x5217;---vue&amp;#x524D;&amp;#x7AEF;&amp;#x754C;&amp;#x9">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619266?w=375&h=668">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619267">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619268?w=375&h=668">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619269">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619270">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619271?w=317&h=572">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619272">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619273">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619274">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619275">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619276">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016619277">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.547Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助">
+<meta name="twitter:description" content="&amp;#x5168;&amp;#x6808;&amp;#x7CFB;&amp;#x5217;Vue&amp;#x7248;&amp;#x62C9;&amp;#x52FE;&amp;#xFF0C;&amp;#x5BA2;&amp;#x5B98;&amp;#x4EEC;&amp;#x6765;&amp;#x77A7;&amp;#x77A7;&amp;#x6A21;&amp;#x62DF;&amp;#x62C9;&amp;#x52FE;app&amp;#x7CFB;&amp;#x5217;---vue&amp;#x524D;&amp;#x7AEF;&amp;#x754C;&amp;#x9">
+<meta name="twitter:image" content="https://static.alili.tech/img/remote/1460000016619266?w=375&h=668">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/a08bccf/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/a08bccf/",
+      "appid": "1613049289050283", 
+      "title": "麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:50"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/da4517e/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/d21938af/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/a08bccf/&text=麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/a08bccf/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/a08bccf/&text=麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/a08bccf/&title=麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/a08bccf/&is_video=false&description=麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助&body=Check out this article: https://alili.tech/archive/a08bccf/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/a08bccf/&title=麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/a08bccf/&title=麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/a08bccf/&title=麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/a08bccf/&title=麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">全栈系列Vue版拉勾，客官们来瞧瞧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">1.0.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">1.0.2.</span> <span class="toc-text">注意：本项目个人开发练习，不作为任何商业用途</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader3"><span class="toc-number">2.</span> <span class="toc-text">todolist</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader4"><span class="toc-number">3.</span> <span class="toc-text">技术栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader5"><span class="toc-number">4.</span> <span class="toc-text">效果演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader6"><span class="toc-number">4.0.1.</span> <span class="toc-text">首次载入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader7"><span class="toc-number">4.0.2.</span> <span class="toc-text">登录注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader8"><span class="toc-number">4.0.3.</span> <span class="toc-text">首页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader9"><span class="toc-number">4.0.4.</span> <span class="toc-text">文章阅读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader10"><span class="toc-number">4.0.5.</span> <span class="toc-text">选择城市</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader11"><span class="toc-number">4.0.6.</span> <span class="toc-text">职位查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader12"><span class="toc-number">4.0.7.</span> <span class="toc-text">筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader13"><span class="toc-number">4.0.8.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader14"><span class="toc-number">4.0.9.</span> <span class="toc-text">排序2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader15"><span class="toc-number">4.0.10.</span> <span class="toc-text">简历修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader16"><span class="toc-number">4.0.11.</span> <span class="toc-text">我的设置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader17"><span class="toc-number">5.</span> <span class="toc-text">线上地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader18"><span class="toc-number">6.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader19"><span class="toc-number">7.</span> <span class="toc-text">项目配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader20"><span class="toc-number">8.</span> <span class="toc-text">运行步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader21"><span class="toc-number">9.</span> <span class="toc-text">点点你们的小手吧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">10.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">10.1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">10.2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">10.3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-03T10:03:44.000Z" itemprop="datePublished">2018-11-03</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1 id="articleHeader0">&#x5168;&#x6808;&#x7CFB;&#x5217;Vue&#x7248;&#x62C9;&#x52FE;&#xFF0C;&#x5BA2;&#x5B98;&#x4EEC;&#x6765;&#x77A7;&#x77A7;</h1><p>&#x6A21;&#x62DF;&#x62C9;&#x52FE;app&#x7CFB;&#x5217;---vue&#x524D;&#x7AEF;&#x754C;&#x9762;<br></p><p><a href="https://github.com/qianbin01/lagou_vue" rel="external nofollow noopener noreferrer" target="_blank">github&#x5730;&#x5740;&#xFF0C;&#x6765;&#x731B;&#x6233;&#x5427;</a></p><h3 id="articleHeader1">&#x524D;&#x8A00;</h3><p>&#x672C;&#x9879;&#x76EE;&#x662F;&#x672C;&#x4EBA;&#x5728;&#x95F2;&#x6687;&#x65F6;&#x95F4;&#x7F16;&#x5199;&#x7684;&#x4E00;&#x4E2A;&#x521D;&#x7EA7;&#x5F15;&#x5BFC;&#x9879;&#x76EE;&#xFF0C;&#x9EBB;&#x96C0;&#x867D;&#x5C0F;&#x4E94;&#x810F;&#x4FF1;&#x5168;&#xFF0C;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x4E1C;&#x897F;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x5728;&#x5F00;&#x53D1;&#x4E2D;&#x90FD;&#x80FD;&#x7528;&#x5F97;&#x5230;&#xFF0C;&#x4F46;&#x96BE;&#x514D;&#x4F1A;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x5730;&#x65B9;&#x9700;&#x8981;&#x5B8C;&#x5584;&#x3002;</p><p>&#x7531;&#x4E8E;&#x8FD1;&#x671F;&#x8981;&#x5907;&#x6218;&#x6CD5;&#x8003;&#xFF0C;&#x4E14;&#x5DE5;&#x4F5C;&#x7E41;&#x5FD9;&#xFF0C;&#x6CA1;&#x6709;&#x65F6;&#x95F4;&#x7EF4;&#x62A4;&#xFF0C;&#x8FD8;&#x5B58;&#x5728;&#x5F88;&#x591A;BUG&#x6216;&#x9700;&#x8981;&#x4F18;&#x5316;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x5E0C;&#x671B;&#x591A;&#x591A;&#x63D0;&#x51FA;&#xFF08;&#x6709;&#x7A7A;&#x4E86;&#x5C31;&#x6539;&#xFF09;&#xFF0C;&#x5F53;&#x7136;&#x80FD;&#x7ED9;&#x4E2A;star&#x4EC0;&#x4E48;&#x7684;&#x5C31;&#x66F4;&#x597D;&#x4E86;&#x3002;</p><p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x8BBF;&#x95EE;&#xFF0C;&#x4E5F;&#x52A0;&#x5165;&#x4E86;mock&#x6570;&#x636E;,&#x4F46;&#x4E0D;&#x662F;&#x5F88;&#x5168;&#xFF0C;&#x82E5;&#x9700;&#x8981;&#x5B8C;&#x6574;&#x4F53;&#x9A8C;&#xFF0C;&#x8BF7;&#x6309;&#x7167;&#x4E0B;&#x65B9;&#x6B65;&#x9AA4;&#x5B9E;&#x73B0;&#x3002;</p><p>&#x524D;&#x7AEF;&#x9879;&#x76EE;&#x7531;Vue&#x6846;&#x67B6;&#x7F16;&#x5199;&#xFF0C;&#x5176;&#x4F59;&#x90E8;&#x5206;&#x6D89;&#x53CA;&#x5230;node&#x3001;python&#x7B49;&#x53EF;&#x79FB;&#x81F3;&#x4E0B;&#x65B9;&#x9879;&#x76EE;&#x6216;&#x81EA;&#x884C;&#x67E5;&#x9605;&#x3002;</p><h3 id="articleHeader2">&#x6CE8;&#x610F;&#xFF1A;&#x672C;&#x9879;&#x76EE;&#x4E2A;&#x4EBA;&#x5F00;&#x53D1;&#x7EC3;&#x4E60;&#xFF0C;&#x4E0D;&#x4F5C;&#x4E3A;&#x4EFB;&#x4F55;&#x5546;&#x4E1A;&#x7528;&#x9014;</h3><h1 id="articleHeader3">todolist</h1><ul><li><del>&#x767B;&#x5F55;/&#x6CE8;&#x518C;</del> &#x221A;</li><li><del>&#x9875;&#x9762;&#x9996;&#x6B21;&#x52A0;&#x8F7D;&#x9762;</del> &#x221A;</li><li><del>&#x57CE;&#x5E02;&#x9009;&#x62E9;</del> &#x221A;</li><li><del>&#x6587;&#x7AE0;&#x9605;&#x8BFB;</del> &#x221A;</li><li><del>&#x641C;&#x7D22;&#x804C;&#x4F4D;</del> &#x221A;</li><li><del>&#x6761;&#x4EF6;&#x7B5B;&#x9009;</del> &#x221A;</li><li><del>&#x641C;&#x7D22;&#x516C;&#x53F8;</del> &#x221A;</li><li><del>&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;</del> &#x221A;</li><li><del>&#x6570;&#x636E;&#x6392;&#x5E8F;</del> &#x221A;</li><li><del>&#x56FE;&#x7247;&#x61D2;&#x52A0;&#x8F7D;</del> &#x221A;</li><li><del>&#x63D0;&#x95EE;&#x8BC4;&#x8BBA;</del>&#x221A;</li><li><del>&#x63D0;&#x95EE;&#x4FE1;&#x606F;&#x7F16;&#x8F91;</del> &#x221A;</li><li><del>&#x8A00;&#x804C;&#x793E;&#x533A;&#x8BB0;&#x5F55;</del> &#x221A;</li><li><del>&#x8BDD;&#x9898;&#x5173;&#x6CE8;</del> &#x221A;</li><li><del>&#x6536;&#x85CF;</del>&#x221A;</li><li><del>&#x6C42;&#x804C;&#x610F;&#x5411;</del>&#x221A;</li><li><del>&#x6295;&#x9012;&#x8BB0;&#x5F55;</del>&#x221A;</li><li><del>&#x6CE8;&#x9500;</del>&#x221A;</li><li><del>&#x57FA;&#x7840;&#x8BBE;&#x7F6E;</del>&#x221A;</li><li><del>&#x5934;&#x50CF;&#x4FEE;&#x6539;</del> &#x221A;</li><li><del>&#x7B80;&#x5386;&#x586B;&#x5199;</del>&#x221A;</li><li><del>&#x7B80;&#x5386;&#x751F;&#x6210;&#x5E76;&#x4E0B;&#x8F7D;pdf</del>&#x221A;</li><li>ps:&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x5F88;&#x591A;&#x4E1C;&#x897F;&#xFF0C;&#x4E0D;&#x4E00;&#x4E00;&#x5217;&#x4E3E;&#xFF0C;&#x60F3;&#x5230;&#x5565;&#x5C31;&#x505A;&#x5565;</li></ul><h1 id="articleHeader4">&#x6280;&#x672F;&#x6808;</h1><p>&#x524D;&#x7AEF;&#xFF1A;</p><ul><li>vue&#x5168;&#x5BB6;&#x6876;</li><li>es6</li><li>scss</li><li>mint-ui</li><li>mockjs</li><li>jquery</li></ul><p>&#x8F6C;&#x53D1;&#x670D;&#x52A1;&#x5668;&#xFF1A;</p><ul><li>node</li><li>express</li></ul><p>&#x5B9E;&#x9645;api&#x670D;&#x52A1;&#x5668;:</p><ul><li>python3</li><li>mongodb</li></ul><p>&#x722C;&#x866B;&#xFF1A;</p><ul><li>python3</li></ul><h1 id="articleHeader5">&#x6548;&#x679C;&#x6F14;&#x793A;</h1><h3 id="articleHeader6">&#x9996;&#x6B21;&#x8F7D;&#x5165;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619266?w=375&amp;h=668" src="https://static.alili.tech/img/remote/1460000016619266?w=375&amp;h=668" alt="" title="" style="cursor:pointer;display:inline"></span></p><h3 id="articleHeader7">&#x767B;&#x5F55;&#x6CE8;&#x518C;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619267" src="https://static.alili.tech/img/remote/1460000016619267" alt="" title="" style="cursor:pointer"></span></p><h3 id="articleHeader8">&#x9996;&#x9875;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619268?w=375&amp;h=668" src="https://static.alili.tech/img/remote/1460000016619268?w=375&amp;h=668" alt="" title="" style="cursor:pointer"></span></p><h3 id="articleHeader9">&#x6587;&#x7AE0;&#x9605;&#x8BFB;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619269" src="https://static.alili.tech/img/remote/1460000016619269" alt="" title="" style="cursor:pointer"></span></p><h3 id="articleHeader10">&#x9009;&#x62E9;&#x57CE;&#x5E02;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619270" src="https://static.alili.tech/img/remote/1460000016619270" alt="" title="" style="cursor:pointer"></span></p><h3 id="articleHeader11">&#x804C;&#x4F4D;&#x67E5;&#x770B;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619271?w=317&amp;h=572" src="https://static.alili.tech/img/remote/1460000016619271?w=317&amp;h=572" alt="" title="" style="cursor:pointer;display:inline"></span></p><h3 id="articleHeader12">&#x7B5B;&#x9009;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619272" src="https://static.alili.tech/img/remote/1460000016619272" alt="" title="" style="cursor:pointer;display:inline"></span></p><h3 id="articleHeader13">&#x6392;&#x5E8F;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619273" src="https://static.alili.tech/img/remote/1460000016619273" alt="" title="" style="cursor:pointer;display:inline"></span></p><h3 id="articleHeader14">&#x6392;&#x5E8F;2</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619274" src="https://static.alili.tech/img/remote/1460000016619274" alt="" title="" style="cursor:pointer;display:inline"></span></p><h3 id="articleHeader15">&#x7B80;&#x5386;&#x4FEE;&#x6539;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619275" src="https://static.alili.tech/img/remote/1460000016619275" alt="" title="" style="cursor:pointer"></span></p><h3 id="articleHeader16">&#x6211;&#x7684;&#x8BBE;&#x7F6E;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016619276" src="https://static.alili.tech/img/remote/1460000016619276" alt="" title="" style="cursor:pointer"></span></p><p>ps:&#x8FD8;&#x6709;&#x66F4;&#x591A;&#x7684;&#x8BBE;&#x7F6E;&#x5C31;&#x4E0D;&#x622A;&#x56FE;&#x4E86;&#xFF0C;&#x6709;&#x70B9;&#x5927;&#xFF0C;&#x6709;&#x5174;&#x8DA3;&#x7684;clone&#x4E0B;&#x53BB;&#x770B;&#x770B;&#x5427;</p><h1 id="articleHeader17">&#x7EBF;&#x4E0A;&#x5730;&#x5740;</h1><h1 id="articleHeader18">&#x8BF4;&#x660E;</h1><p>&#x524D;&#x7AEF;&#x5730;&#x5740;:<a href="https://github.com/qianbin01/lagou_vue" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/qianbin01/...</a></p><p>&#x4EE3;&#x7406;api&#x5730;&#x5740;:<a href="https://github.com/qianbin01/lagou_node" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/qianbin01/...</a></p><p>api&#x5730;&#x5740;:<a href="https://github.com/qianbin01/lagou_python_api" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/qianbin01/...</a></p><p>&#x722C;&#x866B;&#x5730;&#x5740;:<a href="https://github.com/qianbin01/lagou_spider" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/qianbin01/...</a></p><h1 id="articleHeader19">&#x9879;&#x76EE;&#x914D;&#x7F6E;</h1><p>ubuntu 16.04</p><h1 id="articleHeader20">&#x8FD0;&#x884C;&#x6B65;&#x9AA4;</h1><p>&#x5FC5;&#x5907;&#x6B65;&#x9AA4;&#xFF1A;</p><ol><li>&#x8FD0;&#x884C;&#x722C;&#x866B;&#x9879;&#x76EE;</li><li>&#x8FD0;&#x884C;python-api&#x9879;&#x76EE;</li><li>&#x8FD0;&#x884C;node-api&#x8F6C;&#x53D1;&#x9879;&#x76EE;</li><li>&#x8FD0;&#x884C;&#x672C;&#x9879;&#x76EE;</li></ol><p>&#x672C;&#x9879;&#x76EE;&#x6B65;&#x9AA4;&#xFF1A;</p><ol><li>git clone <a href="https://github.com/qianbin01/lagou_vue.git" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/qianbin01/...</a></li><li>cd lagou_vue</li><li>npm install/yarn install</li><li>npm run dev/npm start</li><li>&#x6D4F;&#x89C8;&#x5668;&#x8BBF;&#x95EE;<a href="http://localhost" rel="external nofollow noopener noreferrer" target="_blank">http://localhost</a>:8085</li></ol><h1 id="articleHeader21">&#x70B9;&#x70B9;&#x4F60;&#x4EEC;&#x7684;&#x5C0F;&#x624B;&#x5427;</h1><p>&#x77E5;&#x4E4E;&#x4E13;&#x680F;&#xFF1A;<a href="https://zhuanlan.zhihu.com/c_1010582778160779264" rel="external nofollow noopener noreferrer" target="_blank">https://zhuanlan.zhihu.com/c_...</a><br><br>&#x6398;&#x91D1;:<a href="https://juejin.im/user/5b8291bce51d4538ab043911" rel="external nofollow noopener noreferrer" target="_blank">https://juejin.im/user/5b8291...</a><br><br>&#x601D;&#x5426;:<a href="https://segmentfault.com/u/qishidexinxin" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/u/qi...</a><br></p><p>&#x5E0C;&#x671B;&#x5BF9;&#x5927;&#x5BB6;&#x6709;&#x5E2E;&#x52A9;</p><p><span class="img-wrap"><img data-src="/img/remote/1460000016619277" src="https://static.alili.tech/img/remote/1460000016619277" alt="" title="" style="cursor:pointer;display:inline"></span></p><p><a href="https://github.com/qianbin01/lagou_vue" rel="external nofollow noopener noreferrer" target="_blank">&#x5927;&#x4F6C;&#x4EEC;&#xFF0C;&#x70B9;&#x8D5E;&#x4E00;&#x6CE2;&#x5427;</a></p>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>麻雀虽小五脏俱全的Vue拉勾项目，看看应该有帮助</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016619263" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016619263</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/a08bccf/">https://alili.tech/archive/a08bccf/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">全栈系列Vue版拉勾，客官们来瞧瞧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">1.0.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">1.0.2.</span> <span class="toc-text">注意：本项目个人开发练习，不作为任何商业用途</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader3"><span class="toc-number">2.</span> <span class="toc-text">todolist</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader4"><span class="toc-number">3.</span> <span class="toc-text">技术栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader5"><span class="toc-number">4.</span> <span class="toc-text">效果演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader6"><span class="toc-number">4.0.1.</span> <span class="toc-text">首次载入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader7"><span class="toc-number">4.0.2.</span> <span class="toc-text">登录注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader8"><span class="toc-number">4.0.3.</span> <span class="toc-text">首页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader9"><span class="toc-number">4.0.4.</span> <span class="toc-text">文章阅读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader10"><span class="toc-number">4.0.5.</span> <span class="toc-text">选择城市</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader11"><span class="toc-number">4.0.6.</span> <span class="toc-text">职位查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader12"><span class="toc-number">4.0.7.</span> <span class="toc-text">筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader13"><span class="toc-number">4.0.8.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader14"><span class="toc-number">4.0.9.</span> <span class="toc-text">排序2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader15"><span class="toc-number">4.0.10.</span> <span class="toc-text">简历修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader16"><span class="toc-number">4.0.11.</span> <span class="toc-text">我的设置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader17"><span class="toc-number">5.</span> <span class="toc-text">线上地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader18"><span class="toc-number">6.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader19"><span class="toc-number">7.</span> <span class="toc-text">项目配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader20"><span class="toc-number">8.</span> <span class="toc-text">运行步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader21"><span class="toc-number">9.</span> <span class="toc-text">点点你们的小手吧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">10.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">10.1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">10.2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">10.3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

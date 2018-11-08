@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="微前端的消息总线,主要的功能是搭建模块与模块之间通讯的桥梁.  黑盒子问题1:应用微服务化之后,每一个单独的模块都是一个黑盒子,里面发生了什么,状态改变了什么,外面的模块是无从得知的.比如模块A想要根据模块B的某一个内部状态进行下一步行为的时候,黑盒子之间没有办法通信.这是一个大麻烦. 问题2每一个模块之间都是有生命周期的.当模块被卸载的时候,如何才能保持后续的正常的通信?  ps. 我们必须要">
+<meta name="keywords" content="微前端,前端微服务化,前端自动化,解决方案,前端难题,Single,SPA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端微服务化解决方案4 - 消息总线">
+<meta property="og:url" content="https://alili.tech/archive/a9a1f81b/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="微前端的消息总线,主要的功能是搭建模块与模块之间通讯的桥梁.  黑盒子问题1:应用微服务化之后,每一个单独的模块都是一个黑盒子,里面发生了什么,状态改变了什么,外面的模块是无从得知的.比如模块A想要根据模块B的某一个内部状态进行下一步行为的时候,黑盒子之间没有办法通信.这是一个大麻烦. 问题2每一个模块之间都是有生命周期的.当模块被卸载的时候,如何才能保持后续的正常的通信?  ps. 我们必须要">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/me-12/single-spa-portal-example/raw/master/docs/inter-app-communication.jpg">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端微服务化解决方案4 - 消息总线">
+<meta name="twitter:description" content="微前端的消息总线,主要的功能是搭建模块与模块之间通讯的桥梁.  黑盒子问题1:应用微服务化之后,每一个单独的模块都是一个黑盒子,里面发生了什么,状态改变了什么,外面的模块是无从得知的.比如模块A想要根据模块B的某一个内部状态进行下一步行为的时候,黑盒子之间没有办法通信.这是一个大麻烦. 问题2每一个模块之间都是有生命周期的.当模块被卸载的时候,如何才能保持后续的正常的通信?  ps. 我们必须要">
+<meta name="twitter:image" content="https://github.com/me-12/single-spa-portal-example/raw/master/docs/inter-app-communication.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>前端微服务化解决方案4 - 消息总线 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/a9a1f81b/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/a9a1f81b/",
+      "appid": "1613049289050283", 
+      "title": "前端微服务化解决方案4 - 消息总线 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:05"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/5ff0b366/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/1a60cede/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/a9a1f81b/&text=前端微服务化解决方案4 - 消息总线" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/a9a1f81b/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/a9a1f81b/&text=前端微服务化解决方案4 - 消息总线" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/a9a1f81b/&title=前端微服务化解决方案4 - 消息总线" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/a9a1f81b/&is_video=false&description=前端微服务化解决方案4 - 消息总线" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=前端微服务化解决方案4 - 消息总线&body=Check out this article: https://alili.tech/archive/a9a1f81b/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/a9a1f81b/&title=前端微服务化解决方案4 - 消息总线" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/a9a1f81b/&title=前端微服务化解决方案4 - 消息总线" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/a9a1f81b/&title=前端微服务化解决方案4 - 消息总线" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/a9a1f81b/&title=前端微服务化解决方案4 - 消息总线" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#黑盒子"><span class="toc-number">1.</span> <span class="toc-text">黑盒子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题1"><span class="toc-number">1.1.</span> <span class="toc-text">问题1:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题2"><span class="toc-number">1.2.</span> <span class="toc-text">问题2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#打破壁垒"><span class="toc-number">2.</span> <span class="toc-text">打破壁垒</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Store-js-如何被使用"><span class="toc-number">3.</span> <span class="toc-text">Store.js 如何被使用?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#全局派发器-GlobalEventDistributor"><span class="toc-number">4.</span> <span class="toc-text">全局派发器 GlobalEventDistributor</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在模块中接收派发器以及自己的Store"><span class="toc-number">5.</span> <span class="toc-text">在模块中接收派发器以及自己的Store</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关文章"><span class="toc-number">6.</span> <span class="toc-text">相关文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo"><span class="toc-number">7.</span> <span class="toc-text">Demo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">7.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">文章推荐</span></a></li></ol>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        前端微服务化解决方案4 - 消息总线
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-09-03T01:00:00.000Z" itemprop="datePublished">2018-09-03</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/MicroFrontend/">MicroFrontend</a>, <a class="tag-link" href="/tags/前端架构/">前端架构</a>, <a class="tag-link" href="/tags/微前端/">微前端</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>微前端的消息总线,主要的功能是搭建模块与模块之间通讯的桥梁.</p>
+</blockquote>
+<h1 id="黑盒子"><a href="#黑盒子" class="headerlink" title="黑盒子"></a>黑盒子</h1><h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1:"></a>问题1:</h2><p>应用微服务化之后,每一个单独的模块都是一个黑盒子,<br>里面发生了什么,状态改变了什么,外面的模块是无从得知的.<br>比如<code>模块A</code>想要根据<code>模块B</code>的某一个内部状态进行下一步行为的时候,黑盒子之间没有办法通信.这是一个大麻烦.</p>
+<h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><p>每一个模块之间都是有生命周期的.当模块被卸载的时候,如何才能保持后续的正常的通信?</p>
+<blockquote>
+<p>ps. 我们必须要解决这些问题,模块与模块之间的通讯太有必要了.</p>
+</blockquote>
+<h1 id="打破壁垒"><a href="#打破壁垒" class="headerlink" title="打破壁垒"></a>打破壁垒</h1><p>在github上<a href="https://github.com/me-12/single-spa-portal-example" rel="external nofollow noopener noreferrer" target="_blank">single-spa-portal-example</a>,给出来一解决方案.</p>
+<p>基于Redux实现前端微服务的消息总线(不会影响在编写代码的时候使用其他的状态管理工具).</p>
+<p>大概思路是这样的:<br> <img src="https://github.com/me-12/single-spa-portal-example/raw/master/docs/inter-app-communication.jpg" alt=""></p>
+<p>每一个模块,会对外提供一个 Store.js.这个文件<br>里面的内容,大致是这样的.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initialState = &#123;</span><br><span class="line">  refresh: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'REFRESH'</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123; ...state,</span><br><span class="line">        refresh: state.refresh + <span class="number">1</span></span><br><span class="line">      &#125;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向外输出 Reducer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> storeInstance = createStore(combineReducers(&#123; <span class="attr">namespace</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">'base'</span>, render &#125;))</span><br></pre></td></tr></table></figure>
+<p>对于这样的代码,有没有很熟悉?<br>对,他就是一个普通的Reducer文件,<br>每一个模块对外输出的<code>Store.js</code>,就是一个模块的Reducer.</p>
+<h1 id="Store-js-如何被使用"><a href="#Store-js-如何被使用" class="headerlink" title="Store.js 如何被使用?"></a>Store.js 如何被使用?</h1><p>我们需要在模块加载器中,导出这个Store.js</p>
+<p>于是我们对模块加载器中的<code>Register.js</code>文件 (该文件在上一章出现过,不懂的同学可以往回看)</p>
+<p>进行了以下改造:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> singleSpa <span class="keyword">from</span> <span class="string">'single-spa'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//全局的事件派发器 (新增)</span></span><br><span class="line"><span class="keyword">import</span> &#123; GlobalEventDistributor &#125; <span class="keyword">from</span> <span class="string">'./GlobalEventDistributor'</span> </span><br><span class="line"><span class="keyword">const</span> globalEventDistributor = <span class="keyword">new</span> GlobalEventDistributor();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// hash 模式,项目路由用的是hash模式会用到该函数</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">hashPrefix</span>(<span class="params">app</span>) </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// pushState 模式</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">pathPrefix</span>(<span class="params">app</span>) </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 应用注册</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">registerApp</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 导入派发器</span></span><br><span class="line">    <span class="keyword">let</span> storeModule = &#123;&#125;, customProps = &#123; <span class="attr">globalEventDistributor</span>: globalEventDistributor &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在这里,我们会用SystemJS来导入模块的对外输出的Reducer(后续会被称作模块对外API),统一挂载到消息总线上</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        storeModule = params.store ? <span class="keyword">await</span> SystemJS.import(params.store) : &#123; <span class="attr">storeInstance</span>: <span class="literal">null</span> &#125;;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Could not load store of app <span class="subst">$&#123;params.name&#125;</span>.`</span>, e);</span><br><span class="line">        <span class="comment">//如果失败则不注册该模块</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注册应用于事件派发器</span></span><br><span class="line">    <span class="keyword">if</span> (storeModule.storeInstance &amp;&amp; globalEventDistributor) &#123;</span><br><span class="line">        <span class="comment">//取出 redux storeInstance</span></span><br><span class="line">        customProps.store = storeModule.storeInstance;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 注册到全局</span></span><br><span class="line">        globalEventDistributor.registerStore(storeModule.storeInstance);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//当与派发器一起组装成一个对象之后,在这里以这种形式传入每一个单独模块</span></span><br><span class="line">    customProps = &#123; <span class="attr">store</span>: storeModule, <span class="attr">globalEventDistributor</span>: globalEventDistributor &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在注册的时候传入 customProps</span></span><br><span class="line">    singleSpa.registerApplication(params.name, () =&gt; SystemJS.import(params.main), params.base ? <span class="function">(<span class="params">(</span>) =&gt;</span> <span class="literal">true</span>) : pathPrefix(params), customProps);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="全局派发器-GlobalEventDistributor"><a href="#全局派发器-GlobalEventDistributor" class="headerlink" title="全局派发器 GlobalEventDistributor"></a>全局派发器 GlobalEventDistributor</h1><p>全局派发器,主要的职责是触发各个模块对外的API.</p>
+<p>GlobalEventDistributor.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalEventDistributor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="comment">// 在函数实例化的时候,初始一个数组,保存所有模块的对外api</span></span><br><span class="line">        <span class="keyword">this</span>.stores = [];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注册</span></span><br><span class="line">    registerStore(store) &#123;</span><br><span class="line">        <span class="keyword">this</span>.stores.push(store);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 触发,这个函数会被种到每一个模块当中.便于每一个模块可以调用其他模块的 api</span></span><br><span class="line">    <span class="comment">// 大致是每个模块都问一遍,是否有对应的事件触发.如果每个模块都有,都会被触发.</span></span><br><span class="line">    dispatch(event) &#123;</span><br><span class="line">        <span class="keyword">this</span>.stores.forEach(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;</span><br><span class="line">            s.dispatch(event)</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取所有模块当前的对外状态</span></span><br><span class="line">    getState() &#123;</span><br><span class="line">        <span class="keyword">let</span> state = &#123;&#125;;</span><br><span class="line">        <span class="keyword">this</span>.stores.forEach(<span class="function">(<span class="params">s</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> currentState = s.getState();</span><br><span class="line">            <span class="built_in">console</span>.log(currentState)</span><br><span class="line">            state[currentState.namespace] = currentState</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> state</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="在模块中接收派发器以及自己的Store"><a href="#在模块中接收派发器以及自己的Store" class="headerlink" title="在模块中接收派发器以及自己的Store"></a>在模块中接收派发器以及自己的Store</h1><p>上面提到,我们在应用注册的时候,传入了一个 <code>customProps</code>,里面包含了派发器以及store.<br>在每一个单独的模块中,我们如何接收并且使用传入的这些东西呢?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></span><br><span class="line"><span class="keyword">import</span> singleSpaReact <span class="keyword">from</span> <span class="string">'single-spa-react'</span></span><br><span class="line"><span class="keyword">import</span> RootComponent <span class="keyword">from</span> <span class="string">'./root.component'</span></span><br><span class="line"><span class="keyword">import</span> &#123; storeInstance, history &#125; <span class="keyword">from</span> <span class="string">'./Store'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./index.less'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reactLifecycles = singleSpaReact(&#123;</span><br><span class="line">  React,</span><br><span class="line">  ReactDOM,</span><br><span class="line">  rootComponent: <span class="function">(<span class="params">spa</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 我们在创建生命周期的时候,把消息总线传入的东西,以props的形式传入组件当中</span></span><br><span class="line">    <span class="comment">// 这样,在每个模块中就可以直接调用跟查询其他模块的api与状态了</span></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">RootComponent</span>  <span class="attr">store</span>=<span class="string">&#123;spa.customProps.store.storeInstance&#125;</span> <span class="attr">globalEventDistributor</span>=<span class="string">&#123;spa.customProps.globalEventDistributor&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">  domElementGetter: () =&gt; document.getElementById('root')</span></span><br><span class="line"><span class="xml">&#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">export const bootstrap = [</span></span><br><span class="line"><span class="xml">  reactLifecycles.bootstrap,</span></span><br><span class="line"><span class="xml">]</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">export const mount = [</span></span><br><span class="line"><span class="xml">  reactLifecycles.mount,</span></span><br><span class="line"><span class="xml">]</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">export const unmount = [</span></span><br><span class="line"><span class="xml">  reactLifecycles.unmount,</span></span><br><span class="line"><span class="xml">]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>未完待续 …</p>
+</blockquote>
+<h1 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h1><p><a href="http://alili.tech/archive/ea599f7c/">前端微服务化解决方案1 - 思考</a></p>
+<p><a href="http://alili.tech/archive/11052bf4/">前端微服务化解决方案2 - Single-SPA</a></p>
+<p><a href="http://alili.tech/archive/1a60cede/">前端微服务化解决方案3 - 模块加载器</a></p>
+<p><a href="http://alili.tech/archive/a9a1f81b/">前端微服务化解决方案4 - 消息总线</a></p>
+<p><a href="http://alili.tech/archive/5ff0b366/">前端微服务化解决方案5 - 路由分发</a></p>
+<p><a href="http://alili.tech/archive/ffb0c5ab/">前端微服务化解决方案6 - 构建与部署</a></p>
+<p><a href="http://alili.tech/archive/5e00e43d/">前端微服务化解决方案7 - 静态数据共享</a></p>
+<p><a href="http://alili.tech/archive/ce685b9f/">前端微服务化解决方案8 - 二次构建</a></p>
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p><a href="http://microfrontend.alili.tech/" rel="external nofollow noopener noreferrer" target="_blank">前端微服务化 Micro Frontend Demo</a></p>
+<p><a href="https://github.com/Fantasy9527/lotus-scaffold-micro-frontend-portal" rel="external nofollow noopener noreferrer" target="_blank">微前端模块加载器</a></p>
+<p><a href="https://github.com/Fantasy9527/microfrontend-base-demo" rel="external nofollow noopener noreferrer" target="_blank">微前端Base App示例源码</a></p>
+<p><a href="https://github.com/Fantasy9527/microfrontend-submodule-demo" rel="external nofollow noopener noreferrer" target="_blank">微前端子项目示例源码</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/a9a1f81b/">https://alili.tech/archive/a9a1f81b/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/22975f44/">Single-SPA微前端框架的使用Demo汇总</a></li><li><a href="https://alili.tech/archive/ea599f7c/">前端微服务化解决方案1 - 思考</a></li><li><a href="https://alili.tech/archive/11052bf4/">前端微服务化解决方案2 - Single-SPA</a></li><li><a href="https://alili.tech/archive/1a60cede/">前端微服务化解决方案3 - 模块加载器</a></li><li><a href="https://alili.tech/archive/ffb0c5ab/">前端微服务化解决方案6 - 构建与部署</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#黑盒子"><span class="toc-number">1.</span> <span class="toc-text">黑盒子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题1"><span class="toc-number">1.1.</span> <span class="toc-text">问题1:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题2"><span class="toc-number">1.2.</span> <span class="toc-text">问题2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#打破壁垒"><span class="toc-number">2.</span> <span class="toc-text">打破壁垒</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Store-js-如何被使用"><span class="toc-number">3.</span> <span class="toc-text">Store.js 如何被使用?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#全局派发器-GlobalEventDistributor"><span class="toc-number">4.</span> <span class="toc-text">全局派发器 GlobalEventDistributor</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在模块中接收派发器以及自己的Store"><span class="toc-number">5.</span> <span class="toc-text">在模块中接收派发器以及自己的Store</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关文章"><span class="toc-number">6.</span> <span class="toc-text">相关文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo"><span class="toc-number">7.</span> <span class="toc-text">Demo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">7.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">文章推荐</span></a></li></ol>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="this 在不同的地方被调用有不同的值。 不知道这些细节可能会导致很多头疼的问题, 所以你不妨花5分钟的时间来了解一下这些坑。 this 在严格模式下 除了在声明的对象内被调用, this 在 严格模式下 永远是 undefined。 注意我提到的是严格模式。如果不是在严格模式下 (在js的头部，你没有明确的添加&apos;use strict&apos;关键字 ), 那么你就处在非严格模式的状态下, this 在这">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的this">
+<meta property="og:url" content="https://alili.tech/archive/a5ceba90/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="this 在不同的地方被调用有不同的值。 不知道这些细节可能会导致很多头疼的问题, 所以你不妨花5分钟的时间来了解一下这些坑。 this 在严格模式下 除了在声明的对象内被调用, this 在 严格模式下 永远是 undefined。 注意我提到的是严格模式。如果不是在严格模式下 (在js的头部，你没有明确的添加&apos;use strict&apos;关键字 ), 那么你就处在非严格模式的状态下, this 在这">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中的this">
+<meta name="twitter:description" content="this 在不同的地方被调用有不同的值。 不知道这些细节可能会导致很多头疼的问题, 所以你不妨花5分钟的时间来了解一下这些坑。 this 在严格模式下 除了在声明的对象内被调用, this 在 严格模式下 永远是 undefined。 注意我提到的是严格模式。如果不是在严格模式下 (在js的头部，你没有明确的添加&apos;use strict&apos;关键字 ), 那么你就处在非严格模式的状态下, this 在这">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>JavaScript中的this | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/a5ceba90/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/a5ceba90/",
+      "appid": "1613049289050283", 
+      "title": "JavaScript中的this | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:04"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/916cf636/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/7f16801f/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/a5ceba90/&text=JavaScript中的this" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/a5ceba90/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/a5ceba90/&text=JavaScript中的this" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/a5ceba90/&title=JavaScript中的this" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/a5ceba90/&is_video=false&description=JavaScript中的this" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JavaScript中的this&body=Check out this article: https://alili.tech/archive/a5ceba90/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/a5ceba90/&title=JavaScript中的this" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/a5ceba90/&title=JavaScript中的this" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/a5ceba90/&title=JavaScript中的this" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/a5ceba90/&title=JavaScript中的this" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">this 在严格模式下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">在函数方法中的this</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">使用箭头函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">明确地传递一个对象来改变this的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">DOM事件处理函数的特殊案例</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        JavaScript中的this
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-18T00:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p><code>this</code> 在不同的地方被调用有不同的值。</p>
+<p>不知道这些细节可能会导致很多头疼的问题, 所以你不妨花5分钟的时间来了解一下这些坑。</p>
+<h2><code>this</code> 在严格模式下</h2>
+<p>除了在声明的对象内被调用, <code>this</code> 在 <strong>严格模式下</strong> 永远是 <code>undefined</code>。</p>
+<p>注意我提到的是严格模式。如果不是在严格模式下 (在js的头部，你没有明确的添加<code>'use strict'</code>关键字 ), 那么你就处在非严格模式的状态下, <code>this</code> 在这个环境下， 除了我下面提到的特殊案例外 ，this指代的是全局对象的值。</p>
+<p>在浏览器的上下文环境中，这个值就是<code>window</code> 。</p>
+<h2>在函数方法中的<code>this</code></h2>
+<p>方法就是以函数形式附属于一个对象。</p>
+<p>函数可以有不同的声明形式。</p>
+<p>下面就是其中的一种：</p>
+<pre><code class="hljs gams">const car = {
+  maker: <span class="hljs-string">'Ford'</span>,
+  <span class="hljs-keyword">model</span>: <span class="hljs-string">'Fiesta'</span>,
+
+  drive() {
+    console.<span class="hljs-built-in">log</span>(Driving a <span class="hljs-symbol">$</span>{this.maker} <span class="hljs-symbol">$</span>{this.<span class="hljs-keyword">model</span>} car!)
+  }
+}
+
+car.drive()
+<span class="hljs-comment">//Driving a Ford Fiesta car!</span>
+
+
+</code></pre><p>在这个例子中，使用了常规的函数声明的形式, <code>this</code> 自动绑定为car这个对象。</p>
+<p>注意: 上面的函数声明是 <code>drive: function() {</code>…这样声明的缩写</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> car = {
+  <span class="hljs-attr">maker</span>: <span class="hljs-string">'Ford'</span>,
+  <span class="hljs-attr">model</span>: <span class="hljs-string">'Fiesta'</span>,
+
+  <span class="hljs-attr">drive</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(Driving a ${<span class="hljs-keyword">this</span>.maker} ${<span class="hljs-keyword">this</span>.model} car!)
+  }
+}
+
+
+</code></pre><p>和上面的例子一样的指代:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> car = {
+  <span class="hljs-attr">maker</span>: <span class="hljs-string">'Ford'</span>,
+  <span class="hljs-attr">model</span>: <span class="hljs-string">'Fiesta'</span>
+}
+
+car.drive = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(Driving a ${<span class="hljs-keyword">this</span>.maker} ${<span class="hljs-keyword">this</span>.model} car!)
+}
+
+car.drive()
+<span class="hljs-comment">//Driving a Ford Fiesta car!</span>
+
+
+</code></pre><p>在同样的语境下，使用箭头函数来声明函数，<code>this</code>的指代是不一样的，它属于词法（静态）绑定:</p>
+<pre><code class="hljs coffeescript">const car = {
+  maker: <span class="hljs-string">'Ford'</span>,
+  model: <span class="hljs-string">'Fiesta'</span>,
+
+  drive: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(Driving a ${<span class="hljs-keyword">this</span>.maker} ${<span class="hljs-keyword">this</span>.model} car!)
+  }
+}
+
+car.drive()
+<span class="hljs-regexp">//</span>Driving a <span class="hljs-literal">undefined</span> <span class="hljs-literal">undefined</span> car!
+
+
+</code></pre><h2>使用箭头函数</h2>
+<p>你不能在箭头函数中像其他正常的函数声明形式那样给函数绑定一个值来改变this的值。</p>
+<p>导致这个的主要原因是箭头函数的工作原理。 <code>this</code>在箭头函数中是<strong>词法绑定</strong>的, 也就是说它的值仅取决于它在哪个对象下被定义。</p>
+<h2>明确地传递一个对象来改变<code>this</code>的值</h2>
+<p>JavaScript提供了一些方法来映射this所指代的对象，从而得到你想要的值。</p>
+<p>在 <strong>函数声明</strong> 的阶段，使用 <code>bind()</code>:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> car = {
+  <span class="hljs-attr">maker</span>: <span class="hljs-string">'Ford'</span>,
+  <span class="hljs-attr">model</span>: <span class="hljs-string">'Fiesta'</span>
+}
+
+<span class="hljs-keyword">const</span> drive = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(Driving a ${<span class="hljs-keyword">this</span>.maker} ${<span class="hljs-keyword">this</span>.model} car!)
+}.bind(car)
+
+drive()
+<span class="hljs-comment">//Driving a Ford Fiesta car!</span>
+
+
+</code></pre><p>你可以绑定一个已定义的对象来改变<code>this</code> 的值:</p>
+<pre><code class="hljs gams">const car = {
+  maker: <span class="hljs-string">'Ford'</span>,
+  <span class="hljs-keyword">model</span>: <span class="hljs-string">'Fiesta'</span>,
+
+  drive() {
+    console.<span class="hljs-built-in">log</span>(Driving a <span class="hljs-symbol">$</span>{this.maker} <span class="hljs-symbol">$</span>{this.<span class="hljs-keyword">model</span>} car!)
+  }
+}
+
+const anotherCar = {
+  maker: <span class="hljs-string">'Audi'</span>,
+  <span class="hljs-keyword">model</span>: <span class="hljs-string">'A4'</span>
+}
+
+car.drive.bind(anotherCar)()
+<span class="hljs-comment">//Driving a Audi A4 car!</span>
+
+
+</code></pre><p>使用<code>call()</code> 或者 <code>apply()</code>, 在 <strong>函数调用</strong> 阶段:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> car = {
+  <span class="hljs-attr">maker</span>: <span class="hljs-string">'Ford'</span>,
+  <span class="hljs-attr">model</span>: <span class="hljs-string">'Fiesta'</span>
+}
+
+<span class="hljs-keyword">const</span> drive = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">kmh</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(Driving a ${<span class="hljs-keyword">this</span>.maker} ${<span class="hljs-keyword">this</span>.model} car at ${kmh} km/h!)
+}
+
+drive.call(car, <span class="hljs-number">100</span>)
+<span class="hljs-comment">//Driving a Ford Fiesta car at 100 km/h!</span>
+
+drive.apply(car, [<span class="hljs-number">100</span>])
+<span class="hljs-comment">//Driving a Ford Fiesta car at 100 km/h!</span>
+
+
+</code></pre><p>第一个传递给<code>call()</code> 或者 <code>apply()</code>的参数是新的 <code>this</code>所指代的值。 call() 和 apply()两个函数的差异在于第二个参数，apply() 接受的是一个数组来作为它的参数，而call() 函数接受的是一串参数列表。</p>
+<h2>DOM事件处理函数的特殊案例</h2>
+<p>在浏览器事件处理函数的时候, <code>this</code> 指代的是HTML对象，像下面的这样：</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'#button'</span>).addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>) <span class="hljs-comment">//HTMLElement</span>
+}
+
+
+</code></pre><p>但你可以使用bind() 函数来改变this值：</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'#button'</span>).addEventListener(
+  <span class="hljs-string">'click'</span>,
+  <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>) <span class="hljs-comment">//Window if global, or your context</span>
+  }.bind(<span class="hljs-keyword">this</span>)
+)
+
+
+</code></pre>
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/this-in-javascript" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/this-in-javascript</a><br>原文标题: JavaScript中的this</p>
+<p>本文仅用于学习、研究和交流目的，欢迎非商业转载。转载请注明出处、完整链接。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/a5ceba90/">https://alili.tech/archive/a5ceba90/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">this 在严格模式下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">在函数方法中的this</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">使用箭头函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">明确地传递一个对象来改变this的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">DOM事件处理函数的特殊案例</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

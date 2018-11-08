@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x9898;&amp;#x6CE8;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x662F; Webpack CheatSheet | Webpack &amp;#x57FA;&amp;#x7840;&amp;#x4E0E;&amp;#x5B9E;&amp;#x8DF5;&amp;#x6E05;&amp;#x5355;&amp;#x7684;&amp;#x4E00;&amp;#x90E8;&amp;#x5206;&amp;#xFF0C;&amp;#x9879;&amp;#x76EE;&amp;#x4EE3;&amp;#">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端常用开发工具的路径解析配置">
+<meta property="og:url" content="https://alili.tech/archive/2f4e595e/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x9898;&amp;#x6CE8;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x662F; Webpack CheatSheet | Webpack &amp;#x57FA;&amp;#x7840;&amp;#x4E0E;&amp;#x5B9E;&amp;#x8DF5;&amp;#x6E05;&amp;#x5355;&amp;#x7684;&amp;#x4E00;&amp;#x90E8;&amp;#x5206;&amp;#xFF0C;&amp;#x9879;&amp;#x76EE;&amp;#x4EE3;&amp;#">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000015172478">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.503Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端常用开发工具的路径解析配置">
+<meta name="twitter:description" content="&amp;#x9898;&amp;#x6CE8;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x662F; Webpack CheatSheet | Webpack &amp;#x57FA;&amp;#x7840;&amp;#x4E0E;&amp;#x5B9E;&amp;#x8DF5;&amp;#x6E05;&amp;#x5355;&amp;#x7684;&amp;#x4E00;&amp;#x90E8;&amp;#x5206;&amp;#xFF0C;&amp;#x9879;&amp;#x76EE;&amp;#x4EE3;&amp;#">
+<meta name="twitter:image" content="https://static.alili.tech/img/remote/1460000015172478">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>前端常用开发工具的路径解析配置 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/2f4e595e/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/2f4e595e/",
+      "appid": "1613049289050283", 
+      "title": "前端常用开发工具的路径解析配置 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:56"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/9dde9075/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/6e75b89d/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/2f4e595e/&text=前端常用开发工具的路径解析配置" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/2f4e595e/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/2f4e595e/&text=前端常用开发工具的路径解析配置" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/2f4e595e/&title=前端常用开发工具的路径解析配置" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/2f4e595e/&is_video=false&description=前端常用开发工具的路径解析配置" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=前端常用开发工具的路径解析配置&body=Check out this article: https://alili.tech/archive/2f4e595e/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/2f4e595e/&title=前端常用开发工具的路径解析配置" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/2f4e595e/&title=前端常用开发工具的路径解析配置" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/2f4e595e/&title=前端常用开发工具的路径解析配置" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/2f4e595e/&title=前端常用开发工具的路径解析配置" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">路径解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">1.1.</span> <span class="toc-text">Webpack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">1.2.</span> <span class="toc-text">VSCode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">1.3.</span> <span class="toc-text">ESLint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">1.4.</span> <span class="toc-text">Jest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader5"><span class="toc-number">1.5.</span> <span class="toc-text">TypeScript</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        前端常用开发工具的路径解析配置
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-28T02:30:10.000Z" itemprop="datePublished">2018-10-28</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p><span class="img-wrap"><img data-src="/img/remote/1460000015172478" src="https://static.alili.tech/img/remote/1460000015172478" alt="" title="" style="cursor:pointer;display:inline"></span></p><p>&#x9898;&#x6CE8;&#xFF1A;&#x672C;&#x6587;&#x662F; <a href="https://github.com/wxyyxc1992/Awesome-CheatSheet/blob/master/Web/DevPractices/Bundler/Webpack-CheatSheet.md" rel="external nofollow noopener noreferrer" target="_blank">Webpack CheatSheet | Webpack &#x57FA;&#x7840;&#x4E0E;&#x5B9E;&#x8DF5;&#x6E05;&#x5355;</a>&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x9879;&#x76EE;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x53C2;&#x8003; <a href="https://github.com/wxyyxc1992/fe-boilerplate" rel="external nofollow noopener noreferrer" target="_blank">fe-boilerplate | &#x591A;&#x6280;&#x672F;&#x6808;&#x524D;&#x7AEF;&#x9879;&#x76EE;&#x6A21;&#x677F;</a>&#x3002;</p><h2 id="articleHeader0">&#x8DEF;&#x5F84;&#x89E3;&#x6790;</h2><p>&#x968F;&#x7740;&#x9700;&#x6C42;&#x7684;&#x8FED;&#x4EE3;&#x4E0E;&#x529F;&#x80FD;&#x7684;&#x5B8C;&#x5584;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x9879;&#x76EE;&#x4E5F;&#x4F1A;&#x6108;&#x53D1;&#x5E9E;&#x5927;&#x800C;&#x590D;&#x6742;&#xFF0C;&#x76EE;&#x5F55;&#x5C42;&#x7EA7;&#x7ED3;&#x6784;&#x4E5F;&#x4F1A;&#x4E0D;&#x65AD;&#x6DF1;&#x5316;&#xFF1B;&#x4EE5; <a href="https://parg.co/YWj" rel="external nofollow noopener noreferrer" target="_blank">React &#x5B9E;&#x8DF5;&#x6E05;&#x5355;</a>&#x4E2D;&#x8BA8;&#x8BBA;&#x7684; React &#x9879;&#x76EE;&#x7EC4;&#x7EC7;&#x65B9;&#x5F0F;&#x4E3A;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x5E38;&#x4F1A;&#x5206;&#x4E3A; components, containers, services, apis, ducks, store, i18n &#x7B49;&#x7B49;&#x76EE;&#x5F55;&#xFF0C;&#x5982;&#x679C;&#x5168;&#x90E8;&#x4EE5;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x65B9;&#x5F0F;&#x5F15;&#x5165;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x53D8;&#x6210;&#x8FD9;&#x4E2A;&#x6837;&#x5B50;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="import React from &apos;react&apos;;
+import { connect } from &apos;react-redux&apos;;
+
+import { someConstant } from &apos;./../../config/constants&apos;;
+import MyComponent from &apos;./../../../components/MyComponent&apos;;
+import { myActionCreator } from &apos;./../../../ducks/someReducer&apos;;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-redux&apos;</span>;
+
+<span class="hljs-keyword">import</span> { someConstant } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./../../config/constants&apos;</span>;
+<span class="hljs-keyword">import</span> MyComponent <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./../../../components/MyComponent&apos;</span>;
+<span class="hljs-keyword">import</span> { myActionCreator } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./../../../ducks/someReducer&apos;</span>;</code></pre><p>&#x6BEB;&#x65E0;&#x7591;&#x95EE;&#xFF0C;&#x8FD9;&#x6837;&#x7E41;&#x591A;&#x7684;&#x5F15;&#x7528;&#x4E0D;&#x53EF;&#x907F;&#x514D;&#x5730;&#x4F1A;&#x5BFC;&#x81F4;&#x4EE3;&#x7801;&#x4E4B;&#x95F4;&#x8026;&#x5408;&#x5EA6;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x4F7F;&#x5F97;&#x66F4;&#x96BE;&#x4EE5;&#x91CD;&#x6784;&#x6216;&#x8005;&#x4F18;&#x5316;&#x3002;&#x5728;&#x9002;&#x5F53;&#x5730;&#x6A21;&#x5757;&#x5212;&#x5206;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5728;&#x8DE8;&#x6A21;&#x5757;&#x5F15;&#x7528;&#x65F6;&#xFF0C;&#x80FD;&#x591F;&#x4EE5;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x8B6C;&#x5982;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="import React from &apos;react&apos;;
+import { connect } from &apos;react-redux&apos;;
+import { someConstant } from &apos;Config/constants&apos;;
+import MyComponent from &apos;Components/MyComponent&apos;;
+import { myActionCreator } from &apos;Ducks/someReducer&apos;;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-redux&apos;</span>;
+<span class="hljs-keyword">import</span> { someConstant } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;Config/constants&apos;</span>;
+<span class="hljs-keyword">import</span> MyComponent <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;Components/MyComponent&apos;</span>;
+<span class="hljs-keyword">import</span> { myActionCreator } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;Ducks/someReducer&apos;</span>;</code></pre><p>&#x5F53;&#x7136;&#xFF0C;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x63D0;&#x5021;&#x8FC7;&#x5EA6;&#x5730;&#x4F7F;&#x7528;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x5F15;&#x5165;&#xFF0C;&#x5BF9;&#x4E8E;&#x76F8;&#x5BF9;&#x5173;&#x7CFB;&#x56FA;&#x5B9A;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x8FD8;&#x662F;&#x5E94;&#x8BE5;&#x4F18;&#x5148;&#x4F7F;&#x7528;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x65B9;&#x5F0F;&#x5F15;&#x5165;&#x3002;</p><h3 id="articleHeader1">Webpack</h3><p>&#x5982;&#x524D;&#x6587;&#x4ECB;&#x7ECD;&#xFF0C;Webpack &#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>resolve.alias</code> &#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x8DEF;&#x5F84;&#x89E3;&#x6790;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="module.resolve = {
+  alias: {
+    Config: path.resolve(__dirname, &apos;..&apos;, &apos;src&apos;, &apos;config&apos;),
+    Components: path.resolve(__dirname, &apos;..&apos;, &apos;src&apos;, &apos;components&apos;),
+    Ducks: path.resolve(__dirname, &apos;..&apos;, &apos;src&apos;, &apos;ducks&apos;),
+    Shared: path.resolve(__dirname, &apos;..&apos;, &apos;src&apos;, &apos;shared&apos;),
+    App: path.join(__dirname, &apos;..&apos;, &apos;src&apos;)
+  }
+};" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="js"><span class="hljs-built_in">module</span>.resolve = {
+  <span class="hljs-attr">alias</span>: {
+    <span class="hljs-attr">Config</span>: path.resolve(__dirname, <span class="hljs-string">&apos;..&apos;</span>, <span class="hljs-string">&apos;src&apos;</span>, <span class="hljs-string">&apos;config&apos;</span>),
+    <span class="hljs-attr">Components</span>: path.resolve(__dirname, <span class="hljs-string">&apos;..&apos;</span>, <span class="hljs-string">&apos;src&apos;</span>, <span class="hljs-string">&apos;components&apos;</span>),
+    <span class="hljs-attr">Ducks</span>: path.resolve(__dirname, <span class="hljs-string">&apos;..&apos;</span>, <span class="hljs-string">&apos;src&apos;</span>, <span class="hljs-string">&apos;ducks&apos;</span>),
+    <span class="hljs-attr">Shared</span>: path.resolve(__dirname, <span class="hljs-string">&apos;..&apos;</span>, <span class="hljs-string">&apos;src&apos;</span>, <span class="hljs-string">&apos;shared&apos;</span>),
+    <span class="hljs-attr">App</span>: path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, <span class="hljs-string">&apos;src&apos;</span>)
+  }
+};</code></pre><h3 id="articleHeader2">VSCode</h3><p>&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#x7684;&#x652F;&#x6301;&#x662F;&#x4E0D;&#x53EF;&#x907F;&#x514D;&#x5730;&#x56E0;&#x7D20;&#xFF0C;&#x503C;&#x5F97;&#x9AD8;&#x5174;&#x7684;&#x662F; VSCode &#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5728; <code>jsconfig.json</code> &#x4E2D;&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x89C4;&#x5219;&#xFF0C;<a href="https://github.com/soates/Auto-Import" rel="external nofollow noopener noreferrer" target="_blank">Auto-Import</a> &#x8FD9;&#x6837;&#x7684;&#x81EA;&#x52A8;&#x5BFC;&#x5165;&#x5DE5;&#x5177;&#x540C;&#x6837;&#x80FD;&#x8BC6;&#x522B;&#x8FD9;&#x4E9B;&#x89C4;&#x5219;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es2017&quot;,
+    &quot;allowSyntheticDefaultImports&quot;: false,
+    &quot;baseUrl&quot;: &quot;./&quot;,
+    &quot;paths&quot;: {
+      &quot;Config/*&quot;: [&quot;src/config/*&quot;],
+      &quot;Components/*&quot;: [&quot;src/components/*&quot;],
+      &quot;Ducks/*&quot;: [&quot;src/ducks/*&quot;],
+      &quot;Shared/*&quot;: [&quot;src/shared/*&quot;],
+      &quot;App/*&quot;: [&quot;src/*&quot;]
+    }
+  },
+  &quot;exclude&quot;: [&quot;node_modules&quot;, &quot;dist&quot;]
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="js">{
+  <span class="hljs-string">&quot;compilerOptions&quot;</span>: {
+    <span class="hljs-string">&quot;target&quot;</span>: <span class="hljs-string">&quot;es2017&quot;</span>,
+    <span class="hljs-string">&quot;allowSyntheticDefaultImports&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;baseUrl&quot;</span>: <span class="hljs-string">&quot;./&quot;</span>,
+    <span class="hljs-string">&quot;paths&quot;</span>: {
+      <span class="hljs-string">&quot;Config/*&quot;</span>: [<span class="hljs-string">&quot;src/config/*&quot;</span>],
+      <span class="hljs-string">&quot;Components/*&quot;</span>: [<span class="hljs-string">&quot;src/components/*&quot;</span>],
+      <span class="hljs-string">&quot;Ducks/*&quot;</span>: [<span class="hljs-string">&quot;src/ducks/*&quot;</span>],
+      <span class="hljs-string">&quot;Shared/*&quot;</span>: [<span class="hljs-string">&quot;src/shared/*&quot;</span>],
+      <span class="hljs-string">&quot;App/*&quot;</span>: [<span class="hljs-string">&quot;src/*&quot;</span>]
+    }
+  },
+  <span class="hljs-string">&quot;exclude&quot;</span>: [<span class="hljs-string">&quot;node_modules&quot;</span>, <span class="hljs-string">&quot;dist&quot;</span>]
+}</code></pre><h3 id="articleHeader3">ESLint</h3><p>ESLint &#x540C;&#x6837;&#x662F;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x4E0D;&#x53EF;&#x6216;&#x7F3A;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://www.npmjs.com/package/eslint-import-resolver-webpack" rel="external nofollow noopener noreferrer" target="_blank">eslint-import-resolver-webpack</a> &#x6765;&#x6269;&#x5C55; eslint-import &#x7684;&#x6A21;&#x5757;&#x89E3;&#x6790;&#xFF0C;&#x4F7F;&#x7528; npm &#x5B89;&#x88C5;&#x8BE5;&#x6A21;&#x5757;&#x4E4B;&#x540E;&#x8FDB;&#x884C;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="---
+settings:
+  import/resolver: webpack  # take all defaults" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="yaml hljs"><code class="yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">settings:</span>
+  <span class="hljs-string">import/resolver:</span> <span class="hljs-string">webpack</span>  <span class="hljs-comment"># take all defaults</span></code></pre><p>&#x6216;&#x8005;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x540D;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="---
+settings:
+  import/resolver:
+    webpack:
+      config: &apos;webpack.dev.config.js&apos;
+      config-index: 1   # optional, take the config at index 1" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="yaml hljs"><code class="yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">settings:</span>
+  <span class="hljs-string">import/resolver:</span>
+<span class="hljs-attr">    webpack:</span>
+<span class="hljs-attr">      config:</span> <span class="hljs-string">&apos;webpack.dev.config.js&apos;</span>
+<span class="hljs-attr">      config-index:</span> <span class="hljs-number">1</span>   <span class="hljs-comment"># optional, take the config at index 1</span></code></pre><p>&#x5BF9;&#x4E8E;&#x672A;&#x4F7F;&#x7528; Webpack &#x7684;&#x9879;&#x76EE;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x4F7F;&#x7528; <a href="https://www.npmjs.com/package/eslint-import-resolver-alias" rel="external nofollow noopener noreferrer" target="_blank">eslint-import-resolver-alias</a>:</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="// .eslintrc.js
+module.exports = {
+  settings: {
+    &apos;import/resolver&apos;: {
+      alias: {
+        map: [
+          [&apos;babel-polyfill&apos;, &apos;babel-polyfill/dist/polyfill.min.js&apos;],
+          [&apos;helper&apos;, &apos;./utils/helper&apos;],
+          [&apos;material-ui/DatePicker&apos;, &apos;../custom/DatePicker&apos;],
+          [&apos;material-ui&apos;, &apos;material-ui-ie10&apos;]
+        ],
+        extensions: [&apos;.ts&apos;, &apos;.js&apos;, &apos;.jsx&apos;, &apos;.json&apos;]
+      }
+    }
+  }
+};" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="js"><span class="hljs-comment">// .eslintrc.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">settings</span>: {
+    <span class="hljs-string">&apos;import/resolver&apos;</span>: {
+      <span class="hljs-attr">alias</span>: {
+        <span class="hljs-attr">map</span>: [
+          [<span class="hljs-string">&apos;babel-polyfill&apos;</span>, <span class="hljs-string">&apos;babel-polyfill/dist/polyfill.min.js&apos;</span>],
+          [<span class="hljs-string">&apos;helper&apos;</span>, <span class="hljs-string">&apos;./utils/helper&apos;</span>],
+          [<span class="hljs-string">&apos;material-ui/DatePicker&apos;</span>, <span class="hljs-string">&apos;../custom/DatePicker&apos;</span>],
+          [<span class="hljs-string">&apos;material-ui&apos;</span>, <span class="hljs-string">&apos;material-ui-ie10&apos;</span>]
+        ],
+        <span class="hljs-attr">extensions</span>: [<span class="hljs-string">&apos;.ts&apos;</span>, <span class="hljs-string">&apos;.js&apos;</span>, <span class="hljs-string">&apos;.jsx&apos;</span>, <span class="hljs-string">&apos;.json&apos;</span>]
+      }
+    }
+  }
+};</code></pre><h3 id="articleHeader4">Jest</h3><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728; package.json &#x4E2D;&#x7684; jest &#x914D;&#x7F6E;&#x9879;&#x4E2D;&#x6DFB;&#x52A0; moduleNameMapper &#x5C5E;&#x6027;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="&quot;jest&quot;: {
+  &quot;moduleNameMapper&quot;: {
+    &quot;^Config(.*)$&quot;: &quot;&lt;rootDir&gt;/src/config$1&quot;,
+    &quot;^Components(.*)$&quot;: &quot;&lt;rootDir&gt;/src/components$1&quot;,
+    &quot;^Ducks(.*)$&quot;: &quot;&lt;rootDir&gt;/src/ducks$1&quot;,
+    &quot;^Shared(.*)$&quot;: &quot;&lt;rootDir&gt;/src/shared$1&quot;,
+    &quot;^App(.*)$&quot;: &quot;&lt;rootDir&gt;/src$1&quot;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="json hljs"><code class="json"><span class="hljs-string">&quot;jest&quot;</span>: {
+  <span class="hljs-attr">&quot;moduleNameMapper&quot;</span>: {
+    <span class="hljs-attr">&quot;^Config(.*)$&quot;</span>: <span class="hljs-string">&quot;&lt;rootDir&gt;/src/config$1&quot;</span>,
+    <span class="hljs-attr">&quot;^Components(.*)$&quot;</span>: <span class="hljs-string">&quot;&lt;rootDir&gt;/src/components$1&quot;</span>,
+    <span class="hljs-attr">&quot;^Ducks(.*)$&quot;</span>: <span class="hljs-string">&quot;&lt;rootDir&gt;/src/ducks$1&quot;</span>,
+    <span class="hljs-attr">&quot;^Shared(.*)$&quot;</span>: <span class="hljs-string">&quot;&lt;rootDir&gt;/src/shared$1&quot;</span>,
+    <span class="hljs-attr">&quot;^App(.*)$&quot;</span>: <span class="hljs-string">&quot;&lt;rootDir&gt;/src$1&quot;</span>
+}</code></pre><h3 id="articleHeader5">TypeScript</h3><p>TypeScript &#x7684;&#x914D;&#x7F6E;&#x7C7B;&#x4F3C;&#x4E8E; VSCode&#xFF0C;&#x5728; tsconfig.json &#x7684; compilerOptions &#x9009;&#x9879;&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="{
+  &quot;baseUrl&quot;: &quot;.&quot;,
+  &quot;paths&quot;: {
+    &quot;c-apis/*&quot;: [&quot;src/apis/*&quot;],
+    &quot;c-models/*&quot;: [&quot;src/models/*&quot;],
+    &quot;c-stores/*&quot;: [&quot;src/stores/*&quot;],
+    &quot;c-utils/*&quot;: [&quot;src/shared/*&quot;]
+  }
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="json hljs"><code class="json">{
+  <span class="hljs-attr">&quot;baseUrl&quot;</span>: <span class="hljs-string">&quot;.&quot;</span>,
+  <span class="hljs-attr">&quot;paths&quot;</span>: {
+    <span class="hljs-attr">&quot;c-apis/*&quot;</span>: [<span class="hljs-string">&quot;src/apis/*&quot;</span>],
+    <span class="hljs-attr">&quot;c-models/*&quot;</span>: [<span class="hljs-string">&quot;src/models/*&quot;</span>],
+    <span class="hljs-attr">&quot;c-stores/*&quot;</span>: [<span class="hljs-string">&quot;src/stores/*&quot;</span>],
+    <span class="hljs-attr">&quot;c-utils/*&quot;</span>: [<span class="hljs-string">&quot;src/shared/*&quot;</span>]
+  }
+}</code></pre>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>前端常用开发工具的路径解析配置</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000015172473" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000015172473</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/2f4e595e/">https://alili.tech/archive/2f4e595e/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">路径解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">1.1.</span> <span class="toc-text">Webpack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">1.2.</span> <span class="toc-text">VSCode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">1.3.</span> <span class="toc-text">ESLint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">1.4.</span> <span class="toc-text">Jest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader5"><span class="toc-number">1.5.</span> <span class="toc-text">TypeScript</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

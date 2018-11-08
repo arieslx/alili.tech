@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x51FD;&amp;#x6570;&amp;#x8282;&amp;#x6D41;&amp;#xFF08;throttle&amp;#xFF09;&amp;#x540D;&amp;#x8BCD;&amp;#x89E3;&amp;#x91CA;&amp;#x51FD;&amp;#x6570;&amp;#x8282;&amp;#x6D41;&amp;#xFF08;throttle&amp;#xFF09;&amp;#xFF1A;&amp;#x8FDE;&amp;#x7EED;&amp;#x6267;&amp;#x884C;&amp;#x51FD;&amp;#x6570;">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript-函数节流与函数防抖">
+<meta property="og:url" content="https://alili.tech/archive/ffa82191/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x51FD;&amp;#x6570;&amp;#x8282;&amp;#x6D41;&amp;#xFF08;throttle&amp;#xFF09;&amp;#x540D;&amp;#x8BCD;&amp;#x89E3;&amp;#x91CA;&amp;#x51FD;&amp;#x6570;&amp;#x8282;&amp;#x6D41;&amp;#xFF08;throttle&amp;#xFF09;&amp;#xFF1A;&amp;#x8FDE;&amp;#x7EED;&amp;#x6267;&amp;#x884C;&amp;#x51FD;&amp;#x6570;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript-函数节流与函数防抖">
+<meta name="twitter:description" content="&amp;#x51FD;&amp;#x6570;&amp;#x8282;&amp;#x6D41;&amp;#xFF08;throttle&amp;#xFF09;&amp;#x540D;&amp;#x8BCD;&amp;#x89E3;&amp;#x91CA;&amp;#x51FD;&amp;#x6570;&amp;#x8282;&amp;#x6D41;&amp;#xFF08;throttle&amp;#xFF09;&amp;#xFF1A;&amp;#x8FDE;&amp;#x7EED;&amp;#x6267;&amp;#x884C;&amp;#x51FD;&amp;#x6570;">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>Javascript-函数节流与函数防抖 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/ffa82191/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/ffa82191/",
+      "appid": "1613049289050283", 
+      "title": "Javascript-函数节流与函数防抖 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:46"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/4ad52c84/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/31485486/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/ffa82191/&text=Javascript-函数节流与函数防抖" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/ffa82191/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/ffa82191/&text=Javascript-函数节流与函数防抖" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/ffa82191/&title=Javascript-函数节流与函数防抖" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/ffa82191/&is_video=false&description=Javascript-函数节流与函数防抖" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Javascript-函数节流与函数防抖&body=Check out this article: https://alili.tech/archive/ffa82191/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/ffa82191/&title=Javascript-函数节流与函数防抖" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/ffa82191/&title=Javascript-函数节流与函数防抖" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/ffa82191/&title=Javascript-函数节流与函数防抖" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/ffa82191/&title=Javascript-函数节流与函数防抖" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">函数节流（throttle）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">函数节流（throttle）简单实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">函数防抖（debounce）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">函数防抖（debounce）简单实现</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number"></span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number"></span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        Javascript-函数节流与函数防抖
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-06T15:28:31.000Z" itemprop="datePublished">2018-11-06</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h3 id="articleHeader0">&#x51FD;&#x6570;&#x8282;&#x6D41;&#xFF08;throttle&#xFF09;</h3><h4>&#x540D;&#x8BCD;&#x89E3;&#x91CA;</h4><p>&#x51FD;&#x6570;&#x8282;&#x6D41;&#xFF08;throttle&#xFF09;&#xFF1A;&#x8FDE;&#x7EED;&#x6267;&#x884C;&#x51FD;&#x6570;&#xFF0C;&#x6BCF;&#x9694;&#x4E00;&#x5B9A;&#x65F6;&#x95F4;&#x6267;&#x884C;&#x51FD;&#x6570;</p><h4>&#x4F7F;&#x7528;&#x573A;&#x666F;</h4><p>&#x9F20;&#x6807;&#x79FB;&#x52A8;&#xFF0C;mousemove &#x4E8B;&#x4EF6;<br>DOM &#x5143;&#x7D20;&#x52A8;&#x6001;&#x5B9A;&#x4F4D;&#xFF0C;window&#x5BF9;&#x8C61;&#x7684;resize&#x548C;scroll &#x4E8B;&#x4EF6;<br>&#x7B49;&#x7B49;...</p><h4>&#x51FD;&#x6570;&#x8282;&#x6D41;&#xFF08;throttle&#xFF09;&#x7B80;&#x5355;&#x5B9E;&#x73B0;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    function throttle(fn, delay) {
+        var last; // &#x4E0A;&#x6B21;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;
+        var timer; // &#x5B9A;&#x65F6;&#x5668;
+        delay || (delay = 250); // &#x9ED8;&#x8BA4;&#x95F4;&#x9694;&#x4E3A;250ms
+        return function() {
+            var context = this;
+            var args = arguments;
+            var now = +new Date(); // &#x73B0;&#x5728;&#x7684;&#x65F6;&#x95F4;
+            if (last &amp;&amp; now &lt; last + delay) { // &#x5F53;&#x524D;&#x8DDD;&#x79BB;&#x4E0A;&#x6B21;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x5C0F;&#x4E8E;&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;
+                clearTimeout(timer); // &#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;
+                timer = setTimeout(function() { // delay&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x51FD;&#x6570;
+                    last = now;
+                    fn.apply(context, args);
+                }, delay);
+            } else { // &#x5F53;&#x524D;&#x8DDD;&#x79BB;&#x4E0A;&#x6B21;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x76F4;&#x63A5;&#x6267;&#x884C;&#x51FD;&#x6570;
+                last = now;
+                fn.apply(context, args);
+            }
+        };
+    }" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throttle</span>(<span class="hljs-params">fn, delay</span>) </span>{
+        <span class="hljs-keyword">var</span> last; <span class="hljs-comment">// &#x4E0A;&#x6B21;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;</span>
+        <span class="hljs-keyword">var</span> timer; <span class="hljs-comment">// &#x5B9A;&#x65F6;&#x5668;</span>
+        delay || (delay = <span class="hljs-number">250</span>); <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x95F4;&#x9694;&#x4E3A;250ms</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">var</span> context = <span class="hljs-keyword">this</span>;
+            <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">arguments</span>;
+            <span class="hljs-keyword">var</span> now = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); <span class="hljs-comment">// &#x73B0;&#x5728;&#x7684;&#x65F6;&#x95F4;</span>
+            <span class="hljs-keyword">if</span> (last &amp;&amp; now &lt; last + delay) { <span class="hljs-comment">// &#x5F53;&#x524D;&#x8DDD;&#x79BB;&#x4E0A;&#x6B21;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x5C0F;&#x4E8E;&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;</span>
+                clearTimeout(timer); <span class="hljs-comment">// &#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;</span>
+                timer = setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// delay&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x51FD;&#x6570;</span>
+                    last = now;
+                    fn.apply(context, args);
+                }, delay);
+            } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// &#x5F53;&#x524D;&#x8DDD;&#x79BB;&#x4E0A;&#x6B21;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x76F4;&#x63A5;&#x6267;&#x884C;&#x51FD;&#x6570;</span>
+                last = now;
+                fn.apply(context, args);
+            }
+        };
+    }</code></pre><h3 id="articleHeader1">&#x51FD;&#x6570;&#x9632;&#x6296;&#xFF08;debounce&#xFF09;</h3><h4>&#x540D;&#x8BCD;&#x89E3;&#x91CA;</h4><p>&#x51FD;&#x6570;&#x9632;&#x6296;&#xFF08;debounce&#xFF09;&#xFF1A;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#x5FC5;&#x987B;&#x5927;&#x4E8E;&#x6216;&#x7B49;&#x4E8E;&#x4E00;&#x5B9A;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x624D;&#x4F1A;&#x6267;&#x884C;&#x8C03;&#x7528;&#x65B9;&#x6CD5;</p><h4>&#x4F7F;&#x7528;&#x573A;&#x666F;</h4><p>&#x6587;&#x672C;&#x8F93;&#x5165;keydown &#x4E8B;&#x4EF6;<br>&#x7B49;&#x7B49;...</p><h4>&#x51FD;&#x6570;&#x9632;&#x6296;&#xFF08;debounce&#xFF09;&#x7B80;&#x5355;&#x5B9E;&#x73B0;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    function debounce(fn, delay) {
+        var timer; // &#x5B9A;&#x65F6;&#x5668;
+        delay || (delay = 250); // &#x9ED8;&#x8BA4;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;250ms
+        return function() {
+            var context = this;
+            var args = arguments;
+            clearTimeout(timer); // &#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;
+            timer = setTimeout(function() { // delay&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x51FD;&#x6570;
+                fn.apply(context, args);
+            }, delay);
+        };
+    }" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">fn, delay</span>) </span>{
+        <span class="hljs-keyword">var</span> timer; <span class="hljs-comment">// &#x5B9A;&#x65F6;&#x5668;</span>
+        delay || (delay = <span class="hljs-number">250</span>); <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;250ms</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">var</span> context = <span class="hljs-keyword">this</span>;
+            <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">arguments</span>;
+            clearTimeout(timer); <span class="hljs-comment">// &#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;</span>
+            timer = setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// delay&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x51FD;&#x6570;</span>
+                fn.apply(context, args);
+            }, delay);
+        };
+    }</code></pre>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>Javascript-函数节流与函数防抖</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016548877" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016548877</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/ffa82191/">https://alili.tech/archive/ffa82191/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">函数节流（throttle）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">函数节流（throttle）简单实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">函数防抖（debounce）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">函数防抖（debounce）简单实现</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number"></span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number"></span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

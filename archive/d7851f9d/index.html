@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="redis&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x63D0;&amp;#x4F9B;&amp;#x591A;&amp;#x79CD;&amp;#x6570;&amp;#x636E;&amp;#x7C7B;&amp;#x578B;&amp;#x7684;&amp;#x5F00;&amp;#x6E90;key-value&amp;#x5B58;&amp;#x50A8;&amp;#x7CFB;&amp;#x7EDF;&amp;#xFF0C;&amp;#x901A;&amp;#x5E38;&amp;#x5C06;&amp;#x6570;&amp;#">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩转Redis - 使用有序集合(sorted sets)实现投票游戏">
+<meta property="og:url" content="https://alili.tech/archive/d7851f9d/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="redis&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x63D0;&amp;#x4F9B;&amp;#x591A;&amp;#x79CD;&amp;#x6570;&amp;#x636E;&amp;#x7C7B;&amp;#x578B;&amp;#x7684;&amp;#x5F00;&amp;#x6E90;key-value&amp;#x5B58;&amp;#x50A8;&amp;#x7CFB;&amp;#x7EDF;&amp;#xFF0C;&amp;#x901A;&amp;#x5E38;&amp;#x5C06;&amp;#x6570;&amp;#">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016530385">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016530386">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016530387">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016530388">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.547Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="玩转Redis - 使用有序集合(sorted sets)实现投票游戏">
+<meta name="twitter:description" content="redis&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x63D0;&amp;#x4F9B;&amp;#x591A;&amp;#x79CD;&amp;#x6570;&amp;#x636E;&amp;#x7C7B;&amp;#x578B;&amp;#x7684;&amp;#x5F00;&amp;#x6E90;key-value&amp;#x5B58;&amp;#x50A8;&amp;#x7CFB;&amp;#x7EDF;&amp;#xFF0C;&amp;#x901A;&amp;#x5E38;&amp;#x5C06;&amp;#x6570;&amp;#">
+<meta name="twitter:image" content="https://static.alili.tech/img/remote/1460000016530385">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>玩转Redis - 使用有序集合(sorted sets)实现投票游戏 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/d7851f9d/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/d7851f9d/",
+      "appid": "1613049289050283", 
+      "title": "玩转Redis - 使用有序集合(sorted sets)实现投票游戏 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:51"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/52ab4dd9/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/b715e759/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/d7851f9d/&text=玩转Redis - 使用有序集合(sorted sets)实现投票游戏" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/d7851f9d/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/d7851f9d/&text=玩转Redis - 使用有序集合(sorted sets)实现投票游戏" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/d7851f9d/&title=玩转Redis - 使用有序集合(sorted sets)实现投票游戏" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/d7851f9d/&is_video=false&description=玩转Redis - 使用有序集合(sorted sets)实现投票游戏" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=玩转Redis - 使用有序集合(sorted sets)实现投票游戏&body=Check out this article: https://alili.tech/archive/d7851f9d/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/d7851f9d/&title=玩转Redis - 使用有序集合(sorted sets)实现投票游戏" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/d7851f9d/&title=玩转Redis - 使用有序集合(sorted sets)实现投票游戏" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/d7851f9d/&title=玩转Redis - 使用有序集合(sorted sets)实现投票游戏" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/d7851f9d/&title=玩转Redis - 使用有序集合(sorted sets)实现投票游戏" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">什么是有序集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">设计投票游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">2.1.</span> <span class="toc-text">投票游戏的用户故事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">2.2.</span> <span class="toc-text">游戏流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader4"><span class="toc-number">3.</span> <span class="toc-text">编码实现redis的调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader5"><span class="toc-number">3.1.</span> <span class="toc-text">redis-cli伪代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader6"><span class="toc-number">3.2.</span> <span class="toc-text">node.js代码</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        玩转Redis - 使用有序集合(sorted sets)实现投票游戏
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-03T02:30:13.000Z" itemprop="datePublished">2018-11-03</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <blockquote>redis&#x662F;&#x4E00;&#x79CD;&#x63D0;&#x4F9B;&#x591A;&#x79CD;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x5F00;&#x6E90;key-value&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#xFF0C;&#x901A;&#x5E38;&#x5C06;&#x6570;&#x636E;&#x5168;&#x90E8;&#x5B58;&#x50A8;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x3002;</blockquote><p><span class="img-wrap"><img data-src="/img/remote/1460000016530385" src="https://static.alili.tech/img/remote/1460000016530385" alt="child" title="child" style="cursor:pointer;display:inline"></span></p><p>redis&#x662F;&#x76EE;&#x524D;&#x6700;&#x53D7;&#x6B22;&#x8FCE;&#x7684;key-value&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#xFF0C;&#x662F;&#x57FA;&#x4E8E;&#x5185;&#x5B58;&#x5B58;&#x50A8;kv&#x7684;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5408;&#x7406;&#x7684;&#x4F7F;&#x7528;redis&#x4F5C;&#x4E3A;&#x7F13;&#x5B58;&#xFF0C;&#x53EF;&#x4EE5;&#x6781;&#x5927;&#x7684;&#x6539;&#x5584;&#x7CFB;&#x7EDF;&#x7684;&#x6027;&#x80FD;&#x548C;&#x670D;&#x52A1;&#x5668;&#x8BF7;&#x6C42;&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#x3002;</p><p>redis&#x9664;&#x4E86;&#x57FA;&#x672C;&#x7684;kv&#x5B58;&#x50A8;&#x4EE5;&#x5916;&#xFF0C;&#x8FD8;&#x5B9E;&#x73B0;&#x4E86;&#x54C8;&#x5E0C;(Map), &#x5217;&#x8868;(list), &#x96C6;&#x5408;(sets) &#x548C; &#x6709;&#x5E8F;&#x96C6;&#x5408;(sorted sets)&#x7B49;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1B;&#x7ED3;&#x5408;&#x5185;&#x5B58;&#x548C;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5728;&#x4E1A;&#x52A1;&#x529F;&#x80FD;&#x5B9E;&#x73B0;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x66F4;&#x7075;&#x6D3B;&#x7684;&#x5B9E;&#x73B0;&#x5F88;&#x591A;&#x7279;&#x6027;&#x3002;</p><p>&#x4ECA;&#x5929;&#x4ECB;&#x7ECD;&#x7684;&#x662F;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#xFF0C;&#x8FD9;&#x79CD;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x5B9E;&#x9645;&#x7684;&#x4E1A;&#x52A1;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#xFF0C;&#x5E76;&#x4E14;&#x6536;&#x83B7;&#x5230;&#x4E00;&#x4E9B;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x7ECF;&#x9A8C;&#x3002;</p><h2 id="articleHeader0">&#x4EC0;&#x4E48;&#x662F;&#x6709;&#x5E8F;&#x96C6;&#x5408;</h2><p>&#x5728;redis&#x63D0;&#x4F9B;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E2D;&#xFF0C;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#xFF08;Sorted Set&#xFF09;&#x548C;&#x96C6;&#x5408;&#xFF08;Set&#xFF09;&#xFF0C;&#x5728;&#x96C6;&#x5408;&#x4E2D;&#x4E0D;&#x80FD;&#x6DFB;&#x52A0;&#x91CD;&#x590D;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x76F8;&#x540C;&#x503C;&#x7684;&#x5143;&#x7D20;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#xFF1B;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x4E0D;&#x540C;&#x4E8E;&#x96C6;&#x5408;&#x7684;&#x662F;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x7ED9;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;double&#x7C7B;&#x578B;&#x7684;&#x5206;&#x6570;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x503C;&#xFF0C;redis&#x4E3A;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x6210;&#x5458;&#x8FDB;&#x884C;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x7684;&#x6392;&#x5E8F;&#x3002;</p><p><span class="img-wrap"><img data-src="/img/remote/1460000016530386" src="https://static.alili.tech/img/remote/1460000016530386" alt="skiplist" title="skiplist" style="cursor:pointer;display:inline"></span></p><p>&#x5728;redis&#x4E2D;&#xFF0C;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x4E00;&#x79CD;&#x53EB;<a href="http://opendatastructures.org/ods-java/4_Skiplists.html" rel="external nofollow noopener noreferrer" target="_blank">skiplist</a>&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x8FD9;&#x79CD;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x53EF;&#x4EE5;&#x8BA9;get&#x3001;set&#x3001;add&#x548C;remove&#x7B49;&#x64CD;&#x4F5C;&#x7684;&#x9884;&#x671F;&#x65F6;&#x95F4;&#x8FBE;&#x5230;<code>O(log N)</code>&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x6709;&#x5174;&#x8DA3;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x4E86;&#x89E3;&#x3002;</p><p>&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x63D0;&#x4F9B;&#x4E86;&#x4E30;&#x5BCC;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5F88;&#x591A;&#x5E94;&#x7528;&#x573A;&#x666F;&#x5E94;&#x7528;&#x3002;</p><ul><li>zunionstore &#x662F;&#x6C42;&#x4E24;&#x4E2A;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x7684;&#x5E76;&#x96C6;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5408;&#x5E76;&#x4E24;&#x4E2A;&#x6295;&#x7968;&#x4E2D;&#x6240;&#x6709;&#x53C2;&#x4E0E;&#x7684;&#x4EBA;&#x7684;&#x6392;&#x884C;&#x699C;&#x3002;</li><li>zinterstore &#x662F;&#x6C42;&#x4E24;&#x4E2A;&#x96C6;&#x5408;&#x7684;&#x4EA4;&#x96C6;&#xFF0C;&#x901A;&#x8FC7;&#x5B83;&#xFF0C;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x540C;&#x65F6;&#x53C2;&#x52A0;&#x591A;&#x4E2A;&#x5019;&#x9009;&#x4EBA;&#x6295;&#x7968;&#x7684;&#x540D;&#x5355;&#x5217;&#x8868;&#x3002;</li><li>zrevrank &#x65B9;&#x4FBF;&#x7684;&#x67E5;&#x8BE2;&#x67D0;&#x4E2A;&#x5143;&#x7D20;&#x5728;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6295;&#x7968;&#x7684;&#x6392;&#x540D;&#x3002;</li><li>zscore &#x7528;&#x6765;&#x67E5;&#x8BE2;&#x67D0;&#x4E2A;&#x5143;&#x7D20;&#x5728;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x5206;&#x6570;</li><li>zrevrank &#x8FD4;&#x56DE;&#x67D0;&#x4E2A;&#x5143;&#x7D20;&#x5728;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;</li><li>zrevrangebyscore &#x83B7;&#x53D6;&#x67D0;&#x4E2A;&#x5206;&#x6570;&#x533A;&#x95F4;&#x5185;&#x5143;&#x7D20;&#x7684;&#x6392;&#x884C;&#x699C;</li></ul><p>&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x63D0;&#x4F9B;&#x4E86;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x548C;&#x4ECE;&#x5927;&#x5230;&#x5C0F;&#x4E24;&#x79CD;&#x6392;&#x884C;&#x699C;&#xFF0C;&#x5176;&#x4E2D;&#x6709;rev&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4ECE;&#x5927;&#x5230;&#x5C0F;&#x7684;&#x96C6;&#x5408;&#x3002;</p><h2 id="articleHeader1">&#x8BBE;&#x8BA1;&#x6295;&#x7968;&#x6E38;&#x620F;</h2><p>&#x4E4B;&#x6240;&#x4EE5;&#x4F1A;&#x5728;&#x6295;&#x7968;&#x6E38;&#x620F;&#x4E2D;&#x9009;&#x7528;redis&#xFF0C;&#x4E3B;&#x8981;&#x8003;&#x8651;&#x9AD8;&#x5E76;&#x53D1;&#x7684;&#x652F;&#x6301;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x7684;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x56E0;&#x4E3A;&#x6295;&#x7968;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x6709;&#x5F88;&#x9AD8;&#x7684;&#x5E76;&#x53D1;&#x6295;&#x7968;&#x548C;&#x5B9E;&#x65F6;&#x6295;&#x7968;&#x7ED3;&#x679C;&#x67E5;&#x8BE2;&#xFF0C;&#x5982;&#x679C;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x90FD;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x9020;&#x6210;&#x8F83;&#x5927;&#x7684;&#x8D1F;&#x8F7D;&#x3002;&#x7ECF;&#x8FC7;&#x8003;&#x5BDF;&#x6280;&#x672F;&#x65B9;&#x6848;&#x548C;&#x5B9E;&#x73B0;&#x6210;&#x672C;&#xFF0C;&#x51B3;&#x5B9A;&#x91C7;&#x7528;redis&#x63D0;&#x4F9B;&#x7684;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#xFF0C;&#x5B9E;&#x73B0;&#x6295;&#x7968;&#x8FC7;&#x7A0B;&#x548C;&#x5B9E;&#x65F6;&#x6392;&#x540D;&#x7684;&#x5C55;&#x793A;&#xFF0C;&#x76F4;&#x63A5;&#x8BFB;&#x53D6;&#x7F13;&#x5B58;&#xFF0C;&#x907F;&#x514D;&#x4E86;&#x975E;&#x6838;&#x5FC3;&#x4E1A;&#x52A1;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x7684;&#x7A81;&#x53D1;&#x9AD8;&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x3002;</p><h3 id="articleHeader2">&#x6295;&#x7968;&#x6E38;&#x620F;&#x7684;&#x7528;&#x6237;&#x6545;&#x4E8B;</h3><ol><li>&#x521B;&#x5EFA;&#x6295;&#x7968;&#x7684;&#x5019;&#x9009;&#x4EBA;</li><li>&#x521B;&#x5EFA;&#x7528;&#x6237;</li><li>&#x7528;&#x6237;&#x53C2;&#x52A0;&#x6D3B;&#x52A8;&#xFF0C;&#x83B7;&#x5F97;&#x4E00;&#x5B9A;&#x6570;&#x91CF;&#x7684;&#x6295;&#x7968;&#x989D;&#x5EA6;</li><li>&#x7528;&#x6237;&#x4F7F;&#x7528;&#x6295;&#x7968;&#x989D;&#x5EA6;&#x4E3A;&#x5019;&#x9009;&#x4EBA;&#x6295;&#x7968;</li><li>&#x5019;&#x9009;&#x4EBA;&#x67E5;&#x770B;&#x4E3A;&#x81EA;&#x5DF1;&#x6295;&#x7968;&#x7684;&#x7528;&#x6237;&#x7684;&#x8BA1;&#x7968;&#x6392;&#x540D;</li><li>&#x6240;&#x6709;&#x4EBA;&#x67E5;&#x770B;&#x5B9E;&#x65F6;&#x7684;&#x5019;&#x9009;&#x4EBA;&#x9009;&#x7968;&#x6392;&#x540D;</li></ol><h3 id="articleHeader3">&#x6E38;&#x620F;&#x6D41;&#x7A0B;</h3><p><span class="img-wrap"><img data-src="/img/remote/1460000016530387" src="https://static.alili.tech/img/remote/1460000016530387" alt="vote" title="vote" style="cursor:pointer;display:inline"></span></p><p>&#x9996;&#x5148;&#x662F;&#x53EF;&#x4EE5;&#x6709;&#x7BA1;&#x7406;&#x5458;&#xFF0C;&#x521B;&#x5EFA;&#x5019;&#x9009;&#x4EBA;&#x548C;&#x7528;&#x6237;&#xFF0C;&#x6216;&#x8005;&#x5019;&#x9009;&#x4EBA;&#x548C;&#x7528;&#x6237;&#x81EA;&#x5DF1;&#x6CE8;&#x518C;&#xFF0C;&#x8FD9;&#x4E2A;&#x53D6;&#x51B3;&#x4E8E;&#x5177;&#x4F53;&#x7684;&#x573A;&#x666F;&#x7684;&#x9700;&#x8981;&#x3002;&#x672C;&#x6B21;demo&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#x662F;&#x7528;&#x6237;&#x548C;&#x5019;&#x9009;&#x4EBA;&#x81EA;&#x5DF1;&#x6CE8;&#x518C;&#x7684;&#x6A21;&#x5F0F;&#x3002;&#x5B58;&#x50A8;&#x7528;&#x6237;&#x548C;&#x5019;&#x9009;&#x4EBA;&#x4FE1;&#x606F;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x5B9E;&#x73B0;&#x53EF;&#x4EE5;&#x7528;redis&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;key/value&#xFF0C;&#x672C;&#x8EAB;&#x5C31;&#x662F;hash&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;redis&#x63D0;&#x4F9B;&#x7684;HASH&#x7C7B;&#x578B;&#x3002;</p><p>&#x521B;&#x5EFA;&#x7528;&#x6237;&#x4EE5;&#x540E;&#xFF0C;&#x4E3A;&#x7528;&#x6237;&#x5206;&#x914D;&#x6295;&#x7968;&#x989D;&#x5EA6;&#x662F;&#x8981;&#x505A;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x901A;&#x8FC7;redis&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;&#xFF0C;<code>INCR</code>&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x64CD;&#x4F5C;&#x7684;&#x539F;&#x5B50;&#x6027;&#x3002;&#x6295;&#x7968;&#x8FC7;&#x7A0B;&#x540C;&#x6837;&#x5728;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0A;&#x51CF;&#x53BB;&#x4E00;&#x5B9A;&#x7684;&#x503C;&#xFF0C;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5E76;&#x53D1;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x8D85;&#x8FC7;&#x81EA;&#x5DF1;&#x62E5;&#x6709;&#x7684;&#x989D;&#x5EA6;&#xFF0C;&#x9700;&#x8981;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x9501;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x83B7;&#x5F97;&#x9501;&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x80FD;&#x505A;<code>DECR</code>&#x64CD;&#x4F5C;&#x3002;</p><p>&#x6295;&#x7968;&#x6263;&#x51CF;&#x7528;&#x6237;&#x7684;&#x989D;&#x5EA6;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x64CD;&#x4F5C;&#x6838;&#x5FC3;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x3002;&#x7B2C;&#x4E00;&#x6B65;&#x662F;&#x4E3A;&#x7279;&#x5B9A;&#x7684;&#x5019;&#x9009;&#x4EBA;&#x589E;&#x52A0;&#x4E0A;&#x83B7;&#x5F97;&#x7684;&#x6295;&#x7968;&#xFF0C;&#x8FD9;&#x4E2A;&#x662F;&#x6240;&#x6709;&#x5019;&#x9009;&#x4EBA;&#x7684;id&#x4F5C;&#x4E3A;&#x952E;&#x7684;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#xFF0C;&#x5206;&#x6570;&#x5C31;&#x662F;&#x83B7;&#x5F97;&#x7684;&#x603B;&#x7968;&#x6570;&#xFF1B;&#x540C;&#x65F6;&#x5728;&#x7528;&#x6237;&#x9488;&#x5BF9;&#x8FD9;&#x540D;&#x5019;&#x9009;&#x4EBA;&#x7684;&#x6295;&#x7968;&#x8BB0;&#x5F55;&#x4E0A;&#xFF0C;&#x4E5F;&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;&#x7528;&#x6237;&#x4E3A;&#x540C;&#x4E00;&#x4E2A;&#x5019;&#x9009;&#x4EBA;&#x6295;&#x7968;&#x7684;&#x6392;&#x540D;&#x3002;</p><p>&#x5B9E;&#x73B0;&#x4E0A;&#x9762;&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#xFF0C;&#x83B7;&#x5F97;&#x5B9E;&#x65F6;&#x6295;&#x7968;&#x6392;&#x540D;&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x4EF6;&#x5F88;&#x8F7B;&#x677E;&#x7684;&#x5DE5;&#x4F5C;&#x3002;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x63D0;&#x4F9B;&#x7684;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7684;&#x67E5;&#x8BE2;&#x51FA;&#x5404;&#x79CD;&#x6392;&#x540D;&#x6709;&#x5173;&#x7684;&#x540D;&#x5355;&#x3002;</p><h2 id="articleHeader4">&#x7F16;&#x7801;&#x5B9E;&#x73B0;redis&#x7684;&#x8C03;&#x7528;</h2><p>&#x8BBE;&#x8BA1;&#x597D;&#x6E38;&#x620F;&#x6D41;&#x7A0B;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x76F4;&#x63A5;&#x52A8;&#x624B;&#x5B9E;&#x73B0;&#x4E86;&#xFF0C;&#x4E0B;&#x9762;&#x7528;redis-cli&#x547D;&#x4EE4;&#xFF0C;&#x4EE5;&#x4F2A;&#x4EE3;&#x7801;&#x7684;&#x5F62;&#x5F0F;&#x5C55;&#x793A;&#x4E00;&#x4E0B;&#x7ADE;&#x731C;&#x7684;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;redis&#x5BA2;&#x6237;&#x7AEF;&#x4E0B;&#x67E5;&#x770B;&#x6548;&#x679C;&#x3002;</p><h3 id="articleHeader5">redis-cli&#x4F2A;&#x4EE3;&#x7801;</h3><ol><li>&#x521B;&#x5EFA;&#x7528;&#x6237;&#x548C;&#x7ADE;&#x9009;&#x7684;&#x5019;&#x9009;&#x4EBA;</li></ol><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="set voter:1 0
+set voter:2 0
+set voter:3 0
+
+set elector:1 name
+set elector:2 name" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs applescript"><code><span class="hljs-keyword">set</span> voter:<span class="hljs-number">1</span> <span class="hljs-number">0</span>
+<span class="hljs-keyword">set</span> voter:<span class="hljs-number">2</span> <span class="hljs-number">0</span>
+<span class="hljs-keyword">set</span> voter:<span class="hljs-number">3</span> <span class="hljs-number">0</span>
+
+<span class="hljs-keyword">set</span> elector:<span class="hljs-number">1</span> <span class="hljs-built_in">name</span>
+<span class="hljs-keyword">set</span> elector:<span class="hljs-number">2</span> <span class="hljs-built_in">name</span></code></pre><ol><li>&#x4E3A;&#x7528;&#x6237;&#x5206;&#x914D;&#x989D;&#x5EA6;</li></ol><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="incrby voter:1 50
+incrby voter:2 40
+incrby voter:3 60" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs css"><code><span class="hljs-selector-tag">incrby</span> <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:1</span> 50
+<span class="hljs-selector-tag">incrby</span> <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:2</span> 40
+<span class="hljs-selector-tag">incrby</span> <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:3</span> 60</code></pre><ol><li>&#x7528;&#x6237;&#x6295;&#x7968;</li></ol><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="# voter:1
+# &#x589E;&#x52A0;&#x603B;&#x699C;&#x5355;
+zincrby elector:total:list 25 elector:1
+# &#x589E;&#x52A0;&#x7ADE;&#x9009;&#x4EBA;&#x699C;&#x5355;
+zincrby elector:single:elector:1 25 voter:1
+decrby voter:1 25
+
+# voter:2
+zincrby elector:total:list 12 elector:1
+zincrby elector:single:elector:1 12 voter:2
+decrby voter:2 12
+
+# voter:3
+zincrby elector:total:list 40 elector:2
+zincrby elector:single:elector:2 40 voter:3
+decrby voter:3 40" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs css"><code># <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:1</span>
+# &#x589E;&#x52A0;&#x603B;&#x699C;&#x5355;
+<span class="hljs-selector-tag">zincrby</span> <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:total</span><span class="hljs-selector-pseudo">:list</span> 25 <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:1</span>
+# &#x589E;&#x52A0;&#x7ADE;&#x9009;&#x4EBA;&#x699C;&#x5355;
+<span class="hljs-selector-tag">zincrby</span> <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:single</span><span class="hljs-selector-pseudo">:elector</span><span class="hljs-selector-pseudo">:1</span> 25 <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:1</span>
+<span class="hljs-selector-tag">decrby</span> <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:1</span> 25
+
+# <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:2</span>
+<span class="hljs-selector-tag">zincrby</span> <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:total</span><span class="hljs-selector-pseudo">:list</span> 12 <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:1</span>
+<span class="hljs-selector-tag">zincrby</span> <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:single</span><span class="hljs-selector-pseudo">:elector</span><span class="hljs-selector-pseudo">:1</span> 12 <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:2</span>
+<span class="hljs-selector-tag">decrby</span> <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:2</span> 12
+
+# <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:3</span>
+<span class="hljs-selector-tag">zincrby</span> <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:total</span><span class="hljs-selector-pseudo">:list</span> 40 <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:2</span>
+<span class="hljs-selector-tag">zincrby</span> <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:single</span><span class="hljs-selector-pseudo">:elector</span><span class="hljs-selector-pseudo">:2</span> 40 <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:3</span>
+<span class="hljs-selector-tag">decrby</span> <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:3</span> 40</code></pre><ol><li>&#x5404;&#x79CD;&#x699C;&#x5355;</li></ol><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="# &#x603B;&#x5019;&#x9009;&#x4EBA;&#x699C;&#x5355;
+zrevrange elector:total:list 0 -1 WITHSCORES
+
+# &#x6295;&#x5019;&#x9009;&#x4EBA;1&#x7684;&#x540D;&#x5355;
+zrevrange elector:single:elector:1 0 -1 WITHSCORES
+
+# &#x521B;&#x5EFA;&#x7528;&#x6237;&#x6295;&#x7968;&#x6392;&#x884C;
+zunionstore voter:total:elector 2 elector:single:elector:1 elector:single:elector:2
+# &#x67E5;&#x770B;&#x7528;&#x6237;1&#x7684;&#x6392;&#x540D;(&#x8FD4;&#x56DE;&#x4E0B;&#x6807;&#x4ECE;0&#x5F00;&#x59CB;)
+zrevrank voter:total:elector voter:1" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs less"><code># &#x603B;&#x5019;&#x9009;&#x4EBA;&#x699C;&#x5355;
+<span class="hljs-selector-tag">zrevrange</span> <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:total</span><span class="hljs-selector-pseudo">:list</span> <span class="hljs-selector-tag">0</span> <span class="hljs-selector-tag">-1</span> <span class="hljs-selector-tag">WITHSCORES</span>
+
+# &#x6295;&#x5019;&#x9009;&#x4EBA;<span class="hljs-selector-tag">1</span>&#x7684;&#x540D;&#x5355;
+<span class="hljs-selector-tag">zrevrange</span> <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:single</span><span class="hljs-selector-pseudo">:elector</span><span class="hljs-selector-pseudo">:1</span> <span class="hljs-selector-tag">0</span> <span class="hljs-selector-tag">-1</span> <span class="hljs-selector-tag">WITHSCORES</span>
+
+# &#x521B;&#x5EFA;&#x7528;&#x6237;&#x6295;&#x7968;&#x6392;&#x884C;
+<span class="hljs-selector-tag">zunionstore</span> <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:total</span><span class="hljs-selector-pseudo">:elector</span> <span class="hljs-selector-tag">2</span> <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:single</span><span class="hljs-selector-pseudo">:elector</span><span class="hljs-selector-pseudo">:1</span> <span class="hljs-selector-tag">elector</span><span class="hljs-selector-pseudo">:single</span><span class="hljs-selector-pseudo">:elector</span><span class="hljs-selector-pseudo">:2</span>
+# &#x67E5;&#x770B;&#x7528;&#x6237;<span class="hljs-selector-tag">1</span>&#x7684;&#x6392;&#x540D;(&#x8FD4;&#x56DE;&#x4E0B;&#x6807;&#x4ECE;<span class="hljs-number">0</span>&#x5F00;&#x59CB;)
+<span class="hljs-selector-tag">zrevrank</span> <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:total</span><span class="hljs-selector-pseudo">:elector</span> <span class="hljs-selector-tag">voter</span><span class="hljs-selector-pseudo">:1</span></code></pre><p>&#x4E0B;&#x56FE;&#x662F;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p><p><span class="img-wrap"><img data-src="/img/remote/1460000016530388" src="https://static.alili.tech/img/remote/1460000016530388" alt="redis-cli" title="redis-cli" style="cursor:pointer;display:inline"></span></p><h3 id="articleHeader6">node.js&#x4EE3;&#x7801;</h3><blockquote>&#x67E5;&#x770B;&#x4EE3;&#x7801;<a href="https://github.com/liuwill/play-redis-demo" rel="external nofollow noopener noreferrer" target="_blank">Node.js&#x5B9E;&#x73B0;</a></blockquote><p>&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x7528;node.js&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x540E;&#x7AEF;&#x670D;&#x52A1;demo&#xFF0C;javascript&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x548C;redis SDK&#x6BD4;&#x8F83;&#x6E05;&#x6670;&#x7684;&#x5C55;&#x793A;&#x539F;&#x751F;&#x547D;&#x4EE4;&#x7684;&#x8C03;&#x7528;&#x6548;&#x679C;&#x3002;demo&#x6F14;&#x793A;&#x4E86;&#x5404;&#x79CD;api&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x5B89;&#x88C5;&#x8BF4;&#x660E;&#xFF0C;&#x4F7F;&#x7528;curl&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x7684;&#x63A5;&#x53E3;&#x6548;&#x679C;&#x3002;</p><p>&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5982;&#x679C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#xFF0C;&#x5176;&#x5B9E;&#x6574;&#x4E2A;&#x6295;&#x7968;&#x8FC7;&#x7A0B;&#x53EA;&#x9700;&#x8981;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#x51E0;&#x4E2A;&#x547D;&#x4EE4;&#x5C31;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x3002;&#x800C;demo&#x4E2D;&#x6F14;&#x793A;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x76F8;&#x6BD4;&#x547D;&#x4EE4;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x5F88;&#x591A;&#x63D0;&#x4F9B;&#x63A5;&#x53E3;&#x8BBF;&#x95EE;&#x548C;sdk&#x8C03;&#x7528;&#x76F8;&#x5173;&#x7684;&#x4EE3;&#x7801;&#xFF1B;&#x5982;&#x679C;&#x6700;&#x540E;&#x4E3A;&#x751F;&#x4EA7;&#x5E94;&#x7528;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x6295;&#x7968;&#x7A0B;&#x5E8F;&#xFF0C;&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x7684;&#x9700;&#x8981;&#x548C;&#x5BB9;&#x91CF;&#x89C4;&#x5212;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x8003;&#x8651;&#x66F4;&#x591A;&#x7684;&#x7EC6;&#x8282;&#xFF0C;&#x8F6F;&#x4EF6;&#x5F00;&#x53D1;&#x672C;&#x8EAB;&#x4E5F;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x4ECE;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x60F3;&#x6CD5;&#x548C;&#x521B;&#x610F;&#x5F00;&#x59CB;&#xFF0C;&#x7136;&#x540E;&#x9700;&#x8981;&#x8003;&#x8651;&#x66F4;&#x591A;&#x7684;&#x73B0;&#x5B9E;&#x573A;&#x666F;&#x548C;&#x9700;&#x6C42;&#xFF0C;&#x4E0D;&#x65AD;&#x7684;&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#x8FD8;&#x539F;&#x51FA;&#x6574;&#x4E2A;&#x6784;&#x60F3;&#x3002;</p><blockquote>&#x6587;&#xFF0F;liuwill&#xFF08;&#x7B80;&#x4E66;&#x4F5C;&#x8005;&#xFF09;<br>&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://www.jianshu.com/p/697abc56cc75" rel="external nofollow noopener noreferrer" target="_blank">&#x73A9;&#x8F6C;Redis - &#x4F7F;&#x7528;&#x6709;&#x5E8F;&#x96C6;&#x5408;(sorted sets)&#x5B9E;&#x73B0;&#x6295;&#x7968;&#x6E38;&#x620F;</a><br>&#x8457;&#x4F5C;&#x6743;&#x5F52;&#x4F5C;&#x8005;&#x6240;&#x6709;&#xFF0C;&#x8F6C;&#x8F7D;&#x8BF7;&#x8054;&#x7CFB;&#x4F5C;&#x8005;&#x83B7;&#x5F97;&#x6388;&#x6743;&#xFF0C;&#x5E76;&#x6807;&#x6CE8;&#x201C;&#x7B80;&#x4E66;&#x4F5C;&#x8005;&#x201D;&#x3002;</blockquote>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>玩转Redis - 使用有序集合(sorted sets)实现投票游戏</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016529679" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016529679</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/d7851f9d/">https://alili.tech/archive/d7851f9d/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">什么是有序集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">设计投票游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">2.1.</span> <span class="toc-text">投票游戏的用户故事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">2.2.</span> <span class="toc-text">游戏流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader4"><span class="toc-number">3.</span> <span class="toc-text">编码实现redis的调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader5"><span class="toc-number">3.1.</span> <span class="toc-text">redis-cli伪代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader6"><span class="toc-number">3.2.</span> <span class="toc-text">node.js代码</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

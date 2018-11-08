@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="我想在公司的时候,也可以操作我家里的树莓派.可是家里的ip地址是动态的,那我应该怎么办呢? 经过各种网上一顿搜索之后,利用路由器的端口转发或者DMZ,可以做到外网访问内网. 可是我设置完之后,并没有成功.折腾了好久,没有找到原因.最后以失败告终.(我怀疑我买到了假路由器). 各种方案尝试过之后,利用花生壳可以做到外网访问内网,花生壳的叫法是: 内网穿透 进入花生壳的下载地址,选择树莓派版本 下载页">
+<meta name="keywords" content="树莓派,nodejs,ssh,前端,Raspberry,pi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Raspberry之外网访问树莓派">
+<meta property="og:url" content="https://alili.tech/archive/8ad4a3a8/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="我想在公司的时候,也可以操作我家里的树莓派.可是家里的ip地址是动态的,那我应该怎么办呢? 经过各种网上一顿搜索之后,利用路由器的端口转发或者DMZ,可以做到外网访问内网. 可是我设置完之后,并没有成功.折腾了好久,没有找到原因.最后以失败告终.(我怀疑我买到了假路由器). 各种方案尝试过之后,利用花生壳可以做到外网访问内网,花生壳的叫法是: 内网穿透 进入花生壳的下载地址,选择树莓派版本 下载页">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://file.oray.com/service/1507/20150721135050987.jpg">
+<meta property="og:image" content="http://file.oray.com/service/1507/20150721135050957.jpg">
+<meta property="og:image" content="http://file.oray.com/service/1507/20150721135050867.jpg">
+<meta property="og:image" content="http://file.oray.com/service/1507/20150721135050812.jpg">
+<meta property="og:image" content="http://file.oray.com/service/1507/20150721135050765.jpg">
+<meta property="og:image" content="http://file.oray.com/service/1507/20150721135050273.jpg">
+<meta property="og:image" content="http://file.oray.com/service/1507/20150721135051580.jpg">
+<meta property="og:image" content="http://file.oray.com/service/1507/20150721135051450.jpg">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Raspberry之外网访问树莓派">
+<meta name="twitter:description" content="我想在公司的时候,也可以操作我家里的树莓派.可是家里的ip地址是动态的,那我应该怎么办呢? 经过各种网上一顿搜索之后,利用路由器的端口转发或者DMZ,可以做到外网访问内网. 可是我设置完之后,并没有成功.折腾了好久,没有找到原因.最后以失败告终.(我怀疑我买到了假路由器). 各种方案尝试过之后,利用花生壳可以做到外网访问内网,花生壳的叫法是: 内网穿透 进入花生壳的下载地址,选择树莓派版本 下载页">
+<meta name="twitter:image" content="http://file.oray.com/service/1507/20150721135050987.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>Raspberry之外网访问树莓派 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/8ad4a3a8/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/8ad4a3a8/",
+      "appid": "1613049289050283", 
+      "title": "Raspberry之外网访问树莓派 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:06"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/58ab432d/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/467ebcb2/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/8ad4a3a8/&text=Raspberry之外网访问树莓派" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/8ad4a3a8/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/8ad4a3a8/&text=Raspberry之外网访问树莓派" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/8ad4a3a8/&title=Raspberry之外网访问树莓派" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/8ad4a3a8/&is_video=false&description=Raspberry之外网访问树莓派" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Raspberry之外网访问树莓派&body=Check out this article: https://alili.tech/archive/8ad4a3a8/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/8ad4a3a8/&title=Raspberry之外网访问树莓派" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/8ad4a3a8/&title=Raspberry之外网访问树莓派" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/8ad4a3a8/&title=Raspberry之外网访问树莓派" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/8ad4a3a8/&title=Raspberry之外网访问树莓派" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        Raspberry之外网访问树莓派
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2017-01-10T20:53:05.000Z" itemprop="datePublished">2017-01-10</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Raspberry-Pi/">Raspberry Pi</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>我想在公司的时候,也可以操作我家里的树莓派.<br>可是家里的ip地址是动态的,那我应该怎么办呢?</p>
+<p>经过各种网上一顿搜索之后,利用路由器的端口转发或者DMZ,可以做到外网访问内网.</p>
+<p>可是我设置完之后,并没有成功.折腾了好久,没有找到原因.最后以失败告终.(我怀疑我买到了假路由器).</p>
+<p>各种方案尝试过之后,利用花生壳可以做到外网访问内网,花生壳的叫法是:</p>
+<p>内网穿透</p>
+<p>进入花生壳的下载地址,选择树莓派版本</p>
+<p><a href="http://hsk.oray.com/download/" rel="external nofollow noopener noreferrer" target="_blank">下载页面</a></p>
+<a id="more"></a>
+<p>复制最新版本的花生壳树莓派版本的最新版下载路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.oray.com/peanuthull/embed/phddns_raspberry.tgz  //下载花生壳</span><br><span class="line">tar zxvf phddns_raspberry.tgz  //解压安装包</span><br></pre></td></tr></table></figure>
+<p><img src="http://file.oray.com/service/1507/20150721135050987.jpg" alt=""></p>
+<p>解压完成后，在当前路径下执行cd phddns2，进入phddns2文件夹，执行./oraynewph start<br>，如提示Oraynewph start success说明花生壳成功安装运行。</p>
+<p>其实我运行oraynewph start的时候并没有成功,</p>
+<p>如果你也碰到同样的情况的话可以输入以下命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$&gt; sudo mkdir -p /usr/oray-app</span><br><span class="line">$&gt; sudo tar -zxvf ./oraynewph.tgz -C /usr/oray-app/</span><br><span class="line">$&gt; sudo rm -rf oraynewph.tgz</span><br><span class="line">$&gt; sudo mv ./parse /usr/oray-app/parse</span><br><span class="line">$&gt; sudo mv ./oray_serve /etc/init.d/oray_serve</span><br><span class="line">$&gt; sudo mv ./oraynewph /bin/oraynewph</span><br><span class="line">$&gt; cd ..</span><br><span class="line">$&gt; rm -rf phddns2</span><br><span class="line">$&gt; sudo touch /tmp/oraynewph_log</span><br><span class="line">$&gt; sudo update-rc.d oray_serve defaults</span><br><span class="line">$&gt; sudo /usr/oray-app/bin/oraynewph -s 0.0.0.0 &amp;&gt;/dev/null &amp;</span><br><span class="line">$&gt; sudo /usr/oray-app/bin/oraysl -a 127.0.0.1 -p 16062 -s phsle01.oray.net:80 -d</span><br></pre></td></tr></table></figure>
+<p><img src="http://file.oray.com/service/1507/20150721135050957.jpg" alt=""></p>
+<p>在任意路径命令行执行 oraynewph status 即可看到花生壳运行状态以及SN码（先复制，有大用！）。</p>
+<p>最后:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo oraynewph status //获取到了sn</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://file.oray.com/service/1507/20150721135050867.jpg" alt=""></p>
+<p>在浏览器输入地址：<a href="b.oray.com">b.oray.com</a>，在花生壳管理页面，输入SN码与密码（首次登录默认密码admin）<br><img src="http://file.oray.com/service/1507/20150721135050812.jpg" alt=""></p>
+<p>首次登录需要修改默认密码，完善手机验证和邮箱信息完成初始化。</p>
+<p><img src="http://file.oray.com/service/1507/20150721135050765.jpg" alt=""></p>
+<p>树莓派跟花生棒不一样，没有内置帐号，需要绑定花生壳账号使用，由于B哥在水深火热的大局域网中，所以绑定的是花生壳（内网穿透）账号。<br><img src="http://file.oray.com/service/1507/20150721135050273.jpg" alt=""></p>
+<p>绑定登录成功，可以直接点击页面中间橙色模块 内网映射 添加映射<br><img src="http://file.oray.com/service/1507/20150721135051580.jpg" alt=""></p>
+<p>映射添加完成，然后复制外网访问地址，让我们访问瞅瞅。<br><img src="http://file.oray.com/service/1507/20150721135051450.jpg" alt=""></p>
+<p>拿到这个外网访问的地址,我们就可以利用SSH连接到我们的树莓派了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh pi@xxxx.xxx</span><br></pre></td></tr></table></figure>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/8ad4a3a8/">https://alili.tech/archive/8ad4a3a8/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/467ebcb2/">Raspberry之利用SSH操作树莓派</a></li><li><a href="https://alili.tech/archive/58ab432d/">Raspberry之安装Nodejs</a></li><li><a href="https://alili.tech/archive/9b723d04/">Raspberry之开机启动pm2</a></li><li><a href="https://alili.tech/archive/4befbcf0/">Raspberry之时间自动校准</a></li><li><a href="https://alili.tech/archive/2a0d2aea/">Raspberry之系统安装</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

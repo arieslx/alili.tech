@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="上一篇简单的介绍了Nodejs http模块的get与post方式,但是因为post的配置还是比较繁琐,今天推荐一个模块: node-fetch 安装1npm install node-fetch --save">
+<meta name="keywords" content="Fetch,nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让Nodejs像浏览器一样Fetch你想要的">
+<meta property="og:url" content="https://alili.tech/archive/5bc12a97/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="上一篇简单的介绍了Nodejs http模块的get与post方式,但是因为post的配置还是比较繁琐,今天推荐一个模块: node-fetch 安装1npm install node-fetch --save">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="让Nodejs像浏览器一样Fetch你想要的">
+<meta name="twitter:description" content="上一篇简单的介绍了Nodejs http模块的get与post方式,但是因为post的配置还是比较繁琐,今天推荐一个模块: node-fetch 安装1npm install node-fetch --save">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>让Nodejs像浏览器一样Fetch你想要的 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/5bc12a97/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/5bc12a97/",
+      "appid": "1613049289050283", 
+      "title": "让Nodejs像浏览器一样Fetch你想要的 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:06"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/e06698c9/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/59cf5417/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/5bc12a97/&text=让Nodejs像浏览器一样Fetch你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/5bc12a97/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/5bc12a97/&text=让Nodejs像浏览器一样Fetch你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/5bc12a97/&title=让Nodejs像浏览器一样Fetch你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/5bc12a97/&is_video=false&description=让Nodejs像浏览器一样Fetch你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=让Nodejs像浏览器一样Fetch你想要的&body=Check out this article: https://alili.tech/archive/5bc12a97/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/5bc12a97/&title=让Nodejs像浏览器一样Fetch你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/5bc12a97/&title=让Nodejs像浏览器一样Fetch你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/5bc12a97/&title=让Nodejs像浏览器一样Fetch你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/5bc12a97/&title=让Nodejs像浏览器一样Fetch你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-number">3.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fetch-url-options"><span class="toc-number">3.1.</span> <span class="toc-text">fetch(url, options)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于-url"><span class="toc-number">3.2.</span> <span class="toc-text">关于 url</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        让Nodejs像浏览器一样Fetch你想要的
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2017-02-17T20:32:05.000Z" itemprop="datePublished">2017-02-17</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nodejs/">Nodejs</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>上一篇简单的介绍了Nodejs http模块的get与post方式,<br>但是因为post的配置还是比较繁琐,今天推荐一个模块:</p>
+<p><a href="https://www.npmjs.com/package/node-fetch" rel="external nofollow noopener noreferrer" target="_blank">node-fetch</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install node-fetch --save</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// HTML </span></span><br><span class="line">fetch(<span class="string">'https://github.com/'</span>)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.text();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">body</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(body);</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// JSON  </span></span><br><span class="line">fetch(<span class="string">'https://api.github.com/users/github'</span>)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.json();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(json);</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当网络发生错误</span></span><br><span class="line">fetch(<span class="string">'http://domain.invalid/'</span>)</span><br><span class="line">    .catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// stream 流</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line">fetch(<span class="string">'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png'</span>)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> dest = fs.createWriteStream(<span class="string">'./octocat.png'</span>);</span><br><span class="line">        res.body.pipe(dest);</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// buffer  </span></span><br><span class="line"><span class="keyword">var</span> fileType = <span class="built_in">require</span>(<span class="string">'file-type'</span>);</span><br><span class="line">fetch(<span class="string">'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png'</span>)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.buffer();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">buffer</span>) </span>&#123;</span><br><span class="line">        fileType(buffer);</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">// meta  </span></span><br><span class="line">fetch(<span class="string">'https://github.com/'</span>)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res.ok);</span><br><span class="line">        <span class="built_in">console</span>.log(res.status);</span><br><span class="line">        <span class="built_in">console</span>.log(res.statusText);</span><br><span class="line">        <span class="built_in">console</span>.log(res.headers.raw());</span><br><span class="line">        <span class="built_in">console</span>.log(res.headers.get(<span class="string">'content-type'</span>));</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// POST请求  </span></span><br><span class="line">fetch(<span class="string">'http://httpbin.org/post'</span>, &#123; <span class="attr">method</span>: <span class="string">'POST'</span>, <span class="attr">body</span>: <span class="string">'a=1'</span> &#125;)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.json();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(json);</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// post with stream from resumer  </span></span><br><span class="line"><span class="keyword">var</span> resumer = <span class="built_in">require</span>(<span class="string">'resumer'</span>);</span><br><span class="line"><span class="keyword">var</span> stream = resumer().queue(<span class="string">'a=1'</span>).end();</span><br><span class="line">fetch(<span class="string">'http://httpbin.org/post'</span>, &#123; <span class="attr">method</span>: <span class="string">'POST'</span>, <span class="attr">body</span>: stream &#125;)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.json();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(json);</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// post 表单数据</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> FormData = <span class="built_in">require</span>(<span class="string">'form-data'</span>);</span><br><span class="line"><span class="keyword">var</span> form = <span class="keyword">new</span> FormData();</span><br><span class="line">form.append(<span class="string">'a'</span>, <span class="number">1</span>);</span><br><span class="line">fetch(<span class="string">'http://httpbin.org/post'</span>, &#123; <span class="attr">method</span>: <span class="string">'POST'</span>, <span class="attr">body</span>: form &#125;)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.json();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(json);</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// post 表单数据并且修改header </span></span><br><span class="line"><span class="keyword">var</span> FormData = <span class="built_in">require</span>(<span class="string">'form-data'</span>);</span><br><span class="line"><span class="keyword">var</span> form = <span class="keyword">new</span> FormData();</span><br><span class="line">form.append(<span class="string">'a'</span>, <span class="number">1</span>);</span><br><span class="line">fetch(<span class="string">'http://httpbin.org/post'</span>, &#123; <span class="attr">method</span>: <span class="string">'POST'</span>, <span class="attr">body</span>: form, <span class="attr">headers</span>: form.getHeaders() &#125;)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.json();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(json);</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// node 0.12+, yield with co  </span></span><br><span class="line"><span class="keyword">var</span> co = <span class="built_in">require</span>(<span class="string">'co'</span>);</span><br><span class="line">co(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = <span class="keyword">yield</span> fetch(<span class="string">'https://api.github.com/users/github'</span>);</span><br><span class="line">    <span class="keyword">var</span> json = <span class="keyword">yield</span> res.json();</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="fetch-url-options"><a href="#fetch-url-options" class="headerlink" title="fetch(url, options)"></a>fetch(url, options)</h3><p>返回一个 Promise 对象</p>
+<h3 id="关于-url"><a href="#关于-url" class="headerlink" title="关于 url"></a>关于 url</h3><p>必须是一个绝对路径, 例如: <a href="http://www.baidu.com/" rel="external nofollow noopener noreferrer" target="_blank">http://www.baidu.com/</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/5bc12a97/">https://alili.tech/archive/5bc12a97/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/6eff5ac9/">Apache,Nginx,Express,Egg.js 支持前端HTML5 History 模式</a></li><li><a href="https://alili.tech/archive/524de824/">Egg.js 如何支持单页面应用</a></li><li><a href="https://alili.tech/archive/59cf5417/">Nodejs之http模块的get与post请求</a></li><li><a href="https://alili.tech/archive/b36fefc7/">Visual Studio Code隐藏从ts生成的额外js与map文件</a></li><li><a href="https://alili.tech/archive/e06698c9/">Express设置CORS,让浏览器可以跨域访问你的服务器</a></li><li><a href="http://www.hi-linux.com/posts/20296/" rel="external nofollow noopener noreferrer" target="_blank">使用PM2管理Node应用</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-number">3.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fetch-url-options"><span class="toc-number">3.1.</span> <span class="toc-text">fetch(url, options)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于-url"><span class="toc-number">3.2.</span> <span class="toc-text">关于 url</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

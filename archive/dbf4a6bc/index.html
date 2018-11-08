@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="在这里，我们将结合MobX和React Native来创建一个简单的列表应用程序。 如果您正在寻找如何开始使用MobX和React Native，那么这应该是一个很好的选择。 想学习React Native？ 查看 React Native Training_._  要查看最终仓库，请单击 这个.  MobX是一个非常直观的状态管理库，我很容易掌握并启动和运行。 我在开发React和React N">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native with MobX — 入门">
+<meta property="og:url" content="https://alili.tech/archive/dbf4a6bc/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="在这里，我们将结合MobX和React Native来创建一个简单的列表应用程序。 如果您正在寻找如何开始使用MobX和React Native，那么这应该是一个很好的选择。 想学习React Native？ 查看 React Native Training_._  要查看最终仓库，请单击 这个.  MobX是一个非常直观的状态管理库，我很容易掌握并启动和运行。 我在开发React和React N">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01dde62db56c35af01.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t010251351af16d482e.gif">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.459Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Native with MobX — 入门">
+<meta name="twitter:description" content="在这里，我们将结合MobX和React Native来创建一个简单的列表应用程序。 如果您正在寻找如何开始使用MobX和React Native，那么这应该是一个很好的选择。 想学习React Native？ 查看 React Native Training_._  要查看最终仓库，请单击 这个.  MobX是一个非常直观的状态管理库，我很容易掌握并启动和运行。 我在开发React和React N">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t01dde62db56c35af01.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>React Native with MobX — 入门 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/dbf4a6bc/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/dbf4a6bc/",
+      "appid": "1613049289050283", 
+      "title": "React Native with MobX — 入门 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:03"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/2e3f8879/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/8d876f92/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/dbf4a6bc/&text=React Native with MobX — 入门" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/dbf4a6bc/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/dbf4a6bc/&text=React Native with MobX — 入门" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/dbf4a6bc/&title=React Native with MobX — 入门" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/dbf4a6bc/&is_video=false&description=React Native with MobX — 入门" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=React Native with MobX — 入门&body=Check out this article: https://alili.tech/archive/dbf4a6bc/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/dbf4a6bc/&title=React Native with MobX — 入门" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/dbf4a6bc/&title=React Native with MobX — 入门" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/dbf4a6bc/&title=React Native with MobX — 入门" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/dbf4a6bc/&title=React Native with MobX — 入门" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">1.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        React Native with MobX — 入门
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-19T00:00:00.000Z" itemprop="datePublished">2018-10-19</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>在这里，我们将结合MobX和React Native来创建一个简单的列表应用程序。 如果您正在寻找如何开始使用MobX和React Native，那么这应该是一个很好的选择。</p>
+<p><em>想学习React Native？ 查看</em> <a href="http://reactnative.training/" rel="external nofollow noopener noreferrer" target="_blank"><em>React Native Training</em></a>_._</p>
+<p><img src="https://p0.ssl.qhimg.com/t01dde62db56c35af01.png" alt=""></p>
+<p>要查看最终仓库，请单击 <a href="https://github.com/dabit3/react-native-mobx-list-app" rel="external nofollow noopener noreferrer" target="_blank">这个</a>.</p>
+<blockquote>
+<p>MobX是一个非常直观的状态管理库，我很容易掌握并启动和运行。 我在开发React和React Native应用程序时使用了Flux，Alt，Redux和Reflux，我可以毫无疑问地说MobX很快成为我最喜欢的管理状态的方法，因为它很简单。 我期待在未来的项目中使用它，看看项目从何处开始。</p>
+</blockquote>
+<p>这个应用程序将有两个主要组件，一个允许我们创建新列表，另一个允许我们在列表中添加新项目。</p>
+<p><img src="https://p0.ssl.qhimg.com/t010251351af16d482e.gif" alt=""></p>
+<p>首先，我们首先需要创建一个新的React Native应用程序：</p>
+<pre><code class="hljs actionscript">react-<span class="hljs-keyword">native</span> init ReactNativeMobX
+
+</code></pre><p>接下来，我们将继续进入我们创建的新目录并安装我们需要的依赖项： <a href="https://github.com/mobxjs/mobx" rel="external nofollow noopener noreferrer" target="_blank"><strong>mobx</strong></a> 和<a href="https://github.com/mobxjs/mobx-react" rel="external nofollow noopener noreferrer" target="_blank"><strong>mobx-react</strong></a></p>
+<pre><code class="hljs stylus">npm <span class="hljs-selector-tag">i</span> mobx mobx-react --save
+
+</code></pre><p>我们还需要安装一个babel插件，以便我们可以使用ES7装饰器：</p>
+<pre><code class="hljs stylus">npm <span class="hljs-selector-tag">i</span> babel-plugin-<span class="hljs-attribute">transform</span>-decorators-legacy --save-dev
+
+</code></pre><p>现在，让我们更新.babelrc文件来配置我们的babel插件：</p>
+<pre><code class="hljs json">{  <span class="hljs-attr">"presets"</span>: [<span class="hljs-string">"react-native"</span>],  <span class="hljs-attr">"plugins"</span>: [<span class="hljs-string">"transform-decorators-legacy"</span>]}
+
+</code></pre><blockquote>
+<p>我们只需要设置react-native预设，因为我们正在编写一个自定义的.babelrc文件。 我们将react-native预设设置为获取默认配置，然后指定更多在其之前运行的插件（在我们的示例中为transform-decorators-legacy插件）。</p>
+</blockquote>
+<p>现在我们已经配置了项目，我们将开始编写一些代码。</p>
+<p>在根目录中，创建一个名为app的文件夹。 在应用程序中，创建一个名为mobx的文件夹。 在mobx中，创建一个名为listStore.js的文件：</p>
+<ol>
+<li><p>从 <strong>mobx</strong> 导入 <strong>observable</strong> - <strong>observable</strong> 为现有数据结构（如对象，数组和类实例）添加了可观察的功能。 这可以通过使用 <a href="http://mobxjs.github.io/mobx/refguide/observable-decorator.html" rel="external nofollow noopener noreferrer" target="_blank"><strong>@ observable</strong></a> 装饰器（ES.Next）或通过调用<a href="http://mobxjs.github.io/mobx/refguide/observable.html" rel="external nofollow noopener noreferrer" target="_blank">observable</a>或<a href="http://mobxjs.github.io/mobx/refguide/extend-observable.html" rel="external nofollow noopener noreferrer" target="_blank">extendObservable</a> 函数（ES5）来注释类属性来完成。</p>
+</li>
+<li><p>创建一个新的命名为<strong>ObservableListStore</strong>的类</p>
+</li>
+<li><p>创建一个可观察的数组叫 <strong>list</strong></p>
+</li>
+<li><p>创建三个要在列表数组上使用的方法</p>
+</li>
+<li><p>创建 <strong>ObservableListStore</strong> 的新实例并将其存储在 <strong>observableListStore</strong> 变量中</p>
+</li>
+<li><p>导出store</p>
+</li>
+</ol>
+<p>现在我们已经创建了一个store，让我们进入应用程序的index文件并更改入口文件以使用store并添加创建导航。 如果您正在为Android开发，那将是 <strong>index.android.js</strong> 。 如果您正在为iOS开发，那将是 <strong>index.ios.js</strong> :</p>
+<p>在我们的index文件中，我们创建了一个基本的导航状态并导入了我们新创建的store。 我们在 <strong>initialRoute</strong> 中将store作为prop传递下来。 我们还将我们的初始路由设置为我们尚未创建的组件， <strong>App</strong> 。 我们的 <strong>App</strong> 组件可以通过props访问store。</p>
+<p>在configureScene中，我们检查类型是否为“Modal”，如果是，我们调用floatFromBottom sceneConfig，它将我们的下一个场景作为modal。</p>
+<p>现在，让我们创建App组件。 这将是一个相当大的组件，并在将来包含很多，但基本上我们正在创建一个用户界面，允许我们添加和删除列表项。 我们将通过props从我们的store访问我们的store提供方法，并将使用它们与我们的应用程序状态进行交互。 在 <strong>app / App.js</strong> 中：</p>
+<p>我将尝试回顾一下这个文件中可能不明显的所有主要内容。 如果您有任何问题或有些问题不明确，请发表评论，我会尝试更新或回复。</p>
+<ol>
+<li><p>我们从<strong>mobx-react/native</strong>导入<strong>observer</strong></p>
+</li>
+<li><p>我们用 <strong>@ observer</strong> 装饰器装饰我们的类。 这将确保在相关数据更改时每个组件单独重新渲染。</p>
+</li>
+<li><p>我们导入一个尚未创建的组件 - <strong>NewItem</strong> 。 当我们想要将新项目添加到列表中时，这将是我们导航到的组件。</p>
+</li>
+<li><p>在 <strong>addListItem</strong> 中，我们调用 <strong>this.props.store.addListItem</strong> 传入 <strong>this.state.text</strong> 。 <strong>this.state.text</strong> 将在附加到TextInput的 <strong>updateText</strong> 方法中更新。</p>
+</li>
+<li><p>在 <strong>removeListItem</strong> 我们调用 <strong>this.props.store.removeListItem</strong> 然后传递他们</p>
+</li>
+<li><p>在 <strong>addItemToList</strong> 中，我们调用this.props.navigator.push并将item和store作为props传递。</p>
+</li>
+<li><p>在render方法中，我们通过从props中解构来访问store：</p>
+</li>
+</ol>
+<pre><code class="hljs cpp"><span class="hljs-keyword">const</span> { <span class="hljs-built_in">list</span> } = <span class="hljs-keyword">this</span>.props.store
+
+</code></pre><p>8. 在render方法中，我们还创建了一个ui并连接了我们的类方法。</p>
+<p>最后，我们创建NewItem组件：</p>
+<p>如果你熟悉React或React Native，那么这里没什么特别之处。 我们基本上可以使用props访问我们的项目并循环遍历项目的项目数组，如果其中存在任何项目。 如果没有，我们会显示一条消息。</p>
+<p>我们在这个组件中与store交互的唯一方法是调用addItem，它调用 <strong>this.props.store.addItem</strong> 并传入 <strong>this.props.item和this.state.newItem</strong> 。</p>
+<p>那应该是它！</p>
+<p>要查看最终仓库，请单击 <a href="https://github.com/dabit3/react-native-mobx-list-app" rel="external nofollow noopener noreferrer" target="_blank">这个</a>.</p>
+<blockquote>
+<p>我的名字是<a href="https://twitter.com/dabit3）我是[AWS Mobile](https://aws.amazon.com/mobile/" rel="external nofollow noopener noreferrer" target="_blank">Nader Dabit</a>的开发人员倡导者，负责<a href="https://aws.amazon.com/appsync/" rel="external nofollow noopener noreferrer" target="_blank">AppSync</a>和<a href="https://github.com/aws/aws-amplify" rel="external nofollow noopener noreferrer" target="_blank">Amplify</a>等项目，以及<a href="http://reactnative.training/" rel="external nofollow noopener noreferrer" target="_blank">React Native Training</a>的创始人。</p>
+</blockquote>
+<blockquote>
+<p>如果您喜欢React和React Native，请查看我们的播客 — <a href="https://devchat.tv/react-native-radio" rel="external nofollow noopener noreferrer" target="_blank">React Native Radio</a> 在 <a href="http://devchat.tv/" rel="external nofollow noopener noreferrer" target="_blank">Devchat.tv</a></p>
+</blockquote>
+<blockquote>
+<p>另外，看看我的书, <a href="https://www.manning.com/books/react-native-in-action" rel="external nofollow noopener noreferrer" target="_blank">React Native in Action</a> 现在可从Manning Publications获得</p>
+</blockquote>
+<blockquote>
+<p>如果您喜欢这篇文章，请推荐并分享！ 谢谢你抽时间阅读</p>
+</blockquote>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/react-native-with-mobx-getting-started" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/react-native-with-mobx-getting-started</a><br>原文标题: React Native with MobX — 入门<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/dbf4a6bc/">https://alili.tech/archive/dbf4a6bc/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">1.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li></ol>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

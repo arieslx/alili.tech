@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="写在前面 JavaScript 深入系列共计 15 篇已经正式完结，这是一个旨在帮助大家，其实也是帮助自己捋顺 JavaScript 底层知识的系列。重点讲解了如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等 JS 语言中的比较难懂的概念。 JavaScript 深入系列自 4 月 6 日发布第一篇文章，到 5 月 12 日发布最后一篇">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript深入系列15篇正式完结！">
+<meta property="og:url" content="https://alili.tech/archive/fa6f85aa/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="写在前面 JavaScript 深入系列共计 15 篇已经正式完结，这是一个旨在帮助大家，其实也是帮助自己捋顺 JavaScript 底层知识的系列。重点讲解了如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等 JS 语言中的比较难懂的概念。 JavaScript 深入系列自 4 月 6 日发布第一篇文章，到 5 月 12 日发布最后一篇">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.471Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript深入系列15篇正式完结！">
+<meta name="twitter:description" content="写在前面 JavaScript 深入系列共计 15 篇已经正式完结，这是一个旨在帮助大家，其实也是帮助自己捋顺 JavaScript 底层知识的系列。重点讲解了如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等 JS 语言中的比较难懂的概念。 JavaScript 深入系列自 4 月 6 日发布第一篇文章，到 5 月 12 日发布最后一篇">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>JavaScript深入系列15篇正式完结！ | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/fa6f85aa/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/fa6f85aa/",
+      "appid": "1613049289050283", 
+      "title": "JavaScript深入系列15篇正式完结！ | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:00"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/73362992/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/1d8dd1aa/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/fa6f85aa/&text=JavaScript深入系列15篇正式完结！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/fa6f85aa/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/fa6f85aa/&text=JavaScript深入系列15篇正式完结！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/fa6f85aa/&title=JavaScript深入系列15篇正式完结！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/fa6f85aa/&is_video=false&description=JavaScript深入系列15篇正式完结！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JavaScript深入系列15篇正式完结！&body=Check out this article: https://alili.tech/archive/fa6f85aa/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/fa6f85aa/&title=JavaScript深入系列15篇正式完结！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/fa6f85aa/&title=JavaScript深入系列15篇正式完结！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/fa6f85aa/&title=JavaScript深入系列15篇正式完结！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/fa6f85aa/&title=JavaScript深入系列15篇正式完结！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">我为什么要写深入系列？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">重新修订</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">全目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader4"><span class="toc-number">5.</span> <span class="toc-text">作者推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">6.</span> <span class="toc-text">真的完结？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader6"><span class="toc-number">7.</span> <span class="toc-text">下期预告</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        JavaScript深入系列15篇正式完结！
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-23T00:00:00.000Z" itemprop="datePublished">2018-10-23</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h2 id="articleHeader0">写在前面</h2>
+<p>JavaScript 深入系列共计 15 篇已经正式完结，这是一个旨在帮助大家，其实也是帮助自己捋顺 JavaScript 底层知识的系列。重点讲解了如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等 JS 语言中的比较难懂的概念。</p>
+<p>JavaScript 深入系列自 4 月 6 日发布第一篇文章，到 5 月 12 日发布最后一篇，感谢各位朋友的收藏、点赞，鼓励、指正。</p>
+<p>顺便宣传一下该博客的 Github 仓库：<a href="https://github.com/mqyqingfeng/Blog" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/mqyqingfeng/Blog</a>，欢迎 star，鼓励一下作者。</p>
+<p>而此篇，作为深入系列的总结篇，除了汇总各篇文章，作为目录篇之外，还希望跟大家聊聊，我为什么要写这个系列？</p>
+<h2 id="articleHeader1">我为什么要写深入系列？</h2>
+<p>讲一个对我学技术的态度很有影响的一件事情。</p>
+<p>曾经团队邀请过 Nodejs 领域一个非常著名的大神来分享，这里便不说是谁了。当知道是他后，简直是粉丝的心情。但是课讲得确实一般，也许是第一次讲，准备不是很充足吧，以至于我都觉得我能讲得比他好，但是有两次，让我觉得这是真正的大神。一次就是，当有同事问到今年有什么流行的前端框架吗？这些框架有怎样的适用场景？该如何抉择？我以为大神一定会回答当时正火的 React、以及小鲜肉 Vue 之类，然后老生常谈的比较一番，但是他回答道：“I dont't care！因为这些并不重要，真正重要的是底层，当你了解了底层，你就能很轻松的明白这些框架的原理，当你明白了原理，这些框架又有什么意思呢？”</p>
+<p>虽然这段话因为过去太久，已经不记得确切的表述，但是给了我非常深刻的印象，自己一路学习过来，新的东西不停的冒出，但是学的再多感觉自己也只是学了一堆 API，如果仅仅是为了解决工作上的问题，或许已经足够，但是内心经常还会冒出一种不安定感，这种不安定感或许来自于对 JavaScript 未知部分的恐惧，或许来自于解决问题却不明所以的尴尬，或许来自于屡次学习语言难点却不得门道的失败……代码写的越久，这种感觉就越是鲜明。</p>
+<p>当然了，大家也不要过分解读底层，各种计算机语言追究到底层都是编译原理之类，如果是有这方面的兴趣，固然可以，但是如果本质上还是为了解决上层问题，倒不必一定要深究到这个层面。用 JavaScript 了解这门语言本身的使用和原理，用 jQuery 看看 jQuery 的源码实现，用 React 技术栈，写写 React、Redux 简单的模拟实现，诸如此类，都是对底层的一种追求。</p>
+<p>这样讲的话，底层这个词，更像是一个方向，一种学习的态度吧。</p>
+<p>为了更加深入的了解 JavaScript 这门语言，我将之前记录的一些要学习的关键词作为课题进行研究，后来研究的差不多了，才决定动笔写下这个系列。尽管这个系列很多地方上依然不够所谓的“深入”，但就跟学习这些内容之前的我相比，已然多了份安定感，解决一些问题时也多了份得心应手，也希望大家能从这个系列中有所收获。</p>
+<p>然而即便已经写了 15 篇，也只是漫长路途的开始，在我 Github 博客仓库的描述中有写到，我预计写 4 个系列，JavaScript 深入系列，JavaScript 专题系列，ES6 系列，React 系列，其实从“深入系列”到“专题系列”再到“ React 系列”，就是原来写着上层的我决定从语言层面开始一步一步走回上层的记录，而现在，我也只是迈出了第一步。</p>
+<h2 id="articleHeader2">重新修订</h2>
+<p>在发布完最后一篇后，我花了一周时间，根据大家的评论和留言，并且参照阮一峰老师的<a href="https://github.com/ruanyf/document-style-guide" rel="external nofollow noopener noreferrer" target="_blank">《中文技术文档的写作规范》</a>对所有的文章进行了一次修订。</p>
+<p>说起来，改的最多的就是给英文单词两边加个空格……</p>
+<p>此外，大家有疑问或指正或鼓励或感谢，尽管留言回复哈 []~(￣▽￣)~* 。</p>
+<h2 id="articleHeader3">全目录</h2>
+<ol>
+<li><p><a href="https://segmentfault.com/a/1190000008959943" rel="external nofollow noopener noreferrer" target="_blank">JavaScirpt深入之从原型到原型链</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000008972987" target="_blank" rel="external nofollow noopener noreferrer">JavaScript深入之词法作用域和动态作用域</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009006005" rel="external nofollow noopener noreferrer" target="_blank">JavaScript深入之执行上下文栈</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009018898" target="_blank" rel="external nofollow noopener noreferrer">JavaScript深入之变量对象</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009035308" rel="external nofollow noopener noreferrer" target="_blank">JavaScript深入之作用域链</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009048715" target="_blank" rel="external nofollow noopener noreferrer">JavaScript深入之从ECMAScript规范解读this</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009063218" rel="external nofollow noopener noreferrer" target="_blank">JavaScript深入之执行上下文</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009215716" target="_blank" rel="external nofollow noopener noreferrer">JavaScript深入之闭包</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009229025" rel="external nofollow noopener noreferrer" target="_blank">JavaScript深入之参数按值传递</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009257663" target="_blank" rel="external nofollow noopener noreferrer">JavaScript深入之call和apply的模拟实现</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009271416" rel="external nofollow noopener noreferrer" target="_blank">JavaScript深入之bind的模拟实现</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009286643" target="_blank" rel="external nofollow noopener noreferrer">JavaScript深入之new的模拟实现</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009328344" rel="external nofollow noopener noreferrer" target="_blank">JavaScript深入之类数组对象与arguments</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009359984" target="_blank" rel="external nofollow noopener noreferrer">JavaScript深入之创建对象的多种方式以及优缺点</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009389979" rel="external nofollow noopener noreferrer" target="_blank">JavaScript深入之继承的多种方式以及优缺点</a></p></li>
+</ol>
+<h2 id="articleHeader4">作者推荐</h2>
+<p>在我研究一些课题的时候，有时感觉自己深受启发，颇有醍醐灌顶的感觉，我也希望这个系列的读者能感受到跟作者当初学习这些内容时的一样兴奋的感觉，所以强烈推荐以下三篇：</p>
+<ol>
+<li><p><a href="https://segmentfault.com/a/1190000009048715" target="_blank" rel="external nofollow noopener noreferrer">JavaScript深入之从ECMAScript规范解读this</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009257663" rel="external nofollow noopener noreferrer" target="_blank">JavaScript深入之call和apply的模拟实现</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000009286643" target="_blank" rel="external nofollow noopener noreferrer">JavaScript深入之new的模拟实现</a></p></li>
+</ol>
+<h2 id="articleHeader5">真的完结？</h2>
+<p>JavaScript 底层知识哪有这么一点呐！在不断学习的过程中，还会冒出一些新的课题适合划分到深入系列，如果是这样的话，就会偶尔发布一篇，当然了，如果冒出太多的话，不保证再来一个深入系列第二季，哈哈。</p>
+<h2 id="articleHeader6">下期预告</h2>
+<p>一周之内，会发布新的系列即 JavaScript 专题系列，这个系列主要研究日常开发中一些功能点的实现，比如防抖、节流、去重、拷贝、最值、扁平、柯里、递归、乱序、排序等，特点是抄袭 underscore 和 jQuery 的实现方式，而这次预计写二十篇左右。</p>
+<p>感谢大家的阅读和支持，我是冴羽，JavaScript 专题系列再见啦！[]~(￣▽￣)~**</p>
+
+                
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000009562674" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000009562674</a></p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>JavaScript深入系列15篇正式完结！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/fa6f85aa/">https://alili.tech/archive/fa6f85aa/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">我为什么要写深入系列？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">重新修订</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">全目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader4"><span class="toc-number">5.</span> <span class="toc-text">作者推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">6.</span> <span class="toc-text">真的完结？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader6"><span class="toc-number">7.</span> <span class="toc-text">下期预告</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

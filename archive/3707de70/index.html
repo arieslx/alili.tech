@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="使用 ARA 分析 Ansible 运行  Ansible 运行分析工具（ARA）与 Ansible 无缝集成，可以简单便捷的找到你所需数据的方法。   Ansible 是一个多功能平台，它已经成为管理服务器和服务器配置的流行平台。如今，Ansible 大量用于通过持续集成 （CI） 进行部署和测试。 在自动化持续集成的世界中，每天都有数百个甚至数千个作业运行测试、构建、编译、部署等等，这并不罕见">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 ARA 分析 Ansible 运行">
+<meta property="og:url" content="https://alili.tech/archive/3707de70/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="使用 ARA 分析 Ansible 运行  Ansible 运行分析工具（ARA）与 Ansible 无缝集成，可以简单便捷的找到你所需数据的方法。   Ansible 是一个多功能平台，它已经成为管理服务器和服务器配置的流行平台。如今，Ansible 大量用于通过持续集成 （CI） 进行部署和测试。 在自动化持续集成的世界中，每天都有数百个甚至数千个作业运行测试、构建、编译、部署等等，这并不罕见">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01f7337e1e43c8e191.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01710946700ea521b6.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01738b0fa2afd7aaf6.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t018a1810cac7a402ba.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01a66c63c8e7b45256.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t0153473d0dc628ef63.png">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 ARA 分析 Ansible 运行">
+<meta name="twitter:description" content="使用 ARA 分析 Ansible 运行  Ansible 运行分析工具（ARA）与 Ansible 无缝集成，可以简单便捷的找到你所需数据的方法。   Ansible 是一个多功能平台，它已经成为管理服务器和服务器配置的流行平台。如今，Ansible 大量用于通过持续集成 （CI） 进行部署和测试。 在自动化持续集成的世界中，每天都有数百个甚至数千个作业运行测试、构建、编译、部署等等，这并不罕见">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t01f7337e1e43c8e191.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>使用 ARA 分析 Ansible 运行 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/3707de70/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/3707de70/",
+      "appid": "1613049289050283", 
+      "title": "使用 ARA 分析 Ansible 运行 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:02"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/a3140e25/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/76370fbf/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/3707de70/&text=使用 ARA 分析 Ansible 运行" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/3707de70/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/3707de70/&text=使用 ARA 分析 Ansible 运行" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/3707de70/&title=使用 ARA 分析 Ansible 运行" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/3707de70/&is_video=false&description=使用 ARA 分析 Ansible 运行" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用 ARA 分析 Ansible 运行&body=Check out this article: https://alili.tech/archive/3707de70/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/3707de70/&title=使用 ARA 分析 Ansible 运行" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/3707de70/&title=使用 ARA 分析 Ansible 运行" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/3707de70/&title=使用 ARA 分析 Ansible 运行" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/3707de70/&title=使用 ARA 分析 Ansible 运行" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">使用 ARA 分析 Ansible 运行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">Ansible 运行分析 （ARA） 工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">ARA 能做些什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        使用 ARA 分析 Ansible 运行
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-21T00:00:00.000Z" itemprop="datePublished">2018-10-21</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1><a href="#使用-ara-分析-ansible-运行"></a>使用 ARA 分析 Ansible 运行</h1>
+<blockquote>
+<p>Ansible 运行分析工具（ARA）与 Ansible 无缝集成，可以简单便捷的找到你所需数据的方法。</p>
+</blockquote>
+<p><a href="https://camo.githubusercontent.com/931c1a8d7c643d462bb4258c89beb40506a88b43/68747470733a2f2f6f70656e736f757263652e636f6d2f73697465732f64656661756c742f66696c65732f7374796c65732f696d6167652d66756c6c2d73697a652f7075626c69632f6c6561642d696d616765732f627261696e5f646174612e706e673f69746f6b3d5248364e41333258" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t01f7337e1e43c8e191.png" alt=""></a></p>
+<p><a href="https://www.ansible.com/" rel="external nofollow noopener noreferrer" target="_blank">Ansible</a> 是一个多功能平台，它已经成为管理服务器和服务器配置的流行平台。如今，Ansible 大量用于通过持续集成 （CI） 进行部署和测试。</p>
+<p>在自动化持续集成的世界中，每天都有数百个甚至数千个作业运行测试、构建、编译、部署等等，这并不罕见。</p>
+<h3><a href="#ansible-运行分析-ara-工具"></a>Ansible 运行分析 （ARA） 工具</h3>
+<p>Ansible 运行生成大量控制台数据，在 CI 的环境下跟上大量的 Ansible 输出是具有挑战性的。Ansible Run Analysis（ARA） 工具使此详细输出可读并且使作业状态和调试信息更有代表性。ARA 组织了记录的剧本playbook数据，以便你尽可能快速和容易地搜索并找到你感兴趣的内容。</p>
+<p>请注意，ARA 不会运行你的剧本playbook。相反，无论在哪它都它作为回调插件与 Ansible 集成。回调插件可以在响应事件时向 Ansible 添加新行为。它可以根据 Ansible 事件执行自定义操作，例如在主机开始执行或任务完成时执行。</p>
+<p>与 <a href="https://www.ansible.com/products/awx-project" rel="external nofollow noopener noreferrer" target="_blank">AWX</a> 和 <a href="https://www.ansible.com/products/tower" rel="external nofollow noopener noreferrer" target="_blank">Tower</a> 相比，它们是控制整个工作流程的工具，具有仓库管理、剧本playbook执行、编辑功能等功能，ARA 的范围相对较窄：记录数据并提供直观的界面。这是一个相对简单的程序，易于安装和配置。</p>
+<h4><a href="#安装"></a>安装</h4>
+<p>在系统上安装 ARA 有两种方法：</p>
+<ul>
+<li>使用托管在 <a href="https://github.com/AjinkyaBapat/Ansible-Run-Analyser" rel="external nofollow noopener noreferrer" target="_blank">GitHub 帐户</a> 上的 Ansible 角色。克隆仓库并：</li>
+</ul>
+<p>ansible-playbook Playbook.yml</p>
+<pre><code class="hljs">
+    如果剧本执行成功，你将看到：
+
+</code></pre><p>TASK [ara : Display ara UI URL] <strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong>
+   ok: [localhost] =&gt; {}
+   "msg": "Access playbook records at <a href="http://YOUR_IP:9191&quot;" rel="external nofollow noopener noreferrer" target="_blank">http://YOUR_IP:9191"</a></p>
+<pre><code class="hljs">
+</code></pre><p>注意：它从 Ansible 收集的 <code>ansible_default_ipv4</code> fact 中选择 IP 地址。如果没有收集这些 fact，请用 <code>roles/ara/tasks/</code> 文件夹中 <code>main.yml</code> 文件中的 IP 替换它。</p>
+<p><code>`</code></p>
+<ul>
+<li>ARA 是一个在 <a href="https://github.com/dmsimard/ara" rel="external nofollow noopener noreferrer" target="_blank">GitHub</a> 上以 Apache v2 许可证授权的开源项目。安装说明在快速入门章节。<a href="http://ara.readthedocs.io/en/latest/" rel="external nofollow noopener noreferrer" target="_blank">文档</a>和 <a href="http://ara.readthedocs.io/en/latest/faq.html" rel="external nofollow noopener noreferrer" target="_blank">FAQ</a> 可在 <a href="http://ara.readthedocs.io/en/latest/" rel="external nofollow noopener noreferrer" target="_blank">readthedocs.io</a> 上找到。</li>
+</ul>
+<h4><a href="#ara-能做些什么"></a>ARA 能做些什么？</h4>
+<p>下图显示了从浏览器启动 ARA 登录页面：</p>
+<p><a href="https://camo.githubusercontent.com/d79f2c3f272921886fce12b99f76d66707074a1b/68747470733a2f2f6f70656e736f757263652e636f6d2f73697465732f64656661756c742f66696c65732f7374796c65732f70616e6f706f6c795f696d6167655f6f726967696e616c2f7075626c69632f696d616765732f6c6966652d75706c6f6164732f6172615f6c616e64696e675f706167652e706e673f69746f6b3d506f42374b666842" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t01710946700ea521b6.png" alt="ara landing page" title="ara landing page"></a></p>
+<p><em>ARA 登录页面</em></p>
+<p>它提供了每个主机或每个 playbook 的任务结果摘要：</p>
+<p><a href="https://camo.githubusercontent.com/d2504a32bebec1e8cb35ee42b71f7bd1f313f221/68747470733a2f2f6f70656e736f757263652e636f6d2f73697465732f64656661756c742f66696c65732f7374796c65732f70616e6f706f6c795f696d6167655f6f726967696e616c2f7075626c69632f696d616765732f6c6966652d75706c6f6164732f7461736b5f73756d6d61726965732e706e673f69746f6b3d3845425039735447" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t01738b0fa2afd7aaf6.png" alt="task summaries" title="task summaries"></a></p>
+<p><em>ARA 显示任务摘要</em></p>
+<p>它允许你通过剧本，play，主机、任务或状态来过滤任务结果：</p>
+<p><a href="https://camo.githubusercontent.com/d2395d618cd51dc842f9b523fd75214ec16e4872/68747470733a2f2f6f70656e736f757263652e636f6d2f73697465732f64656661756c742f66696c65732f7374796c65732f70616e6f706f6c795f696d6167655f6f726967696e616c2f7075626c69632f696d616765732f6c6966652d75706c6f6164732f706c6179626f6f6b5f66696c74657265645f62795f686f7374732e706e673f69746f6b3d4c6f6c304b5f4d79" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t018a1810cac7a402ba.png" alt="playbook runs filtered by hosts" title="playbook runs filtered by hosts"></a></p>
+<p><em>通过主机过滤剧本运行</em></p>
+<p>借助 ARA，你可以在摘要视图中轻松查看你感兴趣的结果，无论是特定的主机还是特定的任务：</p>
+<p><a href="https://camo.githubusercontent.com/e8a313b357b2fce1b324ce1a748c7de696fab659/68747470733a2f2f6f70656e736f757263652e636f6d2f73697465732f64656661756c742f66696c65732f7374796c65732f70616e6f706f6c795f696d6167655f6f726967696e616c2f7075626c69632f696d616765732f6c6966652d75706c6f6164732f73756d6d6172795f6f665f656163685f7461736b2e706e673f69746f6b3d4b4a6e4c48455a43" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t01a66c63c8e7b45256.png" alt="summary of each task" title="summary of each task"></a></p>
+<p><em>每项任务的详细摘要</em></p>
+<p>ARA 支持在同一数据库中记录和查看多个运行。</p>
+<p><a href="https://camo.githubusercontent.com/a328395022bf14add5b4e3ac4cacff1dd82df52e/68747470733a2f2f6f70656e736f757263652e636f6d2f73697465732f64656661756c742f66696c65732f7374796c65732f70616e6f706f6c795f696d6167655f6f726967696e616c2f7075626c69632f696d616765732f6c6966652d75706c6f6164732f73686f77696e675f67617468657265645f66616374732e706e673f69746f6b3d46564463366f4130" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t0153473d0dc628ef63.png" alt="show gathered facts" title="show gathered facts"></a></p>
+<p><em>显示收集的 fact</em></p>
+<h4><a href="#总结"></a>总结</h4>
+<p>ARA 是一个已经帮助我从 Ansible 运行日志和输出中了解更多的有用资源。我强烈推荐给所有的 Ansible 使用者。</p>
+<p>请随意分享，并请在评论中告诉我你使用 ARA 的经历。</p>
+<p><strong>[参见我们的相关文章，<a href="/article/18/2/tips-success-when-getting-started-ansible">成功使用 Ansible 的秘诀</a>]。</strong></p>
+<hr>
+<p>via: <a href="https://opensource.com/article/18/5/analyzing-ansible-runs-using-ara" rel="external nofollow noopener noreferrer" target="_blank">https://opensource.com/article/18/5/analyzing-ansible-runs-using-ara</a></p>
+<p>作者：<a href="https://opensource.com/users/iamajinkya" rel="external nofollow noopener noreferrer" target="_blank">Ajinkya Bapat</a> 选题：<a href="https://github.com/lujun9972" rel="external nofollow noopener noreferrer" target="_blank">lujun9972</a> 译者：<a href="https://github.com/geekpi" rel="external nofollow noopener noreferrer" target="_blank">geekpi</a> 校对：<a href="https://github.com/wxy" rel="external nofollow noopener noreferrer" target="_blank">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" rel="external nofollow noopener noreferrer" target="_blank">LCTT</a> 原创编译，<a href="https://linux.cn/" rel="external nofollow noopener noreferrer" target="_blank">Linux中国</a> 荣誉推出</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/analyzing-ansible-runs-using-ara" rel="external nofollow noopener noreferrer" target="_blank">www.zcfy.cc</a><br>原文标题: 使用 ARA 分析 Ansible 运行<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/3707de70/">https://alili.tech/archive/3707de70/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">使用 ARA 分析 Ansible 运行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">Ansible 运行分析 （ARA） 工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">ARA 能做些什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

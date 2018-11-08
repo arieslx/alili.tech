@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x6982;&amp;#x8FF0;&amp;#x672C;&amp;#x6587;&amp;#x662F;WebSocket&amp;#x7CFB;&amp;#x5217;&amp;#x7684;&amp;#x7B2C;&amp;#x4E00;&amp;#x7BC7;&amp;#xFF0C;&amp;#x4E3B;&amp;#x8981;&amp;#x4ECB;&amp;#x7ECD;WebSocket&amp;#x76F8;&amp;#x5173;&amp;#x7684;&amp;#x57FA;&amp;#x7840;&amp;#x534F;&amp;#x8BA">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebSocket系列之基础知识入门篇">
+<meta property="og:url" content="https://alili.tech/archive/d8329c90/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x6982;&amp;#x8FF0;&amp;#x672C;&amp;#x6587;&amp;#x662F;WebSocket&amp;#x7CFB;&amp;#x5217;&amp;#x7684;&amp;#x7B2C;&amp;#x4E00;&amp;#x7BC7;&amp;#xFF0C;&amp;#x4E3B;&amp;#x8981;&amp;#x4ECB;&amp;#x7ECD;WebSocket&amp;#x76F8;&amp;#x5173;&amp;#x7684;&amp;#x57FA;&amp;#x7840;&amp;#x534F;&amp;#x8BA">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.523Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebSocket系列之基础知识入门篇">
+<meta name="twitter:description" content="&amp;#x6982;&amp;#x8FF0;&amp;#x672C;&amp;#x6587;&amp;#x662F;WebSocket&amp;#x7CFB;&amp;#x5217;&amp;#x7684;&amp;#x7B2C;&amp;#x4E00;&amp;#x7BC7;&amp;#xFF0C;&amp;#x4E3B;&amp;#x8981;&amp;#x4ECB;&amp;#x7ECD;WebSocket&amp;#x76F8;&amp;#x5173;&amp;#x7684;&amp;#x57FA;&amp;#x7840;&amp;#x534F;&amp;#x8BA">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>WebSocket系列之基础知识入门篇 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/d8329c90/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/d8329c90/",
+      "appid": "1613049289050283", 
+      "title": "WebSocket系列之基础知识入门篇 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:53"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/6addaa3c/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/8c154e0b/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/d8329c90/&text=WebSocket系列之基础知识入门篇" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/d8329c90/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/d8329c90/&text=WebSocket系列之基础知识入门篇" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/d8329c90/&title=WebSocket系列之基础知识入门篇" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/d8329c90/&is_video=false&description=WebSocket系列之基础知识入门篇" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=WebSocket系列之基础知识入门篇&body=Check out this article: https://alili.tech/archive/d8329c90/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/d8329c90/&title=WebSocket系列之基础知识入门篇" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/d8329c90/&title=WebSocket系列之基础知识入门篇" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/d8329c90/&title=WebSocket系列之基础知识入门篇" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/d8329c90/&title=WebSocket系列之基础知识入门篇" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">WebSocket介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">2.1.</span> <span class="toc-text">为什么要使用WebSocket</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">2.1.1.</span> <span class="toc-text">轮询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">2.1.2.</span> <span class="toc-text">长轮询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader5"><span class="toc-number">2.1.3.</span> <span class="toc-text">SSE(Server Send Event)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader6"><span class="toc-number">2.1.4.</span> <span class="toc-text">WebSocket能够解决上述问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader7"><span class="toc-number">3.</span> <span class="toc-text">WebSocket协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader8"><span class="toc-number">3.1.</span> <span class="toc-text">请求Header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader9"><span class="toc-number">3.2.</span> <span class="toc-text">响应Header</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader10"><span class="toc-number">4.</span> <span class="toc-text">WebSocket API介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader11"><span class="toc-number">4.1.</span> <span class="toc-text">建立连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader12"><span class="toc-number">4.2.</span> <span class="toc-text">收到消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader13"><span class="toc-number">4.3.</span> <span class="toc-text">发送消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader14"><span class="toc-number">4.4.</span> <span class="toc-text">关闭连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader15"><span class="toc-number">4.4.1.</span> <span class="toc-text">被动关闭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader16"><span class="toc-number">4.4.2.</span> <span class="toc-text">主动关闭</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader17"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">6.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">6.1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">6.2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        WebSocket系列之基础知识入门篇
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-01T02:30:09.000Z" itemprop="datePublished">2018-11-01</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1 id="articleHeader0">&#x6982;&#x8FF0;</h1><p>&#x672C;&#x6587;&#x662F;WebSocket&#x7CFB;&#x5217;&#x7684;&#x7B2C;&#x4E00;&#x7BC7;&#xFF0C;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;WebSocket&#x76F8;&#x5173;&#x7684;&#x57FA;&#x7840;&#x534F;&#x8BAE;&#x77E5;&#x8BC6;&#x548C;API&#x3002;&#x7531;&#x4E8E;WebSocket&#x7684;&#x76F8;&#x5173;&#x4ECB;&#x7ECD;&#x5728;MDN&#x4E2D;&#x5206;&#x5E03;&#x8F83;&#x4E71;&#xFF0C;&#x521D;&#x5B66;&#x8005;&#x4E0D;&#x592A;&#x5BB9;&#x6613;&#x5165;&#x95E8;&#xFF0C;&#x56E0;&#x6B64;&#x901A;&#x8FC7;&#x672C;&#x6587;&#x5C06;&#x76F8;&#x5173;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#x548C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E00;&#x4E2A;&#x5F52;&#x7EB3;&#x548C;&#x603B;&#x7ED3;&#x3002;</p><p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p><ul><li>WebSocket&#x57FA;&#x7840;&#x6982;&#x5FF5;&#x4ECB;&#x7ECD;</li><li>WebSocket&#x534F;&#x8BAE;&#x521D;&#x8BFB;</li><li>WebSocket &#x76F8;&#x5173;API&#x6D45;&#x6790;</li><li>WebSocket&#x5728;&#x7EBF;&#x4E0A;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x4F7F;&#x7528;</li></ul><p>&#x901A;&#x8FC7;&#x672C;&#x6587;&#xFF0C;&#x4F60;&#x80FD;&#x591F;&#x4E86;&#x89E3;&#x5230;WebSocket&#x76F8;&#x5173;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#xFF0C;&#x540C;&#x65F6;&#x4E86;&#x89E3;&#x5230;WebSocket&#x5728;&#x7EBF;&#x4E0A;&#x73AF;&#x5883;&#x4E2D;&#x662F;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x7684;&#x3002;</p><h1 id="articleHeader1">WebSocket&#x4ECB;&#x7ECD;</h1><blockquote><strong>WebSockets</strong> &#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x548C;&#x670D;&#x52A1;&#x5668;&#x95F4;&#x8FDB;&#x884C;&#x53CC;&#x5411;&#x4F1A;&#x8BDD;&#x7684;&#x9AD8;&#x7EA7;&#x6280;&#x672F;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;API&#x4F60;&#x53EF;&#x4EE5;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x5E76;&#x63A5;&#x53D7;&#x57FA;&#x4E8E;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x7684;&#x54CD;&#x5E94;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x7528;&#x5411;&#x670D;&#x52A1;&#x5668;&#x8F6E;&#x8BE2;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x4E86;&#x3002;</blockquote><p>&#x4E0A;&#x9762;&#x662F;<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API" rel="external nofollow noopener noreferrer" target="_blank">MDN</a>&#x4E2D;&#x5173;&#x4E8E;WebSocket&#x7684;&#x8BF4;&#x660E;&#x3002;&#x5176;&#x4E2D;<code>&#x53CC;&#x5411;&#x4F1A;&#x8BDD;</code>&#x6307;&#x7684;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x7AEF;&#x90FD;&#x80FD;&#x591F;&#x901A;&#x8FC7;WebSocket&#x6765;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;&#x4E92;&#x76F8;&#x4F20;&#x9012;&#xFF0C;&#x5373;&#x670D;&#x52A1;&#x7AEF;&#x53EF;&#x4EE5;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x63A8;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;WebSocket&#x6765;&#x4F20;&#x9012;&#x6570;&#x636E;&#x3002;</p><h2 id="articleHeader2">&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x4F7F;&#x7528;WebSocket</h2><p>&#x5728;&#x4E0D;&#x4F7F;&#x7528;WebSocket&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5EFA;&#x7ACB;&#x4E00;&#x6761;&#x957F;&#x8FDE;&#x63A5;&#xFF0C;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;</p><ul><li>&#x8F6E;&#x8BE2;</li><li>&#x957F;&#x8F6E;&#x8BE2;&#xFF08;&#x5E38;&#x7528;&#xFF09;</li><li>SSE(Server Send Event)</li></ul><p>&#x4E0B;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x5BF9;&#x8FD9;&#x51E0;&#x4E2A;&#x90FD;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x4ECB;&#x7ECD;&#x3002;</p><h3 id="articleHeader3">&#x8F6E;&#x8BE2;</h3><p>&#x8F6E;&#x8BE2;&#x662F;&#x6700;&#x65E9;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7528;&#x6765;&#x6A21;&#x62DF;&#x957F;&#x8FDE;&#x63A5;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x3002;&#x4ED6;&#x901A;&#x8FC7;&#x5BA2;&#x6237;&#x7AEF;&#x5B9A;&#x65F6;&#x60F3;&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x9001;HTTP&#x8BF7;&#x6C42;&#x6765;&#x6A21;&#x62DF;&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x6570;&#x636E;&#x5219;&#x662F;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;HTTP&#x8BF7;&#x6C42;&#x540E;&#x8DDF;&#x968F;&#x8FD4;&#x56DE;&#x3002;</p><p>&#x8FD9;&#x79CD;&#x65B9;&#x6848;&#x80FD;&#x591F;&#x8BA9;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6570;&#x636E;&#x51E0;&#x4E4E;&#x5B9E;&#x65F6;&#x7684;&#x5230;&#x8FBE;&#xFF0C;&#x4F46;&#x662F;&#x7F3A;&#x70B9;&#x4E5F;&#x663E;&#x800C;&#x6613;&#x89C1;&#xFF1A;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x6570;&#x636E;&#x9700;&#x8981;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BF7;&#x6C42;&#x56DE;&#x6765;&#x540E;&#x624D;&#x80FD;&#x5E26;&#x56DE;&#x3002;&#x5982;&#x679C;HTTP&#x8BF7;&#x6C42;&#x7684;&#x95F4;&#x9694;&#x592A;&#x77ED;&#xFF0C;&#x5219;&#x4F1A;&#x5BFC;&#x81F4;&#x5927;&#x91CF;&#x7684;&#x7F51;&#x7EDC;&#x5F00;&#x9500;&#xFF1B;&#x5982;&#x679C;&#x95F4;&#x9694;&#x592A;&#x957F;&#xFF0C;&#x8FD9;&#x5C06;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x4F20;&#x9012;&#x7684;&#x4E0D;&#x53CA;&#x65F6;&#x3002;</p><h3 id="articleHeader4">&#x957F;&#x8F6E;&#x8BE2;</h3><p>&#x957F;&#x8F6E;&#x8BE2;&#x662F;&#x5728;&#x8F6E;&#x8BE2;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6539;&#x8FDB;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x3002;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;HTTP&#x8BF7;&#x6C42;&#x4E14;&#x670D;&#x52A1;&#x7AEF;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x4F1A;&#x5148;&#x7EF4;&#x6301;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x4E0D;&#x8FD4;&#x56DE;&#x3002;&#x5728;&#x7279;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x5185;&#xFF08;&#x4E00;&#x822C;&#x4E3A;30&#x79D2;&#xFF0C;&#x56E0;&#x4E3A;&#x901A;&#x5E38;HTTP&#x5224;&#x65AD;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x4E3A;30&#x79D2;&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x670D;&#x52A1;&#x7AEF;&#x6CA1;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x56DE;&#x5E94;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#xFF1B;&#x670D;&#x52A1;&#x7AEF;&#x6709;&#x6570;&#x636E;&#x9700;&#x8981;&#x53D1;&#x9001;&#x65F6;&#xFF0C;&#x5219;&#x7ACB;&#x5373;&#x901A;&#x8FC7;HTTP&#x8BF7;&#x6C42;&#x7684;&#x54CD;&#x5E94;&#x5C06;&#x6570;&#x636E;&#x4F20;&#x9012;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x6536;&#x5230;&#x54CD;&#x5E94;&#x540E;&#xFF0C;&#x7ACB;&#x5373;&#x53D1;&#x8D77;&#x4E0B;&#x4E00;&#x6B21;&#x7684;HTTP&#x8BF7;&#x6C42;&#x3002;</p><p>&#x8FD9;&#x79CD;&#x65B9;&#x6848;&#x80FD;&#x591F;&#x89E3;&#x51B3;&#x8F6E;&#x8BE2;&#x4E2D;&#x5E26;&#x6765;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x6570;&#x636E;&#x4E0D;&#x80FD;&#x53CA;&#x65F6;&#x4F20;&#x9012;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x5E26;&#x6765;&#x7684;&#x7F51;&#x7EDC;&#x82B1;&#x9500;&#x5927;&#x7684;&#x95EE;&#x9898;&#x4ECD;&#x7136;&#x65E0;&#x6CD5;&#x89E3;&#x51B3;&#x3002;</p><h3 id="articleHeader5">SSE(Server Send Event)</h3><p>SSE&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x534F;&#x8BAE;&#xFF0C;&#x4F5C;&#x7528;&#x4E3A;&#x670D;&#x52A1;&#x7AEF;&#x60F3;&#x5BA2;&#x6237;&#x7AEF;&#x63A8;&#x9001;&#x6570;&#x636E;&#x3002;&#x4ED6;&#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;&#x7684;SSE&#x534F;&#x8BAE;&#x6765;&#x5B9E;&#x73B0;&#x5355;&#x9879;&#x7684;&#x6570;&#x636E;&#x63A8;&#x9001;&#x3002;SSE&#x7684;&#x7F3A;&#x70B9;&#x662F;&#x6570;&#x636E;&#x53EA;&#x80FD;&#x4ECE;&#x670D;&#x52A1;&#x7AEF;&#x50CF;&#x5BA2;&#x6237;&#x7AEF;&#x4F20;&#x9012;&#xFF0C;&#x800C;&#x6570;&#x636E;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x670D;&#x52A1;&#x7AEF;&#x4F20;&#x9012;&#x3002;</p><h3 id="articleHeader6">WebSocket&#x80FD;&#x591F;&#x89E3;&#x51B3;&#x4E0A;&#x8FF0;&#x95EE;&#x9898;</h3><p>WebSocket&#x80FD;&#x591F;&#x6709;&#x6548;&#x7684;&#x89E3;&#x51B3;&#x4EE5;&#x4E0B;&#x95EE;&#x9898;&#xFF1A;</p><ol><li>&#x5E26;&#x5BBD;&#x95EE;&#x9898;&#xFF1A;WebSocket&#x76F8;&#x5BF9;&#x4E8E;HTTP&#x6765;&#x8BF4;&#x534F;&#x8BAE;&#x5934;&#x66F4;&#x52A0;&#x5C0F;&#xFF0C;&#x540C;&#x65F6;&#x6309;&#x9700;&#x4F20;&#x9012;&#x3002;</li><li>&#x6570;&#x636E;&#x5B9E;&#x65F6;&#x6027;&#x95EE;&#x9898;&#xFF1A;WebSocket&#x76F8;&#x5BF9;&#x4E8E;&#x8F6E;&#x8BE2;&#x548C;&#x957F;&#x8F6E;&#x8BE2;&#x6765;&#x8BF4;&#xFF0C;&#x80FD;&#x591F;&#x5B9E;&#x65F6;&#x4F20;&#x9012;&#x6570;&#x636E;&#xFF0C;&#x5EF6;&#x8FDF;&#x66F4;&#x5C0F;&#x3002;</li><li>&#x72B6;&#x6001;&#x95EE;&#x9898;&#xFF1A;&#x76F8;&#x8F83;&#x4E8E;HTTP&#x7684;&#x65E0;&#x72B6;&#x6001;&#x8BF7;&#x6C42;&#xFF0C;WebSocket&#x5728;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x540E;&#x80FD;&#x591F;&#x7EF4;&#x6301;&#x7279;&#x5B9A;&#x7684;&#x72B6;&#x6001;&#x3002;</li></ol><p>&#x5176;&#x4ED6;&#x7684;&#x4F18;&#x70B9;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://zh.wikipedia.org/wiki/WebSocket" rel="external nofollow noopener noreferrer" target="_blank">&#x7EF4;&#x57FA;&#x767E;&#x79D1;</a>&#x3002;</p><h1 id="articleHeader7">WebSocket&#x534F;&#x8BAE;</h1><p>&#x4E86;&#x89E3;&#x4E86;&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x4F7F;&#x7528;WebSocket&#xFF0C;&#x4E0B;&#x9762;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x4E86;&#x89E3;&#x4E0B;WebSocket&#x534F;&#x8BAE;&#x76F8;&#x5173;&#x7684;&#x5185;&#x5BB9;&#x3002;</p><p>WebSocket&#x534F;&#x8BAE;&#x662F;&#x901A;&#x8FC7;HTTP&#x534F;&#x8BAE;&#x5347;&#x7EA7;&#x800C;&#x6765;&#x3002;&#x53EA;&#x9700;&#x8981;&#x5728;HTTP&#x534F;&#x8BAE;&#x57FA;&#x7840;&#x4E0A;&#x589E;&#x52A0;&#x4E24;&#x6B21;&#x63E1;&#x624B;&#xFF0C;&#x5373;&#x53EF;&#x5EFA;&#x7ACB;WebSocket&#x8FDE;&#x63A5;&#xFF08;&#x5982;&#x679C;&#x662F;&#x9700;&#x8981;&#x901A;&#x8FC7;SSL&#x52A0;&#x5BC6;&#xFF0C;&#x5219;&#x8FD8;&#x9700;&#x8981;&#x8FDB;&#x884C;SSL&#x63E1;&#x624B;&#x8FC7;&#x7A0B;&#xFF09;&#xFF0C;&#x63E1;&#x624B;&#x7684;&#x90E8;&#x5206;&#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x89C1;<a href="https://tools.ietf.org/html/rfc6455#section-1.3" rel="external nofollow noopener noreferrer" target="_blank">WebSocket&#x6587;&#x6863;</a>&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4EE5;&#x4E0B;Header&#x76F8;&#x5173;&#x5B57;&#x6BB5;&#x3002;</p><h2 id="articleHeader8">&#x8BF7;&#x6C42;Header</h2><p>&#x8BF7;&#x6C42;Header&#x5982;&#x4E0B;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="GET /chat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Origin: http://example.com
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="http hljs"><code class="http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/chat</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: server.example.com
+<span class="hljs-attribute">Upgrade</span>: websocket
+<span class="hljs-attribute">Connection</span>: Upgrade
+<span class="hljs-attribute">Sec-WebSocket-Key</span>: dGhlIHNhbXBsZSBub25jZQ==
+<span class="hljs-attribute">Origin</span>: http://example.com
+<span class="hljs-attribute">Sec-WebSocket-Protocol</span>: chat, superchat
+<span class="hljs-attribute">Sec-WebSocket-Version</span>: 13</code></pre><p>&#x5176;&#x4E2D;&#xFF1A;</p><ul><li><code>Host: server.example.com</code>&#xFF1A;&#x8868;&#x793A;&#x5C06;&#x8981;&#x8FDE;&#x63A5;&#x7684;WebSocket&#x5730;&#x5740;&#x3002;</li><li><code>Connection: Upgrade</code>&#xFF1A;&#x9700;&#x8981;&#x5347;&#x7EA7;HTTP&#x8FDE;&#x63A5;&#x3002;</li><li><code>Upgrade: websocket</code>&#xFF1A;&#x5C06;HTTP&#x8FDE;&#x63A5;&#x5347;&#x7EA7;&#x81F3;WebSocket&#x8FDE;&#x63A5;&#x3002;</li><li><code>Sec-WebSocket-Key:dGhlIHNhbXBsZSBub25jZQ==</code>&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x751F;&#x6210;&#x7684;WebSocket&#x8FDE;&#x63A5;&#x5BC6;&#x94A5;&#x3002;</li><li><code>Sec-WebSocket-Protocol: chat, superchat</code>&#xFF1A;&#x6307;&#x5B9A;&#x54EA;&#x4E9B;&#x534F;&#x8BAE;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x7684;&#x3002;</li><li><code>Sec-WebSocket-Version: 13</code>&#xFF1A;WebSocket&#x7248;&#x672C;&#x53F7;&#x3002;</li></ul><h2 id="articleHeader9">&#x54CD;&#x5E94;Header</h2><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+Sec-WebSocket-Protocol: chat" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="http hljs"><code class="http">HTTP/1.1 <span class="hljs-number">101</span> Switching Protocols
+<span class="hljs-attribute">Upgrade</span>: websocket
+<span class="hljs-attribute">Connection</span>: Upgrade
+<span class="hljs-attribute">Sec-WebSocket-Accept</span>: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+<span class="hljs-attribute">Sec-WebSocket-Protocol</span>: chat</code></pre><p>&#x5176;&#x4E2D;&#xFF1A;</p><ul><li><code>Upgrade: websocket</code>&#xFF1A;&#x786E;&#x8BA4;&#x5C06;HTTP&#x8FDE;&#x63A5;&#x5347;&#x7EA7;&#x81F3;WebSocket&#x8FDE;&#x63A5;&#x3002;</li><li><code>Connection: Upgrade</code>&#xFF1A;&#x786E;&#x8BA4;&#x5347;&#x7EA7;HTTP&#x8FDE;&#x63A5;&#x3002;</li><li><code>Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo</code>&#xFF1A;&#x670D;&#x52A1;&#x7AEF;&#x6839;&#x636E;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8FDE;&#x63A5;&#x5BC6;&#x94A5;&#x751F;&#x6210;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x5BC6;&#x94A5;&#x3002;</li><li><code>Sec-WebSocket-Protocol: chat</code>&#xFF1A;&#x9009;&#x62E9;&#x7684;WebSocket&#x534F;&#x8BAE;&#x3002;</li></ul><h1 id="articleHeader10">WebSocket API&#x4ECB;&#x7ECD;</h1><p>&#x5BF9;WebSocket&#x7684;&#x534F;&#x8BAE;&#x6709;&#x4E86;&#x4E00;&#x4E2A;&#x521D;&#x6B65;&#x7684;&#x4E86;&#x89E3;&#xFF0C;&#x4E0B;&#x9762;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x4E0B;&#xFF0C;&#x5728;&#x5177;&#x4F53;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x5982;&#x4F55;&#x4F7F;&#x7528;WebSocket&#x3002;</p><p>WebSocket&#x7684;API&#x4E0D;&#x591A;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C31;&#x6839;&#x636E;&#x4F7F;&#x7528;&#x7684;&#x987A;&#x5E8F;&#xFF1A;</p><ul><li>&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</li><li>&#x6536;&#x5230;&#x6D88;&#x606F;</li><li>&#x53D1;&#x9001;&#x6D88;&#x606F;</li><li>&#x5173;&#x95ED;&#x8FDE;&#x63A5;</li></ul><p>&#x6765;&#x9010;&#x4E00;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#xFF0C;&#x5177;&#x4F53;&#x7684;MDN&#x8D44;&#x6599;&#x53EF;&#x4EE5;&#x89C1;<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket" rel="external nofollow noopener noreferrer" target="_blank">&#x6B64;&#x5904;</a>&#x3002;</p><h2 id="articleHeader11">&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</h2><p>WebSocket&#x901A;&#x8FC7;&#x521D;&#x59CB;&#x5316;&#x5B9E;&#x4F8B;&#x6765;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;&#x901A;&#x8FC7;<code>open</code>&#x4E8B;&#x4EF6;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6765;&#x786E;&#x8BA4;&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x6210;&#x529F;&#xFF0C;&#x5177;&#x4F53;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="const webSocket = new WebSocket(&apos;ws://server.example.com&apos;);
+
+webSocket.addEventListener(&apos;open&apos;, (event) =&gt; {
+    // &#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x6210;&#x529F;
+});" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript"><span class="hljs-keyword">const</span> webSocket = <span class="hljs-keyword">new</span> WebSocket(<span class="hljs-string">&apos;ws://server.example.com&apos;</span>);
+
+webSocket.addEventListener(<span class="hljs-string">&apos;open&apos;</span>, (event) =&gt; {
+    <span class="hljs-comment">// &#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x6210;&#x529F;</span>
+});</code></pre><p>&#x5728;WebSocket&#x5EFA;&#x7ACB;ws&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;url&#x53EF;&#x4EE5;&#x662F;&#x57DF;&#x540D;&#x6216;&#x8005;IP&#x5730;&#x5740;&#xFF1B;&#x4F46;&#x662F;&#x5F53;&#x5EFA;&#x7ACB;&#x7684;&#x8FDE;&#x63A5;&#x662F;wss&#xFF08;&#x52A0;&#x5BC6;WebSocket&#xFF09;&#x65F6;&#xFF0C;url&#x5FC5;&#x987B;&#x662F;&#x57DF;&#x540D;&#xFF0C;&#x56E0;&#x4E3A;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x76F8;&#x5E94;&#x7684;&#x8BC1;&#x4E66;&#xFF0C;&#x800C;&#x8BC1;&#x4E66;&#x662F;&#x9488;&#x5BF9;&#x57DF;&#x540D;&#x7684;&#x3002;</p><h2 id="articleHeader12">&#x6536;&#x5230;&#x6D88;&#x606F;</h2><p>WebSocket&#x901A;&#x8FC7;<code>message</code>&#x4E8B;&#x4EF6;&#x6765;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x3002;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="socket.addEventListener(&apos;message&apos;, function (event) {
+    console.log(&apos;Message from server&apos;, event.data);
+});" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">socket.addEventListener(<span class="hljs-string">&apos;message&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Message from server&apos;</span>, event.data);
+});</code></pre><p>WebSocket&#x53EF;&#x4EE5;&#x4F20;&#x9012;<code>String</code>&#x3001;<code>ArrayBuffer</code>&#x548C;<code>Blob</code>&#x4E09;&#x79CD;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x6536;&#x5230;&#x6D88;&#x606F;&#x65F6;&#x53EF;&#x80FD;&#x662F;&#x5176;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x79CD;&#x3002;&#x5176;&#x4E2D;&#xFF0C;<code>String</code>&#x548C;<code>ArrayBuffer</code>&#x4F7F;&#x7528;&#x7684;&#x6700;&#x591A;&#x3002;</p><ul><li>&#x5982;&#x679C;&#x662F;<code>String</code>&#x7C7B;&#x578B;&#xFF0C;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x5B57;&#x7B26;&#x4E32;&#x5904;&#x7406;&#x51FD;&#x6570;&#x5373;&#x53EF;&#x8FDB;&#x884C;&#x76F8;&#x5173;&#x8F6C;&#x6362;&#xFF0C;&#x5982;JSON&#x7B49;&#x683C;&#x5F0F;&#x3002;</li><li>&#x5982;&#x679C;&#x662F;&#x4E8C;&#x8FDB;&#x5236;<code>blob</code>&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>ArrayBuffer</code>&#x548C;<code>DataView</code>&#x6765;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x76F8;&#x5173;&#x7684;&#x5185;&#x5BB9;&#x5C06;&#x5728;&#x672C;&#x7CFB;&#x5217;&#x7B2C;&#x4E8C;&#x7BC7;&#x4E2D;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</li></ul><h2 id="articleHeader13">&#x53D1;&#x9001;&#x6D88;&#x606F;</h2><p>WebSocket&#x901A;&#x8FC7;<code>send</code>&#x65B9;&#x6CD5;&#x6765;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x3002;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="webSocket.send(data);" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript" style="word-break:break-word;white-space:initial">webSocket.send(data);</code></pre><p>&#x793A;&#x4F8B;&#x4E2D;&#x7684;<code>data</code>&#x5B57;&#x6BB5;&#xFF0C;&#x4E5F;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x6536;&#x5230;&#x6D88;&#x606F;&#x6240;&#x8BF4;&#x7684;<code>String</code>&#x3001;<code>ArrayBuffer</code>&#x548C;<code>Blob</code>&#x4E09;&#x79CD;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E4B;&#x4E00;&#x3002;</p><ul><li><code>String</code>&#x7C7B;&#x578B;&#x53EA;&#x9700;&#x8981;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x7ED9;<code>send</code>&#x65B9;&#x6CD5;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x5373;&#x53EF;&#x3002;</li><li><code>ArrayBuffer</code>&#x7C7B;&#x578B;&#x5219;&#x9700;&#x8981;&#x4F20;&#x9012;&#x4E00;&#x4E2A;ArrayBuffer&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x76F8;&#x5173;&#x7684;&#x5185;&#x5BB9;&#x4E5F;&#x5C06;&#x5728;&#x672C;&#x7CFB;&#x5217;&#x7B2C;&#x4E8C;&#x7BC7;&#x4E2D;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</li></ul><h2 id="articleHeader14">&#x5173;&#x95ED;&#x8FDE;&#x63A5;</h2><h3 id="articleHeader15">&#x88AB;&#x52A8;&#x5173;&#x95ED;</h3><p>&#x5F53;&#x670D;&#x52A1;&#x7AEF;&#x4E3B;&#x52A8;&#x5173;&#x95ED;WebSocket&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x4F1A;&#x901A;&#x8FC7;WebSocket&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x4E00;&#x4E2A;close&#x6570;&#x636E;&#x5305;&#xFF0C;WebSocket&#x7684;<code>close</code>&#x4E8B;&#x4EF6;&#x4F1A;&#x89E6;&#x53D1;&#x3002;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="webSocket.addEventListener(&apos;close&apos;, (closeEvent) =&gt; {
+    
+});" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">webSocket.addEventListener(<span class="hljs-string">&apos;close&apos;</span>, (closeEvent) =&gt; {
+    
+});</code></pre><p><strong>&#x6CE8;&#xFF1A;&#x5F53;&#x7F51;&#x7EDC;&#x65AD;&#x5F00;&#x65F6;&#xFF0C;WebSocket&#x8FDE;&#x63A5;&#x5E76;&#x4E0D;&#x4F1A;&#x88AB;&#x52A8;&#x5173;&#x95ED;&#xFF0C;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x6536;&#x5230;&#x5173;&#x95ED;&#x7684;&#x6570;&#x636E;&#x5305;&#x3002;</strong></p><h3 id="articleHeader16">&#x4E3B;&#x52A8;&#x5173;&#x95ED;</h3><p>&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;WebSocket&#x63D0;&#x4F9B;&#x7684;<code>close</code>&#x65B9;&#x6CD5;&#x6765;&#x4E3B;&#x52A8;&#x5173;&#x95ED;&#x957F;&#x8FDE;&#x63A5;&#x3002;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="webSocket.close();" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript" style="word-break:break-word;white-space:initial">webSocket.close();</code></pre><p>&#x76EE;&#x524D;&#x8BE5;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF08;&#x5728;&#x67D0;&#x4E9B;&#x7248;&#x672C;&#x4E2D;&#x4E0D;&#x652F;&#x6301;&#xFF0C;&#x8BE6;&#x60C5;&#x89C1;<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket#close(" rel="external nofollow noopener noreferrer" target="_blank">MDN&#x6587;&#x6863;</a>)&#xFF09;&#xFF1A;</p><ul><li>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#x7684;&#x72B6;&#x6001;&#x53F7;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;1000&#xFF0C;&#x8868;&#x793A;&#x6B63;&#x5E38;&#x5173;&#x95ED;&#x3002;</li><li>&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;&#x5173;&#x95ED;&#x539F;&#x56E0;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x957F;&#x4E8E;123&#x5B57;&#x8282;&#x7684;UTF-8&#x6587;&#x672C;&#x3002;</li></ul><h1 id="articleHeader17">&#x603B;&#x7ED3;</h1><p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x662F;&#x4ECB;&#x7ECD;&#x4E86;&#x4E00;&#x4E0B;WebSocket&#x76F8;&#x5173;&#x7684;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#x3002;</p><p>&#x901A;&#x8FC7;WebSocket&#x7684;&#x957F;&#x8FDE;&#x63A5;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x7AEF;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5927;&#x91CF;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x800C;&#x4E0D;&#x4F1A;&#x5E26;&#x6765;&#x76F8;&#x5173;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x7ED9;Web&#x7AEF;&#x5E26;&#x6765;&#x4E86;&#x6781;&#x5927;&#x7684;&#x529F;&#x80FD;&#x589E;&#x5F3A;&#x3002;&#x76EE;&#x524D;Web&#x7AEF;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;WebSocket&#x6765;&#x8FDB;&#x884C;IM&#x76F8;&#x5173;&#x529F;&#x80FD;&#x5F00;&#x53D1;&#xFF0C;&#x6216;&#x8005;&#x5B9E;&#x65F6;&#x534F;&#x4F5C;&#x7B49;&#x9700;&#x8981;&#x4E0E;&#x670D;&#x52A1;&#x7AEF;&#x8FDB;&#x884C;&#x5927;&#x91CF;&#x6570;&#x636E;&#x4EA4;&#x4E92;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5E76;&#x4E14;&#x4E0D;&#x9700;&#x8981;&#x50CF;&#x4E4B;&#x524D;&#x4E00;&#x6837;&#x4F7F;&#x7528;&#x957F;&#x8F6E;&#x8BE2;&#x7684;Hack&#x65B9;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p><p>&#x5177;&#x4F53;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x548C;&#x7EBF;&#x4E0A;&#x7684;&#x4F7F;&#x7528;&#x95EE;&#x9898;&#xFF0C;&#x5C06;&#x4F1A;&#x5728;&#x672C;&#x7CFB;&#x5217;&#x540E;&#x51E0;&#x7BC7;&#x535A;&#x5BA2;&#x4E2D;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</p>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>WebSocket系列之基础知识入门篇</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000014002116" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000014002116</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/d8329c90/">https://alili.tech/archive/d8329c90/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">WebSocket介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">2.1.</span> <span class="toc-text">为什么要使用WebSocket</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">2.1.1.</span> <span class="toc-text">轮询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">2.1.2.</span> <span class="toc-text">长轮询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader5"><span class="toc-number">2.1.3.</span> <span class="toc-text">SSE(Server Send Event)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader6"><span class="toc-number">2.1.4.</span> <span class="toc-text">WebSocket能够解决上述问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader7"><span class="toc-number">3.</span> <span class="toc-text">WebSocket协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader8"><span class="toc-number">3.1.</span> <span class="toc-text">请求Header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader9"><span class="toc-number">3.2.</span> <span class="toc-text">响应Header</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader10"><span class="toc-number">4.</span> <span class="toc-text">WebSocket API介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader11"><span class="toc-number">4.1.</span> <span class="toc-text">建立连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader12"><span class="toc-number">4.2.</span> <span class="toc-text">收到消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader13"><span class="toc-number">4.3.</span> <span class="toc-text">发送消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader14"><span class="toc-number">4.4.</span> <span class="toc-text">关闭连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader15"><span class="toc-number">4.4.1.</span> <span class="toc-text">被动关闭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader16"><span class="toc-number">4.4.2.</span> <span class="toc-text">主动关闭</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader17"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">6.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">6.1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">6.2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li></ol>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

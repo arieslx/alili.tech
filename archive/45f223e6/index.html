@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="容器化，原子化发行版以及 Linux 的未来  容器支持者说未来属于容器化操作系统，而其他人或许有不同看法。   自从 Linus Torvalds 在 1991 年发布 Linux 以来，Linux 已历经漫长的岁月。它已经成为企业级领域的主流操作系统。同时，我们看到桌面级领域出现了很多改进和调整，但在过去的 25 年来，主流 Linux 发行版的模式很大程度上没有变化。基于软件包管理的传统模式">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="容器化，原子化发行版以及 Linux 的未来">
+<meta property="og:url" content="https://alili.tech/archive/45f223e6/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="容器化，原子化发行版以及 Linux 的未来  容器支持者说未来属于容器化操作系统，而其他人或许有不同看法。   自从 Linus Torvalds 在 1991 年发布 Linux 以来，Linux 已历经漫长的岁月。它已经成为企业级领域的主流操作系统。同时，我们看到桌面级领域出现了很多改进和调整，但在过去的 25 年来，主流 Linux 发行版的模式很大程度上没有变化。基于软件包管理的传统模式">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t018f3fc394ad21904f.jpg">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="容器化，原子化发行版以及 Linux 的未来">
+<meta name="twitter:description" content="容器化，原子化发行版以及 Linux 的未来  容器支持者说未来属于容器化操作系统，而其他人或许有不同看法。   自从 Linus Torvalds 在 1991 年发布 Linux 以来，Linux 已历经漫长的岁月。它已经成为企业级领域的主流操作系统。同时，我们看到桌面级领域出现了很多改进和调整，但在过去的 25 年来，主流 Linux 发行版的模式很大程度上没有变化。基于软件包管理的传统模式">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t018f3fc394ad21904f.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>容器化，原子化发行版以及 Linux 的未来 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/45f223e6/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/45f223e6/",
+      "appid": "1613049289050283", 
+      "title": "容器化，原子化发行版以及 Linux 的未来 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:02"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/2fcf66e9/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/ed7f0275/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/45f223e6/&text=容器化，原子化发行版以及 Linux 的未来" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/45f223e6/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/45f223e6/&text=容器化，原子化发行版以及 Linux 的未来" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/45f223e6/&title=容器化，原子化发行版以及 Linux 的未来" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/45f223e6/&is_video=false&description=容器化，原子化发行版以及 Linux 的未来" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=容器化，原子化发行版以及 Linux 的未来&body=Check out this article: https://alili.tech/archive/45f223e6/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/45f223e6/&title=容器化，原子化发行版以及 Linux 的未来" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/45f223e6/&title=容器化，原子化发行版以及 Linux 的未来" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/45f223e6/&title=容器化，原子化发行版以及 Linux 的未来" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/45f223e6/&title=容器化，原子化发行版以及 Linux 的未来" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">容器化，原子化发行版以及 Linux 的未来</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">三种模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">差异有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.3.</span> <span class="toc-text">镜像模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.4.</span> <span class="toc-text">事务模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.5.</span> <span class="toc-text">原子化更新的问世</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.6.</span> <span class="toc-text">展望未来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.7.</span> <span class="toc-text">结论</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        容器化，原子化发行版以及 Linux 的未来
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-21T00:00:00.000Z" itemprop="datePublished">2018-10-21</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1><a href="#容器化原子化发行版以及-linux-的未来"></a>容器化，原子化发行版以及 Linux 的未来</h1>
+<blockquote>
+<p>容器支持者说未来属于容器化操作系统，而其他人或许有不同看法。</p>
+</blockquote>
+<p><a href="https://camo.githubusercontent.com/ff7d08fb5d5174148d685e97e4ca88e1dc4d4442/68747470733a2f2f7777772e6c696e75782e636f6d2f73697465732f6c636f6d2f66696c65732f7374796c65732f72656e64657265645f66696c652f7075626c69632f61746f6d69632d64697374726f2e6a70673f69746f6b3d536a426543447471" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t018f3fc394ad21904f.jpg" alt=""></a></p>
+<p>自从 Linus Torvalds 在 1991 年发布 Linux 以来，Linux 已历经漫长的岁月。它已经成为企业级领域的主流操作系统。同时，我们看到桌面级领域出现了很多改进和调整，但在过去的 25 年来，主流 Linux 发行版的模式很大程度上没有变化。基于软件包管理的传统模式依然统治着桌面级和服务器级市场。</p>
+<p>但随着 Google 发布了基于 Linux 的 Chrome OS，情况出现了微妙的转变，Chrome OS 采用镜像模式。Core OS (目前归属于 Red Hat) 受 Google 启发推出了一款操作系统 Container Linux，主要面向企业级用户。</p>
+<p>Container Linux 改变了操作系统更新的方式，也改变了应用分发和更新的方式。这会是 Linux 发行版的未来吗？这是否会取代基于软件包的传统发行版模式呢？</p>
+<h3><a href="#三种模式"></a>三种模式</h3>
+<p>SLE (SUSE Linux Enterprise) 的产品管理总监 Matthias Eckermann 认为目前存在 3 种模式，而不是 2 种。Eckermann 提到：“除了传统模式（RHEL/SLE）和镜像模式（RedHat 的 Atomic Host），还存在第三种模型：事务模式。<a href="https://www.suse.com/products/caas-platform/" rel="external nofollow noopener noreferrer" target="_blank">SUSE CaaS 平台</a> 及 SUSE MicroOS 就采用这种模式。”</p>
+<h3><a href="#差异有哪些"></a>差异有哪些</h3>
+<p>Linux 用户对传统模式非常熟悉，它由独立的软件包和共享库组成。这种模式有独特的优势，让应用开发者无需将共享库捆绑在应用中。由于库不会多次引入，使得系统简洁和轻便。这也让用户无需下载很多软件包，节省了带宽。发行版对软件包全权负责，通过推送系统级别的更新，可以轻松地解决安全隐患。</p>
+<p>RHEL （Red Hat Enterprise Linux）的产品管理总监 Ron Pacheco 表示，“传统的打包方式继续为我们提供精心构建和优化操作系统的机会，以便支持需要经过时间考验的任务关键型工作负载。”</p>
+<p>但传统模式也有一些弊端。应用开发者受限使用发行版包含的库，使其无法从发行版不支持的新软件中获益。这也可能导致不同版本之间相互冲突。最终，传统模式给管理员增加了挑战，使其难以让软件包一直处于最新版本状态。</p>
+<h3><a href="#镜像模式"></a>镜像模式</h3>
+<p>镜像模式应运而生。Eckermann 表示，“镜像模式解决了传统模式遇到的问题，它在每次迭代更新时替换整个操作系统，而不是单个的软件包”。</p>
+<p>Pacheco 表示，“当我们用镜像作为操作系统的代名词进行讨论时，我们真正关心的是可编程式的开发和部署以及更好的集成式生命周期管理”，基于 RHEL 搭建的 OpenShift 被他用作示例。</p>
+<p>Pacheco 认为基于镜像的操作系统是一种延续，从手工打造并部署镜像，到可大规模管理的高度自动化基础设施；无论客户使用哪种类型，都需要运行同样的应用。他说，“你肯定不希望使用一个完全不同的部署模式，这需要重做很多工作”。</p>
+<p>镜像模式用新的库和软件包替代来整个操作系统，但也面临一系列问题。在镜像模式中，需要重建镜像才能适应特殊环境的需求。例如，用户有特殊需求，需要安装特定硬件的驱动或安装底层监控功能，镜像模式无法满足，需要重新设计功能以实现细粒度操作。</p>
+<h3><a href="#事务模式"></a>事务模式</h3>
+<p>第三种模式采用事务更新，基于传统的软件包更新，但将全部的软件包视为一个镜像，就像镜像那样在一次操作中更新全部软件包。</p>
+<p>Eckermann 表示，“由于安装或回滚时操作对象是打包在一起的单一软件包，用户在需要时能够做相应的调整，这就是差别所在。结合传统模式和镜像模式的优点，避免两种模式的缺点，事务模式给用户提供了额外的灵活性。”</p>
+<p>Pacheco 表示，将精心构造的工作负载部署成镜像的做法越来越成为主流，因为这种部署方式具有一致性和可靠性，而且可以弹性部署。“这正是我们用户目前的做法，部署环境包括在预置设备或公有/私有云上创建并部署的虚拟机，或在传统的裸机上。”</p>
+<p>Pacheco 建议我们将这几种模式视为操作系统角色的进化和扩展，而不是仅仅“使用场景的比较和对比”。</p>
+<h3><a href="#原子化更新的问世"></a>原子化更新的问世</h3>
+<p>Google 的 Chrome OS 和 Core OS 为我们普及了事务更新的概念，该模型也被 Red Hat 和 SUSE 采用。</p>
+<p>Eckermann 表示，“我们必须认识到，用于容器主机的操作系统已经不再是关注点 —— 至少不是管理员的关注点。RedHat Atomic 主机和 SUSE CaaS 平台都解决了该问题，实现方式在用户看来很相似。”</p>
+<p>SUSE CaaS 平台、Red Hat Atomic Host和 Container Linux （前身是 Core OS）提供的<a href="https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure" rel="external nofollow noopener noreferrer" target="_blank">不可变基础设施Immutable infrastructure</a> 推广了事务更新的使用。Red Hat 高级技术产品经理 Ben Breard 表示，“在事务模式中，主机总是会变更到已确认正确的新状态，这让我们更有信心执行更新，进而实现更快速的功能流、安全优势以及易于采用的操作模式。”</p>
+<p>这些新型操作系统使用 Linux 容器将应用与底层系统隔离，解除了传统模式中基础设施更新的诸多限制。</p>
+<p>Breard 补充道，“当编排层可以智能处理更新、部署，甚至最终实现无缝操作时，我们才会真正意识到该模式的威力和好处”。</p>
+<h3><a href="#展望未来"></a>展望未来</h3>
+<p>Linux 的未来会是什么样子？不同的人会给出不同的回答。容器支持者认为未来属于容器化的操作系统，但依然拥有庞大市场的 Linux 供应商显然不这么认为。</p>
+<p>当被问到原子化发行版是否会在很久以后将替换传统发行版时，Eckermann 表示，“如果我回答肯定的，那么表示我顺应潮流；如果回答是否定的，意味着我还是站在传统阵营。然而，我的回答是否定的，即 atomic 发行版在很久以后也不会替换传统发行版，传统负载和容器化负载将在数据中心、私有云以及公有云环境中共存。”</p>
+<p>Pacheco 认为，从 Linux 的部署增长情况来看，一般情况下很难想象一种模式替换另一种模式。与其将多种模式视为相互竞争的关系，不如将原子化发行版视为操作系统进化和部署的一部分。</p>
+<p>此外，在一些使用案例中，我们需要同时使用多种 Linux 发行版。Eckermann 表示，“想一想银行和保险公司中大量的 PL/1 和 Cobol 系统。再想一想内存数据库和核心数据总线系统。”</p>
+<p>这些应用大多数无法进行容器化。就我们目前来看，容器化不是解决所有问题的万金油。总是会同时存在多种不同的技术。</p>
+<p>Eckermann 相信，随着时间的推移，大量新的开发和部署将采用容器化，但仍然有不错的理由，促使我们在企业级环境中保留传统的部署方式和应用。</p>
+<p>Pacheco 认为，“用户需要经历业务、设计和文化的转型，才能最大化基于容器的部署带来的优势。好消息是业界已经认识到并开始大规模转变，就像历史上大型机转变成 UNIX，UNIX 转变成 x86，x86 转变成虚拟化那样”。</p>
+<h3><a href="#结论"></a>结论</h3>
+<p>很明显，未来容器化负载的使用量会持续增长，也就意味着原子化发行版的需求量持续增长。与此同时，仍会有不少工作负载运行在传统发行版中。重要的是，这两类用户都在新模式上大规模投入，以便市场改变时可以做相应的策略改变。从外部观察者的视角来看，未来属于事务/原子化模式。我们已经见证了数据中心的发展，我们花了很长时间完成了从每个服务器一个应用到“函数即服务”模型的转变。Linux 发行版进入原子化时代的日子也不会太远了。</p>
+<hr>
+<p>via: <a href="https://www.linux.com/blog/2018/4/containerization-atomic-distributions-and-future-linux" rel="external nofollow noopener noreferrer" target="_blank">https://www.linux.com/blog/2018/4/containerization-atomic-distributions-and-future-linux</a></p>
+<p>作者：<a href="https://www.linux.com/users/arnieswap" rel="external nofollow noopener noreferrer" target="_blank">SWAPNIL BHARTIYA</a> 选题：<a href="https://github.com/lujun9972" rel="external nofollow noopener noreferrer" target="_blank">lujun9972</a> 译者：<a href="https://github.com/pinewall" rel="external nofollow noopener noreferrer" target="_blank">pinewall</a> 校对：<a href="https://github.com/wxy" rel="external nofollow noopener noreferrer" target="_blank">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" rel="external nofollow noopener noreferrer" target="_blank">LCTT</a> 原创编译，<a href="https://linux.cn/" rel="external nofollow noopener noreferrer" target="_blank">Linux中国</a> 荣誉推出</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://www.zcfy.cc/article/containerization-atomic-distributions-and-the-future-of-linux" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/containerization-atomic-distributions-and-the-future-of-linux</a></p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>容器化，原子化发行版以及 Linux 的未来</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/45f223e6/">https://alili.tech/archive/45f223e6/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">容器化，原子化发行版以及 Linux 的未来</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">三种模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">差异有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.3.</span> <span class="toc-text">镜像模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.4.</span> <span class="toc-text">事务模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.5.</span> <span class="toc-text">原子化更新的问世</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.6.</span> <span class="toc-text">展望未来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.7.</span> <span class="toc-text">结论</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

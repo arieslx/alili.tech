@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="这些是在github能找到的single-spa微前端的Demo: single-spa-examples这是一个single-spa做的官方例子,这是在线demo.  simple-single-spa-webpack-example这是基于webpack构建的使用例子,webpakc版本可能有点低,但是思想是一样的.  single-spa-angular-cli-examples基于angu">
+<meta name="keywords" content="微前端,前端微服务化,前端自动化,解决方案,前端难题,Single,SPA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Single-SPA微前端框架的使用Demo汇总">
+<meta property="og:url" content="https://alili.tech/archive/22975f44/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="这些是在github能找到的single-spa微前端的Demo: single-spa-examples这是一个single-spa做的官方例子,这是在线demo.  simple-single-spa-webpack-example这是基于webpack构建的使用例子,webpakc版本可能有点低,但是思想是一样的.  single-spa-angular-cli-examples基于angu">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Single-SPA微前端框架的使用Demo汇总">
+<meta name="twitter:description" content="这些是在github能找到的single-spa微前端的Demo: single-spa-examples这是一个single-spa做的官方例子,这是在线demo.  simple-single-spa-webpack-example这是基于webpack构建的使用例子,webpakc版本可能有点低,但是思想是一样的.  single-spa-angular-cli-examples基于angu">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>Single-SPA微前端框架的使用Demo汇总 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/22975f44/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/22975f44/",
+      "appid": "1613049289050283", 
+      "title": "Single-SPA微前端框架的使用Demo汇总 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:55"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/1a4f2dcf/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/ed854758/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/22975f44/&text=Single-SPA微前端框架的使用Demo汇总" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/22975f44/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/22975f44/&text=Single-SPA微前端框架的使用Demo汇总" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/22975f44/&title=Single-SPA微前端框架的使用Demo汇总" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/22975f44/&is_video=false&description=Single-SPA微前端框架的使用Demo汇总" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Single-SPA微前端框架的使用Demo汇总&body=Check out this article: https://alili.tech/archive/22975f44/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/22975f44/&title=Single-SPA微前端框架的使用Demo汇总" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/22975f44/&title=Single-SPA微前端框架的使用Demo汇总" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/22975f44/&title=Single-SPA微前端框架的使用Demo汇总" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/22975f44/&title=Single-SPA微前端框架的使用Demo汇总" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#single-spa-examples"><span class="toc-number">1.</span> <span class="toc-text">single-spa-examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#simple-single-spa-webpack-example"><span class="toc-number">2.</span> <span class="toc-text">simple-single-spa-webpack-example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#single-spa-angular-cli-examples"><span class="toc-number">3.</span> <span class="toc-text">single-spa-angular-cli-examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#single-spa-es5-angularjs"><span class="toc-number">4.</span> <span class="toc-text">single-spa-es5-angularjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#single-spa-portal-example"><span class="toc-number">5.</span> <span class="toc-text">single-spa-portal-example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#microfrontend-base-demo"><span class="toc-number">6.</span> <span class="toc-text">microfrontend-base-demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#microfrontend-submodule-demo"><span class="toc-number">7.</span> <span class="toc-text">microfrontend-submodule-demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        Single-SPA微前端框架的使用Demo汇总
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-31T00:00:00.000Z" itemprop="datePublished">2018-10-31</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/MicroFrontend/">MicroFrontend</a>, <a class="tag-link" href="/tags/前端架构/">前端架构</a>, <a class="tag-link" href="/tags/微前端/">微前端</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>这些是在github能找到的single-spa微前端的Demo:</p>
+<h2 id="single-spa-examples"><a href="#single-spa-examples" class="headerlink" title="single-spa-examples"></a><a href="https://github.com/CanopyTax/single-spa-examples" rel="external nofollow noopener noreferrer" target="_blank">single-spa-examples</a></h2><p>这是一个single-spa做的官方例子,这是<a href="http://single-spa.surge.sh" rel="external nofollow noopener noreferrer" target="_blank">在线demo</a>.</p>
+<hr>
+<h2 id="simple-single-spa-webpack-example"><a href="#simple-single-spa-webpack-example" class="headerlink" title="simple-single-spa-webpack-example"></a><a href="https://github.com/joeldenning/simple-single-spa-webpack-example" rel="external nofollow noopener noreferrer" target="_blank">simple-single-spa-webpack-example</a></h2><p>这是基于webpack构建的使用例子,webpakc版本可能有点低,但是思想是一样的.</p>
+<hr>
+<h2 id="single-spa-angular-cli-examples"><a href="#single-spa-angular-cli-examples" class="headerlink" title="single-spa-angular-cli-examples"></a><a href="https://github.com/PlaceMe-SAS/single-spa-angular-cli-examples" rel="external nofollow noopener noreferrer" target="_blank">single-spa-angular-cli-examples</a></h2><p>基于angular-cli做的angular例子,适用于angular 2.0+ 的版本.</p>
+<hr>
+<h2 id="single-spa-es5-angularjs"><a href="#single-spa-es5-angularjs" class="headerlink" title="single-spa-es5-angularjs"></a><a href="https://github.com/joeldenning/single-spa-es5-angularjs" rel="external nofollow noopener noreferrer" target="_blank">single-spa-es5-angularjs</a></h2><p>angularjs的例子,也就是angularjs1.0的版本.</p>
+<hr>
+<h2 id="single-spa-portal-example"><a href="#single-spa-portal-example" class="headerlink" title="single-spa-portal-example"></a><a href="https://github.com/me-12/single-spa-portal-example" rel="external nofollow noopener noreferrer" target="_blank">single-spa-portal-example</a></h2><p>这已经是一个非常完整的多技术栈用例了,里面集成了多技术栈与模块之间通讯的思路,非常值得研究.</p>
+<hr>
+<h2 id="microfrontend-base-demo"><a href="#microfrontend-base-demo" class="headerlink" title="microfrontend-base-demo"></a><a href="https://github.com/Fantasy9527/microfrontend-base-demo" rel="external nofollow noopener noreferrer" target="_blank">microfrontend-base-demo</a></h2><p>这是在我们项目中萃取的base模块demo</p>
+<hr>
+<h2 id="microfrontend-submodule-demo"><a href="#microfrontend-submodule-demo" class="headerlink" title="microfrontend-submodule-demo"></a><a href="https://github.com/Fantasy9527/microfrontend-submodule-demo" rel="external nofollow noopener noreferrer" target="_blank">microfrontend-submodule-demo</a></h2><p>这是在我们项目中萃取的子模块demo</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/22975f44/">https://alili.tech/archive/22975f44/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/ea599f7c/">前端微服务化解决方案1 - 思考</a></li><li><a href="https://alili.tech/archive/11052bf4/">前端微服务化解决方案2 - Single-SPA</a></li><li><a href="https://alili.tech/archive/1a60cede/">前端微服务化解决方案3 - 模块加载器</a></li><li><a href="https://alili.tech/archive/a9a1f81b/">前端微服务化解决方案4 - 消息总线</a></li><li><a href="https://alili.tech/archive/ffb0c5ab/">前端微服务化解决方案6 - 构建与部署</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#single-spa-examples"><span class="toc-number">1.</span> <span class="toc-text">single-spa-examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#simple-single-spa-webpack-example"><span class="toc-number">2.</span> <span class="toc-text">simple-single-spa-webpack-example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#single-spa-angular-cli-examples"><span class="toc-number">3.</span> <span class="toc-text">single-spa-angular-cli-examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#single-spa-es5-angularjs"><span class="toc-number">4.</span> <span class="toc-text">single-spa-es5-angularjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#single-spa-portal-example"><span class="toc-number">5.</span> <span class="toc-text">single-spa-portal-example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#microfrontend-base-demo"><span class="toc-number">6.</span> <span class="toc-text">microfrontend-base-demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#microfrontend-submodule-demo"><span class="toc-number">7.</span> <span class="toc-text">microfrontend-submodule-demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

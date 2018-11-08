@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="公司的系统中，产品经理在设计时经常要求对某个字段进行区间阈值设置或者作为筛选条件。但是苦于element中没有非常契合的组件（slider组件并不支持两端均能设定），于是自己动手造了一个。 成果 最终的展示效果如下：  需求 这里以项目的需求为例，基本的需求如下：  分为左右值，包含左右值，正整数 左侧必须大于等于1，右侧不得大于100000，右侧值必须不小于左侧 默认：左侧20，右侧100000">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于element的区间选择组件">
+<meta property="og:url" content="https://alili.tech/archive/92007a9e/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="公司的系统中，产品经理在设计时经常要求对某个字段进行区间阈值设置或者作为筛选条件。但是苦于element中没有非常契合的组件（slider组件并不支持两端均能设定），于是自己动手造了一个。 成果 最终的展示效果如下：  需求 这里以项目的需求为例，基本的需求如下：  分为左右值，包含左右值，正整数 左侧必须大于等于1，右侧不得大于100000，右侧值必须不小于左侧 默认：左侧20，右侧100000">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/bVbgxrb?w=480&h=216">
+<meta property="og:image" content="https://static.alili.tech/img/bVbgxry?w=480&h=216">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于element的区间选择组件">
+<meta name="twitter:description" content="公司的系统中，产品经理在设计时经常要求对某个字段进行区间阈值设置或者作为筛选条件。但是苦于element中没有非常契合的组件（slider组件并不支持两端均能设定），于是自己动手造了一个。 成果 最终的展示效果如下：  需求 这里以项目的需求为例，基本的需求如下：  分为左右值，包含左右值，正整数 左侧必须大于等于1，右侧不得大于100000，右侧值必须不小于左侧 默认：左侧20，右侧100000">
+<meta name="twitter:image" content="https://static.alili.tech/img/bVbgxrb?w=480&h=216">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>基于element的区间选择组件 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/92007a9e/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/92007a9e/",
+      "appid": "1613049289050283", 
+      "title": "基于element的区间选择组件 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:02"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/49bec1d6/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/ce1009c0/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/92007a9e/&text=基于element的区间选择组件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/92007a9e/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/92007a9e/&text=基于element的区间选择组件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/92007a9e/&title=基于element的区间选择组件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/92007a9e/&is_video=false&description=基于element的区间选择组件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=基于element的区间选择组件&body=Check out this article: https://alili.tech/archive/92007a9e/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/92007a9e/&title=基于element的区间选择组件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/92007a9e/&title=基于element的区间选择组件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/92007a9e/&title=基于element的区间选择组件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/92007a9e/&title=基于element的区间选择组件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">成果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">主要思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">填坑（重点）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader4"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        基于element的区间选择组件
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-22T00:00:00.000Z" itemprop="datePublished">2018-10-22</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>公司的系统中，产品经理在设计时经常要求对某个字段进行区间阈值设置或者作为筛选条件。但是苦于element中没有非常契合的组件（slider组件并不支持两端均能设定），于是自己动手造了一个。</p>
+<h2 id="articleHeader0">成果</h2>
+<p>最终的展示效果如下：</p>
+<p><span class="img-wrap"><img src="https://static.alili.tech/img/bVbgxrb?w=480&amp;h=216" alt="clipboard.png" title="clipboard.png" style="cursor: pointer; display: inline"></span></p>
+<h2 id="articleHeader1">需求</h2>
+<p>这里以项目的需求为例，基本的需求如下：</p>
+<ol>
+<li>分为左右值，包含左右值，正整数</li>
+<li>左侧必须大于等于1，右侧不得大于100000，右侧值必须不小于左侧</li>
+<li>默认：左侧20，右侧100000，均必填</li>
+<li>失焦校验</li>
+</ol>
+<p>页面和表单校验结构一样：</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="<el-form ref=&quot;form&quot; :model=&quot;form&quot; :rules=&quot;rules&quot;>
+    <el-form-item prop=&quot;min&quot;>
+        <el-input v-model=&quot;form.min&quot; />
+    </el-form-item>
+    ~
+    <el-form-item prop=&quot;max&quot;>
+        <el-input v-model=&quot;form.max&quot; />
+    </el-form-item>
+</el-form>" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="xml hljs"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">el-form</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"form"</span> <span class="hljs-attr">:model</span>=<span class="hljs-string">"form"</span> <span class="hljs-attr">:rules</span>=<span class="hljs-string">"rules"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-form-item</span> <span class="hljs-attr">prop</span>=<span class="hljs-string">"min"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">el-input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"form.min"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">el-form-item</span>&gt;</span>
+    ~
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-form-item</span> <span class="hljs-attr">prop</span>=<span class="hljs-string">"max"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">el-input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"form.max"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">el-form-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">el-form</span>&gt;</span></code></pre>
+<h2 id="articleHeader2">主要思路</h2>
+<ol>
+<li>单个表单校验：必填项校验、正整数校验、区间校验</li>
+<li>关联校验：右侧阈值不得小于左侧阈值</li>
+</ol>
+<p>根据上面的思路，单个表单的校验属于公共校验方法，关联校验需要分别校验（因为对比对象不同，且提示语不同），由此在自定义校验中有了如下定义：</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="rules: {
+    min: [
+        { required: true, message: '必填项，请维护', trigger: 'blur' },
+        { validator: this.validateCom, trigger: 'blur' },
+        { validator: this.validateMin, trigger: 'blur' },
+    ],
+    max: [
+        { required: true, message: '必填项，请维护', trigger: 'blur' },
+        { validator: this.validateCom, trigger: 'blur' },
+        { validator: this.validateMax, trigger: 'blur' },
+    ],
+}," title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="javascript hljs"><code class="javascript">rules: {
+    <span class="hljs-attr">min</span>: [
+        { <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'必填项，请维护'</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'blur'</span> },
+        { <span class="hljs-attr">validator</span>: <span class="hljs-keyword">this</span>.validateCom, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'blur'</span> },
+        { <span class="hljs-attr">validator</span>: <span class="hljs-keyword">this</span>.validateMin, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'blur'</span> },
+    ],
+    <span class="hljs-attr">max</span>: [
+        { <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'必填项，请维护'</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'blur'</span> },
+        { <span class="hljs-attr">validator</span>: <span class="hljs-keyword">this</span>.validateCom, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'blur'</span> },
+        { <span class="hljs-attr">validator</span>: <span class="hljs-keyword">this</span>.validateMax, <span class="hljs-attr">trigger</span>: <span class="hljs-string">'blur'</span> },
+    ],
+},</code></pre>
+<p>公共校验方法：正整数校验、区间校验</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="validateCom(rule, value, callback) {
+    const one = Number(value);
+    if (Number.isInteger(one)) {
+        if (one < MIN_NUMBER) {
+            return callback(new Error(`输入值必须大于${MIN_NUMBER}`));
+        } else if (one > MAX_NUMBER) {
+            return callback(new Error(`输入值必须小于${MAX_NUMBER}`));
+        }
+        return callback();
+    }
+    return callback(new Error('输入值必须为正整数'));
+}," title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="javascript hljs"><code class="javascript">validateCom(rule, value, callback) {
+    <span class="hljs-keyword">const</span> one = <span class="hljs-built_in">Number</span>(value);
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Number</span>.isInteger(one)) {
+        <span class="hljs-keyword">if</span> (one &lt; MIN_NUMBER) {
+            <span class="hljs-keyword">return</span> callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`输入值必须大于<span class="hljs-subst">${MIN_NUMBER}</span>`</span>));
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (one &gt; MAX_NUMBER) {
+            <span class="hljs-keyword">return</span> callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`输入值必须小于<span class="hljs-subst">${MAX_NUMBER}</span>`</span>));
+        }
+        <span class="hljs-keyword">return</span> callback();
+    }
+    <span class="hljs-keyword">return</span> callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'输入值必须为正整数'</span>));
+},</code></pre>
+<p><strong>注意：</strong>input输出的始终是字符串类型，需要转换成数字后进行比对</p>
+<p>关联校验：</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="validateMin(rule, value, callback) {
+    const one = Number(value);
+    const max = Number(this.form.max);
+    if (!max || one < max) {
+        return callback();
+    }
+    return callback(new Error('输入值不得大于最大阈值'));
+},
+validateMax(rule, value, callback) {
+    const one = Number(value);
+    const min = Number(this.form.min);
+    if (!min || one > min) {
+        return callback();
+    }
+    return callback(new Error('输入值不得小于最小阈值'));
+}," title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="javascript hljs"><code class="javascript">validateMin(rule, value, callback) {
+    <span class="hljs-keyword">const</span> one = <span class="hljs-built_in">Number</span>(value);
+    <span class="hljs-keyword">const</span> max = <span class="hljs-built_in">Number</span>(<span class="hljs-keyword">this</span>.form.max);
+    <span class="hljs-keyword">if</span> (!max || one &lt; max) {
+        <span class="hljs-keyword">return</span> callback();
+    }
+    <span class="hljs-keyword">return</span> callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'输入值不得大于最大阈值'</span>));
+},
+validateMax(rule, value, callback) {
+    <span class="hljs-keyword">const</span> one = <span class="hljs-built_in">Number</span>(value);
+    <span class="hljs-keyword">const</span> min = <span class="hljs-built_in">Number</span>(<span class="hljs-keyword">this</span>.form.min);
+    <span class="hljs-keyword">if</span> (!min || one &gt; min) {
+        <span class="hljs-keyword">return</span> callback();
+    }
+    <span class="hljs-keyword">return</span> callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'输入值不得小于最小阈值'</span>));
+},</code></pre>
+<p>大概，你会想，这不就完了吗！so easy！<strong>现在真正的坑才开始</strong></p>
+<h2 id="articleHeader3">填坑（重点）</h2>
+<p>根据上面的写法，组件的基本功能实现了，但是有一个坑！如下：<br><span class="img-wrap"><img src="https://static.alili.tech/img/bVbgxry?w=480&amp;h=216" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="clipboard.png" title="clipboard.png" style="cursor: pointer"></span></p>
+<p>很显然，左侧值是小于右侧值的，但是校验提示仍然报错。究其原因，还是关联校验的问题。既然是关联交验，改变其中一个时应该会重新校验两个。很简单，在input改变时，重新校验表单不就OK了吗</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="handleChange() {
+    this.$refs.form.validate();
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="javascript hljs"><code class="javascript">handleChange() {
+    <span class="hljs-keyword">this</span>.$refs.form.validate();
+}</code></pre>
+<p>真实表现正如我们所料，但是当我们打开console的时候，会看到<code>Uncaught (in promise) false</code>，这又是什么鬼，身为优秀的前端工程师，你定不会允许自己的代码里报错，即使不影响正常流程。</p>
+<p>经查证：Promise报错，Uncaught的意思是代表有reject状态没有被catch。究其原因，改变一个值时，校验整个表单时，改变的那个input会执行两次校验，导致异常。</p>
+<p>最后做如下修改：</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="handleMinChange() {
+    this.$refs.form.validateField('max');
+},
+handleMaxChange() {
+    this.$refs.form.validateField('min');
+},
+
+// 并对外暴露操作方法
+getFormData() {
+    const ret = {};
+    this.$refs.form.validate((valid) => {
+        ret.valid = valid;
+        ret.form = this.form;
+    });
+    return ret;
+},
+resetForm() {
+    this.$refs.form.resetFields();
+}," title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="javascript hljs"><code class="javascript">handleMinChange() {
+    <span class="hljs-keyword">this</span>.$refs.form.validateField(<span class="hljs-string">'max'</span>);
+},
+handleMaxChange() {
+    <span class="hljs-keyword">this</span>.$refs.form.validateField(<span class="hljs-string">'min'</span>);
+},
+
+<span class="hljs-comment">// 并对外暴露操作方法</span>
+getFormData() {
+    <span class="hljs-keyword">const</span> ret = {};
+    <span class="hljs-keyword">this</span>.$refs.form.validate(<span class="hljs-function">(<span class="hljs-params">valid</span>) =&gt;</span> {
+        ret.valid = valid;
+        ret.form = <span class="hljs-keyword">this</span>.form;
+    });
+    <span class="hljs-keyword">return</span> ret;
+},
+resetForm() {
+    <span class="hljs-keyword">this</span>.$refs.form.resetFields();
+},</code></pre>
+<h2 id="articleHeader4">总结</h2>
+<ol>
+<li>input表单输出值为String类型，即使设置了<code>type=number</code>
+</li>
+<li>关联交验时需要验证其关联项，且不能重复校验</li>
+</ol>
+<p><a href="https://segmentfault.com/n/1330000016295830" rel="external nofollow noopener noreferrer" target="_blank">源码链接</a></p>
+
+                
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016295863" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016295863</a></p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>基于element的区间选择组件</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/92007a9e/">https://alili.tech/archive/92007a9e/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">成果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">主要思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">填坑（重点）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader4"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

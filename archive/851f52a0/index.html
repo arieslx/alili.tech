@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="初学者须知 我们来讨论HTML和DOM之间的区别。 显然，一个普通&amp;lt;table&amp;gt;元素就是HTML。您可以在.html的文件中使用它。它有一组属性影响它的外观和行为方式。这就是HTML，不过它与JavaScript无关。 DOM是将JavaScript代码与文档中的HTML元素相关联的内容，因此您可以与对象等元素进行交互。 它是一个文档到对象模型. HTML中的每种类型的元素都有自己的D">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你可能从未听说过的15种HTML元素方法！">
+<meta property="og:url" content="https://alili.tech/archive/851f52a0/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="初学者须知 我们来讨论HTML和DOM之间的区别。 显然，一个普通&amp;lt;table&amp;gt;元素就是HTML。您可以在.html的文件中使用它。它有一组属性影响它的外观和行为方式。这就是HTML，不过它与JavaScript无关。 DOM是将JavaScript代码与文档中的HTML元素相关联的内容，因此您可以与对象等元素进行交互。 它是一个文档到对象模型. HTML中的每种类型的元素都有自己的D">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01132f7f9f4d990cdb.jpg">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.455Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你可能从未听说过的15种HTML元素方法！">
+<meta name="twitter:description" content="初学者须知 我们来讨论HTML和DOM之间的区别。 显然，一个普通&amp;lt;table&amp;gt;元素就是HTML。您可以在.html的文件中使用它。它有一组属性影响它的外观和行为方式。这就是HTML，不过它与JavaScript无关。 DOM是将JavaScript代码与文档中的HTML元素相关联的内容，因此您可以与对象等元素进行交互。 它是一个文档到对象模型. HTML中的每种类型的元素都有自己的D">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t01132f7f9f4d990cdb.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>你可能从未听说过的15种HTML元素方法！ | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/851f52a0/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/851f52a0/",
+      "appid": "1613049289050283", 
+      "title": "你可能从未听说过的15种HTML元素方法！ | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:04"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/4968ddc5/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/544102cc/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/851f52a0/&text=你可能从未听说过的15种HTML元素方法！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/851f52a0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/851f52a0/&text=你可能从未听说过的15种HTML元素方法！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/851f52a0/&title=你可能从未听说过的15种HTML元素方法！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/851f52a0/&is_video=false&description=你可能从未听说过的15种HTML元素方法！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=你可能从未听说过的15种HTML元素方法！&body=Check out this article: https://alili.tech/archive/851f52a0/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/851f52a0/&title=你可能从未听说过的15种HTML元素方法！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/851f52a0/&title=你可能从未听说过的15种HTML元素方法！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/851f52a0/&title=你可能从未听说过的15种HTML元素方法！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/851f52a0/&title=你可能从未听说过的15种HTML元素方法！" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">初学者须知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">#1 table methods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">#2 scrollIntoView()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">#3 hidden</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">#4 toggle()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">#5 querySelector()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">#6 closest()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">#7 getBoundingClientRect()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">9.</span> <span class="toc-text">#8 matches()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">10.</span> <span class="toc-text">#9 insertAdjacentElement()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">11.</span> <span class="toc-text">#10 contains()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">12.</span> <span class="toc-text">#11 getAttribute()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">13.</span> <span class="toc-text">#12 the dialog element trio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">14.</span> <span class="toc-text">#13 forEach()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">15.</span> <span class="toc-text">#14 Forms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">16.</span> <span class="toc-text">#15 select()</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        你可能从未听说过的15种HTML元素方法！
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-18T00:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h3>初学者须知</h3>
+<p>我们来讨论HTML和DOM之间的区别。</p>
+<p>显然，一个普通<code>&lt;table&gt;</code>元素就是HTML。您可以在.html的文件中使用它。它有一组<em><strong>属性</strong></em>影响它的外观和行为方式。这就是HTML，不过它与JavaScript无关。</p>
+<p>DOM是将JavaScript代码与文档中的HTML元素相关联的内容，因此您可以与对象等元素进行交互。</p>
+<p>它是一个文档到对象模型.</p>
+<p>HTML中的每种类型的元素都有自己的DOM“接口”，用于定义属性（通常映射到HTML元素上的属性）和方法。例如，<code>&lt;table&gt;</code>有一个名为HTMLTableElement的接口。</p>
+<p>您可以通过编写以下内容来获取对特定元素的引用：</p>
+<p>然后，您可以访问可用于该类型元素的所有属性和方法。例如，您可以使用searchBox.value访问value属性，或者通过调用searchBox.focus（）将光标放在框中。</p>
+<p>感谢您参加关于DOM的58秒课程。</p>
+<p>你可以在浏览器DevTools中尝试一下，在元素树中选择一个元素，然后在控制台中输入$0。它会为您提供了所选元素的参考。要将元素视为对象，请键入dir($0)。</p>
+<p>你可以在<a href="https://developers.google.com/web/tools/chrome-devtools/console/command-line-reference" rel="external nofollow noopener noreferrer" target="_blank">控制台中做很多事情</a>。</p>
+<p><img src="https://p0.ssl.qhimg.com/t01132f7f9f4d990cdb.jpg" alt=""></p>
+<h3>#1 table methods</h3>
+<p>table （仍然是排列网站的第一种方式）有很多漂亮的方法，使得构建它们就像构建一个Ikea表一样简单。</p>
+<p>使用document.createElement()只会创造一个单一的table，不过如果直接在table元素上调用它，.insertRow（）方法甚至会为你插入一个<code>&lt;tbody&gt;</code>。不是很好吗？</p>
+<h3>#2 scrollIntoView()</h3>
+<p>您知道如果在URL中有#something，那么当页面加载时，浏览器将滚动页面以便您可以看到具有该ID的元素？</p>
+<p>这是非常周到的，但如果您在页面加载后渲染该元素，则它不起作用。</p>
+<p>您可以使用以下方法手动重新创建此行为：</p>
+<h3>#3 hidden</h3>
+<p>无论如何，你有没有做过myElement.style.display ='none'来隐藏一个元素？好吧，别这样做了！</p>
+<p>你可以用myElement.hidden = true。</p>
+<h3>#4 toggle()</h3>
+<p>好的，这也不是一个元素方法，它是一个元素属性的方法。具体来说，它是一种使用myElement.classList.toggle（'some-class'）来切换从元素添加/删除类的方法。</p>
+<p>您应该刚刚将第二个参数传递给toggle方法。如果成功，你的 class将被添加到元素中。</p>
+<h3>#5 querySelector()</h3>
+<p>好的，你肯定已经知道了这个，但我怀疑你们中有17％的人不知道你可以在任何元素上使用它。</p>
+<p>例如，myElement.querySelector（'.my-class'）只匹配具有类my-class并且是myElement的后代的元素。</p>
+<h3>#6 closest()</h3>
+<p>这是一个可用于查看_up_元素树的所有元素的方法。它就像一个reverso querySelector（）。所以，我可以使用这样的方式得到当前部分的标题：</p>
+<p>到第一个<code>&lt;article&gt;</code>然后回到第一个<code>&lt;h1&gt;</code>。</p>
+<h3>#7 getBoundingClientRect()</h3>
+<p>这将返回一个整洁的小对象，其中包含有关您调用它的元素的一些维度细节。</p>
+<p>但请注意两种不同的方式：</p>
+<ul>
+<li><p>调用它会导致重新绘制。根据设备和页面的复杂程度，这可能需要几毫秒。如果你反复打电话，请密切注意，例如在动画中。</p>
+</li>
+<li><p>并非所有浏览器都返回所有这些值。</p>
+</li>
+</ul>
+<h3>#8 matches()</h3>
+<p>可以使用它来检查特定元素是否具有特定类。</p>
+<h3>#9 insertAdjacentElement()</h3>
+<p>我今天学到了这个！它就像appendChild（），但可以更好地控制你追加那个child的位置。</p>
+<p>parentEl.insertAdjacentElement（'beforeend'，newEl）与执行parentEl.appendChild（newEl）相同，但您也可以指定beforebegin或afterbegin或afterend将其放在这些名称所暗示的位置。 </p>
+<h3>#10 contains()</h3>
+<p>你有没有想知道一个元素是否在另一个元素中？</p>
+<p>例如，如果我正在处理鼠标单击并想知道它是发生在模态内还是外部（所以我可以关闭它）</p>
+<h3>#11 getAttribute()</h3>
+<p>当然，除了一个特定的情况外，所有元素方法中最无用的。</p>
+<p>你还记得当我提到的时候，<em>properties</em>通常映射到<em>attributes</em>？</p>
+<p>其中一个不实的情况是<code>&lt;a href="/animals/cat"&gt; Cat &lt;/a&gt;</code>等元素的href属性。</p>
+<p>el.href不会像你期望的那样返回/ animals / cat。
+这是因为<code>&lt;a&gt;</code>元素实现了HTMLHyperlinkElementUtils接口，该接口具有一堆辅助属性，如协议和散列，可以告诉您有关链接目标的信息。</p>
+<p>其中一个有用的属性是href，它将为您提供<em>full URL</em>，包含所有修剪，而不是属性中的相对URL。</p>
+<p>因此，如果您想要href属性中的文字字符串，则必须使用el.getAttribute（'href'）。</p>
+<h3>#12 the dialog element trio</h3>
+<p>相对较新的<code>&lt;dialog&gt;</code>元素show（）和close（）将完全按照你的期望去做。</p>
+<p>但是showModal（）将在页面中心的其他所有内容上显示<code>&lt;dialog&gt;</code>，就像你想要你的模态一样。
+无需z-index或手动添加灰色背景或监听转义键以关闭它 - 浏览器知道模态如何工作并将为您完成所有这些操作。</p>
+<h3>#13 forEach()</h3>
+<p>当您获得对元素列表的引用时，可以使用forEach（）迭代它们。</p>
+<p>这是因为getElementsByTagName和其他get ...方法返回一个HTMLCollection，但querySelectorAll返回一个NodeList。</p>
+<p>NodeList接口为我们提供了forEach（）方法（以及keys（），values（）和entries（））</p>
+<p>如果每个人都只是简单地返回数组而不是试图用他们不完整的数组来获得所有的幻想，那真的会更好。
+但是不要害怕，因为ECMA的优秀人员给了我们Array.from（），它会把像数组一样的东西变成数组。</p>
+<p>通过创建数组，您可以使用map（）和filter（）以及reduce（）或任何其他数组方法。</p>
+<p>filter( )是我最喜欢的方式，让我将来试图弄清楚它的作用。</p>
+<h3>#14 Forms</h3>
+<p>您可能已经知道的<code>&lt;form&gt;</code>有一个submit（）方法。您知道表单具有reset（）方法的可能性稍微小一些，如果您在表单元素上使用验证，则可以使用reportValidity（）。</p>
+<p>您还可以使用带有点表示法的表单元素属性来通过其name属性引用元素。例如，myFormEl.elements.email将返回属于<code>&lt;form&gt;</code>的元素<code>&lt;input name =“email”/&gt;</code>。</p>
+<p>例如：如果您有三个单选按钮，每个按钮具有相同的名称animal，则formEl.elements.animal将为您提供对该组单选按钮的引用（1个控件，3个元素）。</p>
+<p>并且formEl.elements.animal.value将返回选择的任何单选按钮的值。</p>
+<p>如果你考虑它，这是奇怪的语法。分解，brotha：formEl是一个元素，elements是一个HTMLFormControlsCollection，一个非真实数组，其中每个项目不一定是HTML元素。动物是几个单选按钮的集合，只是因为它们具有相同的名称属性（只是为此目的有一个RadioNodeList接口），并且值查找选择集合中任何单选按钮的value属性。</p>
+<h3>#15 select()</h3>
+<p>.select（）方法将选择您调用它的任何输入中的所有文本。</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/15-html-element-methods-you-ve-potentially-never-heard-of" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/15-html-element-methods-you-ve-potentially-never-heard-of</a><br>原文标题: 你可能从未听说过的15种HTML元素方法！<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/851f52a0/">https://alili.tech/archive/851f52a0/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">初学者须知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">#1 table methods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">#2 scrollIntoView()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">#3 hidden</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">#4 toggle()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">#5 querySelector()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">#6 closest()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">#7 getBoundingClientRect()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">9.</span> <span class="toc-text">#8 matches()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">10.</span> <span class="toc-text">#9 insertAdjacentElement()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">11.</span> <span class="toc-text">#10 contains()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">12.</span> <span class="toc-text">#11 getAttribute()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">13.</span> <span class="toc-text">#12 the dialog element trio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">14.</span> <span class="toc-text">#13 forEach()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">15.</span> <span class="toc-text">#14 Forms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">16.</span> <span class="toc-text">#15 select()</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

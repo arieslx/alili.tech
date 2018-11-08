@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;&amp;#x4F2A;&amp;#x6570;&amp;#x7EC4;&amp;#x4F2A;&amp;#x6570;&amp;#x7EC4;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x542B;&amp;#x6709;length&amp;#x5C5E;&amp;#x6027;&amp;#x7684;json&amp;#x5BF9;&amp;#x8C61;&amp;#x4F8B;&amp;#x5982;&amp;#xFF1A;  {     0: 1,">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript-伪数组">
+<meta property="og:url" content="https://alili.tech/archive/9501e5ae/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;&amp;#x4F2A;&amp;#x6570;&amp;#x7EC4;&amp;#x4F2A;&amp;#x6570;&amp;#x7EC4;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x542B;&amp;#x6709;length&amp;#x5C5E;&amp;#x6027;&amp;#x7684;json&amp;#x5BF9;&amp;#x8C61;&amp;#x4F8B;&amp;#x5982;&amp;#xFF1A;  {     0: 1,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript-伪数组">
+<meta name="twitter:description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;&amp;#x4F2A;&amp;#x6570;&amp;#x7EC4;&amp;#x4F2A;&amp;#x6570;&amp;#x7EC4;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x542B;&amp;#x6709;length&amp;#x5C5E;&amp;#x6027;&amp;#x7684;json&amp;#x5BF9;&amp;#x8C61;&amp;#x4F8B;&amp;#x5982;&amp;#xFF1A;  {     0: 1,">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>Javascript-伪数组 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/9501e5ae/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/9501e5ae/",
+      "appid": "1613049289050283", 
+      "title": "Javascript-伪数组 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:45"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/b35399aa/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/fa342659/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/9501e5ae/&text=Javascript-伪数组" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/9501e5ae/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/9501e5ae/&text=Javascript-伪数组" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/9501e5ae/&title=Javascript-伪数组" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/9501e5ae/&is_video=false&description=Javascript-伪数组" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Javascript-伪数组&body=Check out this article: https://alili.tech/archive/9501e5ae/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/9501e5ae/&title=Javascript-伪数组" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/9501e5ae/&title=Javascript-伪数组" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/9501e5ae/&title=Javascript-伪数组" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/9501e5ae/&title=Javascript-伪数组" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">什么是伪数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">常见的伪数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">伪数据如何转成标准数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">Array.slice源码解析（587行）</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number"></span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number"></span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        Javascript-伪数组
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-06T15:28:32.000Z" itemprop="datePublished">2018-11-06</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h3 id="articleHeader0">&#x4EC0;&#x4E48;&#x662F;&#x4F2A;&#x6570;&#x7EC4;</h3><p>&#x4F2A;&#x6570;&#x7EC4;&#x662F;&#x4E00;&#x4E2A;&#x542B;&#x6709;length&#x5C5E;&#x6027;&#x7684;json&#x5BF9;&#x8C61;</p><p><strong>&#x4F8B;&#x5982;&#xFF1A;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="{
+    0: 1,
+    1: 2,
+    length: 2
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">{
+    <span class="hljs-number">0</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-number">1</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">length</span>: <span class="hljs-number">2</span>
+}</code></pre><h3 id="articleHeader1">&#x5E38;&#x89C1;&#x7684;&#x4F2A;&#x6570;&#x7EC4;</h3><p>arguments&#x3001;NodeList&#x3001;HTMLCollection&#x3001;Jquery&#x5BF9;&#x8C61;...</p><h3 id="articleHeader2">&#x4F2A;&#x6570;&#x636E;&#x5982;&#x4F55;&#x8F6C;&#x6210;&#x6807;&#x51C6;&#x6570;&#x7EC4;</h3><p><strong>&#x4F7F;&#x7528;Array.slice</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="function toArray() {
+    console.log(arguments instanceof Array) // false
+    arguments = Array.prototype.slice.call(arguments)
+    console.log(arguments instanceof Array) // true
+    return arguments
+}
+toArray(1,2,3) // [1, 2, 3]" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toArray</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>) <span class="hljs-comment">// false</span>
+    <span class="hljs-built_in">arguments</span> = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>) <span class="hljs-comment">// true</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">arguments</span>
+}
+toArray(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>) <span class="hljs-comment">// [1, 2, 3]</span></code></pre><h3 id="articleHeader3"><a href="https://github.com/v8/v8/blob/ad82a40509c5b5b4680d4299c8f08d6c6d31af3c/src/js/array.js" rel="external nofollow noopener noreferrer" target="_blank">Array.slice&#x6E90;&#x7801;</a>&#x89E3;&#x6790;&#xFF08;587&#x884C;&#xFF09;</h3><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="function ArraySlice(start, end) {
+    CHECK_OBJECT_COERCIBLE(this, &quot;Array.prototype.slice&quot;);
+
+    var array = TO_OBJECT(this); 
+    var len = TO_LENGTH(array.length); // &#x53D6;&#x6570;&#x636E;length
+    var start_i = TO_INTEGER(start); // &#x5F00;&#x59CB;&#x503C;&#x8F6C;Number
+    var end_i = len; // &#x7ED3;&#x675F;&#x503C;&#x76F4;&#x63A5;&#x53D6;array&#x7684;length
+
+    if (!IS_UNDEFINED(end)) end_i = TO_INTEGER(end); // &#x53C2;&#x6570;&#x6709;end&#x5219;&#x4F7F;&#x7528;end
+
+    if (start_i &lt; 0) { // &#x5F00;&#x59CB;&#x503C;&#x4E3A;&#x8D1F;&#x6570;&#xFF0C;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x503C;&#xFF0C;&#x4ECE;&#x5C3E;&#x90E8;&#x5F80;&#x524D;&#x63A8;&#x7B97;
+        start_i += len;
+        if (start_i &lt; 0) start_i = 0; // &#x8D1F;&#x6570;&#x7684;&#x7EDD;&#x5BF9;&#x503C;&#x8D85;&#x8FC7;&#x957F;&#x5EA6;&#xFF0C;&#x5F00;&#x59CB;&#x503C;&#x8D4B;&#x503C;&#x4E3A;0
+    } else {
+        if (start_i &gt; len) start_i = len; // &#x5F00;&#x59CB;&#x503C;&#x8D85;&#x8FC7;&#x957F;&#x5EA6;, &#x5F00;&#x59CB;&#x503C;&#x8D4B;&#x503C;&#x4E3A;len
+    }
+
+    if (end_i &lt; 0) { // &#x7ED3;&#x675F;&#x503C;&#x4E3A;&#x8D1F;&#x6570;&#xFF0C;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x503C;&#xFF0C;&#x4ECE;&#x5C3E;&#x90E8;&#x5F80;&#x524D;&#x63A8;&#x7B97;
+        end_i += len;
+        if (end_i &lt; 0) end_i = 0; // &#x8D1F;&#x6570;&#x7684;&#x7EDD;&#x5BF9;&#x503C;&#x8D85;&#x8FC7;&#x957F;&#x5EA6;&#xFF0C;&#x7ED3;&#x675F;&#x503C;&#x8D4B;&#x503C;&#x4E3A;0
+    } else {
+        if (end_i &gt; len) end_i = len; // &#x5F00;&#x59CB;&#x503C;&#x8D85;&#x8FC7;&#x957F;&#x5EA6;, &#x7ED3;&#x675F;&#x503C;&#x8D4B;&#x503C;&#x4E3A;len
+    }
+
+    var result = ArraySpeciesCreate(array, MaxSimple(end_i - start_i, 0)); // &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;
+
+    if (end_i &lt; start_i) return result; // &#x7ED3;&#x675F;&#x503C;&#x5C0F;&#x4E8E;&#x5F00;&#x59CB;&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x7A7A;&#x6570;&#x7EC4;
+
+    if (UseSparseVariant(array, len, IS_ARRAY(array), end_i - start_i)) { // array&#x662F;&#x6570;&#x7EC4;
+        %NormalizeElements(array);
+        if (IS_ARRAY(result)) %NormalizeElements(result);
+        SparseSlice(array, start_i, end_i - start_i, len, result);
+    } else { // array&#x4E0D;&#x662F;&#x6570;&#x7EC4;
+        SimpleSlice(array, start_i, end_i - start_i, len, result);
+    }
+
+    result.length = end_i - start_i;  // &#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x8D4B;&#x503C;
+
+    return result;
+}
+/*
+* array &#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x7684;&#x6570;&#x7EC4;
+* start_i &#x5F00;&#x59CB;&#x4F4D;&#x7F6E;
+* del_count &#x9700;&#x8981;&#x5904;&#x7406;&#x7684;&#x957F;&#x5EA6;
+* len &#x6570;&#x7EC4;&#x957F;&#x5EA6;
+* deleted_elements &#x5229;&#x7528;&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x5BF9;&#x4E8E;slice&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x9009;&#x62E9;&#x7684;&#x90A3;&#x90E8;&#x5206;&#x6570;&#x7EC4;&#xFF0C;&#x5BF9;&#x4E8E;splice&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x5220;&#x9664;&#x7684;&#x90A3;&#x4E9B;&#x6570;&#x7EC4;
+*/
+function SparseSlice(array, start_i, del_count, len, deleted_elements) {
+    // Move deleted elements to a new array (the return value from splice).
+    var indices = %GetArrayKeys(array, start_i + del_count);
+    if (IS_NUMBER(indices)) {
+        var limit = indices;
+        for (var i = start_i; i &lt; limit; ++i) {
+            var current = array[i];
+            if (!IS_UNDEFINED(current) || i in array) {
+                %CreateDataProperty(deleted_elements, i - start_i, current);
+            }
+        }
+    } else {
+        var length = indices.length;
+        for (var k = 0; k &lt; length; ++k) {
+            var key = indices[k];
+            if (key &gt;= start_i) {
+                var current = array[key];
+                if (!IS_UNDEFINED(current) || key in array) {
+                    %CreateDataProperty(deleted_elements, key - start_i, current);
+                }
+            }
+        }
+    }
+}
+/*
+* array &#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x7684;&#x6570;&#x7EC4;
+* start_i &#x5F00;&#x59CB;&#x4F4D;&#x7F6E;
+* del_count &#x9700;&#x8981;&#x5904;&#x7406;&#x7684;&#x957F;&#x5EA6;
+* len &#x6570;&#x7EC4;&#x957F;&#x5EA6;
+* deleted_elements &#x5229;&#x7528;&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x5BF9;&#x4E8E;slice&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x9009;&#x62E9;&#x7684;&#x90A3;&#x90E8;&#x5206;&#x6570;&#x7EC4;&#xFF0C;&#x5BF9;&#x4E8E;splice&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x5220;&#x9664;&#x7684;&#x90A3;&#x4E9B;&#x6570;&#x7EC4;
+*/
+function SimpleSlice(array, start_i, del_count, len, deleted_elements) {
+    for (var i = 0; i &lt; del_count; i++) {
+        var index = start_i + i;
+        if (index in array) {
+            var current = array[index];
+            %CreateDataProperty(deleted_elements, i, current);
+        }
+    }
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ArraySlice</span>(<span class="hljs-params">start, end</span>) </span>{
+    CHECK_OBJECT_COERCIBLE(<span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;Array.prototype.slice&quot;</span>);
+
+    <span class="hljs-keyword">var</span> array = TO_OBJECT(<span class="hljs-keyword">this</span>); 
+    <span class="hljs-keyword">var</span> len = TO_LENGTH(array.length); <span class="hljs-comment">// &#x53D6;&#x6570;&#x636E;length</span>
+    <span class="hljs-keyword">var</span> start_i = TO_INTEGER(start); <span class="hljs-comment">// &#x5F00;&#x59CB;&#x503C;&#x8F6C;Number</span>
+    <span class="hljs-keyword">var</span> end_i = len; <span class="hljs-comment">// &#x7ED3;&#x675F;&#x503C;&#x76F4;&#x63A5;&#x53D6;array&#x7684;length</span>
+
+    <span class="hljs-keyword">if</span> (!IS_UNDEFINED(end)) end_i = TO_INTEGER(end); <span class="hljs-comment">// &#x53C2;&#x6570;&#x6709;end&#x5219;&#x4F7F;&#x7528;end</span>
+
+    <span class="hljs-keyword">if</span> (start_i &lt; <span class="hljs-number">0</span>) { <span class="hljs-comment">// &#x5F00;&#x59CB;&#x503C;&#x4E3A;&#x8D1F;&#x6570;&#xFF0C;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x503C;&#xFF0C;&#x4ECE;&#x5C3E;&#x90E8;&#x5F80;&#x524D;&#x63A8;&#x7B97;</span>
+        start_i += len;
+        <span class="hljs-keyword">if</span> (start_i &lt; <span class="hljs-number">0</span>) start_i = <span class="hljs-number">0</span>; <span class="hljs-comment">// &#x8D1F;&#x6570;&#x7684;&#x7EDD;&#x5BF9;&#x503C;&#x8D85;&#x8FC7;&#x957F;&#x5EA6;&#xFF0C;&#x5F00;&#x59CB;&#x503C;&#x8D4B;&#x503C;&#x4E3A;0</span>
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">if</span> (start_i &gt; len) start_i = len; <span class="hljs-comment">// &#x5F00;&#x59CB;&#x503C;&#x8D85;&#x8FC7;&#x957F;&#x5EA6;, &#x5F00;&#x59CB;&#x503C;&#x8D4B;&#x503C;&#x4E3A;len</span>
+    }
+
+    <span class="hljs-keyword">if</span> (end_i &lt; <span class="hljs-number">0</span>) { <span class="hljs-comment">// &#x7ED3;&#x675F;&#x503C;&#x4E3A;&#x8D1F;&#x6570;&#xFF0C;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x503C;&#xFF0C;&#x4ECE;&#x5C3E;&#x90E8;&#x5F80;&#x524D;&#x63A8;&#x7B97;</span>
+        end_i += len;
+        <span class="hljs-keyword">if</span> (end_i &lt; <span class="hljs-number">0</span>) end_i = <span class="hljs-number">0</span>; <span class="hljs-comment">// &#x8D1F;&#x6570;&#x7684;&#x7EDD;&#x5BF9;&#x503C;&#x8D85;&#x8FC7;&#x957F;&#x5EA6;&#xFF0C;&#x7ED3;&#x675F;&#x503C;&#x8D4B;&#x503C;&#x4E3A;0</span>
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">if</span> (end_i &gt; len) end_i = len; <span class="hljs-comment">// &#x5F00;&#x59CB;&#x503C;&#x8D85;&#x8FC7;&#x957F;&#x5EA6;, &#x7ED3;&#x675F;&#x503C;&#x8D4B;&#x503C;&#x4E3A;len</span>
+    }
+
+    <span class="hljs-keyword">var</span> result = ArraySpeciesCreate(array, MaxSimple(end_i - start_i, <span class="hljs-number">0</span>)); <span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;</span>
+
+    <span class="hljs-keyword">if</span> (end_i &lt; start_i) <span class="hljs-keyword">return</span> result; <span class="hljs-comment">// &#x7ED3;&#x675F;&#x503C;&#x5C0F;&#x4E8E;&#x5F00;&#x59CB;&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x7A7A;&#x6570;&#x7EC4;</span>
+
+    <span class="hljs-keyword">if</span> (UseSparseVariant(array, len, IS_ARRAY(array), end_i - start_i)) { <span class="hljs-comment">// array&#x662F;&#x6570;&#x7EC4;</span>
+        %NormalizeElements(array);
+        <span class="hljs-keyword">if</span> (IS_ARRAY(result)) %NormalizeElements(result);
+        SparseSlice(array, start_i, end_i - start_i, len, result);
+    } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// array&#x4E0D;&#x662F;&#x6570;&#x7EC4;</span>
+        SimpleSlice(array, start_i, end_i - start_i, len, result);
+    }
+
+    result.length = end_i - start_i;  <span class="hljs-comment">// &#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x8D4B;&#x503C;</span>
+
+    <span class="hljs-keyword">return</span> result;
+}
+<span class="hljs-comment">/*
+* array &#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x7684;&#x6570;&#x7EC4;
+* start_i &#x5F00;&#x59CB;&#x4F4D;&#x7F6E;
+* del_count &#x9700;&#x8981;&#x5904;&#x7406;&#x7684;&#x957F;&#x5EA6;
+* len &#x6570;&#x7EC4;&#x957F;&#x5EA6;
+* deleted_elements &#x5229;&#x7528;&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x5BF9;&#x4E8E;slice&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x9009;&#x62E9;&#x7684;&#x90A3;&#x90E8;&#x5206;&#x6570;&#x7EC4;&#xFF0C;&#x5BF9;&#x4E8E;splice&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x5220;&#x9664;&#x7684;&#x90A3;&#x4E9B;&#x6570;&#x7EC4;
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SparseSlice</span>(<span class="hljs-params">array, start_i, del_count, len, deleted_elements</span>) </span>{
+    <span class="hljs-comment">// Move deleted elements to a new array (the return value from splice).</span>
+    <span class="hljs-keyword">var</span> indices = %GetArrayKeys(array, start_i + del_count);
+    <span class="hljs-keyword">if</span> (IS_NUMBER(indices)) {
+        <span class="hljs-keyword">var</span> limit = indices;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = start_i; i &lt; limit; ++i) {
+            <span class="hljs-keyword">var</span> current = array[i];
+            <span class="hljs-keyword">if</span> (!IS_UNDEFINED(current) || i <span class="hljs-keyword">in</span> array) {
+                %CreateDataProperty(deleted_elements, i - start_i, current);
+            }
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">var</span> length = indices.length;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> k = <span class="hljs-number">0</span>; k &lt; length; ++k) {
+            <span class="hljs-keyword">var</span> key = indices[k];
+            <span class="hljs-keyword">if</span> (key &gt;= start_i) {
+                <span class="hljs-keyword">var</span> current = array[key];
+                <span class="hljs-keyword">if</span> (!IS_UNDEFINED(current) || key <span class="hljs-keyword">in</span> array) {
+                    %CreateDataProperty(deleted_elements, key - start_i, current);
+                }
+            }
+        }
+    }
+}
+<span class="hljs-comment">/*
+* array &#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x7684;&#x6570;&#x7EC4;
+* start_i &#x5F00;&#x59CB;&#x4F4D;&#x7F6E;
+* del_count &#x9700;&#x8981;&#x5904;&#x7406;&#x7684;&#x957F;&#x5EA6;
+* len &#x6570;&#x7EC4;&#x957F;&#x5EA6;
+* deleted_elements &#x5229;&#x7528;&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x5BF9;&#x4E8E;slice&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x9009;&#x62E9;&#x7684;&#x90A3;&#x90E8;&#x5206;&#x6570;&#x7EC4;&#xFF0C;&#x5BF9;&#x4E8E;splice&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x5220;&#x9664;&#x7684;&#x90A3;&#x4E9B;&#x6570;&#x7EC4;
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SimpleSlice</span>(<span class="hljs-params">array, start_i, del_count, len, deleted_elements</span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; del_count; i++) {
+        <span class="hljs-keyword">var</span> index = start_i + i;
+        <span class="hljs-keyword">if</span> (index <span class="hljs-keyword">in</span> array) {
+            <span class="hljs-keyword">var</span> current = array[index];
+            %CreateDataProperty(deleted_elements, i, current);
+        }
+    }
+}</code></pre>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>Javascript-伪数组</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016537762" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016537762</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/9501e5ae/">https://alili.tech/archive/9501e5ae/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">什么是伪数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">常见的伪数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">伪数据如何转成标准数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">Array.slice源码解析（587行）</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number"></span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number"></span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

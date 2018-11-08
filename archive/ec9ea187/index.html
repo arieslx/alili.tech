@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="用微前端的方式搭建类单页应用本文介绍了“微前端构建类单页应用”在美团 HR 系统中的实践。  奇舞推荐 微前端   引言· 2018年前端开发工作手册Introduction什么是前端开发人员?2017年度前端开发回顾。即将在2018的发生前端故事…第一部分：前端实践。前端开发相关职位。前端开发基础知识。前端开发进阶知识。前端程序运行环境一览。在一个团队里前端开发的角色。全栈大神。前…  前端">
+<meta name="keywords" content="前端周刊,Weekly">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Alili Weekly 前端周刊 第一期">
+<meta property="og:url" content="https://alili.tech/archive/ec9ea187/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="用微前端的方式搭建类单页应用本文介绍了“微前端构建类单页应用”在美团 HR 系统中的实践。  奇舞推荐 微前端   引言· 2018年前端开发工作手册Introduction什么是前端开发人员?2017年度前端开发回顾。即将在2018的发生前端故事…第一部分：前端实践。前端开发相关职位。前端开发基础知识。前端开发进阶知识。前端程序运行环境一览。在一个团队里前端开发的角色。全栈大神。前…  前端">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/images/github_31.png">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.595Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Alili Weekly 前端周刊 第一期">
+<meta name="twitter:description" content="用微前端的方式搭建类单页应用本文介绍了“微前端构建类单页应用”在美团 HR 系统中的实践。  奇舞推荐 微前端   引言· 2018年前端开发工作手册Introduction什么是前端开发人员?2017年度前端开发回顾。即将在2018的发生前端故事…第一部分：前端实践。前端开发相关职位。前端开发基础知识。前端开发进阶知识。前端程序运行环境一览。在一个团队里前端开发的角色。全栈大神。前…  前端">
+<meta name="twitter:image" content="https://static.alili.tech/images/github_31.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>Alili Weekly 前端周刊 第一期 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/ec9ea187/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/ec9ea187/",
+      "appid": "1613049289050283", 
+      "title": "Alili Weekly 前端周刊 第一期 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:05"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/69a6fd18/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/4a50d81d/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/ec9ea187/&text=Alili Weekly 前端周刊 第一期" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/ec9ea187/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/ec9ea187/&text=Alili Weekly 前端周刊 第一期" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/ec9ea187/&title=Alili Weekly 前端周刊 第一期" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/ec9ea187/&is_video=false&description=Alili Weekly 前端周刊 第一期" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Alili Weekly 前端周刊 第一期&body=Check out this article: https://alili.tech/archive/ec9ea187/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/ec9ea187/&title=Alili Weekly 前端周刊 第一期" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/ec9ea187/&title=Alili Weekly 前端周刊 第一期" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/ec9ea187/&title=Alili Weekly 前端周刊 第一期" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/ec9ea187/&title=Alili Weekly 前端周刊 第一期" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用微前端的方式搭建类单页应用"><span class="toc-number">1.</span> <span class="toc-text">用微前端的方式搭建类单页应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引言·-2018年前端开发工作手册"><span class="toc-number">2.</span> <span class="toc-text">引言· 2018年前端开发工作手册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-Functions详解（包含ES6箭头函数）"><span class="toc-number">3.</span> <span class="toc-text">JavaScript Functions详解（包含ES6箭头函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript循环和作用域"><span class="toc-number">4.</span> <span class="toc-text">JavaScript循环和作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写给工程师的十条精进原则"><span class="toc-number">5.</span> <span class="toc-text">写给工程师的十条精进原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滚动视差？CSS-不在话下"><span class="toc-number">6.</span> <span class="toc-text">滚动视差？CSS 不在话下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入理解-TypeScript"><span class="toc-number">7.</span> <span class="toc-text">深入理解 TypeScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack-4-配置最佳实践"><span class="toc-number">8.</span> <span class="toc-text">Webpack 4 配置最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript中的this"><span class="toc-number">9.</span> <span class="toc-text">JavaScript中的this</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在你的下一个Web应用中使用Vue-js的三个理由"><span class="toc-number">10.</span> <span class="toc-text">在你的下一个Web应用中使用Vue.js的三个理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">11.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        Alili Weekly 前端周刊 第一期
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-05T00:00:00.000Z" itemprop="datePublished">2018-10-05</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Weekly/">Weekly</a>, <a class="tag-link" href="/tags/前端周刊/">前端周刊</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p><img src="https://static.alili.tech/images/github_31.png" alt=""></p>
+<h2 id="用微前端的方式搭建类单页应用"><a href="#用微前端的方式搭建类单页应用" class="headerlink" title="用微前端的方式搭建类单页应用"></a><a href="https://juejin.im/post/5b921b415188255c9031b0c3" rel="external nofollow noopener noreferrer" target="_blank">用微前端的方式搭建类单页应用</a></h2><p>本文介绍了“微前端构建类单页应用”在美团 HR 系统中的实践。 </p>
+<p><code>奇舞推荐</code> <code>微前端</code> </p>
+<hr>
+<h2 id="引言·-2018年前端开发工作手册"><a href="#引言·-2018年前端开发工作手册" class="headerlink" title="引言· 2018年前端开发工作手册"></a><a href="https://www.zcfy.cc/article/introduction-front-end-developer-handbook-2018" rel="external nofollow noopener noreferrer" target="_blank">引言· 2018年前端开发工作手册</a></h2><p>Introduction什么是前端开发人员?2017年度前端开发回顾。即将在2018的发生前端故事…第一部分：前端实践。前端开发相关职位。前端开发基础知识。前端开发进阶知识。前端程序运行环境一览。在一个团队里前端开发的角色。全栈大神。前… </p>
+<p><code>前端</code> <code>JAVASCRIPT</code> <code>程序员</code> <code>移动</code> <code>API</code> </p>
+<hr>
+<h2 id="JavaScript-Functions详解（包含ES6箭头函数）"><a href="#JavaScript-Functions详解（包含ES6箭头函数）" class="headerlink" title="JavaScript Functions详解（包含ES6箭头函数）"></a><a href="https://www.zcfy.cc/article/javascript-functions" rel="external nofollow noopener noreferrer" target="_blank">JavaScript Functions详解（包含ES6箭头函数）</a></h2><p>简介。JavaScript中的所有内容都发生在函数中。函数是一个代码块，可以定义一次并随时运行。函数可以选择接受参数，并返回一个值。JavaScript中的函数是对象，一种特殊的对象：函数对象。另外，函数被称为第一类函数，因为它们可以被赋值… </p>
+<p><code>JAVASCRIPT</code> <code>ECMASCRIPT 6</code> <code>移动</code> </p>
+<hr>
+<h2 id="JavaScript循环和作用域"><a href="#JavaScript循环和作用域" class="headerlink" title="JavaScript循环和作用域"></a><a href="https://www.zcfy.cc/article/javascript-loops-and-scope" rel="external nofollow noopener noreferrer" target="_blank">JavaScript循环和作用域</a></h2><p>JavaScript有一个特点，也许会让开发者头痛, 是与循环和作用域相关的.举个例子:它基本是循环了5次，将一个函数添加到operations数组里面。这个函数可打印出循环变量索引值i.运行这些函数后期望的结果应该是:但实际发生的是这样的… </p>
+<p><code>JAVASCRIPT</code> <code>程序员</code> <code>ECMASCRIPT 6</code> </p>
+<hr>
+<h2 id="写给工程师的十条精进原则"><a href="#写给工程师的十条精进原则" class="headerlink" title="写给工程师的十条精进原则"></a><a href="https://juejin.im/post/5b762bace51d45556f41c431" rel="external nofollow noopener noreferrer" target="_blank">写给工程师的十条精进原则</a></h2><p>“以原则为中心地工作与生活，让自己与团队变得更加强大。” </p>
+<p><code>奇舞推荐</code> <code>职业</code> </p>
+<hr>
+<h2 id="滚动视差？CSS-不在话下"><a href="#滚动视差？CSS-不在话下" class="headerlink" title="滚动视差？CSS 不在话下"></a><a href="http://www.cnblogs.com/coco1s/p/9453938.html" rel="external nofollow noopener noreferrer" target="_blank">滚动视差？CSS 不在话下</a></h2><p>主要介绍 Parallax Scrolling 的几种实现方式。 </p>
+<p><code>奇舞推荐</code> <code>CSS</code> <code>Parallax Scrolling</code> </p>
+<hr>
+<h2 id="深入理解-TypeScript"><a href="#深入理解-TypeScript" class="headerlink" title="深入理解 TypeScript"></a><a href="https://jkchao.github.io/typescript-book-chinese" rel="external nofollow noopener noreferrer" target="_blank">深入理解 TypeScript</a></h2><p>《TypeScript Deep Dive》中文翻译版。 </p>
+<p><code>TypeScript</code> </p>
+<hr>
+<h2 id="Webpack-4-配置最佳实践"><a href="#Webpack-4-配置最佳实践" class="headerlink" title="Webpack 4 配置最佳实践"></a><a href="https://github.com/ProtoTeam/blog/blob/master/201806/3.md" rel="external nofollow noopener noreferrer" target="_blank">Webpack 4 配置最佳实践</a></h2><p>本文的重点在：Webpack 4 在配置上带来了哪些便利？要迁移需要修改配置文件的哪些内容？之前的 Webpack 配置最佳实践在 Webpack 4 这个版本，还适用吗？ </p>
+<p><code>Webpack</code> </p>
+<hr>
+<h2 id="JavaScript中的this"><a href="#JavaScript中的this" class="headerlink" title="JavaScript中的this"></a><a href="https://www.zcfy.cc/article/this-in-javascript" rel="external nofollow noopener noreferrer" target="_blank">JavaScript中的this</a></h2><p>this 在不同的地方被调用有不同的值。不知道这些细节可能会导致很多头疼的问题, 所以你不妨花5分钟的时间来了解一下这些坑。this 在严格模式下。除了在声明的对象内被调用, this 在 严格模式下 永远是 undefined。注意我提到… </p>
+<p><code>JAVASCRIPT</code> <code>浏览器</code> <code>DOM</code> <code>HTML</code> </p>
+<hr>
+<h2 id="在你的下一个Web应用中使用Vue-js的三个理由"><a href="#在你的下一个Web应用中使用Vue-js的三个理由" class="headerlink" title="在你的下一个Web应用中使用Vue.js的三个理由"></a><a href="https://www.zcfy.cc/article/3-reasons-to-use-vue-js-in-your-next-web-project" rel="external nofollow noopener noreferrer" target="_blank">在你的下一个Web应用中使用Vue.js的三个理由</a></h2><p>Vue.js是那么地易上手，它在提供了大量开箱即用的功能的同时也提供了良好的性能。请继续阅读以下事例及代码片段以便更加了解Vue.js。选择一个JavaScript框架真是太难了——因为有太多的框架可以供我们使用，并且它们之间的差距并不是很… </p>
+<p><code>VUE.JS</code> <code>JAVASCRIPT</code> <code>移动</code> <code>应用</code> <code>DOM</code> </p>
+<hr>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/ec9ea187/">https://alili.tech/archive/ec9ea187/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/9196ee0d/">Alili Weekly 前端周刊 第三期</a></li><li><a href="https://alili.tech/archive/dc884d5f/">Alili Weekly 前端周刊 第二期</a></li><li><a href="https://alili.tech/archive/4925322f/">Alili Weekly 前端周刊 第五期</a></li><li><a href="https://alili.tech/archive/26bbf768/">Alili Weekly 前端周刊 第四期</a></li><li><a href="https://alili.tech/archive/9196ee0d/">Alili Weekly 前端周刊 第三期</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用微前端的方式搭建类单页应用"><span class="toc-number">1.</span> <span class="toc-text">用微前端的方式搭建类单页应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引言·-2018年前端开发工作手册"><span class="toc-number">2.</span> <span class="toc-text">引言· 2018年前端开发工作手册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-Functions详解（包含ES6箭头函数）"><span class="toc-number">3.</span> <span class="toc-text">JavaScript Functions详解（包含ES6箭头函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript循环和作用域"><span class="toc-number">4.</span> <span class="toc-text">JavaScript循环和作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写给工程师的十条精进原则"><span class="toc-number">5.</span> <span class="toc-text">写给工程师的十条精进原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滚动视差？CSS-不在话下"><span class="toc-number">6.</span> <span class="toc-text">滚动视差？CSS 不在话下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入理解-TypeScript"><span class="toc-number">7.</span> <span class="toc-text">深入理解 TypeScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack-4-配置最佳实践"><span class="toc-number">8.</span> <span class="toc-text">Webpack 4 配置最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript中的this"><span class="toc-number">9.</span> <span class="toc-text">JavaScript中的this</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在你的下一个Web应用中使用Vue-js的三个理由"><span class="toc-number">10.</span> <span class="toc-text">在你的下一个Web应用中使用Vue.js的三个理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">11.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

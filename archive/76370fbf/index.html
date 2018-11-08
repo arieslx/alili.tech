@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="不像 MySQL 的 MySQL：MySQL 文档存储介绍  MySQL 文档存储 可以跳过底层数据结构创建、数据规范化和其它使用传统数据库时需要做的工作，直接存储数据。   MySQL 可以提供 NoSQL JSON 文档存储Document Store了，这样开发者保存数据前无需规范化normalize数据、创建数据库，也无需在开发之前就制定好数据样式。从 MySQL 5.7 版本和 MySQ">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不像 MySQL 的 MySQL：MySQL 文档存储介绍">
+<meta property="og:url" content="https://alili.tech/archive/76370fbf/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="不像 MySQL 的 MySQL：MySQL 文档存储介绍  MySQL 文档存储 可以跳过底层数据结构创建、数据规范化和其它使用传统数据库时需要做的工作，直接存储数据。   MySQL 可以提供 NoSQL JSON 文档存储Document Store了，这样开发者保存数据前无需规范化normalize数据、创建数据库，也无需在开发之前就制定好数据样式。从 MySQL 5.7 版本和 MySQ">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01df21f36f921065b7.jpg">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不像 MySQL 的 MySQL：MySQL 文档存储介绍">
+<meta name="twitter:description" content="不像 MySQL 的 MySQL：MySQL 文档存储介绍  MySQL 文档存储 可以跳过底层数据结构创建、数据规范化和其它使用传统数据库时需要做的工作，直接存储数据。   MySQL 可以提供 NoSQL JSON 文档存储Document Store了，这样开发者保存数据前无需规范化normalize数据、创建数据库，也无需在开发之前就制定好数据样式。从 MySQL 5.7 版本和 MySQ">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t01df21f36f921065b7.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>不像 MySQL 的 MySQL：MySQL 文档存储介绍 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/76370fbf/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/76370fbf/",
+      "appid": "1613049289050283", 
+      "title": "不像 MySQL 的 MySQL：MySQL 文档存储介绍 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:02"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/3707de70/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/c0dd4948/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/76370fbf/&text=不像 MySQL 的 MySQL：MySQL 文档存储介绍" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/76370fbf/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/76370fbf/&text=不像 MySQL 的 MySQL：MySQL 文档存储介绍" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/76370fbf/&title=不像 MySQL 的 MySQL：MySQL 文档存储介绍" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/76370fbf/&is_video=false&description=不像 MySQL 的 MySQL：MySQL 文档存储介绍" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=不像 MySQL 的 MySQL：MySQL 文档存储介绍&body=Check out this article: https://alili.tech/archive/76370fbf/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/76370fbf/&title=不像 MySQL 的 MySQL：MySQL 文档存储介绍" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/76370fbf/&title=不像 MySQL 的 MySQL：MySQL 文档存储介绍" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/76370fbf/&title=不像 MySQL 的 MySQL：MySQL 文档存储介绍" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/76370fbf/&title=不像 MySQL 的 MySQL：MySQL 文档存储介绍" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">不像 MySQL 的 MySQL：MySQL 文档存储介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">JSON 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">X DevAPI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.3.</span> <span class="toc-text">代码示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.4.</span> <span class="toc-text">Node.js 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.5.</span> <span class="toc-text">从两种方式受益</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        不像 MySQL 的 MySQL：MySQL 文档存储介绍
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-21T00:00:00.000Z" itemprop="datePublished">2018-10-21</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1><a href="#不像-mysql-的-mysqlmysql-文档存储介绍"></a>不像 MySQL 的 MySQL：MySQL 文档存储介绍</h1>
+<blockquote>
+<p>MySQL 文档存储 可以跳过底层数据结构创建、数据规范化和其它使用传统数据库时需要做的工作，直接存储数据。</p>
+</blockquote>
+<p><a href="https://camo.githubusercontent.com/218cbc1ff433e03cf2adcb7d637b5a330462d9b4/68747470733a2f2f6f70656e736f757263652e636f6d2f73697465732f64656661756c742f66696c65732f7374796c65732f696d6167652d66756c6c2d73697a652f7075626c69632f6c6561642d696d616765732f6f70656e5f627573696e6573735f7369676e5f73746f72652e6a70673f69746f6b3d6734516962527167" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t01df21f36f921065b7.jpg" alt=""></a></p>
+<p>MySQL 可以提供 NoSQL JSON 文档存储Document Store了，这样开发者保存数据前无需规范化normalize数据、创建数据库，也无需在开发之前就制定好数据样式。从 MySQL 5.7 版本和 MySQL 8.0 版本开始，开发者可以在表的一列中存储 JSON 文档。由于引入 X DevAPI，你可以从你的代码中移除令人不爽的结构化查询字符串，改为使用支持现代编程设计的 API 调用。</p>
+<p>系统学习过结构化查询语言（SQL）、关系理论relational theory、集合set和其它关系数据库底层理论的开发者并不多，但他们需要一个安全可靠的数据存储。如果数据库管理人员不足，事情很快就会变得一团糟，</p>
+<p><a href="https://www.mysql.com/products/enterprise/document_store.html" rel="external nofollow noopener noreferrer" target="_blank">MySQL 文档存储</a> 允许开发者跳过底层数据结构创建、数据规范化和其它使用传统数据库时需要做的工作，直接存储数据。只需创建一个 JSON 文档集合document collection，接着就可以使用了。</p>
+<h3><a href="#json-数据类型"></a>JSON 数据类型</h3>
+<p>所有这一切都基于多年前 MySQL 5.7 引入的 JSON 数据类型。它允许在表的一行中提供大约 1GB 大小的列。数据必须是有效的 JSON，否则服务器会报错；但开发者可以自由使用这些空间。</p>
+<h3><a href="#x-devapi"></a>X DevAPI</h3>
+<p>旧的 MySQL 协议已经历经差不多四分之一个世纪，已经显现出疲态，因此新的协议被开发出来，协议名为 <a href="https://dev.mysql.com/doc/x-devapi-userguide/en/" rel="external nofollow noopener noreferrer" target="_blank">X DevAPI</a>。协议引入高级会话概念，允许代码从单台服务器扩展到多台，使用符合通用主机编程语言样式common host-language programming patterns的非阻塞异步 I/O。需要关注的是如何遵循现代实践和编码风格，同时使用 CRUD （Create、 Replace、 Update、 Delete）样式。换句话说，你不再需要在你精美、纯洁的代码中嵌入丑陋的 SQL 语句字符串。</p>
+<p>一个新的 shell 支持这种新协议，即所谓的 <a href="https://dev.mysql.com/downloads/shell/" rel="external nofollow noopener noreferrer" target="_blank">MySQL Shell</a>。该 shell 可用于设置高可用集群high-availability cluster、检查服务器升级就绪状态upgrade readiness以及与 MySQL 服务器交互。支持的交互方式有以下三种：JavaScript，Python 和 SQL。</p>
+<h3><a href="#代码示例"></a>代码示例</h3>
+<p>下面的代码示例基于 JavaScript 方式使用 MySQL Shell，可以从 <code>JS&gt;</code> 提示符看出。</p>
+<p>下面，我们将使用用户 <code>dstokes</code> 、密码 <code>password</code> 登录本地系统上的 <code>demo</code> 库。<code>db</code> 是一个指针，指向 <code>demo</code> 库。</p>
+<pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> mysqlsh dstokes:password@localhost/demo</span>
+<span class="hljs-meta">JS&gt;</span><span class="bash"> db.createCollection(<span class="hljs-string">"example"</span>)</span>
+<span class="hljs-meta">JS&gt;</span><span class="bash"> db.example.add(</span>
+      {
+        Name: "Dave",
+        State:  "Texas",
+        foo : "bar"
+      }
+     )
+<span class="hljs-meta">JS&gt;</span><span class="bash"></span>
+
+</code></pre><p>在上面的示例中，我们登录服务器，连接到 <code>demo</code> 库，创建了一个名为 <code>example</code> 的集合，最后插入一条记录；整个过程无需创建表，也无需使用 SQL。只要你能想象的到，你可以使用甚至滥用这些数据。这不是一种代码对象与关系语句之间的映射器，因为并没有将代码映射为 SQL；新协议直接与服务器层打交道。</p>
+<h3><a href="#nodejs-支持"></a>Node.js 支持</h3>
+<p>新 shell 看起来挺不错，你可以用其完成很多工作；但你可能更希望使用你选用的编程语言。下面的例子使用 <code>world_x</code> 示例数据库，搜索 <code>_id</code> 字段匹配 <code>CAN.</code> 的记录。我们指定数据库中的特定集合，使用特定参数调用 <code>find</code> 命令。同样地，操作也不涉及 SQL。</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> mysqlx = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@mysql/xdevapi'</span>);
+mysqlx.getSession({             <span class="hljs-comment">//Auth to server</span>
+        host: <span class="hljs-string">'localhost'</span>,
+        <span class="hljs-attr">port</span>: <span class="hljs-string">'33060'</span>,
+        <span class="hljs-attr">dbUser</span>: <span class="hljs-string">'root'</span>,
+        <span class="hljs-attr">dbPassword</span>: <span class="hljs-string">'password'</span>
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">session</span>) </span>{    <span class="hljs-comment">// use world_x.country.info</span>
+     <span class="hljs-keyword">var</span> schema = session.getSchema(<span class="hljs-string">'world_x'</span>);
+     <span class="hljs-keyword">var</span> collection = schema.getCollection(<span class="hljs-string">'countryinfo'</span>);
+
+collection                      <span class="hljs-comment">// Get row for 'CAN'</span>
+  .find(<span class="hljs-string">"$._id == 'CAN'"</span>)
+  .limit(<span class="hljs-number">1</span>)
+  .execute(<span class="hljs-function"><span class="hljs-params">doc</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(doc))
+  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"\n\nAll done"</span>));
+
+  session.close();
+})
+
+</code></pre><p>下面例子使用 PHP，搜索 <code>_id</code> 字段匹配 <code>USA</code> 的记录：</p>
+<pre><code class="hljs xml"><span class="php"><span class="hljs-meta">&lt;?PHP</span>
+<span class="hljs-comment">// Connection parameters</span>
+  $user = <span class="hljs-string">'root'</span>;
+  $passwd = <span class="hljs-string">'S3cret#'</span>;
+  $host = <span class="hljs-string">'localhost'</span>;
+  $port = <span class="hljs-string">'33060'</span>;
+  $connection_uri = <span class="hljs-string">'mysqlx://'</span>.$user.<span class="hljs-string">':'</span>.$passwd.<span class="hljs-string">'@'</span>.$host.<span class="hljs-string">':'</span>.$port;
+  <span class="hljs-keyword">echo</span> $connection_uri . <span class="hljs-string">"\n"</span>;
+
+<span class="hljs-comment">// Connect as a Node Session</span>
+  $nodeSession = mysql_xdevapi\getNodeSession($connection_uri);
+<span class="hljs-comment">// "USE world_x" schema</span>
+  $schema = $nodeSession-&gt;getSchema(<span class="hljs-string">"world_x"</span>);
+<span class="hljs-comment">// Specify collection to use</span>
+  $collection = $schema-&gt;getCollection(<span class="hljs-string">"countryinfo"</span>);
+<span class="hljs-comment">// SELECT * FROM world_x WHERE _id = "USA"</span>
+  $result = $collection-&gt;find(<span class="hljs-string">'_id = "USA"'</span>)-&gt;execute();
+<span class="hljs-comment">// Fetch/Display data</span>
+  $data = $result-&gt;fetchAll();
+  var_dump($data);
+<span class="hljs-meta">?&gt;</span></span>
+
+</code></pre><p>可以看出，在上面两个使用不同编程语言的例子中，<code>find</code> 操作符的用法基本一致。这种一致性对跨语言编程的开发者有很大帮助，对试图降低新语言学习成本的开发者也不无裨益。</p>
+<p>支持的语言还包括 C、Java、Python 和 JavaScript 等，未来还会有更多支持的语言。</p>
+<h3><a href="#从两种方式受益"></a>从两种方式受益</h3>
+<p>我会告诉你使用 NoSQL 方式录入的数据也可以用 SQL 方式使用？换句话说，我会告诉你新引入的 NoSQL 方式可以访问旧式关系型表中的数据？现在使用 MySQL 服务器有多种方式，作为 SQL 服务器，作为 NoSQL 服务器或者同时作为两者。</p>
+<hr>
+<p>via: <a href="https://opensource.com/article/18/6/mysql-document-store" rel="external nofollow noopener noreferrer" target="_blank">https://opensource.com/article/18/6/mysql-document-store</a></p>
+<p>作者：<a href="https://opensource.com/users/davidmstokes" rel="external nofollow noopener noreferrer" target="_blank">Dave Stokes</a> 选题：<a href="https://github.com/lujun9972" rel="external nofollow noopener noreferrer" target="_blank">lujun9972</a> 译者：<a href="https://github.com/pinewall" rel="external nofollow noopener noreferrer" target="_blank">pinewall</a> 校对：<a href="https://github.com/wxy" rel="external nofollow noopener noreferrer" target="_blank">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" rel="external nofollow noopener noreferrer" target="_blank">LCTT</a> 原创编译，<a href="https://linux.cn/" rel="external nofollow noopener noreferrer" target="_blank">Linux中国</a> 荣誉推出</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/mysql-without-the-mysql-an-introduction-to-the-mysql-document-store" rel="external nofollow noopener noreferrer" target="_blank">不像 MySQL 的 MySQL：MySQL 文档存储介绍</a><br>原文标题: 不像 MySQL 的 MySQL：MySQL 文档存储介绍<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/76370fbf/">https://alili.tech/archive/76370fbf/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">不像 MySQL 的 MySQL：MySQL 文档存储介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">JSON 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">X DevAPI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.3.</span> <span class="toc-text">代码示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.4.</span> <span class="toc-text">Node.js 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.5.</span> <span class="toc-text">从两种方式受益</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

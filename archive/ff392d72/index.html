@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="TrueOS 不再想要成为“桌面 BSD”了 TrueOS 很快会有一些非常重大的变化。今天，我们将了解桌面 BSD 领域将会发生什么。 通告  TrueOS 背后的团队宣布，他们将改变项目的重点。到目前为止，TrueOS 使用开箱即用的图形用户界面来轻松安装 BSD。然而，它现在将成为“一个先进的操作系统，保留你所知道和喜欢的 ZFS（OpenZFS）和 FreeBSD的所有稳定性，并添加额外的">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TrueOS 不再想要成为“桌面 BSD”了">
+<meta property="og:url" content="https://alili.tech/archive/ff392d72/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="TrueOS 不再想要成为“桌面 BSD”了 TrueOS 很快会有一些非常重大的变化。今天，我们将了解桌面 BSD 领域将会发生什么。 通告  TrueOS 背后的团队宣布，他们将改变项目的重点。到目前为止，TrueOS 使用开箱即用的图形用户界面来轻松安装 BSD。然而，它现在将成为“一个先进的操作系统，保留你所知道和喜欢的 ZFS（OpenZFS）和 FreeBSD的所有稳定性，并添加额外的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t011429cdc2f78beded.jpg">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.455Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TrueOS 不再想要成为“桌面 BSD”了">
+<meta name="twitter:description" content="TrueOS 不再想要成为“桌面 BSD”了 TrueOS 很快会有一些非常重大的变化。今天，我们将了解桌面 BSD 领域将会发生什么。 通告  TrueOS 背后的团队宣布，他们将改变项目的重点。到目前为止，TrueOS 使用开箱即用的图形用户界面来轻松安装 BSD。然而，它现在将成为“一个先进的操作系统，保留你所知道和喜欢的 ZFS（OpenZFS）和 FreeBSD的所有稳定性，并添加额外的">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t011429cdc2f78beded.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>TrueOS 不再想要成为“桌面 BSD”了 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/ff392d72/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/ff392d72/",
+      "appid": "1613049289050283", 
+      "title": "TrueOS 不再想要成为“桌面 BSD”了 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:03"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/c8c91cd5/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/9c0662f4/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/ff392d72/&text=TrueOS 不再想要成为“桌面 BSD”了" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/ff392d72/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/ff392d72/&text=TrueOS 不再想要成为“桌面 BSD”了" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/ff392d72/&title=TrueOS 不再想要成为“桌面 BSD”了" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/ff392d72/&is_video=false&description=TrueOS 不再想要成为“桌面 BSD”了" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TrueOS 不再想要成为“桌面 BSD”了&body=Check out this article: https://alili.tech/archive/ff392d72/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/ff392d72/&title=TrueOS 不再想要成为“桌面 BSD”了" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/ff392d72/&title=TrueOS 不再想要成为“桌面 BSD”了" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/ff392d72/&title=TrueOS 不再想要成为“桌面 BSD”了" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/ff392d72/&title=TrueOS 不再想要成为“桌面 BSD”了" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">TrueOS 不再想要成为“桌面 BSD”了</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">通告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">桌面用户如何？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.3.</span> <span class="toc-text">想法</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        TrueOS 不再想要成为“桌面 BSD”了
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-18T00:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1><a href="#trueos-不再想要成为桌面-bsd了"></a>TrueOS 不再想要成为“桌面 BSD”了</h1>
+<p><a href="https://www.trueos.org/" rel="external nofollow noopener noreferrer" target="_blank">TrueOS</a> 很快会有一些非常重大的变化。今天，我们将了解桌面 BSD 领域将会发生什么。</p>
+<h3><a href="#通告"></a>通告</h3>
+<p><a href="https://camo.githubusercontent.com/a3dcc23c2fcd0591984f1bda949e2f73b1b08057/68747470733a2f2f346264733668657267632d666c79776865656c2e6e6574646e612d73736c2e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031382f30362f747275652d6f732d6273642d6465736b746f702e6a706567" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t011429cdc2f78beded.jpg" alt="TrueOS: Core Operating System BSD"></a></p>
+<p><a href="https://www.trueos.org/" rel="external nofollow noopener noreferrer" target="_blank">TrueOS</a> 背后的团队<a href="https://www.trueos.org/blog/trueosdownstream/" rel="external nofollow noopener noreferrer" target="_blank">宣布</a>，他们将改变项目的重点。到目前为止，TrueOS 使用开箱即用的图形用户界面来轻松安装 BSD。然而，它现在将成为“一个先进的操作系统，保留你所知道和喜欢的 ZFS（<a href="http://open-zfs.org/wiki/Main_Page" rel="external nofollow noopener noreferrer" target="_blank">OpenZFS</a>）和 <a href="https://www.freebsd.org/" rel="external nofollow noopener noreferrer" target="_blank">FreeBSD</a>的所有稳定性，并添加额外的功能来创造一个全新的、创新的操作系统。我们的目标是创建一个核心操作系统，该系统具有模块化、实用性，非常适合自己动手和高级用户。“</p>
+<p>从本质上讲，TrueOs 将成为 FreeBSD 的下游分支。他们将集成更新一些的软件到系统中，例如 <a href="https://en.wikipedia.org/wiki/OpenRC" rel="external nofollow noopener noreferrer" target="_blank">OpenRC</a> 和 <a href="http://www.libressl.org/" rel="external nofollow noopener noreferrer" target="_blank">LibreSSL</a>。他们希望能坚持 6 个月的发布周期。</p>
+<p>其目标是使 TrueOS 成为可以作为其他项目构建的基础。缺少图形部分以使其更加地与发行版无关。</p>
+<h3><a href="#桌面用户如何"></a>桌面用户如何？</h3>
+<p>如果你读过我的<a href="https://itsfoss.com/trueos-bsd-review/" rel="external nofollow noopener noreferrer" target="_blank">TrueOS 评论</a>并且有兴趣尝试使用桌面 BSD 或已经使用 TrueOS，请不要担心（这对于生活来说也是一个很好的建议）。TrueOS 的所有桌面元素都将剥离到 <a href="http://www.project-trident.org/" rel="external nofollow noopener noreferrer" target="_blank">Project Trident</a>。目前，Project Trident 网站的细节不多。他们仿佛还在进行剥离的幕后工作。</p>
+<p>如果你目前拥有 TrueOS，则无需担心迁移。TrueOS 团队表示，“对于那些希望迁移到其他基于 FreeBSD 的发行版，如 Project Trident 或 <a href="https://www.ghostbsd.org/" rel="external nofollow noopener noreferrer" target="_blank">GhostBSD</a> 的人而言将会有迁移方式。”</p>
+<h3><a href="#想法"></a>想法</h3>
+<p>当我第一次阅读该公告时，坦率地说有点担心。改变名字可能是一个坏主意。客户将习惯使用一个名称，但如果产品名称发生变化，他们可能很容易失去对项目的跟踪。TrueOS 经历过名称更改。该项目于 2006 年启动时，它被命名为 PC-BSD，但在 2016 年，名称更改为 TrueOS。它让我想起了<a href="https://itsfoss.com/archlabs-vs-archmerge/" rel="external nofollow noopener noreferrer" target="_blank">ArchMerge 和 Arcolinux 传奇</a>。</p>
+<p>话虽这么说，我认为这对 BSD 的桌面用户来说是一件好事。我常听见对 PC-BSD 和 TrueOS 的一个批评是它不是很精致。剥离项目的两个部分将有助于提高相关开发人员的关注度。TrueOS 团队将能够为缓慢进展的 FreeBSD 添加更新的功能，Project Trident 团队将能够改善用户的桌面体验。</p>
+<p>我希望两个团队都好。请记住，当有人为开源而努力时，即使是我们不会使用的部分，我们也都会受益。</p>
+<p>你对 TrueOS 和 Project Trident 的未来有何看法？请在下面的评论中告诉我们。</p>
+<hr>
+<p>关于作者：</p>
+<p>我叫 John Paul Wohlscheid。我是一个有抱负的神秘作家，喜欢玩技术，尤其是 Linux。你可以在<a href="http://johnpaulwohlscheid.work/" rel="external nofollow noopener noreferrer" target="_blank">我的个人网站</a>关注我。</p>
+<hr>
+<p>via: <a href="https://itsfoss.com/trueos-plan-change/" rel="external nofollow noopener noreferrer" target="_blank">https://itsfoss.com/trueos-plan-change/</a></p>
+<p>作者：<a href="https://itsfoss.com/author/john/" rel="external nofollow noopener noreferrer" target="_blank">John Paul Wohlscheid</a> 译者：<a href="https://github.com/geekpi" rel="external nofollow noopener noreferrer" target="_blank">geekpi</a> 校对：<a href="https://github.com/wxy" rel="external nofollow noopener noreferrer" target="_blank">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" rel="external nofollow noopener noreferrer" target="_blank">LCTT</a> 原创编译，<a href="https://linux.cn/" rel="external nofollow noopener noreferrer" target="_blank">Linux中国</a> 荣誉推出</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/trueos-doesnt-want-to-be-bsd-for-desktop-anymore" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/trueos-doesnt-want-to-be-bsd-for-desktop-anymore</a><br>原文标题: TrueOS 不再想要成为“桌面 BSD”了<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/ff392d72/">https://alili.tech/archive/ff392d72/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">TrueOS 不再想要成为“桌面 BSD”了</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">通告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">桌面用户如何？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.3.</span> <span class="toc-text">想法</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

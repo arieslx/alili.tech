@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="Cron 任务入门指南 Cron 是您可以在任何类 Unix 操作系统中找到的最有用的实用程序之一。它用于安排命令在特定时间执行。这些预定的命令或任务被称为 “Cron 任务”。Cron 通常用于运行计划备份、监视磁盘空间、定期删除不再需要的文件（例如日志文件）、运行系统维护任务等等。在本简要指南中，我们将看到 Linux 中 Cron 任务的基本用法。 Cron 任务入门指南 cron 任务的典">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cron 任务入门指南">
+<meta property="og:url" content="https://alili.tech/archive/d0879e5/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="Cron 任务入门指南 Cron 是您可以在任何类 Unix 操作系统中找到的最有用的实用程序之一。它用于安排命令在特定时间执行。这些预定的命令或任务被称为 “Cron 任务”。Cron 通常用于运行计划备份、监视磁盘空间、定期删除不再需要的文件（例如日志文件）、运行系统维护任务等等。在本简要指南中，我们将看到 Linux 中 Cron 任务的基本用法。 Cron 任务入门指南 cron 任务的典">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01f500f34de815983a.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t0137f3e85d70fe09f1.png">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cron 任务入门指南">
+<meta name="twitter:description" content="Cron 任务入门指南 Cron 是您可以在任何类 Unix 操作系统中找到的最有用的实用程序之一。它用于安排命令在特定时间执行。这些预定的命令或任务被称为 “Cron 任务”。Cron 通常用于运行计划备份、监视磁盘空间、定期删除不再需要的文件（例如日志文件）、运行系统维护任务等等。在本简要指南中，我们将看到 Linux 中 Cron 任务的基本用法。 Cron 任务入门指南 cron 任务的典">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t01f500f34de815983a.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>Cron 任务入门指南 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/d0879e5/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/d0879e5/",
+      "appid": "1613049289050283", 
+      "title": "Cron 任务入门指南 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:03"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/248f9ce2/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/e33ba1d1/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/d0879e5/&text=Cron 任务入门指南" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/d0879e5/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/d0879e5/&text=Cron 任务入门指南" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/d0879e5/&title=Cron 任务入门指南" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/d0879e5/&is_video=false&description=Cron 任务入门指南" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Cron 任务入门指南&body=Check out this article: https://alili.tech/archive/d0879e5/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/d0879e5/&title=Cron 任务入门指南" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/d0879e5/&title=Cron 任务入门指南" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/d0879e5/&title=Cron 任务入门指南" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/d0879e5/&title=Cron 任务入门指南" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Cron 任务入门指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">Cron 任务入门指南</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        Cron 任务入门指南
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-18T00:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1><a href="#cron-任务入门指南"></a>Cron 任务入门指南</h1>
+<p><strong>Cron</strong> 是您可以在任何类 Unix 操作系统中找到的最有用的实用程序之一。它用于安排命令在特定时间执行。这些预定的命令或任务被称为 “Cron 任务”。Cron 通常用于运行计划备份、监视磁盘空间、定期删除不再需要的文件（例如日志文件）、运行系统维护任务等等。在本简要指南中，我们将看到 Linux 中 Cron 任务的基本用法。</p>
+<h3><a href="#cron-任务入门指南-1"></a>Cron 任务入门指南</h3>
+<p>cron 任务的典型格式是：</p>
+<pre><code class="hljs lsl">分钟(<span class="hljs-number">0</span><span class="hljs-number">-59</span>) 小时(<span class="hljs-number">0</span><span class="hljs-number">-24</span>) 日(<span class="hljs-number">1</span><span class="hljs-number">-31</span>) 月(<span class="hljs-number">1</span><span class="hljs-number">-12</span>) 星期(<span class="hljs-number">0</span><span class="hljs-number">-6</span>) 要执行的命令
+
+</code></pre><p>只需记住 cron 任务的格式或打印下面的插图并将其放在你桌面上即可。</p>
+<p><a href="https://camo.githubusercontent.com/793bf0d4e6813f3c7d131e6b05a4619c840c76c6/687474703a2f2f7777772e6f73746563686e69782e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031382f30352f63726f6e2d6a6f622d666f726d61742d312e706e67" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t01f500f34de815983a.png" alt=""></a></p>
+<p>在上图中，星号表示特定的时间块。</p>
+<p>要显示当前登录用户的 crontab 文件的内容：</p>
+<pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> crontab -l</span>
+
+</code></pre><p>要编辑当前用户的 cron 任务，请执行以下操作：</p>
+<pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> crontab -e</span>
+
+</code></pre><p>如果这是第一次编辑此文件，会询问你使用哪个编辑器来编辑此文件。</p>
+<pre><code class="hljs sql">no crontab for sk - using an empty one
+
+<span class="hljs-keyword">Select</span> an editor. <span class="hljs-keyword">To</span> <span class="hljs-keyword">change</span> later, run <span class="hljs-string">'select-editor'</span>.
+<span class="hljs-number">1.</span> /<span class="hljs-keyword">bin</span>/nano &lt;<span class="hljs-comment">---- easiest</span>
+<span class="hljs-number">2.</span> /usr/<span class="hljs-keyword">bin</span>/vim.basic
+<span class="hljs-number">3.</span> /usr/<span class="hljs-keyword">bin</span>/vim.tiny
+<span class="hljs-number">4.</span> /<span class="hljs-keyword">bin</span>/ed
+
+<span class="hljs-keyword">Choose</span> <span class="hljs-number">1</span><span class="hljs-number">-4</span> [<span class="hljs-number">1</span>]:
+
+</code></pre><p>选择适合你的编辑器。这里是一个示例 crontab 文件的样子。</p>
+<p><a href="https://camo.githubusercontent.com/2113cb042022b9088cc119714263b9beb4e729dc/687474703a2f2f7777772e6f73746563686e69782e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031382f30352f63726f6e2d6a6f62732d312e706e67" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t0137f3e85d70fe09f1.png" alt=""></a></p>
+<p>在这个文件中，你需要添加你的 cron 任务。</p>
+<p>要编辑其他用户的 crontab，例如 ostechnix，请执行：</p>
+<pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> crontab -u ostechnix -e</span>
+
+</code></pre><p>让我们看看一些例子。</p>
+<p>要 <strong>每分钟</strong> 执行一次 cron 任务，需使用如下格式。</p>
+<pre><code class="hljs markdown"><span class="hljs-bullet">* </span><span class="hljs-bullet">* *</span> <span class="hljs-bullet">* *</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">command-to-execute</span>&gt;</span></span>
+
+</code></pre><p>要每 5 分钟运行一次 cron 任务，请在 crontab 文件中添加以下内容。</p>
+<pre><code class="hljs autoit">*/<span class="hljs-number">5</span> * * * * &lt;command-<span class="hljs-keyword">to</span>-<span class="hljs-built_in">execute</span>&gt;
+
+</code></pre><p>要在每 1/4 个小时（每 15 分钟）运行一次 cron 任务，请添加以下内容：</p>
+<pre><code class="hljs autoit">*/<span class="hljs-number">15</span> * * * * &lt;command-<span class="hljs-keyword">to</span>-<span class="hljs-built_in">execute</span>&gt;
+
+</code></pre><p>要每小时的第 30 分钟运行一次 cron 任务，请运行：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">30 </span>* * * * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>您还可以使用逗号定义多个时间间隔。例如，以下 cron 任务每小时运行三次，分别在第 0、 5 和 10 分钟运行：</p>
+<pre><code class="hljs lsl"><span class="hljs-number">0</span>,<span class="hljs-number">5</span>,<span class="hljs-number">10</span> * * * * &lt;command-to-execute&gt;
+
+</code></pre><p>每半小时运行一次 cron 任务：</p>
+<pre><code class="hljs autoit">*/<span class="hljs-number">30</span> * * * * &lt;command-<span class="hljs-keyword">to</span>-<span class="hljs-built_in">execute</span>&gt;
+
+</code></pre><p>每小时运行一次：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span>* * * * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>每 2 小时运行一次：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span>*/<span class="hljs-number">2</span> * * * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>每天运行一项（在 00:00 运行）：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> * * * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>每天凌晨 3 点运行：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">3</span> * * * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>每周日运行：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> * * SUN &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>或使用，</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> * * <span class="hljs-number">0</span> &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>它将在每周日的午夜 00:00 运行。</p>
+<p>星期一至星期五每天运行一次，亦即每个工作日运行一次：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> * * <span class="hljs-number">1</span>-<span class="hljs-number">5</span> &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>这项工作将于 00:00 开始。</p>
+<p>每个月运行一次：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">1</span> * * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>于每月第 1 天的 16:15 运行：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">15 </span><span class="hljs-number">16</span> <span class="hljs-number">1</span> * * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>每季度运行一次，亦即每隔 3 个月的第 1 天运行：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">1</span> */<span class="hljs-number">3</span> * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>在特定月份的特定时间运行：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">5 </span><span class="hljs-number">0</span> * <span class="hljs-number">4</span> * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>每个四月的 00:05 运行。</p>
+<p>每 6 个月运行：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">1</span> */<span class="hljs-number">6</span> * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>这个定时任务将在每六个月的第一天的 00:00 运行。</p>
+<p>每年运行：</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> * &lt;command-<span class="hljs-keyword">to</span>-execute&gt;
+
+</code></pre><p>这项 cron 任务将于 1 月份的第一天的 00:00 运行。</p>
+<p>我们也可以使用以下字符串来定义任务。</p>
+<p><code>@reboot</code> 在每次启动时运行一次。 <code>@yearly</code> 每年运行一次。 <code>@annually</code>（和 <code>@yearly</code> 一样）。 <code>@monthly</code> 每月运行一次。 <code>@weekly</code> 每周运行一次。 <code>@daily</code> 每天运行一次。 <code>@midnight</code> （和 <code>@daily</code> 一样）。 <code>@hourly</code> 每小时运行一次。</p>
+<p>例如，要在每次重新启动服务器时运行任务，请将此行添加到您的 crontab 文件中。</p>
+<pre><code class="hljs autoit"><span class="hljs-symbol">@reboot</span> &lt;command-<span class="hljs-keyword">to</span>-<span class="hljs-built_in">execute</span>&gt;
+
+</code></pre><p>要删除当前用户的所有 cron 任务：</p>
+<pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> crontab -r</span>
+
+</code></pre><p>还有一个名为 [crontab.guru] <a href="https://crontab.guru/" rel="external nofollow noopener noreferrer" target="_blank">4</a> 的专业网站，用于学习 cron 任务示例。这个网站提供了很多 cron 任务的例子。</p>
+<p>有关更多详细信息，请查看手册页。</p>
+<pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> man crontab</span>
+
+</code></pre><p>那么，就是这样。到此为止，您应该对 cron 任务以及如何在世使用它们有了一个基本的了解。后续还会介绍更多的优秀工具。敬请关注！！</p>
+<p>干杯!</p>
+<hr>
+<p>via: <a href="https://www.ostechnix.com/a-beginners-guide-to-cron-jobs/" rel="external nofollow noopener noreferrer" target="_blank">https://www.ostechnix.com/a-beginners-guide-to-cron-jobs/</a></p>
+<p>作者：<a href="https://www.ostechnix.com/author/sk/" rel="external nofollow noopener noreferrer" target="_blank">SK</a> 选题：<a href="https://github.com/lujun9972" rel="external nofollow noopener noreferrer" target="_blank">lujun9972</a> 译者：<a href="https://github.com/KevinSJ" rel="external nofollow noopener noreferrer" target="_blank">KevinSJ</a> 校对：<a href="https://github.com/wxy" rel="external nofollow noopener noreferrer" target="_blank">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" rel="external nofollow noopener noreferrer" target="_blank">LCTT</a> 原创编译，<a href="https://linux.cn/" rel="external nofollow noopener noreferrer" target="_blank">Linux中国</a> 荣誉推出</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/a-beginners-guide-to-cron-jobs" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/a-beginners-guide-to-cron-jobs</a><br>原文标题: Cron 任务入门指南<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/d0879e5/">https://alili.tech/archive/d0879e5/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Cron 任务入门指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">Cron 任务入门指南</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

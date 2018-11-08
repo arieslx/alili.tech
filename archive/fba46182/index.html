@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="为什么要自动化部署，我这里就不多赘述了。 基于shipit-deploy的自动化部署，可以实现以下效果  一键部署多台服务器。 一键回滚多台服务器。 本地操作，不需要登录服务器。 方便定制，方便扩展，实现自动化。  使用1.下载安装12npm install --save-dev shipit-clinpm install --save-dev shipit-deploy 2.与服务器建立信任关系">
+<meta name="keywords" content="Nodejs,自动化,webhook,网络,github,coding,shipit-deploy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于shipit-deploy实现的多服务器自动化部署方案">
+<meta property="og:url" content="https://alili.tech/archive/fba46182/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="为什么要自动化部署，我这里就不多赘述了。 基于shipit-deploy的自动化部署，可以实现以下效果  一键部署多台服务器。 一键回滚多台服务器。 本地操作，不需要登录服务器。 方便定制，方便扩展，实现自动化。  使用1.下载安装12npm install --save-dev shipit-clinpm install --save-dev shipit-deploy 2.与服务器建立信任关系">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于shipit-deploy实现的多服务器自动化部署方案">
+<meta name="twitter:description" content="为什么要自动化部署，我这里就不多赘述了。 基于shipit-deploy的自动化部署，可以实现以下效果  一键部署多台服务器。 一键回滚多台服务器。 本地操作，不需要登录服务器。 方便定制，方便扩展，实现自动化。  使用1.下载安装12npm install --save-dev shipit-clinpm install --save-dev shipit-deploy 2.与服务器建立信任关系">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>基于shipit-deploy实现的多服务器自动化部署方案 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/fba46182/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/fba46182/",
+      "appid": "1613049289050283", 
+      "title": "基于shipit-deploy实现的多服务器自动化部署方案 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:05"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/b9985e69/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/5f4cf684/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/fba46182/&text=基于shipit-deploy实现的多服务器自动化部署方案" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/fba46182/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/fba46182/&text=基于shipit-deploy实现的多服务器自动化部署方案" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/fba46182/&title=基于shipit-deploy实现的多服务器自动化部署方案" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/fba46182/&is_video=false&description=基于shipit-deploy实现的多服务器自动化部署方案" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=基于shipit-deploy实现的多服务器自动化部署方案&body=Check out this article: https://alili.tech/archive/fba46182/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/fba46182/&title=基于shipit-deploy实现的多服务器自动化部署方案" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/fba46182/&title=基于shipit-deploy实现的多服务器自动化部署方案" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/fba46182/&title=基于shipit-deploy实现的多服务器自动化部署方案" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/fba46182/&title=基于shipit-deploy实现的多服务器自动化部署方案" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">1.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载安装"><span class="toc-number">1.1.</span> <span class="toc-text">1.下载安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-与服务器建立信任关系"><span class="toc-number">1.2.</span> <span class="toc-text">2.与服务器建立信任关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-配置"><span class="toc-number">1.3.</span> <span class="toc-text">3.配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布"><span class="toc-number">1.4.</span> <span class="toc-text">发布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        基于shipit-deploy实现的多服务器自动化部署方案
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2017-12-17T20:32:05.000Z" itemprop="datePublished">2017-12-17</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nodejs/">Nodejs</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>为什么要自动化部署，我这里就不多赘述了。</p>
+<p>基于shipit-deploy的自动化部署，可以实现以下效果</p>
+<ul>
+<li>一键部署多台服务器。</li>
+<li>一键回滚多台服务器。</li>
+<li>本地操作，不需要登录服务器。</li>
+<li>方便定制，方便扩展，实现自动化。</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1.下载安装"></a>1.下载安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev shipit-cli</span><br><span class="line">npm install --save-dev shipit-deploy</span><br></pre></td></tr></table></figure>
+<h3 id="2-与服务器建立信任关系"><a href="#2-与服务器建立信任关系" class="headerlink" title="2.与服务器建立信任关系"></a>2.与服务器建立信任关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id USER@REMOTE_HOST</span><br></pre></td></tr></table></figure>
+<h3 id="3-配置"><a href="#3-配置" class="headerlink" title="3.配置"></a>3.配置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">shipit</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">'shipit-deploy'</span>)(shipit);</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">'shipit-pm2'</span>)(shipit);</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">'shipit-cnpmjs'</span>)(shipit);</span><br><span class="line"></span><br><span class="line">  shipit.initConfig(&#123;</span><br><span class="line">    <span class="keyword">default</span>: &#123;</span><br><span class="line">      workspace: <span class="string">'/tmp/github-monitor'</span>,</span><br><span class="line">      deployTo: <span class="string">'/tmp/deploy_to'</span>, <span class="comment">//服务器的目标路径</span></span><br><span class="line">      repositoryUrl: <span class="string">'https://github.com/user/repo.git'</span>, <span class="comment">//git仓库地址</span></span><br><span class="line">      ignores: [<span class="string">'.git'</span>, <span class="string">'node_modules'</span>], <span class="comment">//排除的文件</span></span><br><span class="line">      keepReleases: <span class="number">2</span>, <span class="comment">//发布保留的版本数量</span></span><br><span class="line">      deleteOnRollback: <span class="literal">false</span>,</span><br><span class="line">      key: <span class="string">'/path/to/key'</span>,</span><br><span class="line">      shallowClone: <span class="literal">true</span>,</span><br><span class="line">      cnpm: &#123;</span><br><span class="line">        remote: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    dev: &#123; <span class="comment">//开发服务器部署</span></span><br><span class="line">      servers: [<span class="string">'user@devServer1'</span>, <span class="string">'user@devServer1'</span>],</span><br><span class="line">	    branch: <span class="string">'dev'</span> <span class="comment">//需要发布的git分支,</span></span><br><span class="line">      pm2: &#123;</span><br><span class="line">        json: <span class="string">'pm2-dev-app.json'</span> <span class="comment">//开发环境的pm2启动配置</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;，</span><br><span class="line">    prod: &#123;  <span class="comment">//生产服务器部署</span></span><br><span class="line">      servers: [<span class="string">'user@prodServer1'</span>, <span class="string">'user@prodServer2'</span>],</span><br><span class="line">	    branch: <span class="string">'master'</span> <span class="comment">//需要发布的git分支,</span></span><br><span class="line">      pm2: &#123;</span><br><span class="line">        json: <span class="string">'pm2-prod-app.json'</span> <span class="comment">//生产jam环境的pm2启动配置</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>pm2-prod-app.json 示例：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"apps"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"frontend_name"</span>, </span><br><span class="line">      <span class="attr">"script"</span>: <span class="string">"app.js"</span>,</span><br><span class="line">      <span class="attr">"args"</span>: <span class="string">"--env=production"</span>,</span><br><span class="line">      <span class="attr">"instances"</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="attr">"cwd"</span>: <span class="string">"/tmp/production_path/current"</span>,</span><br><span class="line">      <span class="attr">"env"</span>: &#123;</span><br><span class="line">        <span class="attr">"NODE_ENV"</span>: <span class="string">"production"</span>,</span><br><span class="line">        <span class="attr">"PORT"</span>: <span class="string">"9001"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然，我们也可以使用以下脚本来启动项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 startOrRestart pm2-prod-app.json</span><br></pre></td></tr></table></figure></p>
+<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">shipit dev deploy //开发环境发布</span><br><span class="line">shipit dev rollback //回滚</span><br><span class="line"></span><br><span class="line">shipit prod deploy //生产环境发布</span><br><span class="line">shipit prod rollback //回滚</span><br></pre></td></tr></table></figure>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/fba46182/">https://alili.tech/archive/fba46182/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/6eff5ac9/">Apache,Nginx,Express,Egg.js 支持前端HTML5 History 模式</a></li><li><a href="https://alili.tech/archive/524de824/">Egg.js 如何支持单页面应用</a></li><li><a href="https://alili.tech/archive/59cf5417/">Nodejs之http模块的get与post请求</a></li><li><a href="https://alili.tech/archive/b36fefc7/">Visual Studio Code隐藏从ts生成的额外js与map文件</a></li><li><a href="https://alili.tech/archive/e06698c9/">Express设置CORS,让浏览器可以跨域访问你的服务器</a></li><li><a href="http://www.hi-linux.com/posts/20296/" rel="external nofollow noopener noreferrer" target="_blank">使用PM2管理Node应用</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">1.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载安装"><span class="toc-number">1.1.</span> <span class="toc-text">1.下载安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-与服务器建立信任关系"><span class="toc-number">1.2.</span> <span class="toc-text">2.与服务器建立信任关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-配置"><span class="toc-number">1.3.</span> <span class="toc-text">3.配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布"><span class="toc-number">1.4.</span> <span class="toc-text">发布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

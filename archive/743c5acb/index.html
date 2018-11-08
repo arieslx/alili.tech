@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="BetterScroll 是一款重点解决移动端各种滚动场景需求的开源插件（GitHub地址），有下列功能支持滚动列表，下拉刷新，上拉刷新，轮播图，slider等功能。为了满足这些功能，better-scroll通过使用惯性滚动、边界回弹、滚动条淡入淡出来确保滚动的流畅。同时还支持很多API和事件，具体支持的事件可以查看官网讲的非常详细。由于它基于原生JavaScript 实现，不依赖任何框架，所以">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BetterScroll：可能是目前最好用的移动端滚动插件">
+<meta property="og:url" content="https://alili.tech/archive/743c5acb/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="BetterScroll 是一款重点解决移动端各种滚动场景需求的开源插件（GitHub地址），有下列功能支持滚动列表，下拉刷新，上拉刷新，轮播图，slider等功能。为了满足这些功能，better-scroll通过使用惯性滚动、边界回弹、滚动条淡入淡出来确保滚动的流畅。同时还支持很多API和事件，具体支持的事件可以查看官网讲的非常详细。由于它基于原生JavaScript 实现，不依赖任何框架，所以">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/bVY5fs?w=830&h=632">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.471Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BetterScroll：可能是目前最好用的移动端滚动插件">
+<meta name="twitter:description" content="BetterScroll 是一款重点解决移动端各种滚动场景需求的开源插件（GitHub地址），有下列功能支持滚动列表，下拉刷新，上拉刷新，轮播图，slider等功能。为了满足这些功能，better-scroll通过使用惯性滚动、边界回弹、滚动条淡入淡出来确保滚动的流畅。同时还支持很多API和事件，具体支持的事件可以查看官网讲的非常详细。由于它基于原生JavaScript 实现，不依赖任何框架，所以">
+<meta name="twitter:image" content="https://static.alili.tech/img/bVY5fs?w=830&h=632">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>BetterScroll：可能是目前最好用的移动端滚动插件 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/743c5acb/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/743c5acb/",
+      "appid": "1613049289050283", 
+      "title": "BetterScroll：可能是目前最好用的移动端滚动插件 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:00"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/1470dde1/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/929bfb44/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/743c5acb/&text=BetterScroll：可能是目前最好用的移动端滚动插件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/743c5acb/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/743c5acb/&text=BetterScroll：可能是目前最好用的移动端滚动插件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/743c5acb/&title=BetterScroll：可能是目前最好用的移动端滚动插件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/743c5acb/&is_video=false&description=BetterScroll：可能是目前最好用的移动端滚动插件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BetterScroll：可能是目前最好用的移动端滚动插件&body=Check out this article: https://alili.tech/archive/743c5acb/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/743c5acb/&title=BetterScroll：可能是目前最好用的移动端滚动插件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/743c5acb/&title=BetterScroll：可能是目前最好用的移动端滚动插件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/743c5acb/&title=BetterScroll：可能是目前最好用的移动端滚动插件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/743c5acb/&title=BetterScroll：可能是目前最好用的移动端滚动插件" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">如何使用：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">核心代码：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader2"><span class="toc-number"></span> <span class="toc-text">1、scrollTo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader3"><span class="toc-number"></span> <span class="toc-text">2、refresh函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader4"><span class="toc-number"></span> <span class="toc-text">3、trigger函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">1.</span> <span class="toc-text">总结：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        BetterScroll：可能是目前最好用的移动端滚动插件
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-23T00:00:00.000Z" itemprop="datePublished">2018-10-23</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>BetterScroll 是一款重点解决移动端各种滚动场景需求的开源插件（<a href="https://github.com/ustbhuangyi/better-scroll" rel="external nofollow noopener noreferrer" target="_blank">GitHub地址</a>），有下列功能支持滚动列表，下拉刷新，上拉刷新，轮播图，slider等功能。<br>为了满足这些功能，better-scroll通过使用惯性滚动、边界回弹、滚动条淡入淡出来确保滚动的流畅。同时还支持很多API和事件，具体支持的事件可以查看官网讲的非常详细。<br>由于它基于原生JavaScript 实现，不依赖任何框架，所以既可以原生 JavaScript 引用，也可以与目前前端 MVVM 框架结合使用，比如，其官网上的示例就是与 Vue 的结合。</p>
+<h2 id="articleHeader0">如何使用：</h2>
+<p>再讲如何使用的之前，我们先来了解一下他的滚动原理：在浏览器中的滚动中，当内容的高度高于外边容器的高度的时候也就出现了滚动条，我们可以通过使用滚动条来看到超出的部分.</p>
+<p><span class="img-wrap"><img src="https://static.alili.tech/img/bVY5fs?w=830&amp;h=632" alt="clipboard.png" title="clipboard.png" style="cursor: pointer; display: inline"></span></p>
+<p>better-scroll的原理正是基于这里，内容部分的宽度/高度必须大于外部宽度/高度。所以在使用<br>的时候外部容器的需要设置固定宽度，还有一个问题需要设置overflow:hidden,这是因为为了隐藏超出部分。然后就是什么时候对better-scroll进行初始化，这个有点麻烦，但是所幸，作者已经在vue框架下进行封装，我们只需要像个麻瓜一样往里边填东西就行了。但是有一点需要注意：滚动的元素只能是第一个容器的第一个元素。源码如下：</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="  // this.scroller就是滚动的内容，this.wrapper是容器
+    this.scroller = this.wrapper.children[0]
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs stylus"><code>  <span class="hljs-comment">// this.scroller就是滚动的内容，this.wrapper是容器</span>
+    this<span class="hljs-selector-class">.scroller</span> = this<span class="hljs-selector-class">.wrapper</span><span class="hljs-selector-class">.children</span>[<span class="hljs-number">0</span>]
+</code></pre>
+<p>如果我们需要滚动多个内容怎么办呢，就用一个元素将其包裹住，让他成为容器的第一个子元素就行了。如何使用讲完了，我们来讲讲源码，毕竟这是一个源码解析的文章</p>
+<h2 id="articleHeader1">核心代码：</h2>
+<h1 id="articleHeader2">1、scrollTo</h1>
+<p>scrollTo()函数是better-scroll非常核心的一个函数，事实上我们在调用scrollToElement的<br>时候，内部进行的操作还是scrollTo函数</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="   BScroll.prototype.scrollTo = function (x, y, time=0, easing = ease.bounce) {
+        // useTransition是否使用css3 transition,isInTransition表示是否在滚动过程中
+        // this.x表示translate后的位置或者初始化this.x = 0
+        this.isInTransition = this.options.useTransition
+        &amp;&amp; time > 0 &amp;&amp; (x !== this.x || y !== this.y)
+
+        // 如果使用的transition，就调用一系列transition的设置，默认是true
+        if (!time || this.options.useTransition) {
+            this._transitionProperty()
+            this._transitionTimingFunction(easing.style)
+            this._transitionTime(time)
+            // 这个函数会更改this.x
+            this._translate(x, y)
+
+            // time存在protoType表示不仅在屏幕滑动的时候， momentum 滚动动画运行过程中实时派发 scroll 事件
+            if (time &amp;&amp; this.options.probeType === 3) {
+                // 这个函数的作用是派发scroll事件
+                this._startProbe()
+            }
+
+            // wheel用于picker组件设置,不用管
+            if (this.options.wheel) {
+                if (y > 0) {
+                    this.selectedIndex = 0
+                } else if (y < this.maxScrollY) {
+                    this.selectedIndex = this.items.length - 1
+                } else {
+                    this.selectedIndex = Math.round(Math.abs(y / this.itemHeight))
+                }
+            } else {
+                // 进行动画this._animate
+                this._animate(x, y, time, easing.fn)
+            }
+        }
+    };
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs kotlin"><code>   BScroll.prototype.scrollTo = function (x, y, time=<span class="hljs-number">0</span>, easing = ease.bounce) {
+        <span class="hljs-comment">// useTransition是否使用css3 transition,isInTransition表示是否在滚动过程中</span>
+        <span class="hljs-comment">// this.x表示translate后的位置或者初始化this.x = 0</span>
+        <span class="hljs-keyword">this</span>.isInTransition = <span class="hljs-keyword">this</span>.options.useTransition
+        &amp;&amp; time &gt; <span class="hljs-number">0</span> &amp;&amp; (x !== <span class="hljs-keyword">this</span>.x || y !== <span class="hljs-keyword">this</span>.y)
+
+        <span class="hljs-comment">// 如果使用的transition，就调用一系列transition的设置，默认是true</span>
+        <span class="hljs-keyword">if</span> (!time || <span class="hljs-keyword">this</span>.options.useTransition) {
+            <span class="hljs-keyword">this</span>._transitionProperty()
+            <span class="hljs-keyword">this</span>._transitionTimingFunction(easing.style)
+            <span class="hljs-keyword">this</span>._transitionTime(time)
+            <span class="hljs-comment">// 这个函数会更改this.x</span>
+            <span class="hljs-keyword">this</span>._translate(x, y)
+
+            <span class="hljs-comment">// time存在protoType表示不仅在屏幕滑动的时候， momentum 滚动动画运行过程中实时派发 scroll 事件</span>
+            <span class="hljs-keyword">if</span> (time &amp;&amp; <span class="hljs-keyword">this</span>.options.probeType === <span class="hljs-number">3</span>) {
+                <span class="hljs-comment">// 这个函数的作用是派发scroll事件</span>
+                <span class="hljs-keyword">this</span>._startProbe()
+            }
+
+            <span class="hljs-comment">// wheel用于picker组件设置,不用管</span>
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.options.wheel) {
+                <span class="hljs-keyword">if</span> (y &gt; <span class="hljs-number">0</span>) {
+                    <span class="hljs-keyword">this</span>.selectedIndex = <span class="hljs-number">0</span>
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (y &lt; <span class="hljs-keyword">this</span>.maxScrollY) {
+                    <span class="hljs-keyword">this</span>.selectedIndex = <span class="hljs-keyword">this</span>.items.length - <span class="hljs-number">1</span>
+                } <span class="hljs-keyword">else</span> {
+                    <span class="hljs-keyword">this</span>.selectedIndex = Math.round(Math.abs(y / <span class="hljs-keyword">this</span>.itemHeight))
+                }
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-comment">// 进行动画this._animate</span>
+                <span class="hljs-keyword">this</span>._animate(x, y, time, easing.fn)
+            }
+        }
+    };
+</code></pre>
+<p>我们来依次看看这个函数，其中简单的操作用代码注明，也就不做太多的描述，其中例如this._transition这种有关transform的都是改变他的位置而已，这里我需要说明一下，我们在制作轮播图的时候，别去使用transform这种方法来做轮播图，因为当我们需要获取transform属性值的时候，你会获取到的值是一个非常奇怪的矩阵，得到translateX或者translateY的值是一件非常痛苦的事，可以看看作者是如何获取transform的值的，</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="matrix = matrix[style.transform].split(')')[0].split(', ')
+            x = +(matrix[12] || matrix[4])
+            y = +(matrix[13] || matrix[5])
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs maxima"><code><span class="hljs-built_in">matrix</span> = <span class="hljs-built_in">matrix</span>[<span class="hljs-built_in">style</span>.<span class="hljs-built_in">transform</span>].<span class="hljs-built_in">split</span>(')')[<span class="hljs-number">0</span>].<span class="hljs-built_in">split</span>(', ')
+            x = +(<span class="hljs-built_in">matrix</span>[<span class="hljs-number">12</span>] || <span class="hljs-built_in">matrix</span>[<span class="hljs-number">4</span>])
+            y = +(<span class="hljs-built_in">matrix</span>[<span class="hljs-number">13</span>] || <span class="hljs-built_in">matrix</span>[<span class="hljs-number">5</span>])
+</code></pre>
+<p>我是一脸蒙蔽，要是你觉得你水平很高当我没说。this.options.probeType这个probeType配置表明的是我们需要在什么情况下派发scroll事件，在better-scroll的原理中是默认阻止浏览器的默认行为的，那我们是如何派发事件的呢？</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="  export function tap(e, eventName) {
+        let ev = document.createElement('Event')
+        ev.initEvent(eventName, true, true)
+        e.target.dispatchEvent(ev)
+    }
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs javascript"><code>  <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tap</span>(<span class="hljs-params">e, eventName</span>) </span>{
+        <span class="hljs-keyword">let</span> ev = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'Event'</span>)
+        ev.initEvent(eventName, <span class="hljs-literal">true</span>, <span class="hljs-literal">true</span>)
+        e.target.dispatchEvent(ev)
+    }
+</code></pre>
+<p>创建一个element,然后初始化，然后派发事件，我们就可以像addEventListener('click', fn, false)这样的方式来监听事件addEventListener(eventName, fn, false)。这儿有一个参数叫easing,我们来看看easing是什么<br>下面是一个easing的一个选项：</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=" bounce: {
+        style: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
+        fn: function (t) {
+            return 1 - (--t * t * t * t)
+        }
+    }
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs ada"><code> bounce: {
+        style: <span class="hljs-symbol">'cubic</span>-bezier(<span class="hljs-number">0.165</span>, <span class="hljs-number">0.84</span>, <span class="hljs-number">0.44</span>, <span class="hljs-number">1</span>)',
+        fn: <span class="hljs-keyword">function</span> <span class="hljs-title"></span>(t) {
+            <span class="hljs-keyword">return</span> <span class="hljs-type">1</span> - (<span class="hljs-comment">--t * t * t * t)</span>
+        }
+    }
+</code></pre>
+<p>可以看到easing通过贝瑟尔函数，和fn让我们的动画显得不是那么僵硬。贝瑟尔函数可以去看看，他让动画不再那么突兀。</p>
+<h1 id="articleHeader3">2、refresh函数</h1>
+<p>在实际开发中，有时候从后端请求到数据后，我们dom结构发生变化，所以需要调用refresh方法，来看看他是什么玩意</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="BScroll.prototype.refresh = function () {
+    // return getBoundingRect getRect()
+    let wrapperRect = getRect(this.wrapper)
+    this.wrapperWidth = wrapperRect.width
+    this.wrapperHeight = wrapperRect.height
+
+    let scrollerRect = getRect(this.scroller)
+    this.scrollerWidth = scrollerRect.width
+    this.scrollerHeight = scrollerRect.height
+
+    const wheel = this.options.wheel
+    // wheel用于picker组件设置
+    if (wheel) {
+        this.items = this.scroller.children
+        this.options.itemHeight = this.itemHeight = this.items.length ? this.scrollerHeight / this.items.length : 0
+        if (this.selectedIndex === undefined) {
+            this.selectedIndex = wheel.selectedIndex || 0
+        }
+        this.options.startY = -this.selectedIndex * this.itemHeight
+        this.maxScrollX = 0
+        this.maxScrollY = -this.itemHeight * (this.items.length - 1)
+    } else {
+        // 允许滑动的距离
+        this.maxScrollX = this.wrapperWidth - this.scrollerWidth
+        this.maxScrollY = this.wrapperHeight - this.scrollerHeight
+    }
+
+    // 滚动原理容器的宽度小于scroller的宽度
+    // scrollX设置为true表示可以横向滚动
+    this.hasHorizontalScroll = this.options.scrollX &amp;&amp; this.maxScrollX < 0
+    this.hasVerticalScroll = this.options.scrollY &amp;&amp; this.maxScrollY < 0
+
+    // 如果水平不存在的话
+    if (!this.hasHorizontalScroll) {
+        this.maxScrollX = 0
+        this.scrollerWidth = this.wrapperWidth
+    }
+
+    if (!this.hasVerticalScroll) {
+        this.maxScrollY = 0
+        this.scrollerHeight = this.wrapperHeight
+    }
+
+    this.endTime = 0
+    // 移动方向
+    this.directionX = 0
+    this.directionY = 0
+    // return el.offsetLeft
+    // el.offsetLeft是距离父容器的距离
+    // el.getBoundingClientRect()返回的是距离页面的距离
+    this.wrapperOffset = offset(this.wrapper)
+
+    // 切换到refresh事件
+    this.trigger('refresh')
+
+    // 重置位置
+    this.resetPosition()
+}
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs kotlin"><code>BScroll.prototype.refresh = function () {
+    <span class="hljs-comment">// return getBoundingRect getRect()</span>
+    let wrapperRect = getRect(<span class="hljs-keyword">this</span>.wrapper)
+    <span class="hljs-keyword">this</span>.wrapperWidth = wrapperRect.width
+    <span class="hljs-keyword">this</span>.wrapperHeight = wrapperRect.height
+
+    let scrollerRect = getRect(<span class="hljs-keyword">this</span>.scroller)
+    <span class="hljs-keyword">this</span>.scrollerWidth = scrollerRect.width
+    <span class="hljs-keyword">this</span>.scrollerHeight = scrollerRect.height
+
+    const wheel = <span class="hljs-keyword">this</span>.options.wheel
+    <span class="hljs-comment">// wheel用于picker组件设置</span>
+    <span class="hljs-keyword">if</span> (wheel) {
+        <span class="hljs-keyword">this</span>.items = <span class="hljs-keyword">this</span>.scroller.children
+        <span class="hljs-keyword">this</span>.options.itemHeight = <span class="hljs-keyword">this</span>.itemHeight = <span class="hljs-keyword">this</span>.items.length ? <span class="hljs-keyword">this</span>.scrollerHeight / <span class="hljs-keyword">this</span>.items.length : <span class="hljs-number">0</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.selectedIndex === undefined) {
+            <span class="hljs-keyword">this</span>.selectedIndex = wheel.selectedIndex || <span class="hljs-number">0</span>
+        }
+        <span class="hljs-keyword">this</span>.options.startY = -<span class="hljs-keyword">this</span>.selectedIndex * <span class="hljs-keyword">this</span>.itemHeight
+        <span class="hljs-keyword">this</span>.maxScrollX = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">this</span>.maxScrollY = -<span class="hljs-keyword">this</span>.itemHeight * (<span class="hljs-keyword">this</span>.items.length - <span class="hljs-number">1</span>)
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// 允许滑动的距离</span>
+        <span class="hljs-keyword">this</span>.maxScrollX = <span class="hljs-keyword">this</span>.wrapperWidth - <span class="hljs-keyword">this</span>.scrollerWidth
+        <span class="hljs-keyword">this</span>.maxScrollY = <span class="hljs-keyword">this</span>.wrapperHeight - <span class="hljs-keyword">this</span>.scrollerHeight
+    }
+
+    <span class="hljs-comment">// 滚动原理容器的宽度小于scroller的宽度</span>
+    <span class="hljs-comment">// scrollX设置为true表示可以横向滚动</span>
+    <span class="hljs-keyword">this</span>.hasHorizontalScroll = <span class="hljs-keyword">this</span>.options.scrollX &amp;&amp; <span class="hljs-keyword">this</span>.maxScrollX &lt; <span class="hljs-number">0</span>
+    <span class="hljs-keyword">this</span>.hasVerticalScroll = <span class="hljs-keyword">this</span>.options.scrollY &amp;&amp; <span class="hljs-keyword">this</span>.maxScrollY &lt; <span class="hljs-number">0</span>
+
+    <span class="hljs-comment">// 如果水平不存在的话</span>
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.hasHorizontalScroll) {
+        <span class="hljs-keyword">this</span>.maxScrollX = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">this</span>.scrollerWidth = <span class="hljs-keyword">this</span>.wrapperWidth
+    }
+
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.hasVerticalScroll) {
+        <span class="hljs-keyword">this</span>.maxScrollY = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">this</span>.scrollerHeight = <span class="hljs-keyword">this</span>.wrapperHeight
+    }
+
+    <span class="hljs-keyword">this</span>.endTime = <span class="hljs-number">0</span>
+    <span class="hljs-comment">// 移动方向</span>
+    <span class="hljs-keyword">this</span>.directionX = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">this</span>.directionY = <span class="hljs-number">0</span>
+    <span class="hljs-comment">// return el.offsetLeft</span>
+    <span class="hljs-comment">// el.offsetLeft是距离父容器的距离</span>
+    <span class="hljs-comment">// el.getBoundingClientRect()返回的是距离页面的距离</span>
+    <span class="hljs-keyword">this</span>.wrapperOffset = offset(<span class="hljs-keyword">this</span>.wrapper)
+
+    <span class="hljs-comment">// 切换到refresh事件</span>
+    <span class="hljs-keyword">this</span>.trigger(<span class="hljs-string">'refresh'</span>)
+
+    <span class="hljs-comment">// 重置位置</span>
+    <span class="hljs-keyword">this</span>.resetPosition()
+}
+</code></pre>
+<p>当我们的dom结构发生变化的时候，我们就需要重新计算父容器和容器的大小了，这样就可以重新渲染了，这个函数没什么太难理解的部分，需要注意的是getBoundingClientRect()方法返回元素的大小及其相对于视口的位置。他同element.style获取的有些不同getBoundingClientRect()获取到的值是相对视口左上角，意思是说在获取right值的时候，事实上是left+element.clientWidth。而且getBoundingClientRect()是只能读取，而element.style不仅能读取，还能获取。el.offsetLeft返回的距离父容器的距离，如果我们需要得到元素距离document的距离的话我们就需要这样写</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="export function offset(el) {
+    let left = 0
+    let top = 0
+
+    while (el) {
+        left -= el.offsetLeft
+        top -= el.offsetTop
+        el = el.offsetParent
+    }
+
+    return {
+        left,
+        top
+    }
+}
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs vim"><code>export <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offset</span><span class="hljs-params">(el)</span> {</span>
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">left</span> = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">let</span> top = <span class="hljs-number">0</span>
+
+    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">el</span>) {
+        <span class="hljs-keyword">left</span> -= <span class="hljs-keyword">el</span>.offsetLeft
+        top -= <span class="hljs-keyword">el</span>.offsetTop
+        <span class="hljs-keyword">el</span> = <span class="hljs-keyword">el</span>.offsetParent
+    }
+
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-keyword">left</span>,
+        top
+    }
+}
+</code></pre>
+<p>一直找到没有父元素的时候，就找到元素距离document的距离了</p>
+<h1 id="articleHeader4">3、trigger函数</h1>
+<p>在better-scroll的源码中，多次用到trigger函数，我们来看看他都做了什么</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=" BScroll.prototype.trigger = function (type) {
+        let events = this._events[type]
+        if (!events) {
+            return
+        }
+
+        let len = events.length
+        let eventsCopy = [...events]
+        for (let i = 0; i < len; i++) {
+            let event = eventsCopy[i]
+            let [fn, context] = event
+            if (fn) {
+                fn.apply(context, [].slice.call(arguments,1))
+            }
+        }
+  }
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs verilog"><code> BScroll<span class="hljs-variable">.prototype</span><span class="hljs-variable">.trigger</span> = <span class="hljs-keyword">function</span> (<span class="hljs-keyword">type</span>) {
+        <span class="hljs-keyword">let</span> events = <span class="hljs-keyword">this</span><span class="hljs-variable">._events</span>[<span class="hljs-keyword">type</span>]
+        <span class="hljs-keyword">if</span> (!events) {
+            <span class="hljs-keyword">return</span>
+        }
+
+        <span class="hljs-keyword">let</span> len = events<span class="hljs-variable">.length</span>
+        <span class="hljs-keyword">let</span> eventsCopy = [..<span class="hljs-variable">.events</span>]
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) {
+            <span class="hljs-keyword">let</span> <span class="hljs-keyword">event</span> = eventsCopy[i]
+            <span class="hljs-keyword">let</span> [fn, <span class="hljs-keyword">context</span>] = <span class="hljs-keyword">event</span>
+            <span class="hljs-keyword">if</span> (fn) {
+                fn<span class="hljs-variable">.apply</span>(<span class="hljs-keyword">context</span>, []<span class="hljs-variable">.slice</span><span class="hljs-variable">.call</span>(arguments,<span class="hljs-number">1</span>))
+            }
+        }
+  }
+</code></pre>
+<p>trigger函数的作用就是切换到某个事件中，获取到事件，然后使用fn进行调用。没什么太大难度，这里想到一点能够体现es6的优越性的地方，比如a = [1,2,3] 在es5中如果我们需要获取a这个数组长度的时候，我们需要这样写</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=" let len = a.length
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs stylus"><code> let len = <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.length</span>
+</code></pre>
+<p>但是在es6中我们不再需要这样写了，这样写就行</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="let { length } = a
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs maxima"><code><span class="hljs-built_in">let</span> { <span class="hljs-built_in">length</span> } = a
+</code></pre>
+<p>如果需要获取其他属性值，就麻瓜式往里边填。这里还涉及一个深拷贝的问题，数组和对象的深拷贝这里不做过多阐述。上述最重要的我认为就是这三个函数</p>
+<h2 id="articleHeader5">总结：</h2>
+<p>这个better-scroll的源码条理清晰，毕竟滴滴D8的段位摆在那儿，非常适合阅读。还有一些就是我对源码分析的文章的看法。在写这个源码分析的文章的时候，我意识到一个问题，那就是不仅我自己能够看懂，以前我也写过vuex的源码分析，基本就是把代码全部贴上去，写了大概2万字，我现在觉得这种方法欠妥，正确的方式应该就是把重要的部分提取出来，最重要的引导一个思路。把代码整个贴出来，显得繁琐不说，又相当于读者自己把注释看了一遍而已，所以我认为正确的方式是弄出一个思路，读者尝试读源码的时候，能够有一个大概的概念。能够自己理清思路</p>
+<p>至于为什么这个标题不写better-scroll的源码分析呢，我怕有些人说有些源码分析的文章就是垃圾，所以至少在字面上进行改变(逃。。。)</p>
+
+                
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000012135906" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000012135906</a></p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>BetterScroll：可能是目前最好用的移动端滚动插件</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/743c5acb/">https://alili.tech/archive/743c5acb/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">如何使用：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">核心代码：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader2"><span class="toc-number"></span> <span class="toc-text">1、scrollTo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader3"><span class="toc-number"></span> <span class="toc-text">2、refresh函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader4"><span class="toc-number"></span> <span class="toc-text">3、trigger函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">1.</span> <span class="toc-text">总结：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

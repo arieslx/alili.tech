@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="H5 &amp;#x9875;&amp;#x9762;&amp;#x53D1;&amp;#x7248;&amp;#x7075;&amp;#x6D3B;&amp;#xFF0C;&amp;#x8F7B;&amp;#x91CF;&amp;#xFF0C;&amp;#x53C8;&amp;#x5177;&amp;#x6709;&amp;#x8DE8;&amp;#x5E73;&amp;#x53F0;&amp;#x7684;&amp;#x7279;&amp;#x6027;&amp;#xFF0C;&amp;#x5728;&amp;#x4E1A;&amp;#x52A1;&amp;#x4E0A;&amp;#x67">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5 前端性能测试实践">
+<meta property="og:url" content="https://alili.tech/archive/da719d95/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="H5 &amp;#x9875;&amp;#x9762;&amp;#x53D1;&amp;#x7248;&amp;#x7075;&amp;#x6D3B;&amp;#xFF0C;&amp;#x8F7B;&amp;#x91CF;&amp;#xFF0C;&amp;#x53C8;&amp;#x5177;&amp;#x6709;&amp;#x8DE8;&amp;#x5E73;&amp;#x53F0;&amp;#x7684;&amp;#x7279;&amp;#x6027;&amp;#xFF0C;&amp;#x5728;&amp;#x4E1A;&amp;#x52A1;&amp;#x4E0A;&amp;#x67">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/bVbfY68?w=1836&h=788">
+<meta property="og:image" content="https://static.alili.tech/img/bVbfY7q?w=1524&h=496">
+<meta property="og:image" content="https://static.alili.tech/img/bVbfY7y?w=814&h=340">
+<meta property="og:image" content="https://static.alili.tech/img/bVbfY7K?w=1308&h=764">
+<meta property="og:image" content="https://static.alili.tech/img/bVbfY7Q?w=742&h=316">
+<meta property="og:image" content="https://static.alili.tech/img/bVbfY7U?w=1282&h=752">
+<meta property="og:image" content="https://static.alili.tech/img/bVbfY8f?w=822&h=363">
+<meta property="og:image" content="https://static.alili.tech/img/bVbfY8y?w=872&h=530">
+<meta property="og:image" content="https://static.alili.tech/img/bVbfY8E?w=1548&h=1390">
+<meta property="og:image" content="https://static.alili.tech/img/bVbfY8N?w=850&h=379">
+<meta property="og:image" content="https://static.alili.tech/img/bV50Mk?w=640&h=400">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.491Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="H5 前端性能测试实践">
+<meta name="twitter:description" content="H5 &amp;#x9875;&amp;#x9762;&amp;#x53D1;&amp;#x7248;&amp;#x7075;&amp;#x6D3B;&amp;#xFF0C;&amp;#x8F7B;&amp;#x91CF;&amp;#xFF0C;&amp;#x53C8;&amp;#x5177;&amp;#x6709;&amp;#x8DE8;&amp;#x5E73;&amp;#x53F0;&amp;#x7684;&amp;#x7279;&amp;#x6027;&amp;#xFF0C;&amp;#x5728;&amp;#x4E1A;&amp;#x52A1;&amp;#x4E0A;&amp;#x67">
+<meta name="twitter:image" content="https://static.alili.tech/img/bVbfY68?w=1836&h=788">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>H5 前端性能测试实践 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/da719d95/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/da719d95/",
+      "appid": "1613049289050283", 
+      "title": "H5 前端性能测试实践 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:58"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/8e907017/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/e34b77e9/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/da719d95/&text=H5 前端性能测试实践" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/da719d95/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/da719d95/&text=H5 前端性能测试实践" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/da719d95/&title=H5 前端性能测试实践" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/da719d95/&is_video=false&description=H5 前端性能测试实践" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=H5 前端性能测试实践&body=Check out this article: https://alili.tech/archive/da719d95/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/da719d95/&title=H5 前端性能测试实践" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/da719d95/&title=H5 前端性能测试实践" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/da719d95/&title=H5 前端性能测试实践" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/da719d95/&title=H5 前端性能测试实践" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">一、开篇：H5 页面加载过程浅析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">二、实例分析：白屏问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">三、实例分析：卡慢问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">四、总结：H5 前端性能测试方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">5.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">5.1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">5.2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        H5 前端性能测试实践
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-26T02:30:12.000Z" itemprop="datePublished">2018-10-26</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>H5 &#x9875;&#x9762;&#x53D1;&#x7248;&#x7075;&#x6D3B;&#xFF0C;&#x8F7B;&#x91CF;&#xFF0C;&#x53C8;&#x5177;&#x6709;&#x8DE8;&#x5E73;&#x53F0;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5728;&#x4E1A;&#x52A1;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x5E94;&#x7528;&#x573A;&#x666F;&#x3002;&#x4F46;&#x662F;&#x540C;&#x65F6;&#x5BF9;&#x6BD4; App&#xFF0C;H5 &#x7684;&#x6027;&#x80FD;&#x8868;&#x73B0;&#x603B;&#x662F;&#x8981;&#x900A;&#x8272;&#x4E00;&#x7B79;&#xFF0C;&#x6BD4;&#x5982;&#x9875;&#x9762;&#x6253;&#x5F00;&#x5F80;&#x5F80;&#x4F1A;&#x51FA;&#x73B0;&#x767D;&#x5C4F;&#xFF0C;&#x6ED1;&#x52A8;&#x5217;&#x8868;&#x7B49;&#x4EA4;&#x4E92;&#x573A;&#x666F;&#x4E0B;&#x4E5F;&#x4E0D;&#x5982; Native &#x9875;&#x9762;&#x6D41;&#x7545;&#x3002;&#x9488;&#x5BF9;&#x8FD9;&#x4E9B;&#x767D;&#x5C4F;&#x3001;&#x5361;&#x6162;&#x4E4B;&#x7C7B;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x6D4B;&#x8BD5;&#x8BE5;&#x4ECE;&#x54EA;&#x4E9B;&#x65B9;&#x9762;&#x53BB;&#x5C55;&#x5F00;&#x6D4B;&#x8BD5;&#x5206;&#x6790;&#x548C;&#x6570;&#x636E;&#x5BF9;&#x6BD4;&#x5462;&#xFF1F;&#x63A5;&#x4E0B;&#x6765;&#x7B14;&#x8005;&#x5206;&#x4EAB;&#x4E00;&#x4E9B; H5 &#x524D;&#x7AEF;&#x6D4B;&#x8BD5;&#x5B9E;&#x8DF5;&#x7684;&#x7ECF;&#x9A8C;&#xFF0C;&#x629B;&#x7816;&#x5F15;&#x7389;&#xFF0C;&#x5E0C;&#x671B;&#x5927;&#x5BB6;&#x4E00;&#x8D77;&#x8C08;&#x8BBA;&#xFF0C;&#x4E00;&#x8D77;&#x6316;&#x6398;&#x66F4;&#x591A;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x8BFE;&#x9898;&#x3002;</p><h1 id="articleHeader0">&#x4E00;&#x3001;&#x5F00;&#x7BC7;&#xFF1A;H5 &#x9875;&#x9762;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;&#x6D45;&#x6790;</h1><p>&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x662F;&#x7CBE;&#x9009;&#x5E73;&#x53F0;&#x6253;&#x5F00; H5 &#x9875;&#x9762;&#x7684;&#x51E0;&#x4E2A;&#x8FC7;&#x7A0B;&#x622A;&#x56FE;&#x3002;</p><p><span class="img-wrap"><img data-src="/img/bVbfY68?w=1836&amp;h=788" src="https://static.alili.tech/img/bVbfY68?w=1836&amp;h=788" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><p>&#x56FE;&#x4E00;&#x5230;&#x56FE;&#x56DB;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x5206;&#x7C7B;&#xFF0C;&#x56FE;&#x4E00;&#x662F; App &#x8D1F;&#x8D23;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x521D;&#x59CB;&#x5316; Webview &#x4E0A;&#x4E0B;&#x6587;&#xFF1B;&#x540E;&#x9762;&#x4E09;&#x5F20;&#x56FE;&#x5219;&#x662F;&#x4E00;&#x4E2A;H5&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5176;&#x4E2D;&#xFF0C;App &#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x8017;&#x65F6;&#xFF0C;&#x4E3B;&#x8981;&#x662F; Native &#x4EE3;&#x7801;&#x7684;&#x8017;&#x65F6;&#xFF0C;&#x8FD9;&#x91CC;&#x5148;&#x4E0D;&#x5C55;&#x5F00;&#x8BA8;&#x8BBA;&#xFF0C;&#x6211;&#x4EEC;&#x91CD;&#x70B9;&#x653E;&#x5728;&#x540E;&#x9762;&#x51E0;&#x4E2A;&#x9636;&#x6BB5;&#x3002;&#x7B2C;&#x56DB;&#x4E2A;&#x56FE;&#x662F;&#x7528;&#x6237;&#x76F4;&#x89C2;&#x770B;&#x5230;&#x7684;&#x7B2C;&#x4E00;&#x5C4F;&#x9875;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x79F0;&#x4E3A;<strong>&#x9996;&#x5C4F;</strong>&#x3002;</p><p><span class="img-wrap"><img data-src="/img/bVbfY7q?w=1524&amp;h=496" src="https://static.alili.tech/img/bVbfY7q?w=1524&amp;h=496" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><p><strong>1&#xFF09;&#x52A0;&#x8F7D;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;</strong></p><p>&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E3B;&#x8981;&#x662F; Webview &#x62FF;&#x5230; H5 &#x9875;&#x9762; url &#x4E4B;&#x540E;&#xFF0C;&#x8C03;&#x7528; loadUrl &#x65B9;&#x6CD5;&#xFF0C;&#x5F00;&#x59CB;&#x53BB;&#x7F51;&#x7EDC;&#x4E0A;&#x8BF7;&#x6C42;&#x7B2C;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x3002;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x4E3B;&#x8981;&#x5305;&#x542B; dns &#x89E3;&#x6790;&#x3001;&#x5EFA;&#x7ACB;&#x7F51;&#x7EDC;&#x94FE;&#x63A5;&#x3001;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x7684;&#x8017;&#x65F6;&#x3002;</p><p><strong>2&#xFF09;html &#x89E3;&#x6790;</strong></p><p>Webview &#x62FF;&#x5230; html &#x8FD4;&#x56DE;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x4ECE;&#x4E0A;&#x81F3;&#x4E0B;&#x89E3;&#x6790; html &#x4E2D;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5185;&#x5BB9;&#xFF0C;&#x8BC6;&#x522B;&#x5916;&#x94FE;&#x8D44;&#x6E90;&#x3001;&#x8BA1;&#x7B97;&#x9875;&#x9762;&#x6846;&#x67B6;&#x7684;&#x5E03;&#x5C40;&#xFF0C;&#x5E76;&#x6E32;&#x67D3;&#x7ED8;&#x5236;&#x51FA;&#x6765;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x6784;&#x5EFA;&#x51FA;&#x8D1F;&#x8D23;&#x9875;&#x9762;&#x7ED3;&#x6784;&#x7684; DOM Tree &#x548C;&#x8D1F;&#x8D23;&#x9875;&#x9762;&#x5E03;&#x5C40;&#x5C55;&#x793A;&#x7684; Render Tree&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p><p><span class="img-wrap"><img data-src="/img/bVbfY7y?w=814&amp;h=340" src="https://static.alili.tech/img/bVbfY7y?w=814&amp;h=340" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><p><strong>3&#xFF09;&#x5916;&#x94FE;&#x8D44;&#x6E90;&#x52A0;&#x8F7D;</strong></p><p>&#x8FD9;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x662F;&#x4ECE;&#x7F51;&#x7EDC;&#x4E0A;&#x52A0;&#x8F7D;&#x5916;&#x94FE;&#x7684; css&#x3001;&#x56FE;&#x7247;&#x548C; js &#x7B49;&#xFF0C;&#x518D;&#x91CD;&#x65B0;&#x586B;&#x5145;&#x5230; html &#x4E2D;&#x3002;&#x4E4B;&#x540E;&#x91CD;&#x65B0;&#x8FDB;&#x884C;&#x4E00;&#x6B21; layout &#x5E03;&#x5C40;&#x8BA1;&#x7B97;&#x548C;&#x9875;&#x9762;&#x6E32;&#x67D3;&#x7ED8;&#x5236;&#xFF0C;&#x6B64;&#x65F6;&#x770B;&#x5230;&#x7684;&#x624D;&#x662F;&#x6709;&#x5B8C;&#x6574;&#x5185;&#x5BB9;&#x7684;&#x9875;&#x9762;&#x3002;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x9875;&#x9762;&#x9700;&#x8981;&#x7B49;&#x56FE;&#x7247;&#x548C; css &#x52A0;&#x8F7D;&#x51FA;&#x6765;&#x540E;&#x624D;&#x80FD;&#x5C55;&#x793A;&#xFF0C;js &#x4E5F;&#x662F;&#x5916;&#x94FE;&#x8D44;&#x6E90;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x53EA;&#x8981;&#x653E;&#x5728; html &#x5E95;&#x90E8;&#x52A0;&#x8F7D;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x9875;&#x9762;&#x7684;&#x6E32;&#x67D3;&#x548C;&#x5C55;&#x793A;&#x3002;</p><p><span class="img-wrap"><img data-src="/img/bVbfY7K?w=1308&amp;h=764" src="https://static.alili.tech/img/bVbfY7K?w=1308&amp;h=764" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><h1 id="articleHeader1">&#x4E8C;&#x3001;&#x5B9E;&#x4F8B;&#x5206;&#x6790;&#xFF1A;&#x767D;&#x5C4F;&#x95EE;&#x9898;</h1><p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x4E86;&#x89E3;&#x4E86; H5 &#x9875;&#x9762;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5982;&#x679C;&#x9047;&#x5230;&#x767D;&#x5C4F;&#xFF0C;&#x6211;&#x4EEC;&#x81EA;&#x7136;&#x4F1A;&#x95EE;&#xFF0C;&#x600E;&#x4E48;&#x624D;&#x80FD;&#x77E5;&#x9053;&#x9875;&#x9762;&#x5F53;&#x524D;&#x5904;&#x5728;&#x54EA;&#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x8017;&#x65F6;&#x591A;&#x957F;&#xFF0C;&#x4EE5;&#x53CA;&#x6574;&#x4F53;&#x9996;&#x5C4F;&#x52A0;&#x8F7D;&#x7684;&#x8017;&#x65F6;&#x5462;&#xFF1F;</p><p>&#x9996;&#x5148;&#x770B;&#x4E0B;&#x901A;&#x8FC7; PC Chrome &#x6A21;&#x62DF; H5 &#x9875;&#x9762;&#x7684;&#x60C5;&#x51B5;&#x3002;Chrome Devtool &#x63D0;&#x4F9B;&#x7684; Performance &#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x4EE5;&#x5F55;&#x5236;&#x9875;&#x9762;&#x4ECE;&#x7B2C;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x5230;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x7684;&#x6240;&#x6709;&#x4E8B;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x5F88;&#x8BE6;&#x7EC6;&#x7684;&#x770B;&#x5230;&#x5404;&#x9636;&#x6BB5;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x548C;&#x5177;&#x4F53;&#x7684;&#x8017;&#x65F6;&#x3002;</p><p><span class="img-wrap"><img data-src="/img/bVbfY7Q?w=742&amp;h=316" src="https://static.alili.tech/img/bVbfY7Q?w=742&amp;h=316" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><p>&#x5176;&#x4E2D;&#x4E24;&#x4E2A;&#x6700;&#x5173;&#x952E;&#x7684;&#x9996;&#x5C4F;&#x8017;&#x65F6;&#x6307;&#x6807;&#xFF1A;<strong>domContentLoaded&#xFF08;&#x9996;&#x5C4F;&#x9875;&#x9762;&#x53EF;&#x89C1;&#xFF09;</strong>&#x548C;<strong>onLoad&#xFF08;&#x9996;&#x5C4F;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#xFF09;</strong>&#x7684;&#x8017;&#x65F6;&#xFF0C;&#x9664;&#x4E86;&#x56FE;&#x793A;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728; console &#x91CC;&#x6253;&#x5370;&#x5168;&#x5C40;&#x53D8;&#x91CF;window.performance.timing&#xFF0C;&#x62FF;&#x5230;&#x65F6;&#x95F4;&#x6233;&#x5E76;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#x3002;</p><p>&#x4F46;&#x5B9E;&#x9645;&#x6211;&#x4EEC;&#x8981;&#x7684;&#x662F;&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x7684;&#x771F;&#x673A;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4E2A;&#x624D;&#x80FD;&#x771F;&#x5B9E;&#x53CD;&#x5E94;&#x9875;&#x9762;&#x6027;&#x80FD;&#x548C;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x3002;&#x60F3;&#x8981;&#x83B7;&#x53D6; H5 &#x771F;&#x673A;&#x8017;&#x65F6;&#xFF0C;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x662F; js &#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E0A;&#x62A5;&#xFF1B;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x5BF9;&#x4E8E; Android &#x8BBE;&#x5907;&#xFF0C;&#x53EF;&#x4EE5;&#x7528; remote-debug &#x7684;&#x65B9;&#x5F0F;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x771F;&#x673A;&#x9875;&#x9762;&#x3002;&#x53EA;&#x9700;&#x8981;&#x4FDD;&#x8BC1; webview &#x8C03;&#x8BD5;&#x5F00;&#x5173;&#x6253;&#x5F00; &amp; &#x4E0E; PC USB &#x8FDE;&#x63A5;&#x4E14;&#x5F00;&#x542F; USB &#x8C03;&#x8BD5;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728; PC Chrome &#x8BBF;&#x95EE; chrome://inspect &#x6765;&#x83B7;&#x53D6;&#x8C03;&#x8BD5;&#x5BF9;&#x8C61;&#x3002;&#x4E4B;&#x540E;&#x53C2;&#x8003; PC Chrome &#x6A21;&#x62DF; H5 &#x7684;&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x62FF;&#x5230;&#x6570;&#x636E;&#x3002;</p><p><span class="img-wrap"><img data-src="/img/bVbfY7U?w=1282&amp;h=752" src="https://static.alili.tech/img/bVbfY7U?w=1282&amp;h=752" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><p>&#x5BF9;&#x4E8E;&#x4F20;&#x7EDF;&#x9875;&#x9762;&#x800C;&#x8A00;&#xFF0C;&#x5B9E;&#x9645;&#x5206;&#x6790;&#x53D1;&#x73B0;&#x5927;&#x90E8;&#x5206;&#x8017;&#x65F6;&#x8FD8;&#x662F;&#x5728;&#x79FB;&#x52A8;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x8FD9;&#x90E8;&#x5206;&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x76F4;&#x63A5;&#x6709;&#x6548;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x5BF9;&#x9875;&#x9762;&#x8FDB;&#x884C;&#x76F4;&#x51FA;&#x6539;&#x9020;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6539;&#x53D8;&#x5148;&#x52A0;&#x8F7D; html&#x3001;&#x518D;&#x52A0;&#x8F7D; css &#x7B49;&#x6570;&#x636E;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5148;&#x5728;&#x540E;&#x7AEF;&#xFF08;&#x6BD4;&#x5982; nodejs&#xFF09;&#x5E76;&#x884C;&#x52A0;&#x8F7D;&#x9996;&#x5C4F;&#x4F9D;&#x8D56;&#x7684;&#x6240;&#x6709; css&#x3001;js &#x548C;&#x540E;&#x53F0;&#x63A5;&#x53E3;&#x6570;&#x636E;&#xFF0C;&#x62FC;&#x88C5;&#x597D;&#x4E00;&#x4E2A;&#x5B8C;&#x6210;&#x7684;&#x6700;&#x7EC8;&#x8981;&#x5448;&#x73B0;&#x7684; html &#x518D;&#x56DE;&#x7ED9;&#x524D;&#x7AEF;&#xFF0C;&#x8FBE;&#x5230;<strong>&#x79D2;&#x5F00;</strong>&#x7684;&#x6548;&#x679C;&#x3002;</p><h1 id="articleHeader2">&#x4E09;&#x3001;&#x5B9E;&#x4F8B;&#x5206;&#x6790;&#xFF1A;&#x5361;&#x6162;&#x95EE;&#x9898;</h1><p>&#x6709;&#x65F6;&#x5019;&#x7528;&#x6237;&#x5728;&#x9875;&#x9762;&#x4EA4;&#x4E92;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x9047;&#x5230;&#x5361;&#x6162;&#xFF0C;&#x6BD4;&#x5982;&#x4E0A;&#x4E0B;&#x6ED1;&#x52A8;&#x5217;&#x8868;&#x3001;&#x5DE6;&#x53F3;&#x5207;&#x6362;&#x6216;&#x8005;&#x8F6E;&#x64AD;&#x7B49;&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x65E0;&#x975E;&#x4E5F;&#x662F;&#x6267;&#x884C; js&#x3001;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x3001;&#x8BA1;&#x7B97;&#x65B0;&#x7684;&#x9875;&#x9762;&#x5E03;&#x5C40;&#x5E76;&#x6E32;&#x67D3;&#x7ED8;&#x5236;&#x8FD9;&#x51E0;&#x4EF6;&#x4E8B;&#x3002;&#x901A;&#x8FC7; Performance &#x5206;&#x6790;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x5361;&#x6162;&#x5176;&#x5B9E;&#x5E76;&#x4E0D;&#x5168;&#x662F;&#x5F88;&#x591A;&#x4EBA;&#x8BA4;&#x4E3A;&#x7684;&#x201C;&#x79FB;&#x9001;&#x8BBE;&#x5907;&#x6027;&#x80FD;&#x5C31;&#x662F;&#x5DEE;&#x201D;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x5176;&#x5B9E;&#x662F;&#x5047;&#x6027;&#x5361;&#x987F;&#x3002;</p><p><span class="img-wrap"><img data-src="/img/bVbfY8f?w=822&amp;h=363" src="https://static.alili.tech/img/bVbfY8f?w=822&amp;h=363" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><p>&#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x70ED;&#x533A;&#x8FC7;&#x5C0F;&#x7684;&#x95EE;&#x9898;&#xFF1A;</p><p><span class="img-wrap"><img data-src="/img/bVbfY8y?w=872&amp;h=530" src="https://static.alili.tech/img/bVbfY8y?w=872&amp;h=530" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><p>&#x771F;&#x5361;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5F80;&#x5F80;&#x811A;&#x672C;&#x62A5;&#x9519;&#x5360;&#x4E86;&#x5F88;&#x5927;&#x6BD4;&#x91CD;&#xFF0C;&#x76F4;&#x89C2;&#x8868;&#x73B0;&#x5C31;&#x662F;&#x9875;&#x9762;&#x662F;&#x5361;&#x6B7B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x53D8;&#x6162;&#x3002;&#x5176;&#x4ED6;&#x7684;&#x8BF8;&#x5982;&#x5185;&#x5B58;&#x95EE;&#x9898;&#xFF0C;&#x901A;&#x5E38;&#x8868;&#x73B0;&#x662F;&#x9875;&#x9762;&#x8D8A;&#x6765;&#x8D8A;&#x5361;&#xFF0C;&#x56E0;&#x4E3A;&#x4F7F;&#x7528;&#x65F6;&#x95F4;&#x8D8A;&#x957F;&#xFF0C;&#x8D44;&#x6E90;&#x6D88;&#x8017;&#x8D8A;&#x5927;&#x3002;&#x6BD4;&#x5982;&#x9875;&#x9762;&#x4F7F;&#x7528;&#x4E86;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684; canvas &#x52A8;&#x753B;&#x3001;&#x6BD4;&#x8F83;&#x8017;&#x6027;&#x80FD;&#x7684; iframe &#x5143;&#x7D20;&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x64AD;&#x6D41;&#x5A92;&#x4F53;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x5BB9;&#x6613;&#x51FA;&#x73B0;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x3002;</p><p>&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x5C31;&#x662F; dom &#x8282;&#x70B9;&#x5F15;&#x53D1;&#x7684;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;,&#x4E0D;&#x4F7F;&#x7528;&#x7684; commentList &#x5217;&#x8868;&#x6CA1;&#x6709;&#x91CA;&#x653E;&#xFF0C;&#x8D8A;&#x79EF;&#x8D8A;&#x591A;&#x5230;&#x957F;&#x5EA6;&#x51E0;&#x4E07;&#x4E2A;&#x7684;&#x65F6;&#x5019;&#x5F00;&#x59CB;&#x5361;&#x987F;&#x3002;</p><p><span class="img-wrap"><img data-src="/img/bVbfY8E?w=1548&amp;h=1390" src="https://static.alili.tech/img/bVbfY8E?w=1548&amp;h=1390" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer"></span></p><h1 id="articleHeader3">&#x56DB;&#x3001;&#x603B;&#x7ED3;&#xFF1A;H5 &#x524D;&#x7AEF;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x65B9;&#x6848;</h1><p>&#x5F53;&#x7136;&#xFF0C;&#x524D;&#x7AEF;&#x6027;&#x80FD;&#x4E0D;&#x4EC5;&#x4EC5;&#x8868;&#x73B0;&#x5728;&#x767D;&#x5C4F;&#x3001;&#x5361;&#x987F;&#x95EE;&#x9898;&#xFF0C;&#x4E5F;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x624B;&#x673A;&#x8FC7;&#x5EA6;&#x53D1;&#x70ED;&#x7B49;&#x7B49;&#x3002;&#x4ECE;&#x7528;&#x6237;&#x6838;&#x5FC3;&#x4F53;&#x9A8C;&#x51FA;&#x53D1;&#xFF0C;&#x6211;&#x4EEC;&#x8BA4;&#x4E3A;&#xFF0C;H5 &#x524D;&#x7AEF;&#x6027;&#x80FD;&#x6700;&#x91CD;&#x8981;&#x7684;&#x53C2;&#x8003;&#x6807;&#x51C6;&#x5C31;&#x662F;&#xFF1A;&#x8981;&#x4EE5;&#x6700;&#x8F7B;&#x91CF;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x7ED9;&#x7528;&#x6237;&#x6700;&#x597D;&#x7684;&#x4F53;&#x9A8C;&#x3002;&#x4ECE;&#x8FD9;&#x4E2A;&#x65B9;&#x5411;&#x51FA;&#x53D1;&#xFF0C;&#x6211;&#x4EEC;&#x79EF;&#x7D2F;&#x4E86;&#x4E00;&#x4E9B;&#x6D4B;&#x8BD5;&#x7ECF;&#x9A8C;&#xFF0C;&#x5176;&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x7684;&#x5FC5;&#x8FC7;&#x9879;&#x662F;<strong>&#x9996;&#x5C4F;&#x901F;&#x5EA6;</strong>&#xFF08;&#x4E0D;&#x4EC5;&#x63D0;&#x5347;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x63D0;&#x5347;&#x4E1A;&#x52A1;&#x7684;&#x8F6C;&#x5316;&#x7387;&#xFF09;&#xFF0C;&#x5176;&#x6B21;&#x6D41;&#x7545;&#x5EA6;&#x3001;&#x6D41;&#x91CF;&#x548C; CPU &#x7B49;&#xFF0C;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#x4E5F;&#x662F;&#x9700;&#x8981;&#x91CD;&#x70B9;&#x8003;&#x91CF;&#x7684;&#x70B9;&#x3002;</p><p><span class="img-wrap"><img data-src="/img/bVbfY8N?w=850&amp;h=379" src="https://static.alili.tech/img/bVbfY8N?w=850&amp;h=379" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer"></span></p><p><span class="img-wrap"><img data-src="/img/bV50Mk?w=640&amp;h=400" src="https://static.alili.tech/img/bV50Mk?w=640&amp;h=400" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>H5 前端性能测试实践</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016163966" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016163966</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/da719d95/">https://alili.tech/archive/da719d95/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">一、开篇：H5 页面加载过程浅析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">二、实例分析：白屏问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">三、实例分析：卡慢问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">四、总结：H5 前端性能测试方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">5.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">5.1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">5.2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li></ol>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

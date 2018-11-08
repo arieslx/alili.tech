@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="简介 iView Admin 是基于 Vue.js，搭配使用 iView UI 组件库形成的一套后台集成解决方案，由 TalkingData 前端可视化团队部分成员开发维护。iView Admin 遵守 iView 设计和开发约定，风格统一，设计考究，并且更多功能在不停开发中。 没错，这就是大家期待已久的 admin 了，这么漂亮好用的系统，是不是可以给个 Star 鼓励一下开发者呢：iView">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iView 发布后台管理系统 iview-admin，没错，它就是你想要的">
+<meta property="og:url" content="https://alili.tech/archive/225c3b1d/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="简介 iView Admin 是基于 Vue.js，搭配使用 iView UI 组件库形成的一套后台集成解决方案，由 TalkingData 前端可视化团队部分成员开发维护。iView Admin 遵守 iView 设计和开发约定，风格统一，设计考究，并且更多功能在不停开发中。 没错，这就是大家期待已久的 admin 了，这么漂亮好用的系统，是不是可以给个 Star 鼓励一下开发者呢：iView">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603206">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603207?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603208?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603209?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603210?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603211?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603212?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603213?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603214?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603215?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603216?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603217?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603218?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603219?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603220?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603221?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603222?w=1545&h=920">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000011603223?w=1545&h=920">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.471Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iView 发布后台管理系统 iview-admin，没错，它就是你想要的">
+<meta name="twitter:description" content="简介 iView Admin 是基于 Vue.js，搭配使用 iView UI 组件库形成的一套后台集成解决方案，由 TalkingData 前端可视化团队部分成员开发维护。iView Admin 遵守 iView 设计和开发约定，风格统一，设计考究，并且更多功能在不停开发中。 没错，这就是大家期待已久的 admin 了，这么漂亮好用的系统，是不是可以给个 Star 鼓励一下开发者呢：iView">
+<meta name="twitter:image" content="https://static.alili.tech/img/remote/1460000011603206">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>iView 发布后台管理系统 iview-admin，没错，它就是你想要的 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/225c3b1d/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/225c3b1d/",
+      "appid": "1613049289050283", 
+      "title": "iView 发布后台管理系统 iview-admin，没错，它就是你想要的 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:00"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/f9c63350/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/69c41ea6/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/225c3b1d/&text=iView 发布后台管理系统 iview-admin，没错，它就是你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/225c3b1d/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/225c3b1d/&text=iView 发布后台管理系统 iview-admin，没错，它就是你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/225c3b1d/&title=iView 发布后台管理系统 iview-admin，没错，它就是你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/225c3b1d/&is_video=false&description=iView 发布后台管理系统 iview-admin，没错，它就是你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=iView 发布后台管理系统 iview-admin，没错，它就是你想要的&body=Check out this article: https://alili.tech/archive/225c3b1d/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/225c3b1d/&title=iView 发布后台管理系统 iview-admin，没错，它就是你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/225c3b1d/&title=iView 发布后台管理系统 iview-admin，没错，它就是你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/225c3b1d/&title=iView 发布后台管理系统 iview-admin，没错，它就是你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/225c3b1d/&title=iView 发布后台管理系统 iview-admin，没错，它就是你想要的" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">在线预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">效果展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader4"><span class="toc-number">5.</span> <span class="toc-text">文件结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">6.</span> <span class="toc-text">Links</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader6"><span class="toc-number">7.</span> <span class="toc-text">License</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        iView 发布后台管理系统 iview-admin，没错，它就是你想要的
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-23T00:00:00.000Z" itemprop="datePublished">2018-10-23</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603206" alt="" title="" style="cursor: pointer; display: inline"></span></p>
+<h2 id="articleHeader0">简介</h2>
+<p>iView Admin 是基于 Vue.js，搭配使用 <a href="https://github.com/iview/iview" rel="external nofollow noopener noreferrer" target="_blank">iView UI</a> 组件库形成的一套后台集成解决方案，由 TalkingData 前端可视化团队部分成员开发维护。iView Admin 遵守 iView 设计和开发约定，风格统一，设计考究，并且更多功能在不停开发中。</p>
+<p>没错，这就是大家期待已久的 admin 了，这么漂亮好用的系统，是不是可以给个 Star 鼓励一下开发者呢：<br><strong>iView GitHub：<a href="https://github.com/iview/iview" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/iview/iview</a></strong><br><strong>iView Admin GitHub：<a href="https://github.com/iview/iview-admin" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/iview/iview-admin</a></strong></p>
+<h2 id="articleHeader1">在线预览</h2>
+<p><a href="https://iview.github.io/iview-admin" rel="external nofollow noopener noreferrer" target="_blank">在线访问地址 https://iview.github.io/iview-admin</a><br>密码随意填，但要记住哦（不然使用锁屏功能时你就懵逼了）。</p>
+<h2 id="articleHeader2">功能</h2>
+<ul>
+<li>登录/登出</li>
+<li>
+<p>权限管理</p>
+<ul>
+<li>列表过滤</li>
+<li>权限切换</li>
+</ul>
+</li>
+<li>
+<p>组件</p>
+<ul>
+<li>富文本编辑器</li>
+<li>Markdown编辑器</li>
+<li>可拖拽列表</li>
+<li>文件上传</li>
+<li>数字渐变</li>
+</ul>
+</li>
+<li>
+<p>表单编辑</p>
+<ul>
+<li>文章发布</li>
+<li>工作流</li>
+</ul>
+</li>
+<li>
+<p>表格</p>
+<ul>
+<li>可拖拽排序</li>
+<li>
+<p>可编辑表格</p>
+<ul>
+<li>行内编辑</li>
+<li>单元格编辑</li>
+</ul>
+</li>
+<li>
+<p>表格导出数据</p>
+<ul>
+<li>导出为Csv文件</li>
+<li>导出为Xls文件</li>
+</ul>
+</li>
+<li>表格转图片</li>
+</ul>
+</li>
+<li>
+<p>错误页面</p>
+<ul>
+<li>401页面</li>
+<li>404页面</li>
+<li>500页面</li>
+</ul>
+</li>
+<li>换肤</li>
+<li>收缩侧边栏</li>
+<li>tag标签导航</li>
+<li>面包屑导航</li>
+<li>全屏/退出全屏</li>
+<li>锁屏</li>
+<li>消息中心</li>
+<li>个人中心</li>
+</ul>
+<h2 id="articleHeader3">效果展示</h2>
+<ul>
+<li>登录<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603207?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>标签导航<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603208?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>权限管理<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603209?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>可拖拽列表<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603210?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>文件上传<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603211?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>数字渐变<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603212?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>文章发布<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603213?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>工作流<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603214?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>可拖拽表格<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603215?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>可编辑表格<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603216?w=1545&amp;h=920" alt="image" title="image" style="cursor: pointer; display: inline"></span>
+</li>
+<li>表格导出数据<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603217?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>表格转图片<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603218?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>错误页面<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603219?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>锁屏<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603220?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>可收缩侧边栏<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603221?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>s</li>
+<li>主题切换<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603222?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+<li>消息中心<br><span class="img-wrap"><img src="https://static.alili.tech/img/remote/1460000011603223?w=1545&amp;h=920" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="image" title="image" style="cursor: pointer"></span>
+</li>
+</ul>
+<h2 id="articleHeader4">文件结构</h2>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=".
+├── dist
+│&nbsp;&nbsp; ├── langs    TinyMCE富文本编辑器语言包
+│&nbsp;&nbsp; ├── plugins    TinyMCE富文本编辑器组件
+│&nbsp;&nbsp; ├── skins    TinyMCE富文本编辑器皮肤
+│&nbsp;&nbsp; └── themes    TinyMCE富文本编辑器主题
+└── src
+ &nbsp; &nbsp;├── config &nbsp; &nbsp;项目配置
+ &nbsp; &nbsp;├── images &nbsp; &nbsp;图片文件
+ &nbsp; &nbsp;├── libs &nbsp; &nbsp;工具方法
+ &nbsp; &nbsp;├── styles &nbsp; &nbsp;样式文件
+ &nbsp; &nbsp;├── template &nbsp; &nbsp;ejs模板
+ &nbsp; &nbsp;└── views &nbsp; &nbsp;视图组件
+ &nbsp; &nbsp; &nbsp; &nbsp;├── access &nbsp; &nbsp;权限管理
+ &nbsp; &nbsp; &nbsp; &nbsp;├── error_page &nbsp; &nbsp;错误页面
+ &nbsp; &nbsp; &nbsp; &nbsp;├── form &nbsp; &nbsp;表单
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; ├── article-publish &nbsp; &nbsp;文章发布
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; └── work-flow &nbsp; &nbsp;工作流
+ &nbsp; &nbsp; &nbsp; &nbsp;├── home &nbsp; &nbsp;首页
+ &nbsp; &nbsp; &nbsp; &nbsp;├── main_components &nbsp; &nbsp;主框架
+ &nbsp; &nbsp; &nbsp; &nbsp;├── message &nbsp; &nbsp;消息中心
+ &nbsp; &nbsp; &nbsp; &nbsp;├── my_components &nbsp; &nbsp;组件
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; ├── count-to &nbsp; &nbsp;数字渐变
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; ├── draggable-list &nbsp; &nbsp;可拖拽列表
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; ├── file-upload &nbsp; &nbsp;文件上传
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; ├── markdown-editor &nbsp;  markdown编辑器
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; └── text-editer &nbsp; &nbsp;富文本编辑器
+ &nbsp; &nbsp; &nbsp; &nbsp;├── own-space &nbsp; &nbsp;个人中心
+ &nbsp; &nbsp; &nbsp; &nbsp;├── screen-shorts &nbsp; &nbsp;锁屏
+ &nbsp; &nbsp; &nbsp; &nbsp;└── tables &nbsp; &nbsp;表格" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs applescript"><code class="shell">.
+├── dist
+│&nbsp;&nbsp; ├── langs    TinyMCE富文本编辑器语言包
+│&nbsp;&nbsp; ├── plugins    TinyMCE富文本编辑器组件
+│&nbsp;&nbsp; ├── skins    TinyMCE富文本编辑器皮肤
+│&nbsp;&nbsp; └── themes    TinyMCE富文本编辑器主题
+└── src
+ &nbsp; &nbsp;├── config &nbsp; &nbsp;项目配置
+ &nbsp; &nbsp;├── images &nbsp; &nbsp;图片文件
+ &nbsp; &nbsp;├── libs &nbsp; &nbsp;工具方法
+ &nbsp; &nbsp;├── styles &nbsp; &nbsp;样式文件
+ &nbsp; &nbsp;├── template &nbsp; &nbsp;ejs模板
+ &nbsp; &nbsp;└── views &nbsp; &nbsp;视图组件
+ &nbsp; &nbsp; &nbsp; &nbsp;├── access &nbsp; &nbsp;权限管理
+ &nbsp; &nbsp; &nbsp; &nbsp;├── error_page &nbsp; &nbsp;错误页面
+ &nbsp; &nbsp; &nbsp; &nbsp;├── form &nbsp; &nbsp;表单
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; ├── article-publish &nbsp; &nbsp;文章发布
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; └── work-flow &nbsp; &nbsp;工作流
+ &nbsp; &nbsp; &nbsp; &nbsp;├── home &nbsp; &nbsp;首页
+ &nbsp; &nbsp; &nbsp; &nbsp;├── main_components &nbsp; &nbsp;主框架
+ &nbsp; &nbsp; &nbsp; &nbsp;├── message &nbsp; &nbsp;消息中心
+ &nbsp; &nbsp; &nbsp; &nbsp;├── my_components &nbsp; &nbsp;组件
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; ├── <span class="hljs-built_in">count</span>-<span class="hljs-keyword">to</span> &nbsp; &nbsp;数字渐变
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; ├── draggable-<span class="hljs-built_in">list</span> &nbsp; &nbsp;可拖拽列表
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; ├── <span class="hljs-built_in">file</span>-upload &nbsp; &nbsp;文件上传
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; ├── markdown-editor &nbsp;  markdown编辑器
+ &nbsp; &nbsp; &nbsp; &nbsp;│&nbsp;&nbsp; └── <span class="hljs-built_in">text</span>-editer &nbsp; &nbsp;富文本编辑器
+ &nbsp; &nbsp; &nbsp; &nbsp;├── own-<span class="hljs-literal">space</span> &nbsp; &nbsp;个人中心
+ &nbsp; &nbsp; &nbsp; &nbsp;├── screen-shorts &nbsp; &nbsp;锁屏
+ &nbsp; &nbsp; &nbsp; &nbsp;└── tables &nbsp; &nbsp;表格</code></pre>
+<h2 id="articleHeader5">Links</h2>
+<ul>
+<li><a href="https://github.com/TalkingData" rel="external nofollow noopener noreferrer" target="_blank">TalkingData</a></li>
+<li><a href="https://github.com/iview/iview" rel="external nofollow noopener noreferrer" target="_blank">iView</a></li>
+<li><a href="https://github.com/vuejs/vue" rel="external nofollow noopener noreferrer" target="_blank">Vue</a></li>
+<li><a href="https://github.com/webpack/webpack" rel="external nofollow noopener noreferrer" target="_blank">Webpack</a></li>
+</ul>
+<h2 id="articleHeader6">License</h2>
+<p><a href="http://opensource.org/licenses/MIT" rel="external nofollow noopener noreferrer" target="_blank">MIT</a></p>
+<p>Copyright (c) 2016-present, iView</p>
+
+                
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000011603201" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000011603201</a></p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>iView 发布后台管理系统 iview-admin，没错，它就是你想要的</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/225c3b1d/">https://alili.tech/archive/225c3b1d/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">在线预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">效果展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader4"><span class="toc-number">5.</span> <span class="toc-text">文件结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">6.</span> <span class="toc-text">Links</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader6"><span class="toc-number">7.</span> <span class="toc-text">License</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="用这样的 Vi 配置来保存和组织你的笔记  Vimwiki 和 GitLab 是记录笔记的强大组合。   用 vi 来管理 wiki 来记录你的笔记，这听起来不像是一个符合常规的主意，但当你的日常工作都会用到 vi , 那它是有意义的。 作为一个软件开发人员，使用同编码一样的工具来写笔记会更加简单。我想将我的笔记变成一种编辑器命令，无论我在哪里，都能够用管理我代码的方法来管理我的笔记。这便是我创建">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用这样的 Vi 配置来保存和组织你的笔记">
+<meta property="og:url" content="https://alili.tech/archive/bcdc328b/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="用这样的 Vi 配置来保存和组织你的笔记  Vimwiki 和 GitLab 是记录笔记的强大组合。   用 vi 来管理 wiki 来记录你的笔记，这听起来不像是一个符合常规的主意，但当你的日常工作都会用到 vi , 那它是有意义的。 作为一个软件开发人员，使用同编码一样的工具来写笔记会更加简单。我想将我的笔记变成一种编辑器命令，无论我在哪里，都能够用管理我代码的方法来管理我的笔记。这便是我创建">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t014210e6adafef716e.png">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用这样的 Vi 配置来保存和组织你的笔记">
+<meta name="twitter:description" content="用这样的 Vi 配置来保存和组织你的笔记  Vimwiki 和 GitLab 是记录笔记的强大组合。   用 vi 来管理 wiki 来记录你的笔记，这听起来不像是一个符合常规的主意，但当你的日常工作都会用到 vi , 那它是有意义的。 作为一个软件开发人员，使用同编码一样的工具来写笔记会更加简单。我想将我的笔记变成一种编辑器命令，无论我在哪里，都能够用管理我代码的方法来管理我的笔记。这便是我创建">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t014210e6adafef716e.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>用这样的 Vi 配置来保存和组织你的笔记 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/bcdc328b/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/bcdc328b/",
+      "appid": "1613049289050283", 
+      "title": "用这样的 Vi 配置来保存和组织你的笔记 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:02"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/242eb708/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/5521b25f/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/bcdc328b/&text=用这样的 Vi 配置来保存和组织你的笔记" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/bcdc328b/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/bcdc328b/&text=用这样的 Vi 配置来保存和组织你的笔记" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/bcdc328b/&title=用这样的 Vi 配置来保存和组织你的笔记" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/bcdc328b/&is_video=false&description=用这样的 Vi 配置来保存和组织你的笔记" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=用这样的 Vi 配置来保存和组织你的笔记&body=Check out this article: https://alili.tech/archive/bcdc328b/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/bcdc328b/&title=用这样的 Vi 配置来保存和组织你的笔记" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/bcdc328b/&title=用这样的 Vi 配置来保存和组织你的笔记" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/bcdc328b/&title=用这样的 Vi 配置来保存和组织你的笔记" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/bcdc328b/&title=用这样的 Vi 配置来保存和组织你的笔记" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">用这样的 Vi 配置来保存和组织你的笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">为什么用 wiki 来进行笔记保存是有意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">配置 vimwiki</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.3.</span> <span class="toc-text">同步你的 wiki 到 GitLab</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        用这样的 Vi 配置来保存和组织你的笔记
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-21T00:00:00.000Z" itemprop="datePublished">2018-10-21</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1><a href="#用这样的-vi-配置来保存和组织你的笔记"></a>用这样的 Vi 配置来保存和组织你的笔记</h1>
+<blockquote>
+<p>Vimwiki 和 GitLab 是记录笔记的强大组合。</p>
+</blockquote>
+<p><a href="https://camo.githubusercontent.com/9901c750dce2008ea7a459201121077c355fc257/68747470733a2f2f6f70656e736f757263652e636f6d2f73697465732f64656661756c742f66696c65732f7374796c65732f696d6167652d66756c6c2d73697a652f7075626c69632f6c6561642d696d616765732f636865636b6c6973745f68616e64735f7465616d5f636f6c6c61626f726174696f6e2e706e673f69746f6b3d753832516570506b" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t014210e6adafef716e.png" alt="1"></a></p>
+<p>用 vi 来管理 wiki 来记录你的笔记，这听起来不像是一个符合常规的主意，但当你的日常工作都会用到 vi , 那它是有意义的。</p>
+<p>作为一个软件开发人员，使用同编码一样的工具来写笔记会更加简单。我想将我的笔记变成一种编辑器命令，无论我在哪里，都能够用管理我代码的方法来管理我的笔记。这便是我创建一个基于 vi 的环境来搭建我自己的知识库的原因。简单概括起来，我在笔记本电脑上用 vi 插件 <a href="https://vimwiki.github.io/" rel="external nofollow noopener noreferrer" target="_blank">Viwiki</a> 来本地管理我的 wiki。用 Git 来进行版本控制（以保留一个中心化的更新版本），并用 GitLab 来进行在线修改（例如在我的手机上）。</p>
+<h3><a href="#为什么用-wiki-来进行笔记保存是有意义"></a>为什么用 wiki 来进行笔记保存是有意义</h3>
+<p>我尝试过许多不同的工具来持续的记录我的笔记，笔记里保存着我的灵感以及需要记住的任务安排。这包括线下的笔记本 （没错，纸质的）、特殊的记录笔记的软件，以及思维导图软件。</p>
+<p>但每种方案都有不好一面，没有一个能够满足我所有的需求。例如<a href="https://opensource.com/article/17/8/mind-maps-creative-dashboard" rel="external nofollow noopener noreferrer" target="_blank">思维导图</a>，能够很好的形象化你的想法（因而得名），但是这种工具的搜索功能很差（和纸质笔记本一样）。此外，当一段时间过去，思维导图会变得很难阅读，所以思维导图不适合长时间保存的笔记。</p>
+<p>我为一个合作项目配置了 <a href="https://vimwiki.github.io/" rel="external nofollow noopener noreferrer" target="_blank">DokuWiki</a>，我发现这个 wiki 模型符合了我大多数的需求。在 wiki 上，你能够创建一个笔记（和你在文本编辑器中所作的一样），并在笔记间创建链接。如果一个链接指向一个不存在的页面（你想让本页面添加一条还没有创建的信息）， wiki 会为你建立这个页面。这个特性使得 wiki 很好的适应了那些需要快速写下心中所想的人的需求，而仍将你的笔记保持在能够容易浏览和搜索关键字的页面结构中。</p>
+<p>这看起来很有希望，并且配置 DokuWiki 也很容易，但我发现只是为了记个笔记而配置整个 wiki 需要花费太多工作。在一番搜索后，我发现了 Vimwiki，这是一个我想要的 vi 插件。因为我每天使用 vi，记录笔记就行编辑代码一样。甚至在 vimwiki 创建一个页面比 Dokuwiki 更简单。你只需要对光标下的单词按下回车键就行。如果没有文件是这个名字，vimwiki 会为你创建一个。</p>
+<p>为了更一步的实现用每天都会使用的工具来做笔记的计划，我不仅用这个我最爱的 IDE 来写笔记，而且用 Git 和 GitLab —— 我最爱的代码管理工具 —— 在我的各个机器间分发我的笔记，以便我可以在线访问它们。我也是在 Gitlab 的在线 markdown 工具上用 markdown 语法来写的这篇文章。</p>
+<h3><a href="#配置-vimwiki"></a>配置 vimwiki</h3>
+<p>用你已有的插件管理工具来安装 vimwiki 很简单，只需要添加 vimwiki/vimwiki 到你的插件。对于我的喜爱的插件管理器 Vundle 来说，你只需要在 <code>/.vimrc</code> 中添加 <code>plugin vimwiki/vimwiki</code> 这一行，然后执行 <code>:source ~/.vimrc | PluginInstall</code> 就行。</p>
+<p>下面是我的文件 <code>.vimrc</code> 的一部分，展示了一些 vimwiki 配置。你能在 <a href="https://vimwiki.github.io/" rel="external nofollow noopener noreferrer" target="_blank">vimwiki</a> 页面学到更多的配置和使用的的信息。</p>
+<pre><code class="hljs vim"><span class="hljs-keyword">let</span> wiki_1 = {}
+<span class="hljs-keyword">let</span> wiki_1.path = <span class="hljs-string">'~/vimwiki_work_md/'</span>
+<span class="hljs-keyword">let</span> wiki_1.<span class="hljs-keyword">syntax</span> = <span class="hljs-string">'markdown'</span>
+<span class="hljs-keyword">let</span> wiki_1.ext = <span class="hljs-string">'.md'</span>
+
+<span class="hljs-keyword">let</span> wiki_2 = {}
+<span class="hljs-keyword">let</span> wiki_2.path = <span class="hljs-string">'~/vimwiki_personal_md/'</span>
+<span class="hljs-keyword">let</span> wiki_2.<span class="hljs-keyword">syntax</span> = <span class="hljs-string">'markdown'</span>
+<span class="hljs-keyword">let</span> wiki_2.ext = <span class="hljs-string">'.md'</span>
+
+<span class="hljs-keyword">let</span> <span class="hljs-variable">g:vimwiki_list</span> = [wiki_1, wiki_2]
+<span class="hljs-keyword">let</span> <span class="hljs-variable">g:vimwiki_ext2syntax</span> = {<span class="hljs-string">'.md'</span>: <span class="hljs-string">'markdown'</span>, <span class="hljs-string">'.markdown'</span>: <span class="hljs-string">'markdown'</span>, <span class="hljs-string">'.mdown'</span>: <span class="hljs-string">'markdown'</span>}
+
+</code></pre><p>如你在上述配置中所见，我的配置还有一个优点。你能简单的区分个人和工作相关的笔记，而不用切换笔记软件。我想让我的个人笔记可以随时随地访问，而不想我的工作笔记同步到我私人的 GitLab 和计算机中。在 vimwiki 这样配置要比我试过的其他软件都要简单。</p>
+<p>这个配置告诉 vimwiki 有两个不同 Wiki，都使用 markdown 语法（再一次，因为我的日常工作中天天都在用 markdown 语法）。我也告诉 Vimwiki 在哪个文件夹存储 wiki 页面。</p>
+<p>如果你进入存储 wiki 页面的文件夹，你会找到你的 wiki 的普通的 markdown 页面文件，而没有其他特殊的 Vimwiki 相关内容，这使得很容易的初始化 Git 仓库和同步你的 wiki 到中心仓库。</p>
+<h3><a href="#同步你的-wiki-到-gitlab"></a>同步你的 wiki 到 GitLab</h3>
+<p>这一步检出一个 GitLab 项目到本地的 VimWiki 文件夹，这步操作和你操作任何 GitHub 的仓库相同，只不过因为我更喜欢保存我的笔记到我的私人 GitLab 仓库，所以我运行了一个 GitLab 实例用于我个人的项目。</p>
+<p>GitLab 的 wiki 功能可以用来为你的项目创建 wiki 页面。这些 wiki 就是 Git 仓库本身。它们使用 markdown 语法，你懂得。</p>
+<p>只需要初始化你需要的 wiki ，让它与你为笔记而创建的项目的 wiki 同步即可。</p>
+<pre><code class="hljs dockerfile">cd ~/vimwiki_personal_md/
+git init
+git remote <span class="hljs-keyword">add</span><span class="bash"> origin git@your.gitlab.com:your_user/vimwiki_personal_md.wiki
+</span>git <span class="hljs-keyword">add</span><span class="bash"> .
+</span>git commit -m <span class="hljs-string">"Initial commit"</span>
+git push -u origin master
+
+</code></pre><p>在 GitLab 创建一个新的项目后，你就可以从页面上复制这些步骤的代码。唯一的改变是仓库地址结尾是 .wiki（而不是 .git）。 这会告诉 Git 克隆 wiki 仓库而不是项目本身。</p>
+<p>就是这样！现在你能够通过 Git 来管理你的笔记，通过 GitLab wiki 用户界面来修改笔记。</p>
+<p>你可能（像我一样）不想手动的为每个添加到笔记本的笔记创建一个提交。为了解决这个问题，我使用了 Vim 插件 <a href="https://github.com/chazy/dirsettings" rel="external nofollow noopener noreferrer" target="_blank">chazy/dirsetting</a>。我添加一个 <code>.vimaddr</code> 文件，已经下面的内容：</p>
+<pre><code class="hljs asciidoc"><span class="hljs-meta">:cd %:p:h</span>
+silent! !git pull &gt; /dev/null
+:e!
+autocmd! BufWritePost * silent! !git add .;git commit -m "vim autocommit" &gt; /dev/null; git push &gt; /dev/null&amp;
+
+</code></pre><p>每当我打开 Wiki 文件按下 <code>:w</code> 发布我的修改时，它就会更新到最新的版本。这样做会使你的本地文件与中心仓库保持同步。如果你有合并冲突，通常你需要解决它们。</p>
+<p>目前，这就是以我的知识来互动的方法，我很喜欢这方法；请告诉我你对于这个方法的想法，可以在评论区分享你如何追踪笔记的方法。</p>
+<hr>
+<p>via: <a href="https://opensource.com/article/18/6/vimwiki-gitlab-notes" rel="external nofollow noopener noreferrer" target="_blank">https://opensource.com/article/18/6/vimwiki-gitlab-notes</a></p>
+<p>作者：<a href="https://opensource.com/users/ntlx" rel="external nofollow noopener noreferrer" target="_blank">Manuel Dewald</a> 选题：<a href="https://github.com/lujun9972" rel="external nofollow noopener noreferrer" target="_blank">lujun9972</a> 译者：<a href="https://github.com/singledo" rel="external nofollow noopener noreferrer" target="_blank">octopus</a> 校对：<a href="https://github.com/wxy" rel="external nofollow noopener noreferrer" target="_blank">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" rel="external nofollow noopener noreferrer" target="_blank">LCTT</a> 原创编译，<a href="https://linux.cn/" rel="external nofollow noopener noreferrer" target="_blank">Linux中国</a> 荣誉推出</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/use-this-vi-setup-to-keep-and-organize-your-notes" rel="external nofollow noopener noreferrer" target="_blank">用这样的 Vi 配置来保存和组织你的笔记</a><br>原文标题: 用这样的 Vi 配置来保存和组织你的笔记<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/bcdc328b/">https://alili.tech/archive/bcdc328b/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">用这样的 Vi 配置来保存和组织你的笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">为什么用 wiki 来进行笔记保存是有意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">配置 vimwiki</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.3.</span> <span class="toc-text">同步你的 wiki 到 GitLab</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

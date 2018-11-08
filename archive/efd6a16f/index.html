@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="6 个可以帮你理解互联网工作原理的 RFC  以及 3 个有趣的 RFC。   阅读源码是开源软件的重要组成部分。这意味着用户可以查看代码并了解做了什么。 但“阅读源码”并不仅适用于代码。理解代码实现的标准同样重要。这些标准编写在由互联网工程任务组Internet Engineering Task Force（IETF）发布的称为“意见征集Requests for Comment”（RFC）的文档">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6 个可以帮你理解互联网工作原理的 RFC">
+<meta property="og:url" content="https://alili.tech/archive/efd6a16f/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="6 个可以帮你理解互联网工作原理的 RFC  以及 3 个有趣的 RFC。   阅读源码是开源软件的重要组成部分。这意味着用户可以查看代码并了解做了什么。 但“阅读源码”并不仅适用于代码。理解代码实现的标准同样重要。这些标准编写在由互联网工程任务组Internet Engineering Task Force（IETF）发布的称为“意见征集Requests for Comment”（RFC）的文档">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t019941e5835ceb80c6.png">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6 个可以帮你理解互联网工作原理的 RFC">
+<meta name="twitter:description" content="6 个可以帮你理解互联网工作原理的 RFC  以及 3 个有趣的 RFC。   阅读源码是开源软件的重要组成部分。这意味着用户可以查看代码并了解做了什么。 但“阅读源码”并不仅适用于代码。理解代码实现的标准同样重要。这些标准编写在由互联网工程任务组Internet Engineering Task Force（IETF）发布的称为“意见征集Requests for Comment”（RFC）的文档">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t019941e5835ceb80c6.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>6 个可以帮你理解互联网工作原理的 RFC | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/efd6a16f/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/efd6a16f/",
+      "appid": "1613049289050283", 
+      "title": "6 个可以帮你理解互联网工作原理的 RFC | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:02"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/6adc68c9/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/123d0f2c/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/efd6a16f/&text=6 个可以帮你理解互联网工作原理的 RFC" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/efd6a16f/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/efd6a16f/&text=6 个可以帮你理解互联网工作原理的 RFC" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/efd6a16f/&title=6 个可以帮你理解互联网工作原理的 RFC" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/efd6a16f/&is_video=false&description=6 个可以帮你理解互联网工作原理的 RFC" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=6 个可以帮你理解互联网工作原理的 RFC&body=Check out this article: https://alili.tech/archive/efd6a16f/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/efd6a16f/&title=6 个可以帮你理解互联网工作原理的 RFC" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/efd6a16f/&title=6 个可以帮你理解互联网工作原理的 RFC" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/efd6a16f/&title=6 个可以帮你理解互联网工作原理的 RFC" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/efd6a16f/&title=6 个可以帮你理解互联网工作原理的 RFC" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">6 个可以帮你理解互联网工作原理的 RFC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">6 个必读的 RFC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">RFC 2119 - 在 RFC 中用于指示需求级别的关键字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">RFC 3339 - 互联网上的日期和时间：时间戳</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">RFC 1918 - 私有互联网的地址分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">RFC 1912 - 常见的 DNS 操作和配置错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.5.</span> <span class="toc-text">RFC 2822 — 互联网邮件格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.6.</span> <span class="toc-text">RFC 7231 - 超文本传输​​协议（HTTP/1.1）：语义和内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">3 个应该阅读的 RFC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">RFC 1149 - 在禽类载体上传输 IP 数据报的标准</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">RFC 2324 — 超文本咖啡壶控制协议（HTCPCP/1.0）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">RFC 69 — M.I.T.的分发列表更改</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        6 个可以帮你理解互联网工作原理的 RFC
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-20T00:00:00.000Z" itemprop="datePublished">2018-10-20</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1><a href="#6-个可以帮你理解互联网工作原理的-rfc"></a>6 个可以帮你理解互联网工作原理的 RFC</h1>
+<blockquote>
+<p>以及 3 个有趣的 RFC。</p>
+</blockquote>
+<p><a href="https://camo.githubusercontent.com/b349a1f9d7c09bbf7466a4d0390b9a515fa541f6/68747470733a2f2f6f70656e736f757263652e636f6d2f73697465732f64656661756c742f66696c65732f7374796c65732f696d6167652d66756c6c2d73697a652f7075626c69632f6c6561642d696d616765732f4c41572d496e7465726e65745f636f6e737472756374696f6e5f393430313436375f353230783239325f303531325f64632e706e673f69746f6b3d52506b5050744465" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://p0.ssl.qhimg.com/t019941e5835ceb80c6.png" alt=""></a></p>
+<p>阅读源码是开源软件的重要组成部分。这意味着用户可以查看代码并了解做了什么。</p>
+<p>但“阅读源码”并不仅适用于代码。理解代码实现的标准同样重要。这些标准编写在由<a href="https://www.ietf.org" rel="external nofollow noopener noreferrer" target="_blank">互联网工程任务组</a>Internet Engineering Task Force（IETF）发布的称为“意见征集Requests for Comment”（RFC）的文档中。多年来已经发布了数以千计的 RFC，因此我们收集了一些我们的贡献者认为必读的内容。</p>
+<h3><a href="#6-个必读的-rfc"></a>6 个必读的 RFC</h3>
+<h4><a href="#rfc-2119---在-rfc-中用于指示需求级别的关键字"></a>RFC 2119 - 在 RFC 中用于指示需求级别的关键字</h4>
+<p>这是一个快速阅读，但它对了解其它 RFC 非常重要。 <a href="https://www.rfc-editor.org/rfc/rfc2119.txt" rel="external nofollow noopener noreferrer" target="_blank">RFC 2119</a> 定义了后续 RFC 中使用的需求级别。 “MAY” 究竟意味着什么？如果标准说 “SHOULD”，你_真的_必须这样做吗？通过为需求提供明确定义的分类，RFC 2119 有助于避免歧义。</p>
+<h4><a href="#rfc-3339---互联网上的日期和时间时间戳"></a>RFC 3339 - 互联网上的日期和时间：时间戳</h4>
+<p>时间是全世界程序员的祸根。 <a href="https://www.rfc-editor.org/rfc/rfc3339.txt" rel="external nofollow noopener noreferrer" target="_blank">RFC 3339</a> 定义了如何格式化时间戳。基于 <a href="https://www.iso.org/iso-8601-date-and-time-format.html" rel="external nofollow noopener noreferrer" target="_blank">ISO 8601</a> 标准，3339 为我们提供了一种表达时间的常用方法。例如，像星期几这样的冗余信息不应该包含在存储的时间戳中，因为它很容易计算。</p>
+<h4><a href="#rfc-1918---私有互联网的地址分配"></a>RFC 1918 - 私有互联网的地址分配</h4>
+<p>有属于每个人的互联网，也有只属于你的互联网。私有网络一直在使用，<a href="https://www.rfc-editor.org/rfc/rfc1918.txt" rel="external nofollow noopener noreferrer" target="_blank">RFC 1918</a> 定义了这些网络。当然，你可以在路由器上设置在内部使用公网地址，但这是一个坏主意。或者，你可以将未使用的公共 IP 地址视为内部网络。在任何一种情况下都表明你从未阅读过 RFC 1918。</p>
+<h4><a href="#rfc-1912---常见的-dns-操作和配置错误"></a>RFC 1912 - 常见的 DNS 操作和配置错误</h4>
+<p>一切都是 #@%@ 的 DNS 问题，对吧？ <a href="https://www.rfc-editor.org/rfc/rfc1912.txt" rel="external nofollow noopener noreferrer" target="_blank">RFC 1912</a> 列出了管理员在试图保持互联网运行时所犯的错误。虽然它是在 1996 年发布的，但 DNS（以及人们犯的错误）并没有真正改变这么多。为了理解我们为什么首先需要 DNS，如今我们再来看看 <a href="https://www.rfc-editor.org/rfc/rfc289.txt" rel="external nofollow noopener noreferrer" target="_blank">RFC 289 - 我们希望正式的主机列表是什么样子的</a> 就知道了。</p>
+<h4><a href="#rfc-2822--互联网邮件格式"></a>RFC 2822 — 互联网邮件格式</h4>
+<p>想想你知道什么是有效的电子邮件地址么？如果你知道有多少个站点不接受我邮件地址中 “+” 的话，你就知道你知道不知道了。 <a href="https://www.rfc-editor.org/rfc/rfc2822.txt" rel="external nofollow noopener noreferrer" target="_blank">RFC 2822</a> 定义了有效的电子邮件地址。它还详细介绍了电子邮件的其余部分。</p>
+<h4><a href="#rfc-7231---超文本传输协议http11语义和内容"></a>RFC 7231 - 超文本传输​​协议（HTTP/1.1）：语义和内容</h4>
+<p>想想看，几乎我们在网上做的一切都依赖于 HTTP。 <a href="https://www.rfc-editor.org/rfc/rfc7231.txt" rel="external nofollow noopener noreferrer" target="_blank">RFC 7231</a> 是该协议的最新更新。它有超过 100 页，定义了方法、请求头和状态代码。</p>
+<h3><a href="#3-个应该阅读的-rfc"></a>3 个应该阅读的 RFC</h3>
+<p>好吧，并非每个 RFC 都是严肃的。</p>
+<h4><a href="#rfc-1149---在禽类载体上传输-ip-数据报的标准"></a>RFC 1149 - 在禽类载体上传输 IP 数据报的标准</h4>
+<p>网络以多种不同方式传递数据包。 <a href="https://www.rfc-editor.org/rfc/rfc1149.txt" rel="external nofollow noopener noreferrer" target="_blank">RFC 1149</a> 描述了鸽子载体的使用。当我距离州际高速公路一英里以外时，它们的可靠性不会低于我的移动提供商。</p>
+<h4><a href="#rfc-2324--超文本咖啡壶控制协议htcpcp10"></a>RFC 2324 — 超文本咖啡壶控制协议（HTCPCP/1.0）</h4>
+<p>咖啡对于完成工作非常重要，当然，我们需要一个用于管理咖啡壶的程序化界面。 <a href="https://www.rfc-editor.org/rfc/rfc2324.txt" rel="external nofollow noopener noreferrer" target="_blank">RFC 2324</a> 定义了一个用于与咖啡壶交互的协议，并添加了 HTTP 418（“我是一个茶壶”）。</p>
+<h4><a href="#rfc-69--mit的分发列表更改"></a>RFC 69 — M.I.T.的分发列表更改</h4>
+<p><a href="https://www.rfc-editor.org/rfc/rfc69.txt" rel="external nofollow noopener noreferrer" target="_blank">RFC 69</a> 是否是第一个误导取消订阅请求的发布示例？</p>
+<p>你必须阅读的 RFC 是什么（无论它们是否严肃）？在评论中分享你的列表。</p>
+<hr>
+<p>via: <a href="https://opensource.com/article/18/7/requests-for-comments-to-know" rel="external nofollow noopener noreferrer" target="_blank">https://opensource.com/article/18/7/requests-for-comments-to-know</a></p>
+<p>作者：<a href="https://opensource.com/users/bcotton" rel="external nofollow noopener noreferrer" target="_blank">Ben Cotton</a> 选题：<a href="https://github.com/lujun9972" rel="external nofollow noopener noreferrer" target="_blank">lujun9972</a> 译者：<a href="https://github.com/geekpi" rel="external nofollow noopener noreferrer" target="_blank">geekpi</a> 校对：<a href="https://github.com/wxy" rel="external nofollow noopener noreferrer" target="_blank">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" rel="external nofollow noopener noreferrer" target="_blank">LCTT</a> 原创编译，<a href="https://linux.cn/" rel="external nofollow noopener noreferrer" target="_blank">Linux中国</a> 荣誉推出</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/6-rfcs-for-understanding-how-the-internet-works" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/6-rfcs-for-understanding-how-the-internet-works</a><br>原文标题: 6 个可以帮你理解互联网工作原理的 RFC<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/efd6a16f/">https://alili.tech/archive/efd6a16f/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">6 个可以帮你理解互联网工作原理的 RFC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">6 个必读的 RFC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">RFC 2119 - 在 RFC 中用于指示需求级别的关键字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">RFC 3339 - 互联网上的日期和时间：时间戳</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">RFC 1918 - 私有互联网的地址分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">RFC 1912 - 常见的 DNS 操作和配置错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.5.</span> <span class="toc-text">RFC 2822 — 互联网邮件格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.6.</span> <span class="toc-text">RFC 7231 - 超文本传输​​协议（HTTP/1.1）：语义和内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">3 个应该阅读的 RFC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">RFC 1149 - 在禽类载体上传输 IP 数据报的标准</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">RFC 2324 — 超文本咖啡壶控制协议（HTCPCP/1.0）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">RFC 69 — M.I.T.的分发列表更改</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number">2.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

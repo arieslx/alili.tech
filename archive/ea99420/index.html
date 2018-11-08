@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="在这篇博文中，介绍了一种快速设置常量的奇淫技巧（类似于枚举值，但是并没有封装在命名空间里）。这是一个具有教育意义的难题，而不是你应该在代码中实际使用的东西。 一个简单的版本 TypeScript枚举值 作为参考，考虑下面TypeScript的枚举值（JavaScript自身并没有枚举值）： enum MyEnum { foo, bar, baz }  assert.equal(MyEnum.foo">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过proxies设置常量">
+<meta property="og:url" content="https://alili.tech/archive/ea99420/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="在这篇博文中，介绍了一种快速设置常量的奇淫技巧（类似于枚举值，但是并没有封装在命名空间里）。这是一个具有教育意义的难题，而不是你应该在代码中实际使用的东西。 一个简单的版本 TypeScript枚举值 作为参考，考虑下面TypeScript的枚举值（JavaScript自身并没有枚举值）： enum MyEnum { foo, bar, baz }  assert.equal(MyEnum.foo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通过proxies设置常量">
+<meta name="twitter:description" content="在这篇博文中，介绍了一种快速设置常量的奇淫技巧（类似于枚举值，但是并没有封装在命名空间里）。这是一个具有教育意义的难题，而不是你应该在代码中实际使用的东西。 一个简单的版本 TypeScript枚举值 作为参考，考虑下面TypeScript的枚举值（JavaScript自身并没有枚举值）： enum MyEnum { foo, bar, baz }  assert.equal(MyEnum.foo">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>通过proxies设置常量 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/ea99420/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/ea99420/",
+      "appid": "1613049289050283", 
+      "title": "通过proxies设置常量 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:03"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/c7e93bce/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/9196ee0d/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/ea99420/&text=通过proxies设置常量" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/ea99420/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/ea99420/&text=通过proxies设置常量" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/ea99420/&title=通过proxies设置常量" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/ea99420/&is_video=false&description=通过proxies设置常量" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=通过proxies设置常量&body=Check out this article: https://alili.tech/archive/ea99420/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/ea99420/&title=通过proxies设置常量" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/ea99420/&title=通过proxies设置常量" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/ea99420/&title=通过proxies设置常量" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/ea99420/&title=通过proxies设置常量" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">一个简单的版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">TypeScript枚举值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">纯JavaScript解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Symbols作为常量值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">扩展阅读</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        通过proxies设置常量
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-19T00:00:00.000Z" itemprop="datePublished">2018-10-19</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>在这篇博文中，介绍了一种快速设置常量的奇淫技巧（类似于枚举值，但是并没有封装在命名空间里）。这是一个具有教育意义的难题，而不是你应该在代码中实际使用的东西。</p>
+<h2>一个简单的版本</h2>
+<h3>TypeScript枚举值</h3>
+<p>作为参考，考虑下面TypeScript的枚举值（JavaScript自身并没有枚举值）：</p>
+<pre><code class="hljs crystal"><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">MyEnum</span> { <span class="hljs-title">foo</span>, <span class="hljs-title">bar</span>, <span class="hljs-title">baz</span> }</span>
+
+assert.equal(MyEnum.foo, <span class="hljs-number">0</span>);
+assert.equal(MyEnum.bar, <span class="hljs-number">1</span>);
+assert.equal(MyEnum.baz, <span class="hljs-number">2</span>);
+
+
+</code></pre><p>我更偏向于使用字符串作为枚举值，因为它们更易于调试：</p>
+<pre><code class="hljs groovy"><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">MyEnum</span> {</span> foo=<span class="hljs-string">'foo'</span>, bar=<span class="hljs-string">'bar'</span>, baz=<span class="hljs-string">'baz'</span> }
+
+<span class="hljs-keyword">assert</span>.equal(MyEnum.foo, <span class="hljs-string">'foo'</span>);
+<span class="hljs-keyword">assert</span>.equal(MyEnum.bar, <span class="hljs-string">'bar'</span>);
+<span class="hljs-keyword">assert</span>.equal(MyEnum.baz, <span class="hljs-string">'baz'</span>);
+
+
+</code></pre><h3>纯JavaScript解决方案</h3>
+<p>你可以使用下面的方式在JavaScript中实现类似的枚举值：</p>
+<pre><code class="hljs dart"><span class="hljs-keyword">const</span> keyProxy = <span class="hljs-keyword">new</span> Proxy({}, {
+  <span class="hljs-keyword">get</span>(_target, propKey, _receiver) {
+    <span class="hljs-keyword">return</span> propKey;
+  }
+});
+<span class="hljs-keyword">const</span> {foo, bar, baz} = keyProxy;
+
+<span class="hljs-keyword">assert</span>.equal(foo, <span class="hljs-string">'foo'</span>);
+<span class="hljs-keyword">assert</span>.equal(bar, <span class="hljs-string">'bar'</span>);
+<span class="hljs-keyword">assert</span>.equal(baz, <span class="hljs-string">'baz'</span>);
+
+
+</code></pre><p>上面的代码是如何工作的？我们结合了两个功能点来实现这个效果。</p>
+<p>首先，proxy是一个对象，无论你获取它什么键值的属性值，都会得到和键值相同的属性值：</p>
+<pre><code class="hljs aspectj"><span class="hljs-keyword">assert</span>.equal(keyProxy.hello, <span class="hljs-string">'hello'</span>);
+<span class="hljs-keyword">assert</span>.equal(keyProxy.world, <span class="hljs-string">'world'</span>);
+
+
+</code></pre><p>其次，在解构的时候使用了属性值的简写形式，这样我们就可以同时指定属性键值和变量名。也就是说，下面两种声明方式是等价的。</p>
+<pre><code class="hljs mipsasm">const {foo, <span class="hljs-keyword">bar, </span><span class="hljs-keyword">baz} </span>= keyProxy<span class="hljs-comment">;</span>
+const {foo: foo, <span class="hljs-keyword">bar: </span><span class="hljs-keyword">bar, </span><span class="hljs-keyword">baz: </span><span class="hljs-keyword">baz} </span>= keyProxy<span class="hljs-comment">;</span>
+
+
+</code></pre><h2>Symbols作为常量值</h2>
+<p>如果你使用symbols作为常量值，类型就会更加安全。需要修改的只有标记A的那行：</p>
+<pre><code class="hljs dart"><span class="hljs-keyword">const</span> keyProxy = <span class="hljs-keyword">new</span> Proxy({}, {
+  <span class="hljs-keyword">get</span>(_target, propKey, _receiver) {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Symbol</span>(propKey); <span class="hljs-comment">// (A)</span>
+  }
+});
+<span class="hljs-keyword">const</span> {foo, bar, baz} = keyProxy;
+
+<span class="hljs-keyword">assert</span>.equal(typeof foo, <span class="hljs-string">'symbol'</span>);
+<span class="hljs-keyword">assert</span>.equal(<span class="hljs-built_in">String</span>(foo), <span class="hljs-string">'Symbol(foo)'</span>);
+
+
+</code></pre><h2>扩展阅读</h2>
+<ul>
+<li><p>Chapter “<a href="http://exploringjs.com/es6/ch_proxies.html" rel="external nofollow noopener noreferrer" target="_blank">Metaprogramming with proxies</a>” in “Exploring ES6”</p>
+</li>
+<li><p>Chapter “<a href="http://exploringjs.com/es6/ch_destructuring.html" rel="external nofollow noopener noreferrer" target="_blank">Destructuring</a>” in “Exploring ES6”</p>
+</li>
+</ul>
+<hr>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/setting-up-constants-via-proxies" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/setting-up-constants-via-proxies</a><br>原文标题: 通过proxies设置常量<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/ea99420/">https://alili.tech/archive/ea99420/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">一个简单的版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">TypeScript枚举值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">纯JavaScript解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Symbols作为常量值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">扩展阅读</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

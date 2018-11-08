@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="当我问自己第一百次时，我正在研究一个典型的CRUD屏幕：“我应该将状态保留在这个组件中还是将其移动到父组件？”。 如果需要对子组件的状态进行轻微控制。您可能也遇到了同样的问题。 让我们通过一个简单的例子和​​三种修复方法来回顾它。前两种方法是常见的做法，第三种方法不太常规。 问题； 为了向您展示我的意思，我将使用一个简单的书籍CRUD（译者注：增加(Create)、读取查询(Retrieve)、更">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在React中跨组件分发状态的三种方法">
+<meta property="og:url" content="https://alili.tech/archive/4cec9d39/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="当我问自己第一百次时，我正在研究一个典型的CRUD屏幕：“我应该将状态保留在这个组件中还是将其移动到父组件？”。 如果需要对子组件的状态进行轻微控制。您可能也遇到了同样的问题。 让我们通过一个简单的例子和​​三种修复方法来回顾它。前两种方法是常见的做法，第三种方法不太常规。 问题； 为了向您展示我的意思，我将使用一个简单的书籍CRUD（译者注：增加(Create)、读取查询(Retrieve)、更">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01eecbae26e9983a87.png">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.459Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在React中跨组件分发状态的三种方法">
+<meta name="twitter:description" content="当我问自己第一百次时，我正在研究一个典型的CRUD屏幕：“我应该将状态保留在这个组件中还是将其移动到父组件？”。 如果需要对子组件的状态进行轻微控制。您可能也遇到了同样的问题。 让我们通过一个简单的例子和​​三种修复方法来回顾它。前两种方法是常见的做法，第三种方法不太常规。 问题； 为了向您展示我的意思，我将使用一个简单的书籍CRUD（译者注：增加(Create)、读取查询(Retrieve)、更">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t01eecbae26e9983a87.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>在React中跨组件分发状态的三种方法 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/4cec9d39/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/4cec9d39/",
+      "appid": "1613049289050283", 
+      "title": "在React中跨组件分发状态的三种方法 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:04"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/d3f22047/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/1d8683d3/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/4cec9d39/&text=在React中跨组件分发状态的三种方法" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/4cec9d39/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/4cec9d39/&text=在React中跨组件分发状态的三种方法" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/4cec9d39/&title=在React中跨组件分发状态的三种方法" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/4cec9d39/&is_video=false&description=在React中跨组件分发状态的三种方法" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=在React中跨组件分发状态的三种方法&body=Check out this article: https://alili.tech/archive/4cec9d39/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/4cec9d39/&title=在React中跨组件分发状态的三种方法" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/4cec9d39/&title=在React中跨组件分发状态的三种方法" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/4cec9d39/&title=在React中跨组件分发状态的三种方法" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/4cec9d39/&title=在React中跨组件分发状态的三种方法" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">问题；</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">方法1：受控组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">方法2：同步state</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">方法3：由Key控制的组件</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        在React中跨组件分发状态的三种方法
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-18T00:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>当我问自己第一百次时，我正在研究一个典型的CRUD屏幕：“我应该将状态保留在这个组件中还是将其移动到父组件？”。</p>
+<p>如果需要对子组件的状态进行轻微控制。您可能也遇到了同样的问题。</p>
+<p>让我们通过一个简单的例子和​​三种修复方法来回顾它。前两种方法是常见的做法，第三种方法不太常规。</p>
+<h4>问题；</h4>
+<p>为了向您展示我的意思，我将使用一个简单的书籍CRUD（译者注：增加(Create)、读取查询(Retrieve)、更新(Update)和删除(Delete)）屏幕（如此简单，它没有创建和删除操作）。</p>
+<p><img src="https://p0.ssl.qhimg.com/t01eecbae26e9983a87.png" alt=""></p>
+<p>我们有三个组成部分。<code>&lt;BookList /&gt;</code>是一个组件，显示了用于编辑它们的书籍和按钮列表。<code>&lt;BookForm /&gt;</code>有两个输入和一个按钮，用于保存对书籍的更改。以及包含其他两个组件的<code>&lt;BookApp /&gt;</code>。</p>
+<p>那么，我们的状态是什么？好吧，&lt;BookApp /&gt;应该跟踪书籍清单以及识别当前正在编辑的书籍的内容。 &lt;BookList /&gt;没有任何状态。并且&lt;BookForm /&gt;应该保持输入的当前状态，直到单击“保存”按钮。</p>
+<pre><code class="hljs pf">import React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+import { render } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-dom"</span>;
+
+const books = [
+  {
+    title: <span class="hljs-string">"The End of Eternity"</span>,
+    author: <span class="hljs-string">"Isaac Asimov"</span>
+  },
+  //...
+];
+
+const BookList = ({ books, <span class="hljs-keyword">on</span>Edit }) =&gt; (
+  <span class="hljs-variable">&lt;table&gt;</span>
+    <span class="hljs-variable">&lt;tr&gt;</span>
+      <span class="hljs-variable">&lt;th&gt;</span>Book Title&lt;/th&gt;
+      <span class="hljs-variable">&lt;th&gt;</span>Actions&lt;/th&gt;
+    &lt;/tr&gt;
+    {books.map((book, index) =&gt; (
+      <span class="hljs-variable">&lt;tr key={index}&gt;</span>
+        <span class="hljs-variable">&lt;td&gt;</span>{book.title}&lt;/td&gt;
+        <span class="hljs-variable">&lt;td&gt;</span>
+          <span class="hljs-variable">&lt;button onClick={() =&gt;</span> <span class="hljs-keyword">on</span>Edit(index)}&gt;Edit&lt;/button&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    ))}
+  &lt;/table&gt;
+);
+
+class BookForm extends Component {
+  <span class="hljs-keyword">state</span> = { ...this.props.book };
+  render() {
+    if (!this.props.book) return null;
+    return (
+      <span class="hljs-variable">&lt;form&gt;</span>
+        <span class="hljs-variable">&lt;h3&gt;</span>Book&lt;/h3&gt;
+        <span class="hljs-variable">&lt;label&gt;</span>
+          Title:
+          <span class="hljs-variable">&lt;input
+            value={this.state.title}
+            onChange={e =&gt;</span> this.<span class="hljs-built_in">set</span>State({ title: e.target.value })}
+          /&gt;
+        &lt;/label&gt;
+        <span class="hljs-variable">&lt;label&gt;</span>
+          Author:
+          <span class="hljs-variable">&lt;input
+            value={this.state.author}
+            onChange={e =&gt;</span> this.<span class="hljs-built_in">set</span>State({ author: e.target.value })}
+          /&gt;
+        &lt;/label&gt;
+        <span class="hljs-variable">&lt;button onClick={() =&gt;</span> this.props.<span class="hljs-keyword">on</span>Save({ ...this.<span class="hljs-keyword">state</span> })}&gt;
+          Save
+        &lt;/button&gt;
+      &lt;/form&gt;
+    );
+  }
+}
+
+class BookApp extends Component {
+  <span class="hljs-keyword">state</span> = {
+    books: books,
+    activeIndex: -<span class="hljs-number">1</span>
+  };
+  render() {
+    const { books, activeIndex } = this.<span class="hljs-keyword">state</span>;
+    const activeBook = books[activeIndex];
+    return (
+      <span class="hljs-variable">&lt;div&gt;</span>
+        <span class="hljs-variable">&lt;BookList
+          books={books}
+          onEdit={index =&gt;</span>
+            this.<span class="hljs-built_in">set</span>State({
+              activeIndex: index
+            })}
+        /&gt;
+        <span class="hljs-variable">&lt;BookForm
+          book={activeBook}
+          onSave={book =&gt;</span>
+            this.<span class="hljs-built_in">set</span>State({
+              books: Object.assign([...books], { [activeIndex]: book }),
+              activeIndex: -<span class="hljs-number">1</span>
+            })}
+        /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+render(<span class="hljs-variable">&lt;BookApp /&gt;</span>, document.getElementById(<span class="hljs-string">"root"</span>));
+
+</code></pre><p>在<a href="https://codesandbox.io/s/1oo33rkk3j" rel="external nofollow noopener noreferrer" target="_blank">codesandbox</a>尝试一下</p>
+<p>看起来不错，但是他不起作用。</p>
+<p>我们正在创建组件实例时初始化&lt;BookForm /&gt;状态，因此，当从列表中选择另一本书时，父级无法让它知道它需要更改它。</p>
+<p>我们正在创建组件实例时初始化&lt;BookForm /&gt;状态，因此，当从列表中选择另一本书时，父级无法让它知道它需要更改它。</p>
+<h4>方法1：受控组件</h4>
+<p>一种常见的方法是将状态提升，将&lt;BookForm /&gt;转换为受控组件。我们删除&lt;BookForm /&gt;状态，将activeBook添加到&lt;BookApp /&gt;状态，并向&lt;BookForm /&gt;添加一个onChange道具，我们在每次输入时都会调用它。</p>
+<pre><code class="hljs scala"><span class="hljs-comment">//...</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BookForm</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.props.book) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">return</span> (
+      &lt;form&gt;
+        &lt;h3&gt;<span class="hljs-type">Book</span>&lt;/h3&gt;
+        &lt;label&gt;
+          <span class="hljs-type">Title</span>:
+          &lt;input
+            value={<span class="hljs-keyword">this</span>.props.book.title}
+            onChange={e =&gt;
+              <span class="hljs-keyword">this</span>.props.onChange({
+                ...<span class="hljs-keyword">this</span>.props.book,
+                title: e.target.value
+              })}
+          /&gt;
+        &lt;/label&gt;
+        &lt;label&gt;
+          <span class="hljs-type">Author</span>:
+          &lt;input
+            value={<span class="hljs-keyword">this</span>.props.book.author}
+            onChange={e =&gt;
+              <span class="hljs-keyword">this</span>.props.onChange({
+                ...<span class="hljs-keyword">this</span>.props.book,
+                author: e.target.value
+              })}
+          /&gt;
+        &lt;/label&gt;
+        &lt;button onClick={() =&gt; <span class="hljs-keyword">this</span>.props.onSave()}&gt;<span class="hljs-type">Save</span>&lt;/button&gt;
+      &lt;/form&gt;
+    );
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BookApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  state = {
+    books: books,
+    activeBook: <span class="hljs-literal">null</span>,
+    activeIndex: <span class="hljs-number">-1</span>
+  };
+  render() {
+    const { books, activeBook, activeIndex } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">return</span> (
+      &lt;div&gt;
+        &lt;<span class="hljs-type">BookList</span>
+          books={books}
+          onEdit={index =&gt;
+            <span class="hljs-keyword">this</span>.setState({
+              activeBook: { ...books[index] },
+              activeIndex: index
+            })}
+        /&gt;
+        &lt;<span class="hljs-type">BookForm</span>
+          book={activeBook}
+          onChange={book =&gt; <span class="hljs-keyword">this</span>.setState({ activeBook: book })}
+          onSave={() =&gt;
+            <span class="hljs-keyword">this</span>.setState({
+              books: <span class="hljs-type">Object</span>.assign([...books], { [activeIndex]: activeBook }),
+              activeBook: <span class="hljs-literal">null</span>,
+              activeIndex: <span class="hljs-number">-1</span>
+            })}
+        /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+<span class="hljs-comment">//...</span>
+
+</code></pre><p>在<a href="https://codesandbox.io/s/93y9oprw" rel="external nofollow noopener noreferrer" target="_blank">codesandbox</a>尝试一下</p>
+<p>现在它可以工作，但对我来说，提升<code>&amp;lt;BookForm /&amp;gt;</code>的状态感觉不对。在用户单击“保存”之前，<code>&amp;lt;BookApp /&amp;gt;</code>不关心对书的任何更改，那么为什么需要将其保持在自己的状态？</p>
+<h4>方法2：同步state</h4>
+<p>现在它可以工作，但对我来说，提升&lt;BookForm /&gt;的状态感觉不对。在用户单击“保存”之前，&lt;BookApp /&gt;不关心对书的任何更改，那么为什么需要将其保持在自己的状态？</p>
+<pre><code class="hljs kotlin"><span class="hljs-comment">//...</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BookForm</span> <span class="hljs-title">extends</span> <span class="hljs-title">Component</span> </span>{
+  state = { ...<span class="hljs-keyword">this</span>.props.book };
+  componentWillReceiveProps(nextProps) {
+    const nextBook = nextProps.book;
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.props.book !== nextBook) {
+      <span class="hljs-keyword">this</span>.setState({ ...nextBook });
+    }
+  }
+  render() {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.props.book) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">return</span> (
+      &lt;form&gt;
+        &lt;h3&gt;Book&lt;/h3&gt;
+        &lt;label&gt;
+          Title:
+          &lt;input
+            value={<span class="hljs-keyword">this</span>.state.title}
+            onChange={e =&gt; <span class="hljs-keyword">this</span>.setState({ title: e.target.value })}
+          /&gt;
+        &lt;/label&gt;
+        &lt;label&gt;
+          Author:
+          &lt;input
+            value={<span class="hljs-keyword">this</span>.state.author}
+            onChange={e =&gt; <span class="hljs-keyword">this</span>.setState({ author: e.target.value })}
+          /&gt;
+        &lt;/label&gt;
+        &lt;button onClick={() =&gt; <span class="hljs-keyword">this</span>.props.onSave({ ...<span class="hljs-keyword">this</span>.state })}&gt;
+          Save
+        &lt;/button&gt;
+      &lt;/form&gt;
+    );
+  }
+}
+<span class="hljs-comment">//...</span>
+
+</code></pre><p>在<a href="https://codesandbox.io/s/23k60on01p" rel="external nofollow noopener noreferrer" target="_blank">codesandbox</a>尝试一下</p>
+<p>这种方法通常被认为是一种不好的做法，因为它违背了React关于拥有单一事实来源的想法。我不确定是这种情况，然而，同步状态并不总是那么容易。此外，我尽量避免使用生命周期方法。</p>
+<h4>方法3：由Key控制的组件</h4>
+<p>但为什么我们要回收旧的状态呢？每次用户选择一本书时，拥有一个全新状态的新实例是不是有意义？</p>
+<p>为此，我们需要告诉React停止使用旧实例并创建一个新实例。这就是key prop的用途。</p>
+<pre><code class="hljs scala"><span class="hljs-comment">//...</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BookApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  state = {
+    books: books,
+    activeIndex: <span class="hljs-number">-1</span>
+  };
+  render() {
+    const { books, activeIndex } = <span class="hljs-keyword">this</span>.state;
+    const activeBook = books[activeIndex];
+    <span class="hljs-keyword">return</span> (
+      &lt;div&gt;
+        &lt;<span class="hljs-type">BookList</span>
+          books={books}
+          onEdit={index =&gt;
+            <span class="hljs-keyword">this</span>.setState({
+              activeIndex: index
+            })}
+        /&gt;
+        &lt;<span class="hljs-type">BookForm</span>
+          key={activeIndex}
+          book={activeBook}
+          onSave={book =&gt;
+            <span class="hljs-keyword">this</span>.setState({
+              books: <span class="hljs-type">Object</span>.assign([...books], { [activeIndex]: book }),
+              activeIndex: <span class="hljs-number">-1</span>
+            })}
+        /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+<span class="hljs-comment">//...</span>
+
+</code></pre><p>在 <a href="https://codesandbox.io/s/kxn89qp965" rel="external nofollow noopener noreferrer" target="_blank">codesandbox</a>尝试一下。</p>
+<p>如果元素具有与上一个渲染不同的键，则React会为其创建一个新实例。因此，当用户选择新书时，&lt;BookForm /&gt;的键更改，将创建组件的新实例，并从props初始化状态。</p>
+<p>有什么收获？重用组件实例意味着更少的DOM突变，这意味着更好的性能。因此，当我们强制React创建组件的新实例时，我们会为额外的DOM突变获得一些开销。但是对于这样的情况，这种开销是最小的，其中密钥没有变化太快而且组件不大。</p>
+<p>感谢你的阅读。</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/three-approaches-to-distribute-the-state-across-components-in-react" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/three-approaches-to-distribute-the-state-across-components-in-react</a><br>原文标题: 在React中跨组件分发状态的三种方法<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/4cec9d39/">https://alili.tech/archive/4cec9d39/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">问题；</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">方法1：受控组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">方法2：同步state</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">方法3：由Key控制的组件</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

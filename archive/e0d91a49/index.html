@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="上一篇我们实现了最简单的Angularjs的按需加载, 可以通过替换Angular的内部方法,再使用require.js配合$q完成了按需加载. 今天来说说Angular如何按需加载第三方module; 在此之前,我们得先弄清楚Angular是如何启动的.">
+<meta name="keywords" content="Angularjs,按需加载,解决方案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angularjs的按需加载(2)">
+<meta property="og:url" content="https://alili.tech/archive/e0d91a49/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="上一篇我们实现了最简单的Angularjs的按需加载, 可以通过替换Angular的内部方法,再使用require.js配合$q完成了按需加载. 今天来说说Angular如何按需加载第三方module; 在此之前,我们得先弄清楚Angular是如何启动的.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/179/316/1793163034-56fde93e313cd_articlex">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.442Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angularjs的按需加载(2)">
+<meta name="twitter:description" content="上一篇我们实现了最简单的Angularjs的按需加载, 可以通过替换Angular的内部方法,再使用require.js配合$q完成了按需加载. 今天来说说Angular如何按需加载第三方module; 在此之前,我们得先弄清楚Angular是如何启动的.">
+<meta name="twitter:image" content="https://sfault-image.b0.upaiyun.com/179/316/1793163034-56fde93e313cd_articlex">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>Angularjs的按需加载(2) | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/e0d91a49/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/e0d91a49/",
+      "appid": "1613049289050283", 
+      "title": "Angularjs的按需加载(2) | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:06"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/f9c22b08/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/cbf4498a/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/e0d91a49/&text=Angularjs的按需加载(2)" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/e0d91a49/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/e0d91a49/&text=Angularjs的按需加载(2)" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/e0d91a49/&title=Angularjs的按需加载(2)" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/e0d91a49/&is_video=false&description=Angularjs的按需加载(2)" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Angularjs的按需加载(2)&body=Check out this article: https://alili.tech/archive/e0d91a49/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/e0d91a49/&title=Angularjs的按需加载(2)" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/e0d91a49/&title=Angularjs的按需加载(2)" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/e0d91a49/&title=Angularjs的按需加载(2)" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/e0d91a49/&title=Angularjs的按需加载(2)" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#setupModuleLoader方法"><span class="toc-number">1.</span> <span class="toc-text">setupModuleLoader方法</span></a></li></ol><li class="toc-item toc-level-4"><a class="toc-link" href="#doBootstrap方法"><span class="toc-number"></span> <span class="toc-text">doBootstrap方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#createInjector方法"><span class="toc-number"></span> <span class="toc-text">createInjector方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loadModules方法"><span class="toc-number"></span> <span class="toc-text">loadModules方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        Angularjs的按需加载(2)
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2016-05-31T20:34:35.000Z" itemprop="datePublished">2016-05-31</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Angularjs/">Angularjs</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>上一篇我们实现了最简单的Angularjs的按需加载,</p>
+<p>可以通过替换Angular的内部方法,再使用require.js配合$q完成了按需加载.</p>
+<p>今天来说说Angular如何按需加载第三方module;</p>
+<p>在此之前,我们得先弄清楚Angular是如何启动的.</p>
+<p><img src="https://sfault-image.b0.upaiyun.com/179/316/1793163034-56fde93e313cd_articlex" alt=""></p>
+<a id="more"></a>
+<h5 id="setupModuleLoader方法"><a href="#setupModuleLoader方法" class="headerlink" title="setupModuleLoader方法"></a>setupModuleLoader方法</h5><p>在上图中,我们得注意一个非常主要的方法;</p>
+<p>setupModuleLoader方法,顾名思义 —— 模块加载器;</p>
+<p>此方法最后返回的对象为:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> moduleInstance = &#123;</span><br><span class="line">    _invokeQueue: invokeQueue,</span><br><span class="line">    _runBlocks: runBlocks,</span><br><span class="line">    requires: requires,</span><br><span class="line">    name: name,</span><br><span class="line">    provider: invokeLater(<span class="string">'$provide'</span>, <span class="string">'provider'</span>),</span><br><span class="line">    factory: invokeLater(<span class="string">'$provide'</span>, <span class="string">'factory'</span>),</span><br><span class="line">    service: invokeLater(<span class="string">'$provide'</span>, <span class="string">'service'</span>),</span><br><span class="line">    value: invokeLater(<span class="string">'$provide'</span>, <span class="string">'value'</span>),</span><br><span class="line">    constant: invokeLater(<span class="string">'$provide'</span>, <span class="string">'constant'</span>, <span class="string">'unshift'</span>),</span><br><span class="line">    animation: invokeLater(<span class="string">'$animateProvider'</span>, <span class="string">'register'</span>),</span><br><span class="line">    filter: invokeLater(<span class="string">'$filterProvider'</span>, <span class="string">'register'</span>),</span><br><span class="line">    controller: invokeLater(<span class="string">'$controllerProvider'</span>, <span class="string">'register'</span>),</span><br><span class="line">    directive: invokeLater(<span class="string">'$compileProvider'</span>, <span class="string">'directive'</span>),</span><br><span class="line">    config: config,</span><br><span class="line">    run: <span class="function"><span class="keyword">function</span>(<span class="params">block</span>) </span>&#123;</span><br><span class="line">        runBlocks.push(block);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看着这对象的格式,有没有特别熟悉?</p>
+<p>当我们运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">angular.module(&apos;app&apos;,[]);</span><br><span class="line"></span><br><span class="line">//或者</span><br><span class="line"></span><br><span class="line">angular.module(&apos;app&apos;)</span><br></pre></td></tr></table></figure>
+<p>我们新建一个module或者获取一个module的时候,<br>返回的就是这个对象.</p>
+<p>当我们做链式操作的时候,<br>angular.module(‘app’,[]).config().run().controller();</p>
+<p>每一步操作,返回的都是它,所以我们才可以做链式操作;</p>
+<p>当angular初始化完成之后,开始在dom里寻找ng-app属性;</p>
+<p>当找到ng-app后,拿到ng-app的value后才开始启动 angular;<br>内部运行bootstrap方法;</p>
+<p>如果要选择手动启动的话也可以这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.bootstrap(document, [&apos;moduleName&apos;]);</span><br></pre></td></tr></table></figure>
+<p>当bootstrap的时候angular在做什么呢?</p>
+<h4 id="doBootstrap方法"><a href="#doBootstrap方法" class="headerlink" title="doBootstrap方法"></a>doBootstrap方法</h4><p>在源码里中的bootstrap方法里有一个doBootstrap方法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> doBootstrap = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  element = jqLite(element);</span><br><span class="line">  <span class="comment">//判断是否启动</span></span><br><span class="line">  <span class="keyword">if</span> (element.injector()) &#123;</span><br><span class="line">    <span class="keyword">var</span> tag = (element[<span class="number">0</span>] === <span class="built_in">document</span>) ? <span class="string">'document'</span> : startingTag(element);</span><br><span class="line">    <span class="keyword">throw</span> ngMinErr(</span><br><span class="line">        <span class="string">'btstrpd'</span>,</span><br><span class="line">        <span class="string">"App Already Bootstrapped with this Element '&#123;0&#125;'"</span>,</span><br><span class="line">        tag.replace(<span class="regexp">/&lt;/</span>,<span class="string">'&amp;lt;'</span>).replace(<span class="regexp">/&gt;/</span>,<span class="string">'&amp;gt;'</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//angular.bootstrap(document, ['moduleName']);</span></span><br><span class="line">  <span class="comment">//这里的modules就是之前我们bootstrap时候传进来的 moduleName</span></span><br><span class="line">  <span class="comment">//modules ==&gt; ['moduleName']</span></span><br><span class="line">  modules = modules || [];</span><br><span class="line">  modules.unshift([<span class="string">'$provide'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$provide</span>) </span>&#123;</span><br><span class="line">    $provide.value(<span class="string">'$rootElement'</span>, element);</span><br><span class="line">  &#125;]);</span><br><span class="line"></span><br><span class="line">  .....</span><br><span class="line"></span><br><span class="line">  <span class="comment">//重点来了 createInjector</span></span><br><span class="line">  <span class="keyword">var</span> injector = createInjector(modules, config.strictDi);</span><br><span class="line"></span><br><span class="line">  injector.invoke([<span class="string">'$rootScope'</span>, <span class="string">'$rootElement'</span>, <span class="string">'$compile'</span>, <span class="string">'$injector'</span>,</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">bootstrapApply</span>(<span class="params">scope, element, compile, injector</span>) </span>&#123;</span><br><span class="line">      scope.$apply(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        element.data(<span class="string">'$injector'</span>, injector);</span><br><span class="line">        compile(element)(scope);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;]</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> injector;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="createInjector方法"><a href="#createInjector方法" class="headerlink" title="createInjector方法"></a>createInjector方法</h4><p>我们看这个方法主要做了什么</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createInjector</span>(<span class="params">modulesToLoad, strictDi</span>) </span>&#123;</span><br><span class="line">  strictDi = (strictDi === <span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">var</span> INSTANTIATING = &#123;&#125;,</span><br><span class="line">      providerSuffix = <span class="string">'Provider'</span>,</span><br><span class="line">      path = [],</span><br><span class="line">      loadedModules = <span class="keyword">new</span> HashMap([], <span class="literal">true</span>),</span><br><span class="line">      providerCache = &#123;</span><br><span class="line">        $provide: &#123;</span><br><span class="line">            provider: supportObject(provider),</span><br><span class="line">            factory: supportObject(factory),</span><br><span class="line">            service: supportObject(service),</span><br><span class="line">            value: supportObject(value),</span><br><span class="line">            constant: supportObject(constant),</span><br><span class="line">            decorator: decorator</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      providerInjector = (providerCache.$injector =</span><br><span class="line">          createInternalInjector(providerCache, <span class="function"><span class="keyword">function</span>(<span class="params">serviceName, caller</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (angular.isString(caller)) &#123;</span><br><span class="line">              path.push(caller);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">throw</span> $injectorMinErr(<span class="string">'unpr'</span>, <span class="string">"Unknown provider: &#123;0&#125;"</span>, path.join(<span class="string">' &lt;- '</span>));</span><br><span class="line">          &#125;)),</span><br><span class="line">      instanceCache = &#123;&#125;,</span><br><span class="line">      protoInstanceInjector =</span><br><span class="line">          createInternalInjector(instanceCache, <span class="function"><span class="keyword">function</span>(<span class="params">serviceName, caller</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> provider = providerInjector.get(serviceName + providerSuffix, caller);</span><br><span class="line">            <span class="keyword">return</span> instanceInjector.invoke(</span><br><span class="line">                provider.$get, provider, <span class="literal">undefined</span>, serviceName);</span><br><span class="line">          &#125;),</span><br><span class="line">      instanceInjector = protoInstanceInjector;</span><br><span class="line"></span><br><span class="line">  providerCache[<span class="string">'$injector'</span> + providerSuffix] = &#123; <span class="attr">$get</span>: valueFn(protoInstanceInjector) &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//重点!!! 这里的modulesToLoad 就是我们之前传进来的参数</span></span><br><span class="line">  <span class="comment">//modulesToLoad ==&gt; ['moduleName']</span></span><br><span class="line">  <span class="keyword">var</span> runBlocks = loadModules(modulesToLoad);</span><br><span class="line">  instanceInjector = protoInstanceInjector.get(<span class="string">'$injector'</span>);</span><br><span class="line">  instanceInjector.strictDi = strictDi;</span><br><span class="line"></span><br><span class="line">  forEach(runBlocks, <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123; <span class="keyword">if</span> (fn) instanceInjector.invoke(fn); &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> instanceInjector;</span><br><span class="line">...</span><br><span class="line"><span class="comment">//声明的一些函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="loadModules方法"><a href="#loadModules方法" class="headerlink" title="loadModules方法"></a>loadModules方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadModules</span>(<span class="params">modulesToLoad</span>) </span>&#123;</span><br><span class="line"><span class="comment">//判断modulesToLoad 传进来的是不是一个数组</span></span><br><span class="line"><span class="comment">//assertArg函数是报错用的</span></span><br><span class="line">  assertArg(isUndefined(modulesToLoad) || isArray(modulesToLoad), <span class="string">'modulesToLoad'</span>, <span class="string">'not an array'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> runBlocks = [], moduleFn;</span><br><span class="line">  <span class="comment">//开始遍历</span></span><br><span class="line">  forEach(modulesToLoad, <span class="function"><span class="keyword">function</span>(<span class="params">module</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (loadedModules.get(<span class="built_in">module</span>)) <span class="keyword">return</span>;</span><br><span class="line">    loadedModules.put(<span class="built_in">module</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//声明一个调用函数,这个为以后按需加载很重要的函数</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">runInvokeQueue</span>(<span class="params">queue</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> i, ii;</span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">0</span>, ii = queue.length; i &lt; ii; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> invokeArgs = queue[i],</span><br><span class="line">            provider = providerInjector.get(invokeArgs[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">        provider[invokeArgs[<span class="number">1</span>]].apply(provider, invokeArgs[<span class="number">2</span>]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">//现在我们拿到了我们的moduleName</span></span><br><span class="line">      <span class="keyword">if</span> (isString(<span class="built_in">module</span>)) &#123;</span><br><span class="line">      <span class="comment">//angularModule其实就是之前的setupModuleLoader方法,</span></span><br><span class="line">      <span class="comment">//那当然他返回的就是moduleInstance对象,也就是说的那个</span></span><br><span class="line">        moduleFn = angularModule(<span class="built_in">module</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//把模块里的runBlocks都取出来</span></span><br><span class="line">        runBlocks = runBlocks.concat(loadModules(moduleFn.requires)).concat(moduleFn._runBlocks);</span><br><span class="line">        <span class="comment">//然后开始调用上面的方法</span></span><br><span class="line">        <span class="comment">//开始通过runInvokeQueue方法遍历执行 之前setupModuleLoader实例化的方法</span></span><br><span class="line">        runInvokeQueue(moduleFn._invokeQueue);</span><br><span class="line">        runInvokeQueue(moduleFn._configBlocks);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isFunction(<span class="built_in">module</span>)) &#123;</span><br><span class="line">          runBlocks.push(providerInjector.invoke(<span class="built_in">module</span>));</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isArray(<span class="built_in">module</span>)) &#123;</span><br><span class="line">          runBlocks.push(providerInjector.invoke(<span class="built_in">module</span>));</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        assertArgFn(<span class="built_in">module</span>, <span class="string">'module'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">          ....</span><br><span class="line">          <span class="comment">//一些对于异常的处理</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> runBlocks;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 以上就是angular加载模块的主要方法</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/e0d91a49/">https://alili.tech/archive/e0d91a49/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/baa7d23b/">Angularjs 指令模版</a></li><li><a href="https://alili.tech/archive/cbf4498a/">Angularjs的按需加载(1)</a></li><li><a href="https://alili.tech/archive/f9c22b08/">Angularjs的按需加载(3)</a></li><li><a href="https://alili.tech/archive/613bb601/">一个关于微信SPA页面webview的缓存问题</a></li><li><a href="https://alili.tech/archive/41effd04/">源码分析Angularjs中的Provider们的小小区别</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#setupModuleLoader方法"><span class="toc-number">1.</span> <span class="toc-text">setupModuleLoader方法</span></a></li></ol><li class="toc-item toc-level-4"><a class="toc-link" href="#doBootstrap方法"><span class="toc-number"></span> <span class="toc-text">doBootstrap方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#createInjector方法"><span class="toc-number"></span> <span class="toc-text">createInjector方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loadModules方法"><span class="toc-number"></span> <span class="toc-text">loadModules方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x573A;&amp;#x666F;&amp;#x6982;&amp;#x8FF0;&amp;#x5F39;&amp;#x7A97;&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;&amp;#x4EA4;&amp;#x4E92;&amp;#x65B9;&amp;#x5F0F;&amp;#xFF0C;&amp;#x800C;&amp;#x8499;&amp;#x5C42;&amp;#x662F;&amp;#x5F39;&amp;#x7A97;&amp;#x5FC5;&amp;#x4E0D;">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="禁止蒙层底部页面跟随滚动">
+<meta property="og:url" content="https://alili.tech/archive/866b0d44/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x573A;&amp;#x666F;&amp;#x6982;&amp;#x8FF0;&amp;#x5F39;&amp;#x7A97;&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;&amp;#x4EA4;&amp;#x4E92;&amp;#x65B9;&amp;#x5F0F;&amp;#xFF0C;&amp;#x800C;&amp;#x8499;&amp;#x5C42;&amp;#x662F;&amp;#x5F39;&amp;#x7A97;&amp;#x5FC5;&amp;#x4E0D;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.519Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="禁止蒙层底部页面跟随滚动">
+<meta name="twitter:description" content="&amp;#x573A;&amp;#x666F;&amp;#x6982;&amp;#x8FF0;&amp;#x5F39;&amp;#x7A97;&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;&amp;#x4EA4;&amp;#x4E92;&amp;#x65B9;&amp;#x5F0F;&amp;#xFF0C;&amp;#x800C;&amp;#x8499;&amp;#x5C42;&amp;#x662F;&amp;#x5F39;&amp;#x7A97;&amp;#x5FC5;&amp;#x4E0D;">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>禁止蒙层底部页面跟随滚动 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/866b0d44/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/866b0d44/",
+      "appid": "1613049289050283", 
+      "title": "禁止蒙层底部页面跟随滚动 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:54"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/301e00ed/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/6c55cd2a/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/866b0d44/&text=禁止蒙层底部页面跟随滚动" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/866b0d44/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/866b0d44/&text=禁止蒙层底部页面跟随滚动" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/866b0d44/&title=禁止蒙层底部页面跟随滚动" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/866b0d44/&is_video=false&description=禁止蒙层底部页面跟随滚动" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=禁止蒙层底部页面跟随滚动&body=Check out this article: https://alili.tech/archive/866b0d44/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/866b0d44/&title=禁止蒙层底部页面跟随滚动" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/866b0d44/&title=禁止蒙层底部页面跟随滚动" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/866b0d44/&title=禁止蒙层底部页面跟随滚动" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/866b0d44/&title=禁止蒙层底部页面跟随滚动" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">场景概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">方案分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">2.1.</span> <span class="toc-text">方案一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">2.2.</span> <span class="toc-text">方案二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">2.3.</span> <span class="toc-text">方案三</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">3.</span> <span class="toc-text">思考总结</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        禁止蒙层底部页面跟随滚动
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-31T02:30:10.000Z" itemprop="datePublished">2018-10-31</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h2 id="articleHeader0">&#x573A;&#x666F;&#x6982;&#x8FF0;</h2><p>&#x5F39;&#x7A97;&#x662F;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#xFF0C;&#x800C;&#x8499;&#x5C42;&#x662F;&#x5F39;&#x7A97;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x7528;&#x4E8E;&#x9694;&#x65AD;&#x9875;&#x9762;&#x4E0E;&#x5F39;&#x7A97;&#x533A;&#x5757;&#xFF0C;&#x6682;&#x65F6;&#x963B;&#x65AD;&#x9875;&#x9762;&#x7684;&#x4EA4;&#x4E92;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5728;&#x8499;&#x5C42;&#x5143;&#x7D20;&#x4E2D;&#x6ED1;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6ED1;&#x5230;&#x5185;&#x5BB9;&#x7684;&#x5C3D;&#x5934;&#x65F6;&#xFF0C;&#x518D;&#x7EE7;&#x7EED;&#x6ED1;&#x52A8;&#xFF0C;&#x8499;&#x5C42;&#x5E95;&#x90E8;&#x7684;&#x9875;&#x9762;&#x4F1A;&#x5F00;&#x59CB;&#x6EDA;&#x52A8;&#xFF0C;&#x663E;&#x7136;&#x8FD9;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x963B;&#x6B62;&#x8FD9;&#x79CD;&#x884C;&#x4E3A;&#x3002;</p><p>&#x90A3;&#x4E48;&#xFF0C;&#x5982;&#x4F55;&#x963B;&#x6B62;&#x5462;&#xFF1F;&#x8BF7;&#x770B;&#x4EE5;&#x4E0B;&#x5206;&#x6790;&#xFF1A;</p><h2 id="articleHeader1">&#x65B9;&#x6848;&#x5206;&#x6790;</h2><h3 id="articleHeader2">&#x65B9;&#x6848;&#x4E00;</h3><ul><li>&#x6253;&#x5F00;&#x8499;&#x5C42;&#x65F6;&#xFF0C;&#x7ED9;body&#x6DFB;&#x52A0;&#x6837;&#x5F0F;&#xFF1A;</li></ul><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="overflow: hidden;
+height: 100%;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-tag">overflow</span>: <span class="hljs-selector-tag">hidden</span>;
+<span class="hljs-selector-tag">height</span>: 100%;</code></pre><p>&#x5728;&#x67D0;&#x4E9B;&#x673A;&#x578B;&#x4E0B;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x8FD8;&#x9700;&#x8981;&#x7ED9;&#x6839;&#x8282;&#x70B9;&#x6DFB;&#x52A0;&#x6837;&#x5F0F;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="overflow: hidden;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css" style="word-break:break-word;white-space:initial"><span class="hljs-selector-tag">overflow</span>: <span class="hljs-selector-tag">hidden</span>;</code></pre><ul><li>&#x5173;&#x95ED;&#x8499;&#x5C42;&#x65F6;&#xFF0C;&#x79FB;&#x9664;&#x4EE5;&#x4E0A;&#x6837;&#x5F0F;&#x3002;</li></ul><p><strong>&#x4F18;&#x70B9;&#xFF1A;</strong><br>&#x7B80;&#x5355;&#x65B9;&#x4FBF;&#xFF0C;&#x53EA;&#x9700;&#x6DFB;&#x52A0;css&#x6837;&#x5F0F;&#xFF0C;&#x6CA1;&#x6709;&#x590D;&#x6742;&#x7684;&#x903B;&#x8F91;&#x3002;</p><p><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong><br>&#x517C;&#x5BB9;&#x6027;&#x4E0D;&#x597D;&#xFF0C;&#x9002;&#x7528;&#x4E8E;pc&#xFF0C;&#x79FB;&#x52A8;&#x7AEF;&#x5C31;&#x5C34;&#x5C2C;&#x4E86;&#x3002;<br>&#x90E8;&#x5206;&#x5B89;&#x5353;&#x673A;&#x578B;&#x4EE5;&#x53CA;safari&#x4E2D;&#xFF0C;&#x65E0;&#x6CD5;&#x65E0;&#x6CD5;&#x963B;&#x6B62;&#x5E95;&#x90E8;&#x9875;&#x9762;&#x6EDA;&#x52A8;&#x3002;</p><p>&#x5982;&#x679C;&#x9700;&#x8981;&#x5E94;&#x7528;&#x4E8E;&#x79FB;&#x52A8;&#x7AEF;&#xFF0C;&#x90A3;&#x4E48;&#x4F60;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x65B9;&#x6848;&#x4E8C;&#x3002;</p><h3 id="articleHeader3">&#x65B9;&#x6848;&#x4E8C;</h3><p>&#x5C31;&#x662F;&#x5229;&#x7528;&#x79FB;&#x52A8;&#x7AEF;&#x7684;touch&#x4E8B;&#x4EF6;&#xFF0C;&#x6765;&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#xFF08;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x9875;&#x9762;&#x6EDA;&#x52A8;&#x5C31;&#x662F;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#xFF09;&#x3002;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="// node&#x4E3A;&#x8499;&#x5C42;&#x5BB9;&#x5668;dom&#x8282;&#x70B9;
+node.addEventListener(&apos;touchstart&apos;, e =&gt; {
+  e.preventDefault()
+}, false)" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="js"><span class="hljs-comment">// node&#x4E3A;&#x8499;&#x5C42;&#x5BB9;&#x5668;dom&#x8282;&#x70B9;</span>
+node.addEventListener(<span class="hljs-string">&apos;touchstart&apos;</span>, e =&gt; {
+  e.preventDefault()
+}, <span class="hljs-literal">false</span>)</code></pre><p>&#x7B80;&#x5355;&#x7C97;&#x66B4;&#xFF0C;&#x6EDA;&#x52A8;&#x65F6;&#x5E95;&#x90E8;&#x9875;&#x9762;&#x4E5F;&#x65E0;&#x6CD5;&#x52A8;&#x5F39;&#x4E86;&#x3002;&#x5047;&#x5982;&#x4F60;&#x7684;&#x8499;&#x5C42;&#x5185;&#x5BB9;&#x4E0D;&#x4F1A;&#x6709;&#x6EDA;&#x52A8;&#x6761;&#xFF0C;&#x90A3;&#x4E48;&#x4E0A;&#x8FF0;&#x65B9;&#x6CD5;prefect&#x3002;</p><p>&#x4F46;&#x662F;&#xFF0C;&#x6700;&#x6015;&#x7A7A;&#x6C14;&#x7A81;&#x7136;&#x5B89;&#x9759;&#xFF0C;&#x5047;&#x5982;&#x8499;&#x5C42;&#x5185;&#x5BB9;&#x6709;&#x6EDA;&#x52A8;&#x6761;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x518D;&#x4E5F;&#x65E0;&#x6CD5;&#x52A8;&#x5F39;&#x4E86;&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5199;&#x4E00;&#x4E9B;js&#x903B;&#x8F91;&#x6765;&#x5224;&#x65AD;&#x8981;&#x4E0D;&#x8981;&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#xFF0C;&#x590D;&#x6742;&#x7A0B;&#x5EA6;&#x660E;&#x663E;&#x589E;&#x52A0;&#x3002;</p><p>&#x5177;&#x4F53;&#x601D;&#x8DEF;&#xFF1A;&#x5224;&#x5B9A;&#x8499;&#x5C42;&#x5185;&#x5BB9;&#x662F;&#x5426;&#x6EDA;&#x52A8;&#x5230;&#x5C3D;&#x5934;&#xFF0C;&#x662F;&#x5219;&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#xFF0C;&#x53CD;&#x4E4B;&#x4EFB;&#x5B83;&#x6A2A;&#x884C;&#x3002;</p><p><del><br>Tip&#xFF1A;&#x8FD9;&#x91CC;&#x6211;&#x53D1;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x5C0F;&#x6280;&#x5DE7;&#xFF0C;&#x53EF;&#x4EE5;&#x7701;&#x7565;&#x4E0D;&#x5C11;&#x4EE3;&#x7801;&#x3002;&#x5728;&#x4E00;&#x6B21;&#x6ED1;&#x52A8;&#x4E2D;&#xFF0C;&#x82E5;&#x8499;&#x5C42;&#x5185;&#x5BB9;&#x53EF;&#x4EE5;&#x6EDA;&#x52A8;&#xFF0C;&#x5219;&#x8499;&#x5C42;&#x5185;&#x5BB9;&#x6EDA;&#x52A8;&#xFF0C;&#x8FC7;&#x7A0B;&#x4E2D;&#x5373;&#x4F7F;&#x8499;&#x5C42;&#x5185;&#x5BB9;&#x5DF2;&#x6EDA;&#x81F3;&#x5C3D;&#x5934;&#xFF0C;&#x53EA;&#x8981;&#x4E0D;&#x677E;&#x624B;&#xFF08;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;<code>touchend</code>&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x524D;&#xFF09;&#xFF0C;&#x7EE7;&#x7EED;&#x6ED1;&#x52A8;&#x65F6;&#x9875;&#x9762;&#x5185;&#x5BB9;&#x4E0D;&#x4F1A;&#x6EDA;&#x52A8;&#xFF0C;&#x6B64;&#x65F6;&#x82E5;&#x677E;&#x624B;&#x518D;&#x7EE7;&#x7EED;&#x6EDA;&#x52A8;&#xFF0C;&#x5219;&#x9875;&#x9762;&#x5185;&#x5BB9;&#x4F1A;&#x6EDA;&#x52A8;&#x3002;&#x5229;&#x7528;&#x8FD9;&#x4E00;&#x4E2A;&#x5C0F;&#x6280;&#x5DE7;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7CBE;&#x7B80;&#x4F18;&#x5316;&#x6211;&#x4EEC;&#x7684;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x3002;<br></del></p><p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="&lt;body&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;!-- &#x8FD9;&#x91CC;&#x591A;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#xFF0C;&#x76F4;&#x81F3;&#x51FA;&#x73B0;&#x6EDA;&#x52A8;&#x6761; --&gt;
+    &lt;p&gt;&#x9875;&#x9762;&lt;/p&gt;
+    &lt;p&gt;&#x9875;&#x9762;&lt;/p&gt;
+    &lt;button class=&quot;btn&quot;&gt;&#x6253;&#x5F00;&#x8499;&#x5C42;&lt;/button&gt;
+    &lt;p&gt;&#x9875;&#x9762;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;layer&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;!-- &#x8FD9;&#x91CC;&#x591A;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#xFF0C;&#x76F4;&#x81F3;&#x51FA;&#x73B0;&#x6EDA;&#x52A8;&#x6761; --&gt;
+      &lt;p&gt;&#x8499;&#x5C42;&lt;/p&gt;
+      &lt;p&gt;&#x8499;&#x5C42;&lt;/p&gt;
+      &lt;p&gt;&#x8499;&#x5C42;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="xml hljs"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &#x8FD9;&#x91CC;&#x591A;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#xFF0C;&#x76F4;&#x81F3;&#x51FA;&#x73B0;&#x6EDA;&#x52A8;&#x6761; --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#x9875;&#x9762;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#x9875;&#x9762;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>&#x6253;&#x5F00;&#x8499;&#x5C42;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#x9875;&#x9762;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;layer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- &#x8FD9;&#x91CC;&#x591A;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#xFF0C;&#x76F4;&#x81F3;&#x51FA;&#x73B0;&#x6EDA;&#x52A8;&#x6761; --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#x8499;&#x5C42;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#x8499;&#x5C42;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#x8499;&#x5C42;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="body {
+  margin: 0;
+  padding: 20px;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  font-size: inherit;
+  border-radius: 4px;
+  padding: 1em;
+  width: 100%;
+  margin: 1em 0;
+  color: #fff;
+  background-color: #ff5777;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1001;
+  display: none;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  z-index: 2;
+  background-color: #f6f6f6;
+  overflow-y: auto;
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="css hljs"><code class="css"><span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.btn</span> {
+  <span class="hljs-attribute">border</span>: none;
+  <span class="hljs-attribute">outline</span>: none;
+  <span class="hljs-attribute">font-size</span>: inherit;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">1em</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">1em</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ff5777</span>;
+}
+
+<span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">position</span>: fixed;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1001</span>;
+  <span class="hljs-attribute">display</span>: none;
+}
+
+<span class="hljs-selector-class">.layer</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(0, 0, 0, .3);
+}
+
+<span class="hljs-selector-class">.content</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f6f6f6</span>;
+  <span class="hljs-attribute">overflow-y</span>: auto;
+}</code></pre><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="const btnNode = document.querySelector(&apos;.btn&apos;)
+const containerNode = document.querySelector(&apos;.container&apos;)
+const layerNode = document.querySelector(&apos;.layer&apos;)
+const contentNode = document.querySelector(&apos;.content&apos;)
+let startY = 0 // &#x8BB0;&#x5F55;&#x5F00;&#x59CB;&#x6ED1;&#x52A8;&#x7684;&#x5750;&#x6807;&#xFF0C;&#x7528;&#x4E8E;&#x5224;&#x65AD;&#x6ED1;&#x52A8;&#x65B9;&#x5411;
+let status = 0 // 0&#xFF1A;&#x672A;&#x5F00;&#x59CB;&#xFF0C;1&#xFF1A;&#x5DF2;&#x5F00;&#x59CB;&#xFF0C;2&#xFF1A;&#x6ED1;&#x52A8;&#x4E2D;
+
+// &#x6253;&#x5F00;&#x8499;&#x5C42;
+btnNode.addEventListener(&apos;click&apos;, () =&gt; {
+  containerNode.style.display = &apos;block&apos;
+}, false)
+
+// &#x8499;&#x5C42;&#x90E8;&#x5206;&#x59CB;&#x7EC8;&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;
+layerNode.addEventListener(&apos;touchstart&apos;, e =&gt; {
+  e.preventDefault()
+}, false)
+
+// &#x6838;&#x5FC3;&#x90E8;&#x5206;
+contentNode.addEventListener(&apos;touchstart&apos;, e =&gt; {
+  status = 1
+  startY = e.targetTouches[0].pageY
+}, false)
+
+contentNode.addEventListener(&apos;touchmove&apos;, e =&gt; {
+  // &#x5224;&#x5B9A;&#x4E00;&#x6B21;&#x5C31;&#x591F;&#x4E86;
+  if (status !== 1) return
+
+  status = 2
+
+  let t = e.target || e.srcElement
+  let py = e.targetTouches[0].pageY
+  let ch = t.clientHeight // &#x5185;&#x5BB9;&#x53EF;&#x89C6;&#x9AD8;&#x5EA6;
+  let sh = t.scrollHeight // &#x5185;&#x5BB9;&#x6EDA;&#x52A8;&#x9AD8;&#x5EA6;
+  let st = t.scrollTop // &#x5F53;&#x524D;&#x6EDA;&#x52A8;&#x9AD8;&#x5EA6;
+
+  // &#x5DF2;&#x7ECF;&#x5230;&#x5934;&#x90E8;&#x5C3D;&#x5934;&#x4E86;&#x8FD8;&#x8981;&#x5411;&#x4E0A;&#x6ED1;&#x52A8;&#xFF0C;&#x963B;&#x6B62;&#x5B83;
+  if (st === 0 &amp;&amp; startY &lt; py) {
+    e.preventDefault()
+  }
+
+  // &#x5DF2;&#x7ECF;&#x5230;&#x4F4E;&#x90E8;&#x5C3D;&#x5934;&#x4E86;&#x8FD8;&#x8981;&#x5411;&#x4E0B;&#x6ED1;&#x52A8;&#xFF0C;&#x963B;&#x6B62;&#x5B83;
+  if ((st === sh - ch) &amp;&amp; startY &gt; py) {
+    e.preventDefault()
+  }
+}, false)
+
+contentNode.addEventListener(&apos;touchend&apos;, e =&gt; {
+  status = 0
+}, false)" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="js"><span class="hljs-keyword">const</span> btnNode = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&apos;.btn&apos;</span>)
+<span class="hljs-keyword">const</span> containerNode = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&apos;.container&apos;</span>)
+<span class="hljs-keyword">const</span> layerNode = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&apos;.layer&apos;</span>)
+<span class="hljs-keyword">const</span> contentNode = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&apos;.content&apos;</span>)
+<span class="hljs-keyword">let</span> startY = <span class="hljs-number">0</span> <span class="hljs-comment">// &#x8BB0;&#x5F55;&#x5F00;&#x59CB;&#x6ED1;&#x52A8;&#x7684;&#x5750;&#x6807;&#xFF0C;&#x7528;&#x4E8E;&#x5224;&#x65AD;&#x6ED1;&#x52A8;&#x65B9;&#x5411;</span>
+<span class="hljs-keyword">let</span> status = <span class="hljs-number">0</span> <span class="hljs-comment">// 0&#xFF1A;&#x672A;&#x5F00;&#x59CB;&#xFF0C;1&#xFF1A;&#x5DF2;&#x5F00;&#x59CB;&#xFF0C;2&#xFF1A;&#x6ED1;&#x52A8;&#x4E2D;</span>
+
+<span class="hljs-comment">// &#x6253;&#x5F00;&#x8499;&#x5C42;</span>
+btnNode.addEventListener(<span class="hljs-string">&apos;click&apos;</span>, () =&gt; {
+  containerNode.style.display = <span class="hljs-string">&apos;block&apos;</span>
+}, <span class="hljs-literal">false</span>)
+
+<span class="hljs-comment">// &#x8499;&#x5C42;&#x90E8;&#x5206;&#x59CB;&#x7EC8;&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;</span>
+layerNode.addEventListener(<span class="hljs-string">&apos;touchstart&apos;</span>, e =&gt; {
+  e.preventDefault()
+}, <span class="hljs-literal">false</span>)
+
+<span class="hljs-comment">// &#x6838;&#x5FC3;&#x90E8;&#x5206;</span>
+contentNode.addEventListener(<span class="hljs-string">&apos;touchstart&apos;</span>, e =&gt; {
+  status = <span class="hljs-number">1</span>
+  startY = e.targetTouches[<span class="hljs-number">0</span>].pageY
+}, <span class="hljs-literal">false</span>)
+
+contentNode.addEventListener(<span class="hljs-string">&apos;touchmove&apos;</span>, e =&gt; {
+  <span class="hljs-comment">// &#x5224;&#x5B9A;&#x4E00;&#x6B21;&#x5C31;&#x591F;&#x4E86;</span>
+  <span class="hljs-keyword">if</span> (status !== <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
+
+  status = <span class="hljs-number">2</span>
+
+  <span class="hljs-keyword">let</span> t = e.target || e.srcElement
+  <span class="hljs-keyword">let</span> py = e.targetTouches[<span class="hljs-number">0</span>].pageY
+  <span class="hljs-keyword">let</span> ch = t.clientHeight <span class="hljs-comment">// &#x5185;&#x5BB9;&#x53EF;&#x89C6;&#x9AD8;&#x5EA6;</span>
+  <span class="hljs-keyword">let</span> sh = t.scrollHeight <span class="hljs-comment">// &#x5185;&#x5BB9;&#x6EDA;&#x52A8;&#x9AD8;&#x5EA6;</span>
+  <span class="hljs-keyword">let</span> st = t.scrollTop <span class="hljs-comment">// &#x5F53;&#x524D;&#x6EDA;&#x52A8;&#x9AD8;&#x5EA6;</span>
+
+  <span class="hljs-comment">// &#x5DF2;&#x7ECF;&#x5230;&#x5934;&#x90E8;&#x5C3D;&#x5934;&#x4E86;&#x8FD8;&#x8981;&#x5411;&#x4E0A;&#x6ED1;&#x52A8;&#xFF0C;&#x963B;&#x6B62;&#x5B83;</span>
+  <span class="hljs-keyword">if</span> (st === <span class="hljs-number">0</span> &amp;&amp; startY &lt; py) {
+    e.preventDefault()
+  }
+
+  <span class="hljs-comment">// &#x5DF2;&#x7ECF;&#x5230;&#x4F4E;&#x90E8;&#x5C3D;&#x5934;&#x4E86;&#x8FD8;&#x8981;&#x5411;&#x4E0B;&#x6ED1;&#x52A8;&#xFF0C;&#x963B;&#x6B62;&#x5B83;</span>
+  <span class="hljs-keyword">if</span> ((st === sh - ch) &amp;&amp; startY &gt; py) {
+    e.preventDefault()
+  }
+}, <span class="hljs-literal">false</span>)
+
+contentNode.addEventListener(<span class="hljs-string">&apos;touchend&apos;</span>, e =&gt; {
+  status = <span class="hljs-number">0</span>
+}, <span class="hljs-literal">false</span>)</code></pre><p>&#x95EE;&#x9898;&#x867D;&#x7136;&#x662F;&#x89E3;&#x51B3;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x56DE;&#x5934;&#x6765;&#x770B;&#xFF0C;&#x590D;&#x6742;&#x7A0B;&#x5EA6;&#x548C;&#x4EE3;&#x7801;&#x91CF;&#x660E;&#x663E;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x68AF;&#x5EA6;&#x3002;<br>&#x672C;&#x7740;&#x7B80;&#x5355;&#x65B9;&#x4FBF;&#x7684;&#x539F;&#x5219;&#xFF0C;&#x6211;&#x4EEC;&#x662F;&#x4E0D;&#x662F;&#x8FD8;&#x53EF;&#x4EE5;&#x63A2;&#x7D22;&#x5176;&#x4ED6;&#x7684;&#x65B9;&#x6848;&#x5462;&#xFF1F;</p><p>&#x65E2;&#x7136;touch&#x4E8B;&#x4EF6;&#x5224;&#x5B9A;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#xFF0C;&#x4F55;&#x4E0D;&#x8DF3;&#x51FA;&#x8FD9;&#x4E2A;&#x6846;&#x6846;&#xFF0C;&#x53E6;&#x8F9F;&#x8E4A;&#x5F84;&#xFF0C;&#x63A2;&#x7D22;&#x66F4;&#x52A0;&#x5408;&#x9002;&#x7684;&#x65B9;&#x6848;&#x3002;<br>&#x4E8E;&#x662F;&#xFF0C;&#x4FBF;&#x6709;&#x4E86;&#x6211;&#x4EEC;&#x7684;&#x65B9;&#x6848;&#x4E09;&#x3002;</p><h3 id="articleHeader4">&#x65B9;&#x6848;&#x4E09;</h3><p>&#x6765;&#x8BB2;&#x8BB2;&#x6211;&#x7684;&#x601D;&#x8DEF;&#xFF0C;&#x65E2;&#x7136;&#x6211;&#x4EEC;&#x8981;&#x963B;&#x6B62;&#x9875;&#x9762;&#x6EDA;&#x52A8;&#xFF0C;&#x90A3;&#x4E48;&#x4F55;&#x4E0D;&#x5C06;&#x5176;&#x56FA;&#x5B9A;&#x5728;&#x89C6;&#x7A97;&#xFF08;&#x5373;<code>position: fixed</code>&#xFF09;&#xFF0C;&#x8FD9;&#x6837;&#x5B83;&#x5C31;&#x65E0;&#x6CD5;&#x6EDA;&#x52A8;&#x4E86;&#xFF0C;&#x5F53;&#x8499;&#x5C42;&#x5173;&#x95ED;&#x65F6;&#x518D;&#x91CA;&#x653E;&#x3002;<br>&#x5F53;&#x7136;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x7EC6;&#x8282;&#x8981;&#x8003;&#x8651;&#xFF0C;&#x5C06;&#x9875;&#x9762;&#x56FA;&#x5B9A;&#x89C6;&#x7A97;&#x540E;&#xFF0C;&#x5185;&#x5BB9;&#x4F1A;&#x56DE;&#x5934;&#x6700;&#x9876;&#x7AEF;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#xFF0C;&#x540C;&#x6B65;top&#x503C;&#x3002;</p><p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="let bodyEl = document.body
+let top = 0
+
+function stopBodyScroll (isFixed) {
+  if (isFixed) {
+    top = window.scrollY
+
+    bodyEl.style.position = &apos;fixed&apos;
+    bodyEl.style.top = -top + &apos;px&apos;
+  } else {
+    bodyEl.style.position = &apos;&apos;
+    bodyEl.style.top = &apos;&apos;
+
+    window.scrollTo(0, top) // &#x56DE;&#x5230;&#x539F;&#x5148;&#x7684;top
+  }
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="js"><span class="hljs-keyword">let</span> bodyEl = <span class="hljs-built_in">document</span>.body
+<span class="hljs-keyword">let</span> top = <span class="hljs-number">0</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">stopBodyScroll</span> (<span class="hljs-params">isFixed</span>) </span>{
+  <span class="hljs-keyword">if</span> (isFixed) {
+    top = <span class="hljs-built_in">window</span>.scrollY
+
+    bodyEl.style.position = <span class="hljs-string">&apos;fixed&apos;</span>
+    bodyEl.style.top = -top + <span class="hljs-string">&apos;px&apos;</span>
+  } <span class="hljs-keyword">else</span> {
+    bodyEl.style.position = <span class="hljs-string">&apos;&apos;</span>
+    bodyEl.style.top = <span class="hljs-string">&apos;&apos;</span>
+
+    <span class="hljs-built_in">window</span>.scrollTo(<span class="hljs-number">0</span>, top) <span class="hljs-comment">// &#x56DE;&#x5230;&#x539F;&#x5148;&#x7684;top</span>
+  }
+}</code></pre><h2 id="articleHeader5">&#x601D;&#x8003;&#x603B;&#x7ED3;</h2><ul><li>&#x82E5;&#x5E94;&#x7528;&#x573A;&#x666F;&#x662F;pc&#xFF0C;&#x63A8;&#x8350;&#x65B9;&#x6848;&#x4E00;&#xFF0C;&#x771F;&#x7684;&#x662F;&#x4E0D;&#x8981;&#x592A;&#x65B9;&#x4FBF;</li><li>&#x82E5;&#x5E94;&#x7528;&#x573A;&#x666F;&#x662F;h5&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x65B9;&#x6848;&#x4E8C;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x5EFA;&#x8BAE;&#x4F60;&#x91C7;&#x7528;&#x65B9;&#x6848;&#x4E09;</li><li>&#x82E5;&#x5E94;&#x7528;&#x573A;&#x666F;&#x662F;&#x5168;&#x5E73;&#x53F0;&#xFF0C;&#x90A3;&#x4E48;&#x65B9;&#x6848;&#x4E09;&#x4F60;&#x4E0D;&#x5BB9;&#x9519;&#x8FC7;</li></ul><p>&#x672C;&#x6587;&#x5230;&#x8FD9;&#x91CC;&#x4E5F;&#x5373;&#x5C06;&#x7ED3;&#x675F;&#x4E86;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x5F3A;&#x70C8;&#x63A8;&#x8350;&#x4E00;&#x4E0B;&#x65B9;&#x6848;&#x4E09;&#xFF0C;&#x539F;&#x56E0;&#x5728;&#x4E8E;&#x7B80;&#x5355;&#x3001;&#x65B9;&#x4FBF;&#x3001;&#x517C;&#x5BB9;&#x6027;&#x597D;&#xFF0C;&#x4E00;&#x6B21;&#x5C01;&#x88C5;&#xFF0C;&#x6C38;&#x4E45;&#x53D7;&#x7528;&#x3002;</p>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>禁止蒙层底部页面跟随滚动</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000012313337" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000012313337</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/866b0d44/">https://alili.tech/archive/866b0d44/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">场景概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">方案分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">2.1.</span> <span class="toc-text">方案一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader3"><span class="toc-number">2.2.</span> <span class="toc-text">方案二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">2.3.</span> <span class="toc-text">方案三</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">3.</span> <span class="toc-text">思考总结</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

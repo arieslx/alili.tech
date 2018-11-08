@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="项目加入ESLint之后,大家的代码是工整了许多.但是因为刚刚不熟悉ESLint的规则,很多时候都在数进退多少空格,双引号还是单引号的删改切换. 严重影响了开发效率与心情!!!!严重影响了开发效率与心情!!!!严重影响了开发效率与心情!!!! 重要的事情说三遍!!! 下面介绍一种利用Visual Studio Code ESLint插件,配置之后,可以自动格式化成ESLint规定的格式  在Vis">
+<meta name="keywords" content="react,脚手架,mobx,装饰器,observable,ESLint">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让Visual Studio Code按照ESLint规则格式化你的代码">
+<meta property="og:url" content="https://alili.tech/archive/153fb3f5/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="项目加入ESLint之后,大家的代码是工整了许多.但是因为刚刚不熟悉ESLint的规则,很多时候都在数进退多少空格,双引号还是单引号的删改切换. 严重影响了开发效率与心情!!!!严重影响了开发效率与心情!!!!严重影响了开发效率与心情!!!! 重要的事情说三遍!!! 下面介绍一种利用Visual Studio Code ESLint插件,配置之后,可以自动格式化成ESLint规定的格式  在Vis">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="让Visual Studio Code按照ESLint规则格式化你的代码">
+<meta name="twitter:description" content="项目加入ESLint之后,大家的代码是工整了许多.但是因为刚刚不熟悉ESLint的规则,很多时候都在数进退多少空格,双引号还是单引号的删改切换. 严重影响了开发效率与心情!!!!严重影响了开发效率与心情!!!!严重影响了开发效率与心情!!!! 重要的事情说三遍!!! 下面介绍一种利用Visual Studio Code ESLint插件,配置之后,可以自动格式化成ESLint规定的格式  在Vis">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>让Visual Studio Code按照ESLint规则格式化你的代码 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/153fb3f5/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/153fb3f5/",
+      "appid": "1613049289050283", 
+      "title": "让Visual Studio Code按照ESLint规则格式化你的代码 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:05"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/1b9974b0/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/b3d50314/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/153fb3f5/&text=让Visual Studio Code按照ESLint规则格式化你的代码" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/153fb3f5/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/153fb3f5/&text=让Visual Studio Code按照ESLint规则格式化你的代码" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/153fb3f5/&title=让Visual Studio Code按照ESLint规则格式化你的代码" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/153fb3f5/&is_video=false&description=让Visual Studio Code按照ESLint规则格式化你的代码" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=让Visual Studio Code按照ESLint规则格式化你的代码&body=Check out this article: https://alili.tech/archive/153fb3f5/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/153fb3f5/&title=让Visual Studio Code按照ESLint规则格式化你的代码" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/153fb3f5/&title=让Visual Studio Code按照ESLint规则格式化你的代码" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/153fb3f5/&title=让Visual Studio Code按照ESLint规则格式化你的代码" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/153fb3f5/&title=让Visual Studio Code按照ESLint规则格式化你的代码" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        让Visual Studio Code按照ESLint规则格式化你的代码
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2017-11-05T19:33:33.000Z" itemprop="datePublished">2017-11-05</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/React/">React</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>项目加入ESLint之后,大家的代码是工整了许多.<br>但是因为刚刚不熟悉ESLint的规则,很多时候都在数进退多少空格,双引号还是单引号的删改切换.</p>
+<p>严重影响了开发效率与心情!!!!<br>严重影响了开发效率与心情!!!!<br>严重影响了开发效率与心情!!!!</p>
+<p>重要的事情说三遍!!!</p>
+<p>下面介绍一种利用Visual Studio Code ESLint插件,配置之后,可以自动格式化成ESLint规定的格式</p>
+<ol>
+<li>在Visual Studio Code 安装 ESLint插件</li>
+<li>widnows 点击 文件&gt;首选项&gt;设置 / mac 点击Code&gt;首选项</li>
+<li>搜索 eslint.autoFixOnSave, 找到之后修改为 true</li>
+</ol>
+<p>重启你的Visual Studio Code,当你打开代码文件的后,直接保存文件.<br>代码会自动格式化成ESLint规定的格式.大大的提高了开发效率,并且统一了代码规范</p>
+<p>下面分享一下我们项目里的一些ESLint规则</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  rules: &#123; // 具体规则</span><br><span class="line">    'accessor-pairs': 2, // getter/setter成对出现</span><br><span class="line">    'arrow-spacing': [1, &#123; 'before': true, 'after': true &#125;], // 箭头函数前后有空格</span><br><span class="line">    'array-bracket-spacing': [1, 'never'], // 数组内前后无空格</span><br><span class="line">    'block-spacing': [1, 'always'], // 单行&#123;&#125;前后有空格</span><br><span class="line">    'brace-style': [2, '1tbs', &#123; 'allowSingleLine': true &#125;], // &#123;&#125;换行，单行不用</span><br><span class="line">    'camelcase': [2, &#123; 'properties': 'never' &#125;], // 属性名可以不是驼峰</span><br><span class="line">    'comma-dangle': [1, 'only-multiline'], // 数组/对象最后一个必须有,</span><br><span class="line">    'comma-spacing': [1, &#123; 'before': false, 'after': true &#125;], // ,前有空格, 后无空格</span><br><span class="line">    'comma-style': [2, 'last'], // ,在最后，不能换行</span><br><span class="line">    'constructor-super': 1, // super()在必须构造函数内</span><br><span class="line">    'curly': [2, 'multi-line'], // if/while等函数可以多行不带&#123;&#125;</span><br><span class="line">    'dot-location': [2, 'property'], // .的位置可以在换行</span><br><span class="line">    'eol-last': 1, // 文件末尾需要空白行</span><br><span class="line">    'eqeqeq': [2, 'allow-null'], // 必须===, null除外</span><br><span class="line">    'generator-star-spacing': [2, &#123; 'before': true, 'after': true &#125;], // generator函数前后有空格</span><br><span class="line">    'handle-callback-err': [2, '^(err|error)$' ], // 有err/error必须处理异常</span><br><span class="line">    'indent': [2, 2, &#123; 'SwitchCase': 1 &#125;], // 缩进2格，switch中1格</span><br><span class="line">    'jsx-quotes': [2, 'prefer-single'], // jsx属性用单引号</span><br><span class="line">    'key-spacing': [2, &#123; 'beforeColon': false, 'afterColon': true &#125;], // 对象属性前有空格, 后无空格</span><br><span class="line">    'keyword-spacing': [2, &#123; 'before': true, 'after': true &#125;], // 关键词前后有空格, 如if-else</span><br><span class="line">    'new-cap': [2, &#123; 'newIsCap': true, 'capIsNew': false &#125;], // new后必须大写开头构造函数, 大写开头不一定要new</span><br><span class="line">    'new-parens': 2, // new的构造函数必须带参数</span><br><span class="line">    'object-curly-spacing': [2, 'always', &#123; objectsInObjects: false &#125;], // 对象&#123;&#125;前后有空格, 对象内的对象例外</span><br><span class="line">    'no-array-constructor': 2, // Array(10)-&gt;yes, Array(1, 2)-&gt;no</span><br><span class="line">    'no-caller': 2, // 禁止caller/callee</span><br><span class="line">    'no-class-assign': 2, // 禁止赋值class</span><br><span class="line">    'no-cond-assign': 2, // 条件不能有赋值</span><br><span class="line">    'no-const-assign': 2, // 禁止赋值常量(const)</span><br><span class="line">    'no-control-regex': 2, // reg中不能有控制符号</span><br><span class="line">    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 1, // node环境prod禁用</span><br><span class="line">    'no-delete-var': 2, // 不能delete变量，可以用在对象</span><br><span class="line">    'no-dupe-args': 2, // 参数不能重复</span><br><span class="line">    'no-dupe-class-members': 2, // class中方法不能有重复</span><br><span class="line">    'no-dupe-keys': 2, // 对象key不能重复</span><br><span class="line">    'no-duplicate-case': 2, // switch不能有重复case</span><br><span class="line">    'no-empty-character-class': 2, // reg中不能有空字符串</span><br><span class="line">    'no-empty-pattern': 2, // 解构不能有空解构模式</span><br><span class="line">    'no-eval': 2, // 不能用eval</span><br><span class="line">    'no-ex-assign': 2, // 不能复制catch中的error</span><br><span class="line">    'no-extend-native': 2, // 不能扩展Object原型</span><br><span class="line">    'no-extra-bind': 2, // bind的函数体中要有明确的this</span><br><span class="line">    'no-extra-boolean-cast': 2, // 禁止多余的Boolean转换</span><br><span class="line">    'no-extra-parens': [2, 'functions'], // 函数中禁止多余的括号</span><br><span class="line">    'no-fallthrough': 2, // switch需要break</span><br><span class="line">    'no-floating-decimal': 2, // float中0不能省略</span><br><span class="line">    'no-func-assign': 2, // 禁止赋值函数</span><br><span class="line">    'no-implied-eval': 2, // 禁止隐性eval</span><br><span class="line">    'no-inner-declarations': [2, 'functions'], // 禁止在条件中声明function</span><br><span class="line">    'no-invalid-regexp': 2, // 禁止无用的reg</span><br><span class="line">    'no-irregular-whitespace': 2, // 禁止不规则空格</span><br><span class="line">    'no-iterator': 2, // 禁止使用__iterator__属性</span><br><span class="line">    'no-label-var': 2, // 禁止label var</span><br><span class="line">    'no-labels': [2, &#123; 'allowLoop': false, 'allowSwitch': false &#125;], // 禁止label表达式</span><br><span class="line">    'no-lone-blocks': 2, // 禁止无用的&#123;&#125;</span><br><span class="line">    'no-mixed-spaces-and-tabs': 2, // space和tab不混用</span><br><span class="line">    'no-multi-spaces': 2, // 禁止多空格</span><br><span class="line">    'no-multi-str': 2, // 禁止多行的string</span><br><span class="line">    'no-multiple-empty-lines': [2, &#123; 'max': 1 &#125;], // 禁止多空行，最大1行</span><br><span class="line">    'no-native-reassign': 2, // 禁止赋值原生对象(window/Object...)</span><br><span class="line">    'no-negated-in-lhs': 2, // !(key in object)-&gt;yes, !key in object-&gt;no</span><br><span class="line">    'no-new-object': 2, // new Object()-&gt;no</span><br><span class="line">    'no-new-require': 2, // new require(xxx)-&gt;no</span><br><span class="line">    'no-new-symbol': 2, // new Symbol(xxx)-&gt;no</span><br><span class="line">    'no-new-wrappers': 2, // String/Number等不能用new</span><br><span class="line">    'no-obj-calls': 2, // 禁止calling全局对象属性，如Math/JSON</span><br><span class="line">    'no-octal': 2, // 禁止八进制文字</span><br><span class="line">    'no-octal-escape': 2, // 禁止八进制转义</span><br><span class="line">    'no-path-concat': 2, // __dirname和__filename禁止string拼接</span><br><span class="line">    'no-proto': 2, // 禁止使用__proto__</span><br><span class="line">    'no-redeclare': 2, // 禁止重新复制var</span><br><span class="line">    'no-regex-spaces': 2, // 禁止reg出现多个空格</span><br><span class="line">    'no-return-assign': [2, 'except-parens'], // 禁止return中赋值</span><br><span class="line">    'no-self-assign': 2, // 禁止自身赋值</span><br><span class="line">    'no-self-compare': 2, // 禁止自身比较, 如果NaN-&gt;Number.isNaN</span><br><span class="line">    'no-sequences': 2, // 禁止,操作符</span><br><span class="line">    'no-shadow-restricted-names': 2, // 禁止跟踪严格模式下部分关键词</span><br><span class="line">    'no-spaced-func': 2, // function的()不要空格</span><br><span class="line">    'no-sparse-arrays': 2, // array不能用空元素</span><br><span class="line">    'no-this-before-super': 2, // super()前不能用this</span><br><span class="line">    'no-throw-literal': 2, // 禁止直接throw内容，必须是Error()</span><br><span class="line">    'no-trailing-spaces': 1, // 禁止多余的空格</span><br><span class="line">    'no-undef': 2, // 禁止使用未赋值变量</span><br><span class="line">    'no-undef-init': 2, // 变量不能初始化为undefined</span><br><span class="line">    'no-unexpected-multiline': 2, // 禁止有疑义的多行表达式</span><br><span class="line">    'no-unmodified-loop-condition': 2, // 循环中的变量要在循环中修改</span><br><span class="line">    'no-unneeded-ternary': [2, &#123; 'defaultAssignment': false &#125;], // 禁止不必要的三元操作符</span><br><span class="line">    'no-unreachable': 2, // return/throw等之后不应有表达式</span><br><span class="line">    'no-unsafe-finally': 2, // 禁止不安全的finally</span><br><span class="line">    'no-unused-vars': [1, &#123; 'vars': 'all', 'args': 'none' &#125;], // 禁止不使用的变量，参数可以</span><br><span class="line">    'no-useless-call': 2, // 禁止无用的call</span><br><span class="line">    'no-useless-computed-key': 2, // 禁止无用的计算属性</span><br><span class="line">    'no-useless-constructor': 2, // 禁止无用的constructor</span><br><span class="line">    'no-whitespace-before-property': 2, // 属性前不能有空格</span><br><span class="line">    'no-with': 2, // 禁用with</span><br><span class="line">    'one-var': [2, &#123; 'initialized': 'never' &#125;], // 只能一个var, 初始化不检查</span><br><span class="line">    'operator-linebreak': [2, 'after', &#123; 'overrides': &#123; '?': 'before', ':': 'before' &#125; &#125;], // 操作符换行, 默认在行末, ?和:在下一行前</span><br><span class="line">    'padded-blocks': [2, 'never'], // 作用域中没有padded的空行</span><br><span class="line">    'quotes': [2, 'single', &#123; 'avoidEscape': true, 'allowTemplateLiterals': true &#125;], // 使用单引号, 转义或者模版可以例外</span><br><span class="line">    'semi': [2, 'never'], // 禁用结尾;</span><br><span class="line">    'semi-spacing': [2, &#123; 'before': false, 'after': true &#125;], // ;前有空格, 后无空格</span><br><span class="line">    'space-before-blocks': [2, 'always'], // 作用域前有空格</span><br><span class="line">    'space-in-parens': [2, 'never'], // 括号内无空格</span><br><span class="line">    'space-infix-ops': 2, // 插入的操作符需要空格, 如+/-</span><br><span class="line">    'space-unary-ops': [2, &#123; 'words': true, 'nonwords': false &#125;], // 操作符单词类要空格(new/delete), 非单词不要空格(++/--/!)</span><br><span class="line">    'spaced-comment': [2, 'always', &#123; 'markers': ['!', ',', '/', '-'] &#125;], // 注释要空格，markers为例外</span><br><span class="line">    'template-curly-spacing': [2, 'never'], // 模版字符串中变量无空格</span><br><span class="line">    'use-isnan': 2, // 使用isNaN</span><br><span class="line">    'valid-typeof': 2, // typeof的字符串必须正确</span><br><span class="line">    'wrap-iife': [2, 'any'], // 立即调用的function必须有括号</span><br><span class="line">    'yield-star-spacing': [2, 'both'], // yield的*前后有空格</span><br><span class="line">    'yoda': [2, 'never'], // 条件中变量在前</span><br><span class="line">    'prefer-const': 0, // 能用const场景用const</span><br><span class="line">    'no-useless-escape': 0, // 不检查escape</span><br><span class="line">    'space-before-function-paren': 0, // 函数括号无空格</span><br><span class="line">    "react/jsx-uses-react": "error",</span><br><span class="line">    "react/jsx-uses-vars": "error",</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/153fb3f5/">https://alili.tech/archive/153fb3f5/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/10fba257/">React系列之JSX</a></li><li><a href="https://alili.tech/archive/7a6daf6e/">React系列之从一个脚手架开始说起:create-react-app</a></li><li><a href="https://alili.tech/archive/b4301d9b/">React系列之分享一个自适应高的iframe组件</a></li><li><a href="https://alili.tech/archive/7aed82f9/">React系列之父组件如何传递Props给this.props.children</a></li><li><a href="https://alili.tech/archive/bb62bab9/">React系列之用create-react-native-app创建React Native应用</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

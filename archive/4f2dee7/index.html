@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x5B9E;&amp;#x73B0;&amp;#x624B;&amp;#x673A;&amp;#x62CD;&amp;#x7167;&amp;#x529F;&amp;#x80FD;&amp;#xFF0C;&amp;#x7EAF;JS&amp;#x4E66;&amp;#x5199;First&amp;#xFF1A;&amp;#x5148;&amp;#x4E0A;&amp;#x56FE;&amp;#x4E3A;&amp;#x4E3B;&amp;#xFF0C;&amp;#x518D;&amp;#x505A;&amp;#x8BE6;&amp;#x7EC6;&amp;#x8BB2;&amp;">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手教你如何实现拍照功能">
+<meta property="og:url" content="https://alili.tech/archive/4f2dee7/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x5B9E;&amp;#x73B0;&amp;#x624B;&amp;#x673A;&amp;#x62CD;&amp;#x7167;&amp;#x529F;&amp;#x80FD;&amp;#xFF0C;&amp;#x7EAF;JS&amp;#x4E66;&amp;#x5199;First&amp;#xFF1A;&amp;#x5148;&amp;#x4E0A;&amp;#x56FE;&amp;#x4E3A;&amp;#x4E3B;&amp;#xFF0C;&amp;#x518D;&amp;#x505A;&amp;#x8BE6;&amp;#x7EC6;&amp;#x8BB2;&amp;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/bVbhiWd?w=498&h=230">
+<meta property="og:image" content="https://static.alili.tech/img/bVbhiYa?w=1022&h=226">
+<meta property="og:image" content="https://static.alili.tech/img/bVbhi37?w=542&h=226">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.591Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手把手教你如何实现拍照功能">
+<meta name="twitter:description" content="&amp;#x5B9E;&amp;#x73B0;&amp;#x624B;&amp;#x673A;&amp;#x62CD;&amp;#x7167;&amp;#x529F;&amp;#x80FD;&amp;#xFF0C;&amp;#x7EAF;JS&amp;#x4E66;&amp;#x5199;First&amp;#xFF1A;&amp;#x5148;&amp;#x4E0A;&amp;#x56FE;&amp;#x4E3A;&amp;#x4E3B;&amp;#xFF0C;&amp;#x518D;&amp;#x505A;&amp;#x8BE6;&amp;#x7EC6;&amp;#x8BB2;&amp;">
+<meta name="twitter:image" content="https://static.alili.tech/img/bVbhiWd?w=498&h=230">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>手把手教你如何实现拍照功能 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/4f2dee7/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/4f2dee7/",
+      "appid": "1613049289050283", 
+      "title": "手把手教你如何实现拍照功能 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:44"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/96d52e8f/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/5e3e3550/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/4f2dee7/&text=手把手教你如何实现拍照功能" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/4f2dee7/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/4f2dee7/&text=手把手教你如何实现拍照功能" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/4f2dee7/&title=手把手教你如何实现拍照功能" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/4f2dee7/&is_video=false&description=手把手教你如何实现拍照功能" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=手把手教你如何实现拍照功能&body=Check out this article: https://alili.tech/archive/4f2dee7/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/4f2dee7/&title=手把手教你如何实现拍照功能" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/4f2dee7/&title=手把手教你如何实现拍照功能" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/4f2dee7/&title=手把手教你如何实现拍照功能" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/4f2dee7/&title=手把手教你如何实现拍照功能" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">实现手机拍照功能，纯JS书写</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        手把手教你如何实现拍照功能
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-08T02:30:08.000Z" itemprop="datePublished">2018-11-08</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h2 id="articleHeader0">&#x5B9E;&#x73B0;&#x624B;&#x673A;&#x62CD;&#x7167;&#x529F;&#x80FD;&#xFF0C;&#x7EAF;JS&#x4E66;&#x5199;</h2><p><strong>First&#xFF1A;</strong></p><ol><li>&#x5148;&#x4E0A;&#x56FE;&#x4E3A;&#x4E3B;&#xFF0C;&#x518D;&#x505A;&#x8BE6;&#x7EC6;&#x8BB2;&#x89E3;&#xFF1A;</li></ol><p><span class="img-wrap"><img data-src="/img/bVbhiWd?w=498&amp;h=230" src="https://static.alili.tech/img/bVbhiWd?w=498&amp;h=230" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><blockquote>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x8FD9;&#x91CC;&#x7684;&#x6444;&#x50CF;&#x5934;&#x662F;&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x53EB;&#x505A;Navigator&#x5C5E;&#x6027;&#x5728;JS&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x65F6;&#x6253;&#x5F00;&#x9875;&#x9762;&#x81EA;&#x52A8;&#x5F00;&#x542F;</blockquote><p><em>&#x4E0D;&#x660E;&#x767D;&#xFF1F;&#x76F4;&#x63A5;&#x4E0A;&#x4EE3;&#x7801;&#xFF01;</em></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=" // HTML 5&#xA0; &#x7684;getUserMedia API&#x63D0;&#x4F9B;&#x4E86;&#x8BBF;&#x95EE;&#x5A92;&#x4F53;&#x7684;&#x80FD;&#x529B;, &#x57FA;&#x4E8E;&#x8BE5;&#x7279;&#x6027;, &#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x4E0D;&#x4F9D;&#x8D56;&#x4EFB;&#x4F55;&#x6D4F;&#x89C8;&#x5668;&#x63D2;&#x4EF6;&#x4E0B;&#x53BB;&#x8BBF;&#x95EE;&#x89C6;&#x9891;&#x548C;&#x97F3;&#x9891;&#x7B49;&#x8BBE;&#x5907;.&#x5982;navigator.mediaDevices.getUserMedia
+        //&#x4E0D;&#x540C;&#x6D4F;&#x89C8;&#x5668;&#x7684;api&#xFF1A;
+
+        //&#x8BBF;&#x95EE;&#x7528;&#x6237;&#x5A92;&#x4F53;&#x8BBE;&#x5907;&#x7684;&#x517C;&#x5BB9;&#x65B9;&#x6CD5;
+        function getUserMedia(constraints, success, error) {
+            if (navigator.mediaDevices.getUserMedia) {
+                //&#x6700;&#x65B0;&#x7684;&#x6807;&#x51C6;API
+                navigator.mediaDevices.getUserMedia(constraints).then(success).catch(error);
+            } else if (navigator.webkitGetUserMedia) {
+                //webkit&#x6838;&#x5FC3;&#x6D4F;&#x89C8;&#x5668;
+                navigator.webkitGetUserMedia(constraints, success, error)
+            } else if (navigator.mozGetUserMedia) {
+                //firfox&#x6D4F;&#x89C8;&#x5668;
+                navigator.mozGetUserMedia(constraints, success, error);
+            } else if (navigator.getUserMedia) {
+                //&#x65E7;&#x7248;API
+                navigator.getUserMedia(constraints, success, error);
+            }
+        }
+        if (navigator.mediaDevices || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.getUserMedia) {
+            getUserMedia({
+                video: true,
+                audio: true,
+            }, (stream) =&gt; {
+                console.log(stream)
+            }, (err) =&gt; {
+                console.log(err)
+            })
+        }" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs scilab"><code> <span class="hljs-comment">// HTML 5&#xA0; &#x7684;getUserMedia API&#x63D0;&#x4F9B;&#x4E86;&#x8BBF;&#x95EE;&#x5A92;&#x4F53;&#x7684;&#x80FD;&#x529B;, &#x57FA;&#x4E8E;&#x8BE5;&#x7279;&#x6027;, &#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x4E0D;&#x4F9D;&#x8D56;&#x4EFB;&#x4F55;&#x6D4F;&#x89C8;&#x5668;&#x63D2;&#x4EF6;&#x4E0B;&#x53BB;&#x8BBF;&#x95EE;&#x89C6;&#x9891;&#x548C;&#x97F3;&#x9891;&#x7B49;&#x8BBE;&#x5907;.&#x5982;navigator.mediaDevices.getUserMedia</span>
+        <span class="hljs-comment">//&#x4E0D;&#x540C;&#x6D4F;&#x89C8;&#x5668;&#x7684;api&#xFF1A;</span>
+
+        <span class="hljs-comment">//&#x8BBF;&#x95EE;&#x7528;&#x6237;&#x5A92;&#x4F53;&#x8BBE;&#x5907;&#x7684;&#x517C;&#x5BB9;&#x65B9;&#x6CD5;</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUserMedia</span><span class="hljs-params">(constraints, success, error)</span> {</span>
+            <span class="hljs-keyword">if</span> (navigator.mediaDevices.getUserMedia) {
+                <span class="hljs-comment">//&#x6700;&#x65B0;&#x7684;&#x6807;&#x51C6;API</span>
+                navigator.mediaDevices.getUserMedia(constraints).<span class="hljs-keyword">then</span>(success).<span class="hljs-keyword">catch</span>(<span class="hljs-built_in">error</span>);
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (navigator.webkitGetUserMedia) {
+                <span class="hljs-comment">//webkit&#x6838;&#x5FC3;&#x6D4F;&#x89C8;&#x5668;</span>
+                navigator.webkitGetUserMedia(constraints, success, <span class="hljs-built_in">error</span>)
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (navigator.mozGetUserMedia) {
+                <span class="hljs-comment">//firfox&#x6D4F;&#x89C8;&#x5668;</span>
+                navigator.mozGetUserMedia(constraints, success, <span class="hljs-built_in">error</span>);
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (navigator.getUserMedia) {
+                <span class="hljs-comment">//&#x65E7;&#x7248;API</span>
+                navigator.getUserMedia(constraints, success, <span class="hljs-built_in">error</span>);
+            }
+        }
+        <span class="hljs-keyword">if</span> (navigator.mediaDevices || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.getUserMedia) {
+            getUserMedia({
+                video: true,
+                audio: true,
+            }, (stream) =&gt; {
+                console.<span class="hljs-built_in">log</span>(stream)
+            }, (err) =&gt; {
+                console.<span class="hljs-built_in">log</span>(err)
+            })
+        }</code></pre><blockquote>&#x4EE5;&#x4E0A;&#x5C31;&#x662F;&#x4EE3;&#x7801;&#x7684;&#x5177;&#x4F53;&#x5448;&#x73B0;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x5DF2;&#x52A0;&#x5165;&#x529F;&#x80FD;&#x6CE8;&#x91CA;&#xFF0C;&#x5F88;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x4E0D;&#x7406;&#x89E3;&#x53EA;&#x80FD;&#x53BB;&#x5148;&#x4E86;&#x89E3;&#x4E0B;navigator&#x5C5E;&#x6027;&#x4E86;<br>1.&#x4EE3;&#x7801;&#x7684;&#x524D;&#x534A;&#x6BB5;getUserMedia&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x517C;&#x5BB9;&#xFF0C;&#x5F88;&#x597D;&#x7406;&#x89E3;&#x56E0;&#x4E3A;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x5728;&#x5F88;&#x591A;&#x6D4F;&#x89C8;&#x5668;&#x662F;&#x65E0;&#x5DEE;&#x522B;&#x8FD0;&#x884C;<br>2.&#x4EE3;&#x7801;&#x7684;&#x7B2C;&#x4E8C;&#x90E8;&#x5206;IF&#x8BED;&#x53E5;&#x4E2D;&#x5219;&#x662F;&#x4E3A;&#x4E86;&#x8C03;&#x7528;getUserMedia&#x51FD;&#x6570;&#x5E76;&#x4E14;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x52A0;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5176;&#x4E2D;&#x5BF9;&#x8C61;&#x7684;&#x8BDD;&#x5C31;&#x662F;&#x5A92;&#x4F53;&#x6807;&#x7B7E; video&#x548C;audio &#x4E24;&#x4E2A;&#x4E3A;TRUE&#x8BF4;&#x660E;&#x90FD;&#x8981;&#x5F00;&#x542F; &#x7D27;&#x63A5;&#x7740;&#x5C31;&#x662F;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x4E00;&#x4E2A;&#x662F;&#x6210;&#x529F;&#x7684;&#x56DE;&#x8C03;&#x5176;&#x4E2D;&#x5B9E;&#x53C2;&#x4E3A;stream&#x53EF;&#x4EE5;&#x6709;&#x4E9B;&#x540C;&#x5B66;&#x5BF9;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x4E0D;&#x600E;&#x4E48;&#x7406;&#x89E3;&#x4E0D;&#x6015; &#x4E00;&#x4F1A;&#x622A;&#x56FE;&#x9001;&#x4E0A;&#xFF0C; &#x8FD8;&#x6709;&#x5C31;&#x662F;&#x5931;&#x8D25;&#x7684;&#x56DE;&#x8C03;&#xFF0C;&#x5728;&#x6B64;&#x4E0D;&#x505A;&#x8FC7;&#x591A;&#x8BB2;&#x89E3;&#x3002;</blockquote><ul><li>&#x4EE5;&#x4E0B;&#x662F;&#x5173;&#x4E8E;Stream&#x7684;&#x4FE1;&#x606F;&#x5177;&#x4F53;&#x5982;&#x56FE;&#x4E2D;&#x6240;&#x793A;&#xFF1A;</li></ul><p><span class="img-wrap"><img data-src="/img/bVbhiYa?w=1022&amp;h=226" src="https://static.alili.tech/img/bVbhiYa?w=1022&amp;h=226" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><ul><li>&#x76F8;&#x4FE1;&#x5F88;&#x591A;&#x5C0F;&#x4F19;&#x4F34;&#x5DF2;&#x7ECF;&#x770B;&#x89C1;&#x4E86; &#x6211;console.log&#x6253;&#x5370;&#x51FA;&#x540E;&#x6E7F;&#x4E00;&#x4E2A;&#x53EB;&#x505A;MediaStream&#x7684;&#x5BF9;&#x8C61;</li><li>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x8FDB;&#x5165;&#x7B2C;&#x4E8C;&#x6B65;</li></ul><p><strong>Second:</strong><br>&#x521B;&#x5EFA;&#x4E24;&#x4E2A;&#x6807;&#x7B7E;&#x5F53;&#x7136;&#x662F;&#x6211;&#x4EEC;&#x7684;video &#x548C; button&#x6309;&#x94AE;&#x54AF;&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x663E;&#x793A;&#xFF1A;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="&lt;video src=&quot;&quot; id=&quot;video&quot; controls autoplay&gt;&lt;/video&gt;
+&lt;button id=&quot;btn&quot;&gt;&#x62CD;&#x7167;&lt;/button&gt;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs xml"><code><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;video&quot;</span> <span class="hljs-attr">controls</span> <span class="hljs-attr">autoplay</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>&#x62CD;&#x7167;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre><ul><li>&#x5149;&#x6709;&#x6807;&#x7B7E;&#x80AF;&#x5B9A;&#x662F;&#x4E0D;&#x884C;&#x7684;&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x5177;&#x4F53;&#x7684;JS&#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</li></ul><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text=" function success(stream) {
+            console.log(stream)
+
+            let $video = document.querySelector(&quot;#video&quot;)
+            let url = window.URL.createObjectURL(stream)
+            console.log(url)
+            $video.src = url
+                // $video.srcObject = stream
+
+        }
+
+        document.querySelector(&quot;#btn&quot;).onclick = function() {
+            let el = document.createElement(&quot;canvas&quot;)
+            el.width = 500;
+            el.height = 300
+            el.style.display = &quot;none&quot;
+            document.querySelector(&quot;body&quot;).appendChild(el)
+            let canvas = el.getContext(&quot;2d&quot;)
+            canvas.drawImage(document.querySelector(&quot;#video&quot;), 0, 0, 500, 300)
+            var url = el.toDataURL(&apos;image/jpeg&apos;);
+            var img = document.createElement(&quot;img&quot;)
+            img.src = url
+            document.querySelector(&quot;body&quot;).appendChild(img)
+            document.body.removeChild(el)
+        }" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs qml"><code> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">success</span>(<span class="hljs-params">stream</span>) </span>{
+            <span class="hljs-built_in">console</span>.log(stream)
+
+            <span class="hljs-keyword">let</span> $video = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;#video&quot;</span>)
+            <span class="hljs-keyword">let</span> <span class="hljs-built_in">url</span> = <span class="hljs-built_in">window</span>.URL.createObjectURL(stream)
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">url</span>)
+            $video.src = <span class="hljs-built_in">url</span>
+                <span class="hljs-comment">// $video.srcObject = stream</span>
+
+        }
+
+        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;#btn&quot;</span>).onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">let</span> el = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;canvas&quot;</span>)
+            el.width = <span class="hljs-number">500</span>;
+            el.height = <span class="hljs-number">300</span>
+            el.style.display = <span class="hljs-string">&quot;none&quot;</span>
+            <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;body&quot;</span>).appendChild(el)
+            <span class="hljs-keyword">let</span> canvas = el.getContext(<span class="hljs-string">&quot;2d&quot;</span>)
+            canvas.drawImage(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;#video&quot;</span>), <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">500</span>, <span class="hljs-number">300</span>)
+            <span class="hljs-built_in">var</span> <span class="hljs-built_in">url</span> = el.toDataURL(<span class="hljs-string">&apos;image/jpeg&apos;</span>);
+            <span class="hljs-built_in">var</span> img = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;img&quot;</span>)
+            img.src = <span class="hljs-built_in">url</span>
+            <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;body&quot;</span>).appendChild(img)
+            <span class="hljs-built_in">document</span>.body.removeChild(el)
+        }</code></pre><blockquote>&#x5C0F;&#x4F19;&#x4F34;&#x4EEC;&#x80AF;&#x5B9A;&#x5F88;&#x7EB3;&#x95F7;&#x8FD9;&#x4E2A;success&#x51FD;&#x6570;&#x662F;&#x600E;&#x4E48;&#x6765;&#x7684;&#x5176;&#x5B9E;&#x662F;&#xFF1A;</blockquote><p><span class="img-wrap"><img data-src="/img/bVbhi37?w=542&amp;h=226" src="https://static.alili.tech/img/bVbhi37?w=542&amp;h=226" alt="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" title="&#x56FE;&#x7247;&#x63CF;&#x8FF0;" style="cursor:pointer;display:inline"></span></p><ul><li>&#x5F88;&#x660E;&#x663E;&#x6211;&#x628A;&#x4E4B;&#x524D;&#x7684;&#x7BAD;&#x5934;&#x51FD;&#x6570;&#x6362;&#x4E2A;&#x4E86;&#x4E00;&#x4E2A;&#x6210;&#x529F;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E3B;&#x8981;&#x662F;&#x5904;&#x7406;video&#x7684;src&#x95EE;&#x9898;&#x8BDE;&#x751F;&#x7684;</li></ul><blockquote>&#x5728;&#x505A;&#x6700;&#x540E;&#x603B;&#x7ED3;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x628A;&#x6574;&#x4F53;&#x4EE3;&#x7801;&#x5949;&#x4E0A;&#xFF1A;</blockquote><p><strong>Third</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="&lt;body&gt;
+
+    &lt;video src=&quot;&quot; id=&quot;video&quot; controls autoplay&gt;&lt;/video&gt;
+    &lt;button id=&quot;btn&quot;&gt;&#x62CD;&#x7167;&lt;/button&gt;
+
+    &lt;script&gt;
+        //&#x8BBF;&#x95EE;&#x7528;&#x6237;&#x5A92;&#x4F53;&#x8BBE;&#x5907;&#x7684;&#x517C;&#x5BB9;&#x65B9;&#x6CD5;
+        function getUserMedia(constraints, success, error) {
+            if (navigator.mediaDevices.getUserMedia) {
+                //&#x6700;&#x65B0;&#x7684;&#x6807;&#x51C6;API
+                navigator.mediaDevices.getUserMedia(constraints).then(success).catch(error);
+            } else if (navigator.webkitGetUserMedia) {
+                //webkit&#x6838;&#x5FC3;&#x6D4F;&#x89C8;&#x5668;
+                navigator.webkitGetUserMedia(constraints, success, error)
+            } else if (navigator.mozGetUserMedia) {
+                //firfox&#x6D4F;&#x89C8;&#x5668;
+                navigator.mozGetUserMedia(constraints, success, error);
+            } else if (navigator.getUserMedia) {
+                //&#x65E7;&#x7248;API
+                navigator.getUserMedia(constraints, success, error);
+            }
+        }
+
+        if (navigator.mediaDevices || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.getUserMedia) {
+            getUserMedia({
+                video: true,
+                audio: true
+            }, success, (err) =&gt; {
+                console.log(err)
+            })
+        }
+
+        function success(stream) {
+            console.log(stream)
+
+            let $video = document.querySelector(&quot;#video&quot;)
+            let url = window.URL.createObjectURL(stream)
+            console.log(url)
+            $video.src = url
+                // $video.srcObject = stream
+
+        }
+
+        document.querySelector(&quot;#btn&quot;).onclick = function() {
+            let el = document.createElement(&quot;canvas&quot;)
+            el.width = 500;
+            el.height = 300
+            el.style.display = &quot;none&quot;
+            document.querySelector(&quot;body&quot;).appendChild(el)
+            let canvas = el.getContext(&quot;2d&quot;)
+            canvas.drawImage(document.querySelector(&quot;#video&quot;), 0, 0, 500, 300)
+            var url = el.toDataURL(&apos;image/jpeg&apos;);
+            var img = document.createElement(&quot;img&quot;)
+            img.src = url
+            document.querySelector(&quot;body&quot;).appendChild(img)
+            document.body.removeChild(el)
+        }
+
+        console.log(window.navigator.userAgent)
+    &lt;/script&gt;
+&lt;/body&gt;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs xml"><code><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;video&quot;</span> <span class="hljs-attr">controls</span> <span class="hljs-attr">autoplay</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>&#x62CD;&#x7167;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-comment">//&#x8BBF;&#x95EE;&#x7528;&#x6237;&#x5A92;&#x4F53;&#x8BBE;&#x5907;&#x7684;&#x517C;&#x5BB9;&#x65B9;&#x6CD5;</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUserMedia</span>(<span class="hljs-params">constraints, success, error</span>) </span>{
+            <span class="hljs-keyword">if</span> (navigator.mediaDevices.getUserMedia) {
+                <span class="hljs-comment">//&#x6700;&#x65B0;&#x7684;&#x6807;&#x51C6;API</span>
+                navigator.mediaDevices.getUserMedia(constraints).then(success).catch(error);
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (navigator.webkitGetUserMedia) {
+                <span class="hljs-comment">//webkit&#x6838;&#x5FC3;&#x6D4F;&#x89C8;&#x5668;</span>
+                navigator.webkitGetUserMedia(constraints, success, error)
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (navigator.mozGetUserMedia) {
+                <span class="hljs-comment">//firfox&#x6D4F;&#x89C8;&#x5668;</span>
+                navigator.mozGetUserMedia(constraints, success, error);
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (navigator.getUserMedia) {
+                <span class="hljs-comment">//&#x65E7;&#x7248;API</span>
+                navigator.getUserMedia(constraints, success, error);
+            }
+        }
+
+        <span class="hljs-keyword">if</span> (navigator.mediaDevices || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.getUserMedia) {
+            getUserMedia({
+                <span class="hljs-attr">video</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">audio</span>: <span class="hljs-literal">true</span>
+            }, success, (err) =&gt; {
+                <span class="hljs-built_in">console</span>.log(err)
+            })
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">success</span>(<span class="hljs-params">stream</span>) </span>{
+            <span class="hljs-built_in">console</span>.log(stream)
+
+            <span class="hljs-keyword">let</span> $video = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;#video&quot;</span>)
+            <span class="hljs-keyword">let</span> url = <span class="hljs-built_in">window</span>.URL.createObjectURL(stream)
+            <span class="hljs-built_in">console</span>.log(url)
+            $video.src = url
+                <span class="hljs-comment">// $video.srcObject = stream</span>
+
+        }
+
+        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;#btn&quot;</span>).onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">let</span> el = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;canvas&quot;</span>)
+            el.width = <span class="hljs-number">500</span>;
+            el.height = <span class="hljs-number">300</span>
+            el.style.display = <span class="hljs-string">&quot;none&quot;</span>
+            <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;body&quot;</span>).appendChild(el)
+            <span class="hljs-keyword">let</span> canvas = el.getContext(<span class="hljs-string">&quot;2d&quot;</span>)
+            canvas.drawImage(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;#video&quot;</span>), <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">500</span>, <span class="hljs-number">300</span>)
+            <span class="hljs-keyword">var</span> url = el.toDataURL(<span class="hljs-string">&apos;image/jpeg&apos;</span>);
+            <span class="hljs-keyword">var</span> img = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;img&quot;</span>)
+            img.src = url
+            <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;body&quot;</span>).appendChild(img)
+            <span class="hljs-built_in">document</span>.body.removeChild(el)
+        }
+
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.navigator.userAgent)
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre><blockquote>&#x5982;&#x4E0A;&#x6240;&#x793A;&#x5C31;&#x662F;&#x6574;&#x4F53;&#x4EE3;&#x7801;&#xFF0C;&#x4E0D;&#x957F;&#x4F46;&#x5B9E;&#x73B0;&#x4E86;&#x6211;&#x4EEC;&#x6700;&#x57FA;&#x7840;&#x7684;&#x62CD;&#x7167;&#x529F;&#x80FD;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x5BF9;navigator&#x548C;stream&#x7684;&#x8FD0;&#x7528;</blockquote><p><strong>&#x7ED3;&#x5C3E;&#xFF1A;</strong></p><blockquote>&#x4E4B;&#x524D;&#x5E76;&#x4E0D;&#x662F;&#x5F88;&#x7406;&#x89E3;navigator&#x6807;&#x7B7E;&#x7684;&#x8FD0;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x7ECF;&#x8FC7;&#x81EA;&#x5DF1;&#x7684;&#x8FD9;&#x6B21;&#x7ECF;&#x5386;&#x76F8;&#x4FE1;&#x6709;&#x4E86;&#x4E00;&#x5B9A;&#x7684;&#x4E86;&#x89E3;&#x81F3;&#x4E8E;Navigator&#x7684;&#x66F4;&#x591A;&#x5E94;&#x7528;&#x6211;&#x4F1A;&#x5728;&#x7B14;&#x8BB0;&#x4E2D;&#x518D;&#x8BE6;&#x7EC6;&#x7684;&#x53BB;&#x6574;&#x7406;&#xFF0C;&#x5E0C;&#x671B;&#x5404;&#x4F4D;&#x770B;&#x5BA2;&#x4EEC;&#x80FD;&#x591F;&#x6EE1;&#x610F;</blockquote>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>手把手教你如何实现拍照功能</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016478941" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016478941</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/4f2dee7/">https://alili.tech/archive/4f2dee7/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">实现手机拍照功能，纯JS书写</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

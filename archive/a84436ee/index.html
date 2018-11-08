@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="在以前的一篇文章中，我仔细分析了Medium.com用来展示图片的技术，这种技术可以在展示图片的时候让图片从一张模糊的图片过渡到一张清晰的图片。从那以后，我找到了其他一些同样采用相似方式展示图片的网站。下面让我们来看一下Quora, Quartz 以及 Clicktorelease 是如何实现的。 快速导读 图片是网页中最大的静态资源，他们通常会占据三分之二的空间。图片优化和选择正确的图片格式是至">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="更多关于渐进式图片加载的实现">
+<meta property="og:url" content="https://alili.tech/archive/a84436ee/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="在以前的一篇文章中，我仔细分析了Medium.com用来展示图片的技术，这种技术可以在展示图片的时候让图片从一张模糊的图片过渡到一张清晰的图片。从那以后，我找到了其他一些同样采用相似方式展示图片的网站。下面让我们来看一下Quora, Quartz 以及 Clicktorelease 是如何实现的。 快速导读 图片是网页中最大的静态资源，他们通常会占据三分之二的空间。图片优化和选择正确的图片格式是至">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01d15cfe42bf2b63fb.png">
+<meta property="og:image" content="https://p0.ssl.qhimg.com/t01289517093f2be7c5.gif">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.459Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="更多关于渐进式图片加载的实现">
+<meta name="twitter:description" content="在以前的一篇文章中，我仔细分析了Medium.com用来展示图片的技术，这种技术可以在展示图片的时候让图片从一张模糊的图片过渡到一张清晰的图片。从那以后，我找到了其他一些同样采用相似方式展示图片的网站。下面让我们来看一下Quora, Quartz 以及 Clicktorelease 是如何实现的。 快速导读 图片是网页中最大的静态资源，他们通常会占据三分之二的空间。图片优化和选择正确的图片格式是至">
+<meta name="twitter:image" content="https://p0.ssl.qhimg.com/t01d15cfe42bf2b63fb.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>更多关于渐进式图片加载的实现 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/a84436ee/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/a84436ee/",
+      "appid": "1613049289050283", 
+      "title": "更多关于渐进式图片加载的实现 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:04"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/87f6ebe4/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/b3ccb586/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/a84436ee/&text=更多关于渐进式图片加载的实现" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/a84436ee/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/a84436ee/&text=更多关于渐进式图片加载的实现" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/a84436ee/&title=更多关于渐进式图片加载的实现" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/a84436ee/&is_video=false&description=更多关于渐进式图片加载的实现" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=更多关于渐进式图片加载的实现&body=Check out this article: https://alili.tech/archive/a84436ee/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/a84436ee/&title=更多关于渐进式图片加载的实现" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/a84436ee/&title=更多关于渐进式图片加载的实现" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/a84436ee/&title=更多关于渐进式图片加载的实现" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/a84436ee/&title=更多关于渐进式图片加载的实现" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">快速导读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Quartz</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Quora</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">Clicktorelease</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">相关内容</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        更多关于渐进式图片加载的实现
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-18T00:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>在<a href="https://medium.com/@jmperezperez/how-medium-does-progressive-image-loading-fd1e4dc1ee3d" rel="external nofollow noopener noreferrer" target="_blank">以前的一篇文章</a>中，我仔细分析了Medium.com用来展示图片的技术，这种技术可以在展示图片的时候让图片从一张模糊的图片过渡到一张清晰的图片。从那以后，我找到了其他一些同样采用相似方式展示图片的网站。下面让我们来看一下Quora, Quartz 以及 Clicktorelease 是如何实现的。</p>
+<h3>快速导读</h3>
+<p>图片是网页中最大的静态资源，他们通常会占据三分之二的空间。图片优化和选择正确的图片格式是至关重要的。另外，有些网站会在图片没有加载的时候，使用小的缩略图当作占位符。这种技术通常也被称作“<a href="https://css-tricks.com/the-blur-up-technique-for-loading-background-images/" rel="external nofollow noopener noreferrer" target="_blank"><em>blur-up</em></a>“。这种技术主要是为了提升用户感知性能，如果搭配懒加载使用，还可以达到节省流量的效果。</p>
+<p>当然这项技术还是有其他可替代的技术的。其中一种是使用一张单独的JPEG图片，调整它的扫描脚本使得可以快速渲染出一个原始的像素化的版本，并且在后续扫描中逐步渲染出最终清晰的图片。我推荐你通读<a href="http://cloudinary.com/blog/progressive_jpegs_and_green_martians" rel="external nofollow noopener noreferrer" target="_blank">Progressive JPEGs and green Martians</a> 去更了解这项技术。</p>
+<p>还有一点，如果你喜欢图片加载优化这方面的内容，可以关注<a href="http://cloudinary.com/blog" rel="external nofollow noopener noreferrer" target="_blank">Cloudinary’s Blog</a>，里面有很多关于这方面话题的博文。</p>
+<h3>Quartz</h3>
+<p>Take a look at the following video, recorded when accessing <a href="https://qz.com/894001/theres-a-wrong-and-a-right-way-to-talk-to-your-dog-according-to-science/" rel="external nofollow noopener noreferrer" target="_blank">a page on QZ.com</a> with a throttled connection:</p>
+<p>看一下下面的这个视频，它记录着当使用慢速的网络访问QZ.com的网页时，Quartz's 的方式按照下面的步骤实现：</p>
+<ol>
+<li>Request a small <code>&lt;img /&gt;</code> that will be blurred. In their case, they use 50px width images, with a 80% quality.</li>
+<li>请求一个小的用于被模糊的<code>&lt;img /&gt;</code>。在这种情况下，他们使用宽度为50px，质量为80%的图片。</li>
+<li>通过CSS filter应用模糊效果。</li>
+<li>请求一个大的图片。</li>
+</ol>
+<p>关于Quartz的一个有趣的地方在于，他们使用响应式图片的语法去标记指定大图片。最大的不同点在于他们使用<code>data-srcset</code>属性，这样他们就可以控制何时发起请求并且防止浏览器在标记被解析之后去请求大尺寸的图片。</p>
+<p>我发现这种方式非常优雅，因为他们尝试遵循“标准”的方式去处理图片，就是通过增加额外的字段以实现懒加载和实现过度动画。</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"progressive-image featured-image size-extra-large"</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">picture</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"padding-bottom: 56.1875%; background-image: url(https://qzprod.files.wordpress.com/2017/01/fish.jpg?quality=80&amp;strip=all&amp;w=50);"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://qzprod.files.wordpress.com/2017/01/fish.jpg?quality=80&amp;strip=all&amp;w=50"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"INDIA-fishermen"</span> /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">noscript</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://qzprod.files.wordpress.com/2017/01/fish.jpg?quality=80&amp;strip=all&amp;w=320"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"INDIA-fishermen"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">noscript</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">picture</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+</code></pre><h3>Quora</h3>
+<p>Quora也是在他们的po文里面实现了图片blur-up技术。例子详见<a href="https://www.quora.com/How-does-Quora-pre-load-images" rel="external nofollow noopener noreferrer" target="_blank">head to this page</a>。</p>
+<p>这里我们可以看到当显示模糊占位图片的时候页面的样子。</p>
+<p><img src="https://p0.ssl.qhimg.com/t01d15cfe42bf2b63fb.png" alt=""></p>
+<p>让我们深入代码来看看到底时如何实现的。首先，让我们来看看HTML标记：</p>
+<pre><code class="hljs stylus">&lt;div&gt;
+
+
+    &lt;<span class="hljs-selector-tag">canvas</span> class=<span class="hljs-string">"qtext_image_placeholder portrait qtext_image zoomable_in zoomable_in_feed"</span>
+        <span class="hljs-attribute">width</span>=<span class="hljs-string">"499"</span>
+        <span class="hljs-attribute">height</span>=<span class="hljs-string">"874"</span>
+        data-src=<span class="hljs-string">"data:image/PNG;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAQCdASoGAAoAAUAmJYgCdEf/g…iD0z/yA/5ipcuk5xHSdrS38j8CkH7s+vKeZu9EwRy0f/KPIlo/+UifdfcpiRcJiRnXXAAAAA=="</span>&gt;
+    &lt;/canvas&gt;
+
+
+
+
+    &lt;<span class="hljs-selector-tag">img</span> src /&gt;
+&lt;/div&gt;
+</code></pre><p>为什么同时使用<code>data-src</code>和<code>master-src</code>？<code>master_src</code> 图片是当点击图片获取更大尺寸时加载的那张图片。</p>
+<p>Quora没有使用模糊效果。他们使用<code>canvas.drawImage()</code>在canvas里渲染小的缩略图。你可以看到通过查看他们的代码发现这个方法，在捆绑在主要JS文件的<code>shared/lazy_load_images</code>模块中可以看到：</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// draw the data-uri image on the canvas</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-keyword">if</span> (e.getAttribute(<span class="hljs-string">"data-src"</span>)) {
+        <span class="hljs-keyword">var</span> t = <span class="hljs-keyword">new</span> Image;
+        t.src = e.getAttribute(<span class="hljs-string">"data-src"</span>);
+        <span class="hljs-keyword">var</span> i = e.getAttribute(<span class="hljs-string">"width"</span>)
+          , n = e.getAttribute(<span class="hljs-string">"height"</span>)
+          , o = e.getContext(<span class="hljs-string">"2d"</span>);
+        t.addEventListener(<span class="hljs-string">"load"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            o.drawImage(t, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, i, n)
+        }, <span class="hljs-literal">false</span>)
+    }
+}
+<span class="hljs-comment">// go through all canvas on the page with a data-src</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">r</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> e = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">"canvas[data-src]"</span>);
+    d.insertionQ(<span class="hljs-string">"canvas[data-src]"</span>).every(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+        a(e)
+    }),
+    [].forEach.call(e, a)
+}
+</code></pre><p>简单来说，Quora所使用的技术主要包括：</p>
+<ol>
+<li>在canvas中渲染一个内联的非常小的png。</li>
+<li>使用Webp（如果支持的话）或者其他格式请求大尺寸图片。</li>
+<li>将大尺寸图片设置为<code>&lt;img /&gt;</code>元素的资源，然后逐渐变化它的透明度并且隐藏canvas。</li>
+</ol>
+<h3>Clicktorelease</h3>
+<p><a href="https://www.clicktorelease.com/" rel="external nofollow noopener noreferrer" target="_blank">Clicktorelease.com</a>, <a href="https://twitter.com/thespite" rel="external nofollow noopener noreferrer" target="_blank">@thespite</a>，刚刚重新设计过，也为图片设置了懒加载。</p>
+<p><img src="https://p0.ssl.qhimg.com/t01289517093f2be7c5.gif" alt=""></p>
+<p>这里最重要的部分是缩略图并不是要加载的图片本身，而是缩略图<a href="https://twitter.com/thespite/status/827110706642305024" rel="external nofollow noopener noreferrer" target="_blank">DCT矩阵</a>的值，这使得负载非常非常小。</p>
+<p>加载图片的步骤具体如下：</p>
+<ol>
+<li>请求<code>thumb-src</code>图片。这是一个16x4的PNG 缩略图，通常大小在300B左右。</li>
+<li>创建一个<code>&lt;canvas /&gt;</code>并且在上面绘制通过反向计算缩略图的<a href="https://en.wikipedia.org/wiki/Discrete_cosine_transform" rel="external nofollow noopener noreferrer" target="_blank">DCT</a>得到的图片。</li>
+<li>使用<code>original-src</code>地址请求大尺寸的图片。如果浏览器支持webp格式，那么“.webp”就会被添加到src上，这样就会请求webp格式的图片。</li>
+</ol>
+<p>原始的标记大概是这样的:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+
+
+
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">noscript</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/images/graphical-web-2016.jpg"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">noscript</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre><p>我认为这是一个非常好关于渐进增强的例子，提供了<code>&lt;noscript&gt;</code> 作为替代，并且逐步叠加效果，从一个固定的背景图片，到一个模糊的图片，再到最后的支持webp的大尺寸的图片。</p>
+<h3>总结</h3>
+<p>看到实现渐进式图片加载的这些微小的变化非常有趣，其中有使用Javascript实现的，有基于响应式图片实现的，有使用CSS filters实现的，还有使用canvas实现的。</p>
+<p>如果你想要一个基础的例子，可以移步<a href="http://codepen.io/jmperez/pen/yYjPER" rel="external nofollow noopener noreferrer" target="_blank">my “Reproducing Medium loading image effect” pen</a>。如果你也看到其他的网站实现了同样的技术，请记得一定要告诉我。</p>
+<h3>相关内容</h3>
+<p>我在我的RenderConf 2017的演讲<a href="https://www.youtube.com/watch?v=S70xyRYCNdY" rel="external nofollow noopener noreferrer" target="_blank">Progressive Image Rendering</a>中涉及到这个话题，当然这中间还一并提到其他一些可以使得图片更高效加载的技术。</p>
+<p>我也写过关于使用SVG去创建占位符的方法，详见<a href="https://medium.com/@jmperezperez/using-svg-as-placeholders-more-image-loading-techniques-bed1b810ab2c" rel="external nofollow noopener noreferrer" target="_blank">Using SVG as placeholders — More Image Loading Techniques</a>。</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/more-examples-of-progressive-image-loading" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/more-examples-of-progressive-image-loading</a><br>原文标题: 更多关于渐进式图片加载的实现<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/a84436ee/">https://alili.tech/archive/a84436ee/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">快速导读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Quartz</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Quora</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">Clicktorelease</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">相关内容</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

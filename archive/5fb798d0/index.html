@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x4E00;&amp;#x3001;&amp;#x61D2;&amp;#x52A0;&amp;#x8F7D;1.&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;&amp;#x61D2;&amp;#x52A0;&amp;#x8F7D;&amp;#x61D2;&amp;#x52A0;&amp;#x8F7D;&amp;#x4E5F;&amp;#x53EB;&amp;#x5EF6;&amp;#x8FDF;&amp;#x52A0;&amp;#x8F7D;&amp;#xFF0C;&amp;#x6307;&amp;#x7684;&amp;#x662F;&amp;#x572">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="懒加载和预加载">
+<meta property="og:url" content="https://alili.tech/archive/5fb798d0/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x4E00;&amp;#x3001;&amp;#x61D2;&amp;#x52A0;&amp;#x8F7D;1.&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;&amp;#x61D2;&amp;#x52A0;&amp;#x8F7D;&amp;#x61D2;&amp;#x52A0;&amp;#x8F7D;&amp;#x4E5F;&amp;#x53EB;&amp;#x5EF6;&amp;#x8FDF;&amp;#x52A0;&amp;#x8F7D;&amp;#xFF0C;&amp;#x6307;&amp;#x7684;&amp;#x662F;&amp;#x572">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/remote/1460000016666819">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.563Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="懒加载和预加载">
+<meta name="twitter:description" content="&amp;#x4E00;&amp;#x3001;&amp;#x61D2;&amp;#x52A0;&amp;#x8F7D;1.&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;&amp;#x61D2;&amp;#x52A0;&amp;#x8F7D;&amp;#x61D2;&amp;#x52A0;&amp;#x8F7D;&amp;#x4E5F;&amp;#x53EB;&amp;#x5EF6;&amp;#x8FDF;&amp;#x52A0;&amp;#x8F7D;&amp;#xFF0C;&amp;#x6307;&amp;#x7684;&amp;#x662F;&amp;#x572">
+<meta name="twitter:image" content="https://static.alili.tech/img/remote/1460000016666819">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>懒加载和预加载 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/5fb798d0/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/5fb798d0/",
+      "appid": "1613049289050283", 
+      "title": "懒加载和预加载 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:48"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/3c316003/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/ef9b9345/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/5fb798d0/&text=懒加载和预加载" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/5fb798d0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/5fb798d0/&text=懒加载和预加载" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/5fb798d0/&title=懒加载和预加载" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/5fb798d0/&is_video=false&description=懒加载和预加载" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=懒加载和预加载&body=Check out this article: https://alili.tech/archive/5fb798d0/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/5fb798d0/&title=懒加载和预加载" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/5fb798d0/&title=懒加载和预加载" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/5fb798d0/&title=懒加载和预加载" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/5fb798d0/&title=懒加载和预加载" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">一、懒加载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.什么是懒加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.为什么要用懒加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.懒加载的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.懒加载实现步骤</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">二、预加载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.0.1.</span> <span class="toc-text">1.什么是预加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.为什么要用预加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.0.3.</span> <span class="toc-text">3.实现预加载的几种办法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">三、懒加载和预加载的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">四、参考文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        懒加载和预加载
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-05T02:30:10.000Z" itemprop="datePublished">2018-11-05</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h2 id="articleHeader0">&#x4E00;&#x3001;&#x61D2;&#x52A0;&#x8F7D;</h2><h4>1.&#x4EC0;&#x4E48;&#x662F;&#x61D2;&#x52A0;&#x8F7D;</h4><p><span class="img-wrap"><img data-src="/img/remote/1460000016666819" src="https://static.alili.tech/img/remote/1460000016666819" alt="" title="" style="cursor:pointer;display:inline"></span></p><p><strong>&#x61D2;&#x52A0;&#x8F7D;&#x4E5F;&#x53EB;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x5728;&#x957F;&#x7F51;&#x9875;&#x4E2D;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#x56FE;&#x50CF;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x5F88;&#x597D;&#x4F18;&#x5316;&#x7F51;&#x9875;&#x6027;&#x80FD;&#x7684;&#x65B9;&#x5F0F;</strong>&#x3002;&#x7528;&#x6237;&#x6EDA;&#x52A8;&#x5230;&#x5B83;&#x4EEC;&#x4E4B;&#x524D;&#xFF0C;&#x53EF;&#x89C6;&#x533A;&#x57DF;&#x5916;&#x7684;&#x56FE;&#x50CF;&#x4E0D;&#x4F1A;&#x52A0;&#x8F7D;&#x3002;&#x8FD9;&#x4E0E;&#x56FE;&#x50CF;&#x9884;&#x52A0;&#x8F7D;&#x76F8;&#x53CD;&#xFF0C;&#x5728;&#x957F;&#x7F51;&#x9875;&#x4E0A;&#x4F7F;&#x7528;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#x5C06;&#x4F7F;&#x7F51;&#x9875;&#x52A0;&#x8F7D;&#x66F4;&#x5FEB;&#x3002;&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5B83;&#x8FD8;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x51CF;&#x5C11;&#x670D;&#x52A1;&#x5668;&#x8D1F;&#x8F7D;&#x3002;&#x5E38;&#x9002;&#x7528;&#x56FE;&#x7247;&#x5F88;&#x591A;&#xFF0C;&#x9875;&#x9762;&#x5F88;&#x957F;&#x7684;&#x7535;&#x5546;&#x7F51;&#x7AD9;&#x573A;&#x666F;&#x4E2D;&#x3002;</p><h4>2.&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528;&#x61D2;&#x52A0;&#x8F7D;</h4><ul><li><strong>&#x80FD;&#x63D0;&#x5347;&#x7528;&#x6237;&#x7684;&#x4F53;&#x9A8C;</strong>&#xFF0C;&#x4E0D;&#x59A8;&#x8BBE;&#x60F3;&#x4E0B;&#xFF0C;&#x7528;&#x6237;&#x6253;&#x5F00;&#x50CF;&#x624B;&#x673A;&#x6DD8;&#x5B9D;&#x957F;&#x9875;&#x9762;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x9875;&#x9762;&#x4E0A;&#x6240;&#x6709;&#x7684;&#x56FE;&#x7247;&#x90FD;&#x9700;&#x8981;&#x52A0;&#x8F7D;&#xFF0C;&#x7531;&#x4E8E;&#x56FE;&#x7247;&#x6570;&#x76EE;&#x8F83;&#x5927;&#xFF0C;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x5F88;&#x957F;&#xFF0C;&#x7528;&#x6237;&#x96BE;&#x514D;&#x4F1A;&#x5FC3;&#x751F;&#x62B1;&#x6028;&#xFF0C;&#x8FD9;&#x5C31;&#x4E25;&#x91CD;&#x5F71;&#x54CD;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x3002;</li><li><strong>&#x51CF;&#x5C11;&#x65E0;&#x6548;&#x8D44;&#x6E90;&#x7684;&#x52A0;&#x8F7D;</strong>&#xFF0C;&#x8FD9;&#x6837;&#x80FD;&#x660E;&#x663E;&#x51CF;&#x5C11;&#x4E86;&#x670D;&#x52A1;&#x5668;&#x7684;&#x538B;&#x529B;&#x548C;&#x6D41;&#x91CF;&#xFF0C;&#x4E5F;&#x80FD;&#x591F;&#x51CF;&#x5C0F;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x8D1F;&#x62C5;&#x3002;</li><li><strong>&#x9632;&#x6B62;&#x5E76;&#x53D1;&#x52A0;&#x8F7D;&#x7684;&#x8D44;&#x6E90;&#x8FC7;&#x591A;&#x4F1A;&#x963B;&#x585E;js&#x7684;&#x52A0;&#x8F7D;</strong>&#xFF0C;&#x5F71;&#x54CD;&#x7F51;&#x7AD9;&#x7684;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#x3002;</li></ul><h4>3.&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x539F;&#x7406;</h4><p>&#x9996;&#x5148;&#x5C06;&#x9875;&#x9762;&#x4E0A;&#x7684;&#x56FE;&#x7247;&#x7684; src &#x5C5E;&#x6027;&#x8BBE;&#x4E3A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x800C;&#x56FE;&#x7247;&#x7684;&#x771F;&#x5B9E;&#x8DEF;&#x5F84;&#x5219;&#x8BBE;&#x7F6E;&#x5728;data-original&#x5C5E;&#x6027;&#x4E2D;&#xFF0C;<br>&#x5F53;&#x9875;&#x9762;&#x6EDA;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x53BB;&#x76D1;&#x542C;scroll&#x4E8B;&#x4EF6;&#xFF0C;&#x5728;scroll&#x4E8B;&#x4EF6;&#x7684;&#x56DE;&#x8C03;&#x4E2D;&#xFF0C;&#x5224;&#x65AD;&#x6211;&#x4EEC;&#x7684;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x56FE;&#x7247;&#x662F;&#x5426;&#x8FDB;&#x5165;&#x53EF;&#x89C6;&#x533A;&#x57DF;,&#x5982;&#x679C;&#x56FE;&#x7247;&#x5728;&#x53EF;&#x89C6;&#x533A;&#x5185;&#x5C06;&#x56FE;&#x7247;&#x7684; src &#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x4E3A;data-original &#x7684;&#x503C;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#x3002;</p><h4>4.&#x61D2;&#x52A0;&#x8F7D;&#x5B9E;&#x73B0;&#x6B65;&#x9AA4;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Lazyload&lt;/title&gt;
+    &lt;style&gt;
+      .image-item {
+        display: block;
+        margin-bottom: 50px;
+        height: 200px;//&#x4E00;&#x5B9A;&#x8BB0;&#x5F97;&#x8BBE;&#x7F6E;&#x56FE;&#x7247;&#x9AD8;&#x5EA6;
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/1.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/2.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/3.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/4.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/5.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/6.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/7.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/8.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/9.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/10.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/11.png&quot;/&gt;
+&lt;img src=&quot;&quot; class=&quot;image-item&quot; lazyload=&quot;true&quot;  data-original=&quot;images/12.png&quot;/&gt;
+&lt;script&gt;
+var viewHeight =document.documentElement.clientHeight//&#x83B7;&#x53D6;&#x53EF;&#x89C6;&#x533A;&#x9AD8;&#x5EA6;
+function lazyload(){
+var eles=document.querySelectorAll&#xFF08;&apos;img[data-original][lazyload]&apos;&#xFF09;
+Array.prototype.forEach.call(eles,function(item,index){
+var rect
+if(item.dataset.original===&quot;&quot;)
+   return
+rect=item.getBoundingClientRect()// &#x7528;&#x4E8E;&#x83B7;&#x5F97;&#x9875;&#x9762;&#x4E2D;&#x67D0;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5DE6;&#xFF0C;&#x4E0A;&#xFF0C;&#x53F3;&#x548C;&#x4E0B;&#x5206;&#x522B;&#x76F8;&#x5BF9;&#x6D4F;&#x89C8;&#x5668;&#x89C6;&#x7A97;&#x7684;&#x4F4D;&#x7F6E;
+if(rect.bottom&gt;=0 &amp;&amp; rect.top &lt; viewHeight){
+!function(){
+  var img=new Image()
+  img.src=item.dataset.original
+  img.onload=function(){
+    item.src=img.src
+    }
+item.removeAttribute&#xFF08;&quot;data-original&quot;&#xFF09;//&#x79FB;&#x9664;&#x5C5E;&#x6027;&#xFF0C;&#x4E0B;&#x6B21;&#x4E0D;&#x518D;&#x904D;&#x5386;
+item.removeAttribute&#xFF08;&quot;lazyload&quot;&#xFF09;
+   }()
+  }
+ })
+}
+lazyload()//&#x521A;&#x5F00;&#x59CB;&#x8FD8;&#x6CA1;&#x6EDA;&#x52A8;&#x5C4F;&#x5E55;&#x65F6;&#xFF0C;&#x8981;&#x5148;&#x89E6;&#x53D1;&#x4E00;&#x6B21;&#x51FD;&#x6570;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x9996;&#x9875;&#x7684;&#x9875;&#x9762;&#x56FE;&#x7247;
+document.addEventListener&#xFF08;&quot;scroll&quot;&#xFF0C;lazyload)
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs stylus"><code>&lt;<span class="hljs-selector-tag">html</span> lang=<span class="hljs-string">&quot;en&quot;</span>&gt;
+&lt;head&gt;
+    &lt;meta charset=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;
+    &lt;title&gt;Lazyload&lt;/title&gt;
+    &lt;style&gt;
+      <span class="hljs-selector-class">.image-item</span> {
+        <span class="hljs-attribute">display</span>: block;
+        <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">50px</span>;
+        <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;<span class="hljs-comment">//&#x4E00;&#x5B9A;&#x8BB0;&#x5F97;&#x8BBE;&#x7F6E;&#x56FE;&#x7247;&#x9AD8;&#x5EA6;</span>
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/1.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/2.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/3.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/4.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/5.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/6.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/7.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/8.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/9.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/10.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/11.png&quot;</span>/&gt;
+&lt;<span class="hljs-selector-tag">img</span> src=<span class="hljs-string">&quot;&quot;</span> class=<span class="hljs-string">&quot;image-item&quot;</span> lazyload=<span class="hljs-string">&quot;true&quot;</span>  data-original=<span class="hljs-string">&quot;images/12.png&quot;</span>/&gt;
+&lt;script&gt;
+<span class="hljs-selector-tag">var</span> viewHeight =document<span class="hljs-selector-class">.documentElement</span><span class="hljs-selector-class">.clientHeight</span><span class="hljs-comment">//&#x83B7;&#x53D6;&#x53EF;&#x89C6;&#x533A;&#x9AD8;&#x5EA6;</span>
+function lazyload(){
+<span class="hljs-selector-tag">var</span> eles=document.querySelectorAll&#xFF08;<span class="hljs-string">&apos;img[data-original][lazyload]&apos;</span>&#xFF09;
+Array<span class="hljs-selector-class">.prototype</span><span class="hljs-selector-class">.forEach</span><span class="hljs-selector-class">.call</span>(eles,function(item,index){
+<span class="hljs-selector-tag">var</span> rect
+<span class="hljs-function"><span class="hljs-title">if</span><span class="hljs-params">(item.dataset.original===<span class="hljs-string">&quot;&quot;</span>)</span></span>
+   return
+rect=item.getBoundingClientRect()<span class="hljs-comment">// &#x7528;&#x4E8E;&#x83B7;&#x5F97;&#x9875;&#x9762;&#x4E2D;&#x67D0;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5DE6;&#xFF0C;&#x4E0A;&#xFF0C;&#x53F3;&#x548C;&#x4E0B;&#x5206;&#x522B;&#x76F8;&#x5BF9;&#x6D4F;&#x89C8;&#x5668;&#x89C6;&#x7A97;&#x7684;&#x4F4D;&#x7F6E;</span>
+<span class="hljs-function"><span class="hljs-title">if</span><span class="hljs-params">(rect.bottom&gt;=<span class="hljs-number">0</span> &amp;&amp; rect.top &lt; viewHeight)</span></span>{
+!function(){
+  <span class="hljs-selector-tag">var</span> img=new Image()
+  <span class="hljs-selector-tag">img</span>.src=item<span class="hljs-selector-class">.dataset</span><span class="hljs-selector-class">.original</span>
+  <span class="hljs-selector-tag">img</span>.onload=function(){
+    item.src=<span class="hljs-selector-tag">img</span><span class="hljs-selector-class">.src</span>
+    }
+item.removeAttribute&#xFF08;<span class="hljs-string">&quot;data-original&quot;</span>&#xFF09;<span class="hljs-comment">//&#x79FB;&#x9664;&#x5C5E;&#x6027;&#xFF0C;&#x4E0B;&#x6B21;&#x4E0D;&#x518D;&#x904D;&#x5386;</span>
+item.removeAttribute&#xFF08;<span class="hljs-string">&quot;lazyload&quot;</span>&#xFF09;
+   }()
+  }
+ })
+}
+<span class="hljs-function"><span class="hljs-title">lazyload</span><span class="hljs-params">()</span></span><span class="hljs-comment">//&#x521A;&#x5F00;&#x59CB;&#x8FD8;&#x6CA1;&#x6EDA;&#x52A8;&#x5C4F;&#x5E55;&#x65F6;&#xFF0C;&#x8981;&#x5148;&#x89E6;&#x53D1;&#x4E00;&#x6B21;&#x51FD;&#x6570;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x9996;&#x9875;&#x7684;&#x9875;&#x9762;&#x56FE;&#x7247;</span>
+document.addEventListener&#xFF08;<span class="hljs-string">&quot;scroll&quot;</span>&#xFF0C;lazyload)
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="articleHeader1">&#x4E8C;&#x3001;&#x9884;&#x52A0;&#x8F7D;</h2><h4>1.&#x4EC0;&#x4E48;&#x662F;&#x9884;&#x52A0;&#x8F7D;</h4><p>&#x8D44;&#x6E90;&#x9884;&#x52A0;&#x8F7D;&#x662F;&#x53E6;&#x4E00;&#x4E2A;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x6280;&#x672F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8BE5;&#x6280;&#x672F;&#x6765;&#x9884;&#x5148;&#x544A;&#x77E5;&#x6D4F;&#x89C8;&#x5668;&#x67D0;&#x4E9B;&#x8D44;&#x6E90;&#x53EF;&#x80FD;&#x5728;&#x5C06;&#x6765;&#x4F1A;&#x88AB;&#x4F7F;&#x7528;&#x5230;&#x3002;<strong>&#x9884;&#x52A0;&#x8F7D;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x5C06;&#x6240;&#x6709;&#x6240;&#x9700;&#x7684;&#x8D44;&#x6E90;&#x63D0;&#x524D;&#x8BF7;&#x6C42;&#x52A0;&#x8F7D;&#x5230;&#x672C;&#x5730;&#xFF0C;&#x8FD9;&#x6837;&#x540E;&#x9762;&#x5728;&#x9700;&#x8981;&#x7528;&#x5230;&#x65F6;&#x5C31;&#x76F4;&#x63A5;&#x4ECE;&#x7F13;&#x5B58;&#x53D6;&#x8D44;&#x6E90;</strong>&#x3002;</p><h4>2.&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528;&#x9884;&#x52A0;&#x8F7D;</h4><p>&#x5728;&#x7F51;&#x9875;&#x5168;&#x90E8;&#x52A0;&#x8F7D;&#x4E4B;&#x524D;&#xFF0C;&#x5BF9;&#x4E00;&#x4E9B;&#x4E3B;&#x8981;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x52A0;&#x8F7D;&#xFF0C;&#x4EE5;&#x63D0;&#x4F9B;&#x7ED9;&#x7528;&#x6237;&#x66F4;&#x597D;&#x7684;&#x4F53;&#x9A8C;&#xFF0C;&#x51CF;&#x5C11;&#x7B49;&#x5F85;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x5426;&#x5219;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x8FC7;&#x4E8E;&#x5E9E;&#x5927;&#xFF0C;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x9884;&#x52A0;&#x8F7D;&#x6280;&#x672F;&#x7684;&#x9875;&#x9762;&#x5C31;&#x4F1A;&#x957F;&#x65F6;&#x95F4;&#x7684;&#x5C55;&#x73B0;&#x4E3A;&#x4E00;&#x7247;&#x7A7A;&#x767D;&#xFF0C;&#x76F4;&#x5230;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x3002;</p><h4>3.&#x5B9E;&#x73B0;&#x9884;&#x52A0;&#x8F7D;&#x7684;&#x51E0;&#x79CD;&#x529E;&#x6CD5;</h4><ul><li>&#x4F7F;&#x7528;HTML&#x6807;&#x7B7E;</li></ul><p><code>&lt;img src=&quot;http://pic26.nipic.com/20121213/6168183 0044449030002.jpg&quot; style=&quot;display:none&quot;/&gt;</code></p><ul><li>&#x4F7F;&#x7528;Image&#x5BF9;&#x8C61;</li></ul><p><code>&lt;script src=&quot;./myPreload.js&quot;&gt;&lt;/script&gt;</code></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="//myPreload.js&#x6587;&#x4EF6;
+var image= new Image()
+image.src=&quot;http://pic26.nipic.com/20121213/6168183 004444903000 2.jpg&quot;" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs arduino"><code><span class="hljs-comment">//myPreload.js&#x6587;&#x4EF6;</span>
+var <span class="hljs-built_in">image</span>= <span class="hljs-keyword">new</span> Image()
+<span class="hljs-built_in">image</span>.src=<span class="hljs-string">&quot;http://pic26.nipic.com/20121213/6168183 004444903000 2.jpg&quot;</span></code></pre><ul><li>&#x4F7F;&#x7528;XMLHttpRequest&#x5BF9;&#x8C61;,&#x867D;&#x7136;&#x5B58;&#x5728;&#x8DE8;&#x57DF;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x4F1A;&#x7CBE;&#x7EC6;&#x63A7;&#x5236;&#x9884;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</li></ul><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="var xmlhttprequest=new XMLHttpRequest()&#xFF1B;
+xmlhttprequest.onreadystatechange=callback&#xFF1B;
+xmlhttprequest.onprogress=progressCallback&#xFF1B;
+xmlhttprequest.open(&quot;GET&quot;,&quot;http://image.baidu.com/mouse,jpg&quot;,true&#xFF09;&#xFF1B;
+xmlhttprequest.send()&#xFF1B;
+function callback(){
+  if(xmlhttprequest.readyState==4&amp;&amp; xmlhttprequest.status==200){
+    var responseText=xmlhttprequest.responseText&#xFF1B;
+  }else{
+     console.log(&quot;Request was unsuccessful:&quot;+xmlhttprequest.status&#xFF09;&#xFF1B;
+  }
+}
+function progressCallback(e){
+e=e || event&#xFF1B;
+if(e.lengthComputable){
+console.log(&quot;Received&quot;+e.loaded+&quot;of&quot;+e.total+&quot;bytes&quot;)
+}
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs javascript"><code><span class="hljs-keyword">var</span> xmlhttprequest=<span class="hljs-keyword">new</span> XMLHttpRequest()&#xFF1B;
+xmlhttprequest.onreadystatechange=callback&#xFF1B;
+xmlhttprequest.onprogress=progressCallback&#xFF1B;
+xmlhttprequest.open(<span class="hljs-string">&quot;GET&quot;</span>,<span class="hljs-string">&quot;http://image.baidu.com/mouse,jpg&quot;</span>,<span class="hljs-literal">true</span>&#xFF09;&#xFF1B;
+xmlhttprequest.send()&#xFF1B;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">if</span>(xmlhttprequest.readyState==<span class="hljs-number">4</span>&amp;&amp; xmlhttprequest.status==<span class="hljs-number">200</span>){
+    <span class="hljs-keyword">var</span> responseText=xmlhttprequest.responseText&#xFF1B;
+  }<span class="hljs-keyword">else</span>{
+     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Request was unsuccessful:&quot;</span>+xmlhttprequest.status&#xFF09;&#xFF1B;
+  }
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">progressCallback</span>(<span class="hljs-params">e</span>)</span>{
+e=e || event&#xFF1B;
+<span class="hljs-keyword">if</span>(e.lengthComputable){
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Received&quot;</span>+e.loaded+<span class="hljs-string">&quot;of&quot;</span>+e.total+<span class="hljs-string">&quot;bytes&quot;</span>)
+}
+}</code></pre><ul><li>&#x4F7F;&#x7528;<a href="https://createjs.com/preloadjs" rel="external nofollow noopener noreferrer" target="_blank">PreloadJS&#x5E93;</a></li></ul><p>PreloadJS&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x9884;&#x52A0;&#x8F7D;&#x5185;&#x5BB9;&#x7684;&#x4E00;&#x81F4;&#x65B9;&#x5F0F;&#xFF0C;&#x4EE5;&#x4FBF;&#x5728;HTML&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x4F7F;&#x7528;&#x3002;&#x9884;&#x52A0;&#x8F7D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;HTML&#x6807;&#x7B7E;&#x4EE5;&#x53CA;XHR&#x6765;&#x5B8C;&#x6210;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;PreloadJS&#x4F1A;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;XHR&#x52A0;&#x8F7D;&#x5185;&#x5BB9;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x8FDB;&#x5EA6;&#x548C;&#x5B8C;&#x6210;&#x4E8B;&#x4EF6;&#x7684;&#x66F4;&#x597D;&#x652F;&#x6301;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x8DE8;&#x57DF;&#x95EE;&#x9898;&#xFF0C;&#x4F7F;&#x7528;&#x57FA;&#x4E8E;&#x6807;&#x8BB0;&#x7684;&#x52A0;&#x8F7D;&#x53EF;&#x80FD;&#x66F4;&#x597D;&#x3002;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="//&#x4F7F;&#x7528;preload.js
+var queue=new createjs.LoadQueue()&#xFF1B;//&#x9ED8;&#x8BA4;&#x662F;xhr&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x662F;new createjs.LoadQueue(false)&#x662F;&#x6307;&#x4F7F;&#x7528;HTML&#x6807;&#x7B7E;&#xFF0C;&#x53EF;&#x4EE5;&#x8DE8;&#x57DF;
+queue.on(&quot;complete&quot;,handleComplete,this);
+queue.loadManifest([
+{id:&quot;myImage&quot;,src:&quot;http://pic26.nipic.com/20121213/6168183  0044449030002.jpg&quot;},
+{id&#xFF1A;&quot;myImage2&quot;&#xFF0C;src:&quot;http://pic9.nipic.com/20100814/2839526  1931471581702.jpg&quot;}
+])&#xFF1B;
+function handleComplete(){
+  var image=queue.getResuLt(&quot;myImage&quot;);
+  document.body.appendChild(image);
+}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="hljs qml"><code><span class="hljs-comment">//&#x4F7F;&#x7528;preload.js</span>
+<span class="hljs-built_in">var</span> queue=<span class="hljs-keyword">new</span> createjs.LoadQueue()&#xFF1B;<span class="hljs-comment">//&#x9ED8;&#x8BA4;&#x662F;xhr&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x662F;new createjs.LoadQueue(false)&#x662F;&#x6307;&#x4F7F;&#x7528;HTML&#x6807;&#x7B7E;&#xFF0C;&#x53EF;&#x4EE5;&#x8DE8;&#x57DF;</span>
+queue.on(<span class="hljs-string">&quot;complete&quot;</span>,handleComplete,<span class="hljs-keyword">this</span>);
+queue.loadManifest([
+{<span class="hljs-attribute">id:</span><span class="hljs-string">&quot;myImage</span><span class="hljs-string">&quot;,src:&quot;</span><span class="hljs-attribute">http</span>:<span class="hljs-comment">//pic26.nipic.com/20121213/6168183  0044449030002.jpg&quot;},</span>
+{id&#xFF1A;<span class="hljs-string">&quot;myImage2&quot;</span>&#xFF0C;<span class="hljs-attribute">src</span>:<span class="hljs-string">&quot;http://pic9.nipic.com/20100814/2839526  1931471581702.jpg&quot;</span>}
+])&#xFF1B;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleComplete</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">var</span> image=queue.getResuLt(<span class="hljs-string">&quot;myImage&quot;</span>);
+  <span class="hljs-built_in">document</span>.body.appendChild(image);
+}</code></pre><h2 id="articleHeader2">&#x4E09;&#x3001;&#x61D2;&#x52A0;&#x8F7D;&#x548C;&#x9884;&#x52A0;&#x8F7D;&#x7684;&#x5BF9;&#x6BD4;</h2><p>&#x4E24;&#x8005;&#x90FD;&#x662F;&#x63D0;&#x9AD8;&#x9875;&#x9762;&#x6027;&#x80FD;&#x6709;&#x6548;&#x7684;&#x529E;&#x6CD5;&#xFF0C;<strong>&#x4E24;&#x8005;&#x4E3B;&#x8981;&#x533A;&#x522B;&#x662F;&#x4E00;&#x4E2A;&#x662F;&#x63D0;&#x524D;&#x52A0;&#x8F7D;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x8FDF;&#x7F13;&#x751A;&#x81F3;&#x4E0D;&#x52A0;&#x8F7D;&#x3002;&#x61D2;&#x52A0;&#x8F7D;&#x5BF9;&#x670D;&#x52A1;&#x5668;&#x524D;&#x7AEF;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x7F13;&#x89E3;&#x538B;&#x529B;&#x4F5C;&#x7528;&#xFF0C;&#x9884;&#x52A0;&#x8F7D;&#x5219;&#x4F1A;&#x589E;&#x52A0;&#x670D;&#x52A1;&#x5668;&#x524D;&#x7AEF;&#x538B;&#x529B;</strong>&#x3002;</p><p><strong>&#x5982;&#x679C;&#x89C9;&#x5F97;&#x6587;&#x7AE0;&#x5BF9;&#x4F60;&#x6709;&#x4E9B;&#x8BB8;&#x5E2E;&#x52A9;&#xFF0C;&#x6B22;&#x8FCE;&#x5728;<a href="https://github.com/ljianshu/Blog" rel="external nofollow noopener noreferrer" target="_blank">&#x6211;&#x7684;GitHub&#x535A;&#x5BA2;</a>&#x70B9;&#x8D5E;&#x548C;&#x5173;&#x6CE8;&#xFF0C;&#x611F;&#x6FC0;&#x4E0D;&#x5C3D;&#xFF01;</strong></p><h2 id="articleHeader3">&#x56DB;&#x3001;&#x53C2;&#x8003;&#x6587;&#x7AE0;</h2><p><a href="https://www.geekjc.com/post/58d94d0f16a3655650d6fafe" rel="external nofollow noopener noreferrer" target="_blank">&#x8BE6;&#x89E3;&#x61D2;&#x52A0;&#x8F7D;&#x548C;&#x9884;&#x52A0;&#x8F7D;(js)</a></p><p><a href="https://lilywei739.github.io/2017/02/06/lazyload_Img.html" rel="external nofollow noopener noreferrer" target="_blank">&#x61D2;&#x52A0;&#x8F7D;&#x548C;&#x9884;&#x52A0;&#x8F7D;</a></p>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>懒加载和预加载</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016666816" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016666816</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/5fb798d0/">https://alili.tech/archive/5fb798d0/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">一、懒加载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.什么是懒加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.为什么要用懒加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.懒加载的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.懒加载实现步骤</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">二、预加载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.0.1.</span> <span class="toc-text">1.什么是预加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.为什么要用预加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.0.3.</span> <span class="toc-text">3.实现预加载的几种办法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">三、懒加载和预加载的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">四、参考文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

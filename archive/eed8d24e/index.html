@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="现在的js的项目越来越多。如果我们把代码开源。我们会把这些代码发布到npm。但是npm是公共的，公司的代码毕竟不会公开在网上。于是我们就有必要搭建一个自己的npm服务器。把公司私有的代码发布在自己公司的npm服务器上。这样我们就可以即方便的下载我们想要的代码。也可以不把这些代码放在开源平台上面 安装的基本步骤 在linu安装mysql npm install cnpm.org  下载cnpm.or">
+<meta name="keywords" content="Nodejs,ts,私有,服务器,typescript,verdaccio,npm,浏览器,cnpm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在公司搭建私有的cnpm服务器">
+<meta property="og:url" content="https://alili.tech/archive/eed8d24e/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="现在的js的项目越来越多。如果我们把代码开源。我们会把这些代码发布到npm。但是npm是公共的，公司的代码毕竟不会公开在网上。于是我们就有必要搭建一个自己的npm服务器。把公司私有的代码发布在自己公司的npm服务器上。这样我们就可以即方便的下载我们想要的代码。也可以不把这些代码放在开源平台上面 安装的基本步骤 在linu安装mysql npm install cnpm.org  下载cnpm.or">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在公司搭建私有的cnpm服务器">
+<meta name="twitter:description" content="现在的js的项目越来越多。如果我们把代码开源。我们会把这些代码发布到npm。但是npm是公共的，公司的代码毕竟不会公开在网上。于是我们就有必要搭建一个自己的npm服务器。把公司私有的代码发布在自己公司的npm服务器上。这样我们就可以即方便的下载我们想要的代码。也可以不把这些代码放在开源平台上面 安装的基本步骤 在linu安装mysql npm install cnpm.org  下载cnpm.or">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>在公司搭建私有的cnpm服务器 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/eed8d24e/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/eed8d24e/",
+      "appid": "1613049289050283", 
+      "title": "在公司搭建私有的cnpm服务器 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:05"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/7cb6734b/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/b36fefc7/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/eed8d24e/&text=在公司搭建私有的cnpm服务器" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/eed8d24e/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/eed8d24e/&text=在公司搭建私有的cnpm服务器" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/eed8d24e/&title=在公司搭建私有的cnpm服务器" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/eed8d24e/&is_video=false&description=在公司搭建私有的cnpm服务器" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=在公司搭建私有的cnpm服务器&body=Check out this article: https://alili.tech/archive/eed8d24e/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/eed8d24e/&title=在公司搭建私有的cnpm服务器" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/eed8d24e/&title=在公司搭建私有的cnpm服务器" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/eed8d24e/&title=在公司搭建私有的cnpm服务器" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/eed8d24e/&title=在公司搭建私有的cnpm服务器" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装的基本步骤"><span class="toc-number">1.</span> <span class="toc-text">安装的基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">2.</span> <span class="toc-text">开始吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在linux安装mysql"><span class="toc-number">2.1.</span> <span class="toc-text">在linux安装mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在代码里配置sql信息"><span class="toc-number">2.2.</span> <span class="toc-text">在代码里配置sql信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装cnpm-org-的相关js依赖（这是jser们再熟悉不过的了）"><span class="toc-number">2.3.</span> <span class="toc-text">安装cnpm.org 的相关js依赖（这是jser们再熟悉不过的了）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        在公司搭建私有的cnpm服务器
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2017-11-24T22:30:05.000Z" itemprop="datePublished">2017-11-24</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nodejs/">Nodejs</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>现在的js的项目越来越多。如果我们把代码开源。我们会把这些代码发布到npm。<br>但是npm是公共的，公司的代码毕竟不会公开在网上。<br>于是我们就有必要搭建一个自己的npm服务器。把公司私有的代码发布在自己公司的npm服务器上。<br>这样我们就可以即方便的下载我们想要的代码。也可以不把这些代码放在开源平台上面</p>
+<h2 id="安装的基本步骤"><a href="#安装的基本步骤" class="headerlink" title="安装的基本步骤"></a>安装的基本步骤</h2><ol>
+<li>在linu安装mysql</li>
+<li>npm install cnpm.org  下载cnpm.org的代码</li>
+<li>配置好cnpm.org的数据库配置</li>
+<li>npm start</li>
+</ol>
+<p>在安装过程中，我们只有这简单的4步。不管哪里遇到各种各样的问题，都不会脱离这4个步骤。</p>
+<h2 id="开始吧"><a href="#开始吧" class="headerlink" title="开始吧"></a>开始吧</h2><h3 id="在linux安装mysql"><a href="#在linux安装mysql" class="headerlink" title="在linux安装mysql"></a>在linux安装mysql</h3><p>网上有很多相关教程，请自行搜索。如果有需要我会重新开一篇来讲述安装步骤。<br>我们假设这里我们创建了一个用户为：root 密码：root1234</p>
+<ol>
+<li><p>创建数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE cnpmjs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建表： </p>
+</li>
+</ol>
+<p>在cnpm.org代码里，doc/db.sql文件里面有创建cnpm.org的相关表的sql语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use cnpmjs;</span><br><span class="line">mysql&gt; source docs/db.sql</span><br></pre></td></tr></table></figure></p>
+<h3 id="在代码里配置sql信息"><a href="#在代码里配置sql信息" class="headerlink" title="在代码里配置sql信息"></a>在代码里配置sql信息</h3><p>在cnpm.org代码里的 config/config.js配置我们的数据库连接信息.</p>
+<p>找到以下mysqlServers相关代码,配置大致如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysqlServers: [</span><br><span class="line">  &#123;</span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    user: <span class="string">'root'</span>,</span><br><span class="line">    password: <span class="string">'root1234'</span>,  <span class="comment">// 这是我们刚刚创建的账户跟密码</span></span><br><span class="line">  &#125;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<h3 id="安装cnpm-org-的相关js依赖（这是jser们再熟悉不过的了）"><a href="#安装cnpm-org-的相关js依赖（这是jser们再熟悉不过的了）" class="headerlink" title="安装cnpm.org 的相关js依赖（这是jser们再熟悉不过的了）"></a>安装cnpm.org 的相关js依赖（这是jser们再熟悉不过的了）</h3><p> 进入cnpm.org代码目录</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> npm install</span><br><span class="line"> ``` </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> ### 最后一步 </span><br><span class="line">当里的js依赖装好了之后，cnpm.org的数据库配置也配置好了以后。</span><br><span class="line">再命令行里 运行一下命令：</span><br></pre></td></tr></table></figure>
+<p>npm start<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">好了，我们的cnpm服务器就这样简单的搭建成功了。</span><br><span class="line"></span><br><span class="line">* 默认web端口为：7002，当你浏览器输入这台机器的ip加端口便可以访问 cnpm.org应用的web页面了。</span><br><span class="line"> 本机访问则是：http://localhost:7002</span><br><span class="line"></span><br><span class="line">* registry 默认端口为： 7001</span><br><span class="line"></span><br><span class="line">&gt; 如果在其他机器始终访问不了你的应用。请检查你的服务器防火墙哦。</span><br><span class="line"></span><br><span class="line">### 尝试使用</span><br></pre></td></tr></table></figure></p>
+<pre><code>npm install webpack -g --registry=http://192.168.0.100:7001 // IP为你搭建服务器的地址，不要忘加端口号
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如果你觉得以上方式麻烦可以设置里本机npm 默认registry</span><br></pre></td></tr></table></figure>
+<p>npm config set registry <a href="http://192.168.0.100:7001" rel="external nofollow noopener noreferrer" target="_blank">http://192.168.0.100:7001</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## cnpm.org的相关配置</span><br><span class="line"></span><br><span class="line">``` javascript</span><br><span class="line">&#123;</span><br><span class="line">enableCluster：是否启用 cluster-worker 模式启动服务，默认 false，生产环节推荐为 true;</span><br><span class="line">registryPort： API 专用的 registry 服务端口，默认 7001；</span><br><span class="line">webPort： Web 服务端口，默认 7002；</span><br><span class="line">bindingHost：监听绑定的 Host ，默认为 127.0.0.1，如果外面架了一层本地的 Nginx 反向代理或者 Apache 反向代理的话推荐不用改；</span><br><span class="line">sessionSecret：session 用的盐；</span><br><span class="line">logdir：日志目录；</span><br><span class="line">uploadDir：临时上传文件目录；</span><br><span class="line">viewCache：视图模板缓存是否开启，默认为 false；</span><br><span class="line">enableCompress：是否开启 gzip 压缩，默认为 false；</span><br><span class="line">admins：管理员们，这是一个 JSON Object，对应各键名为各管理员的用户名，键值为其邮箱，默认为 &#123; fengmk2: &apos;fengmk2@gmail.com&apos;, admin: &apos;admin@cnpmjs.org&apos;, dead_horse: &apos;dead_horse@qq.com&apos; &#125;；</span><br><span class="line">logoURL：Logo 地址，不过对于我这个已经把 CNPM 前端改得面目全非的人来说已经忽略了这个配置了；</span><br><span class="line">adBanner：广告 Banner 的地址；</span><br><span class="line">customReadmeFile：实际上我们看到的 cnpmjs.org 首页中间一大堆冗长的介绍是一个 Markdown 文件转化而成的，你可以设置该项来自行替换这个文件；</span><br><span class="line">customFooter：自定义页脚模板；</span><br><span class="line">npmClientName：默认为 cnpm，如果你有自己开发或者 fork 的 npm 客户端的话请改成自己的 CLI 命令，这个应该会在一些页面的说明处替换成你所写的；</span><br><span class="line">backupFilePrefix：备份目录；</span><br><span class="line">database：&#123;</span><br><span class="line">    //数据库相关配置，为一个对象，默认如果不配置将会是一个 ~/.cnpmjs.org/data.sqlite 的 SQLite ；</span><br><span class="line">    db：数据的库名；</span><br><span class="line">    username：数据库用户名；</span><br><span class="line">    password：数据库密码；</span><br><span class="line">    dialect：数据库适配器，可选 &quot;mysql&quot;、&quot;sqlite&quot;、&quot;postgres&quot;、&quot;mariadb&quot;，默认为 &quot;sqlite&quot;；</span><br><span class="line">    hsot：数据库地址；</span><br><span class="line">    port：数据库端口；</span><br><span class="line">    pool：&#123;</span><br><span class="line">        //数据库连接池相关配置，为一个对象；</span><br><span class="line">        maxConnections：最大连接数，默认为 10；</span><br><span class="line">        minConnections：最小连接数，默认为 0；</span><br><span class="line">        maxIdleTime：单条链接最大空闲时间，默认为 30000 毫秒；</span><br><span class="line">    &#125;</span><br><span class="line">    storege：仅对 SQLite 配置有效，数据库地址，默认为 ~/.cnpmjs/data.sqlite；</span><br><span class="line">&#125;,</span><br><span class="line">nfs：包文件系统处理对象，为一个 Node.js 对象，默认是 fs-cnpm 这个包，并且配置在 ~/.cnpmjs/nfs 目录下，也就是说默认所有同步的包都会被放在这个目录下；开发者可以使用别的一些文件系统插件（如上传到又拍云等）,又或者自己去按接口开发一个逻辑层，这些都是后话了；</span><br><span class="line">registryHost：暂时还未试过，我猜是用于 Web 页面显示用的，默认为 r.cnpmjs.org；</span><br><span class="line">enablePrivate：是否开启私有模式，默认为 false；</span><br><span class="line">//如果是私有模式则只有管理员能发布包，其它人只能从源站同步包；</span><br><span class="line">//如果是非私有模式则所有登录用户都能发布包；</span><br><span class="line">scopes：非管理员发布包的时候只能用以 scopes 里面列举的命名空间为前缀来发布，如果没设置则无法发布，也就是说这是一个必填项，默认为 [ &apos;@cnpm&apos;, &apos;@cnpmtest&apos;, &apos;@cnpm-test&apos; ]，据苏千大大解释是为了便于管理以及让公司的员工自觉按需发布；更多关于 NPM scope 的说明请参见 npm-scope；</span><br><span class="line">privatePackages：就如该配置项的注释所述，出于历史包袱的原因，有些已经存在的私有包（可能之前是用 Git 的方式安装的）并没有以命名空间的形式来命名，而这种包本来是无法上传到 CNPM 的，这个配置项数组就是用来加这些例外白名单的，默认为一个空数组；</span><br><span class="line">sourceNpmRegistry：更新源 NPM 的 registry 地址，默认为 https://registry.npm.taobao.org；</span><br><span class="line">sourceNpmRegistryIsCNpm：源 registry 是否为 CNPM ，默认为 true，如果你使用的源是官方 NPM 源，请将其设为 false；</span><br><span class="line">syncByInstall：如果安装包的时候发现包不存在，则尝试从更新源同步，默认为 true；</span><br><span class="line">syncModel：更新模式（不过我觉得是个 typo），有下面几种模式可以选择，默认为 &quot;none&quot;;</span><br><span class="line">// &quot;none&quot;：永不同步，只管理私有用户上传的包，其它源包会直接从源站获取；</span><br><span class="line">// &quot;exist&quot;：定时同步已经存在于数据库的包；</span><br><span class="line">// &quot;all&quot;：定时同步所有源站的包；</span><br><span class="line">syncInterval：同步间隔，默认为 &quot;10m&quot; 即十分钟；</span><br><span class="line">syncDevDependencies：是否同步每个包里面的 devDependencies 包们，默认为 false；</span><br><span class="line">badgeSubject：包的 badge 显示的名字，默认为 cnpm；</span><br><span class="line">userService：用户验证接口，默认为 null，即无用户相关功能也就是无法有用户去上传包，该部分需要自己实现接口功能并配置，如与公司的 Gitlab 相对接，这也是后话了；</span><br><span class="line">alwaysAuth：是否始终需要用户验证，即便是 $ cnpm install 等命令；</span><br><span class="line">httpProxy：代理地址设置，用于你在墙内源站在墙外的情况。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>参考文章：<br><a href="https://www.v2ex.com/t/292046" rel="external nofollow noopener noreferrer" target="_blank">https://www.v2ex.com/t/292046</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/eed8d24e/">https://alili.tech/archive/eed8d24e/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/6eff5ac9/">Apache,Nginx,Express,Egg.js 支持前端HTML5 History 模式</a></li><li><a href="https://alili.tech/archive/524de824/">Egg.js 如何支持单页面应用</a></li><li><a href="https://alili.tech/archive/59cf5417/">Nodejs之http模块的get与post请求</a></li><li><a href="https://alili.tech/archive/b36fefc7/">Visual Studio Code隐藏从ts生成的额外js与map文件</a></li><li><a href="https://alili.tech/archive/e06698c9/">Express设置CORS,让浏览器可以跨域访问你的服务器</a></li><li><a href="http://www.hi-linux.com/posts/20296/" rel="external nofollow noopener noreferrer" target="_blank">使用PM2管理Node应用</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装的基本步骤"><span class="toc-number">1.</span> <span class="toc-text">安装的基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">2.</span> <span class="toc-text">开始吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在linux安装mysql"><span class="toc-number">2.1.</span> <span class="toc-text">在linux安装mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在代码里配置sql信息"><span class="toc-number">2.2.</span> <span class="toc-text">在代码里配置sql信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装cnpm-org-的相关js依赖（这是jser们再熟悉不过的了）"><span class="toc-number">2.3.</span> <span class="toc-text">安装cnpm.org 的相关js依赖（这是jser们再熟悉不过的了）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

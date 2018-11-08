@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="MIME是什么?MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型; 在最早的HTTP协议中,没有附加的数据类型信息. 所有传送的数据都被客户程序解释为超文本标记语言HTML 文档，而为了支持多媒体数据类型，HTTP协议中就使用了附加在文档之前的MIME数据类型信息来标识数据类型。  每个MIME类型由两部分组成，前面是数据的大类别，例如">
+<meta name="keywords" content="http,浏览器特性,MIME,格式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聊聊HTTP的MIME">
+<meta property="og:url" content="https://alili.tech/archive/3b54e2d1/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="MIME是什么?MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型; 在最早的HTTP协议中,没有附加的数据类型信息. 所有传送的数据都被客户程序解释为超文本标记语言HTML 文档，而为了支持多媒体数据类型，HTTP协议中就使用了附加在文档之前的MIME数据类型信息来标识数据类型。  每个MIME类型由两部分组成，前面是数据的大类别，例如">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.442Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="聊聊HTTP的MIME">
+<meta name="twitter:description" content="MIME是什么?MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型; 在最早的HTTP协议中,没有附加的数据类型信息. 所有传送的数据都被客户程序解释为超文本标记语言HTML 文档，而为了支持多媒体数据类型，HTTP协议中就使用了附加在文档之前的MIME数据类型信息来标识数据类型。  每个MIME类型由两部分组成，前面是数据的大类别，例如">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>聊聊HTTP的MIME | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/3b54e2d1/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/3b54e2d1/",
+      "appid": "1613049289050283", 
+      "title": "聊聊HTTP的MIME | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:05"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/bb62bab9/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/84afbeeb/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/3b54e2d1/&text=聊聊HTTP的MIME" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/3b54e2d1/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/3b54e2d1/&text=聊聊HTTP的MIME" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/3b54e2d1/&title=聊聊HTTP的MIME" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/3b54e2d1/&is_video=false&description=聊聊HTTP的MIME" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=聊聊HTTP的MIME&body=Check out this article: https://alili.tech/archive/3b54e2d1/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/3b54e2d1/&title=聊聊HTTP的MIME" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/3b54e2d1/&title=聊聊HTTP的MIME" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/3b54e2d1/&title=聊聊HTTP的MIME" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/3b54e2d1/&title=聊聊HTTP的MIME" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MIME是什么"><span class="toc-number">1.</span> <span class="toc-text">MIME是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的MIME类型-通用型-："><span class="toc-number">2.</span> <span class="toc-text">常见的MIME类型(通用型)：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用于WAP服务器的MIME类型有："><span class="toc-number">3.</span> <span class="toc-text">用于WAP服务器的MIME类型有：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        聊聊HTTP的MIME
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2017-07-26T16:14:25.000Z" itemprop="datePublished">2017-07-26</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/HTTP/">HTTP</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h2 id="MIME是什么"><a href="#MIME是什么" class="headerlink" title="MIME是什么?"></a>MIME是什么?</h2><p>MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型;</p>
+<p>在最早的HTTP协议中,没有附加的数据类型信息.</p>
+<p>所有传送的数据都被客户程序解释为超文本标记语言HTML 文档，而为了支持多媒体数据类型，HTTP协议中就使用了附加在文档之前的MIME数据类型信息来标识数据类型。</p>
+<hr>
+<p>每个MIME类型由两部分组成，前面是数据的大类别，例如声音audio、图象image等，后面定义具体的种类。</p>
+<h2 id="常见的MIME类型-通用型-："><a href="#常见的MIME类型-通用型-：" class="headerlink" title="常见的MIME类型(通用型)："></a>常见的MIME类型(通用型)：</h2><ul>
+<li>超文本标记语言文本 .html text/html</li>
+<li>xml文档 .xml text/xml</li>
+<li>XHTML文档 .xhtml application/xhtml+xml</li>
+<li>普通文本 .txt text/plain</li>
+<li>RTF文本 .rtf application/rtf</li>
+<li>PDF文档 .pdf application/pdf</li>
+<li>Microsoft Word文件 .word application/msword</li>
+<li>PNG图像 .png image/png</li>
+<li>GIF图形 .gif image/gif</li>
+<li>JPEG图形 .jpeg,.jpg image/jpeg</li>
+<li>au声音文件 .au audio/basic</li>
+<li>MIDI音乐文件 mid,.midi audio/midi,audio/x-midi</li>
+<li>RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio</li>
+<li>MPEG文件 .mpg,.mpeg video/mpeg</li>
+<li>AVI文件 .avi video/x-msvideo</li>
+<li>GZIP文件 .gz application/x-gzip</li>
+<li>TAR文件 .tar application/x-tar</li>
+<li>任意的二进制数据 application/octet-stream</li>
+</ul>
+<h2 id="用于WAP服务器的MIME类型有："><a href="#用于WAP服务器的MIME类型有：" class="headerlink" title="用于WAP服务器的MIME类型有："></a>用于WAP服务器的MIME类型有：</h2><ul>
+<li>MRP文件（国内普遍的手机）.mrp application/octet-stream</li>
+<li>IPA文件(IPHONE) .ipa application/iphone-package-archive</li>
+<li>Debian软件包格式 .deb application/x-debian-package-archive</li>
+<li>APK文件(安卓系统) .apk application/vnd.android.package-archive</li>
+<li>CAB文件(Windows Mobile) .cab application/vnd.cab-com-archive</li>
+<li>XAP文件(Windows Phone 7) .xap application/x-silverlight-app</li>
+<li>SIS文件(symbian平台/S60V1) .sis application/vnd.symbian.install-archive *</li>
+<li>SISX文件(symbian平台/S60V3/V5) .sisx application/vnd.symbian.epoc/x-sisx-app</li>
+<li>JAR、JAD文件(JAVA平台手机通用格式) .jar .jad</li>
+</ul>
+<p>服务器在发送真正的数据之前，就要先发送标志数据的MIME类型的信息，这个信息使用Content-type关键字进行定义.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-type: text/html</span><br></pre></td></tr></table></figure>
+<p>Content-type就是我们经常在 http请求头里 response header看到的那个.</p>
+<p>里面包含的就是MIME信息.</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/3b54e2d1/">https://alili.tech/archive/3b54e2d1/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/84afbeeb/">HTTP的URI格式说明</a></li><li><a href="https://abelsu7.top/2018/10/18/http-notes-part-1/" rel="external nofollow noopener noreferrer" target="_blank">《图解HTTP》笔记-1-Web基础及简单的HTTP协议</a></li><li><a href="https://abelsu7.top/2018/10/23/http-notes-part-4/" rel="external nofollow noopener noreferrer" target="_blank">《图解HTTP》笔记-4-HTTPS及用户身份认证</a></li><li><a href="https://abelsu7.top/2018/10/22/http-notes-part-2/" rel="external nofollow noopener noreferrer" target="_blank">《图解HTTP》笔记-2-HTTP报文信息及状态码</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MIME是什么"><span class="toc-number">1.</span> <span class="toc-text">MIME是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的MIME类型-通用型-："><span class="toc-number">2.</span> <span class="toc-text">常见的MIME类型(通用型)：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用于WAP服务器的MIME类型有："><span class="toc-number">3.</span> <span class="toc-text">用于WAP服务器的MIME类型有：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text"> 本文链接：</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">文章推荐</span></a>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

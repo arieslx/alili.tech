@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="持续更新的github笔记，链接地址：Front-End-Basics   此篇文章的笔记地址：字符到底发生了什么变化   ES6走走看看系列，特别鸣谢奇舞读书会~  块级作用域又称词法作用域，存在于：  函数内部（函数作用域） 块中（字符 { 和 } 之间的区域）  注意：ES6允许块级作用域任意嵌套                                           {{{{{">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6走走看看—由块级作用域引出的一场变革">
+<meta property="og:url" content="https://alili.tech/archive/dfea777f/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="持续更新的github笔记，链接地址：Front-End-Basics   此篇文章的笔记地址：字符到底发生了什么变化   ES6走走看看系列，特别鸣谢奇舞读书会~  块级作用域又称词法作用域，存在于：  函数内部（函数作用域） 块中（字符 { 和 } 之间的区域）  注意：ES6允许块级作用域任意嵌套                                           {{{{{">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://static.alili.tech/img/bVbgyJO?w=2378&h=560">
+<meta property="og:image" content="https://static.alili.tech/img/bVbgyJP?w=2396&h=666">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6走走看看—由块级作用域引出的一场变革">
+<meta name="twitter:description" content="持续更新的github笔记，链接地址：Front-End-Basics   此篇文章的笔记地址：字符到底发生了什么变化   ES6走走看看系列，特别鸣谢奇舞读书会~  块级作用域又称词法作用域，存在于：  函数内部（函数作用域） 块中（字符 { 和 } 之间的区域）  注意：ES6允许块级作用域任意嵌套                                           {{{{{">
+<meta name="twitter:image" content="https://static.alili.tech/img/bVbgyJO?w=2378&h=560">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>ES6走走看看—由块级作用域引出的一场变革 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/dfea777f/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/dfea777f/",
+      "appid": "1613049289050283", 
+      "title": "ES6走走看看—由块级作用域引出的一场变革 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:02"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/956c5598/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/71e9065a/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/dfea777f/&text=ES6走走看看—由块级作用域引出的一场变革" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/dfea777f/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/dfea777f/&text=ES6走走看看—由块级作用域引出的一场变革" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/dfea777f/&title=ES6走走看看—由块级作用域引出的一场变革" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/dfea777f/&is_video=false&description=ES6走走看看—由块级作用域引出的一场变革" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ES6走走看看—由块级作用域引出的一场变革&body=Check out this article: https://alili.tech/archive/dfea777f/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/dfea777f/&title=ES6走走看看—由块级作用域引出的一场变革" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/dfea777f/&title=ES6走走看看—由块级作用域引出的一场变革" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/dfea777f/&title=ES6走走看看—由块级作用域引出的一场变革" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/dfea777f/&title=ES6走走看看—由块级作用域引出的一场变革" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">块级作用域又称词法作用域，存在于：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">1、 块级声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">2、 let声明：用来声明一个块级作用域变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">3、 const声明：声明常量（如PI），值一旦被设定后不可更改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader4"><span class="toc-number">5.</span> <span class="toc-text">4、 循环中的块作用域绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">6.</span> <span class="toc-text">5、 块级绑定最佳实践的进化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader6"><span class="toc-number">7.</span> <span class="toc-text">6、 全局变量将逐步与顶层对象的属性脱钩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader7"><span class="toc-number">8.</span> <span class="toc-text">7、 块级函数</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        ES6走走看看—由块级作用域引出的一场变革
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-22T00:00:00.000Z" itemprop="datePublished">2018-10-22</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>持续更新的github笔记，链接地址：<a href="https://github.com/qiqihaobenben/Front-End-Basics" rel="external nofollow noopener noreferrer" target="_blank">Front-End-Basics</a>  </p>
+<p>此篇文章的笔记地址：<a href="https://qiqihaobenben.gitbooks.io/front-end-basics/content/JavaScript/ES6/string.html" rel="external nofollow noopener noreferrer" target="_blank">字符到底发生了什么变化</a>  </p>
+<p><strong>ES6走走看看系列，特别鸣谢奇舞读书会~</strong></p>
+<hr>
+<h2 id="articleHeader0">块级作用域又称词法作用域，存在于：</h2>
+<ul>
+<li>函数内部（函数作用域）</li>
+<li>块中（字符 { 和 } 之间的区域）</li>
+</ul>
+<p><b>注意：ES6允许块级作用域任意嵌套</b></p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="{{{{{{let text = 'Hello World!'}}}}}}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs xquery"><code style="word-break: break-word; white-space: initial">{{{{{{let text = <span class="hljs-string">'Hello World!'</span>}}}}}}</code></pre>
+<p>因为有了块级作用域，然后我们才有继续往下聊的可能。</p>
+<h2 id="articleHeader1">1、 块级声明</h2>
+<p>块级声明是用于声明在指定块的作用域之外无法访问的变量。</p>
+<h2 id="articleHeader2">2、 let声明：用来声明一个块级作用域变量</h2>
+<p>1、 声明的变量具有块级作用域的特性</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="// 例子
+function getValue (condition) {
+    if (condition) {
+        let value = 'blue';
+        return value;
+    }
+    console.log(value)
+    // 报错 value is not defined
+}
+getValue()" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs ceylon"><code><span class="hljs-comment">// 例子</span>
+<span class="hljs-keyword">function</span> getValue (condition) {
+    <span class="hljs-keyword">if</span> (condition) {
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">value</span> = <span class="hljs-string">'blue'</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">value</span>;
+    }
+    console.log(<span class="hljs-keyword">value</span>)
+    <span class="hljs-comment">// 报错 value is not defined</span>
+}
+getValue()</code></pre>
+<p>2、 在同一个作用域内不能使用let声明同名的变量</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="// 不管是var,const或者let,新的let声明之前同名的变量，都会报错
+var count = 30;
+let count = 40;
+// 报错 Identifier 'count' has already been declared
+
+// 函数形参和函数内部的let声明变量重名，报错
+function test(value) {
+    let value = 3;
+}
+test()
+// 报错 Identifier 'value' has already been declared
+
+// 在不同的作用域声明的变量重名是没问题的
+let count = 30;
+if(true) {
+  let count = 40;
+  // 不同的作用域，不会报错
+}
+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs swift"><code><span class="hljs-comment">// 不管是var,const或者let,新的let声明之前同名的变量，都会报错</span>
+<span class="hljs-keyword">var</span> <span class="hljs-built_in">count</span> = <span class="hljs-number">30</span>;
+<span class="hljs-keyword">let</span> <span class="hljs-built_in">count</span> = <span class="hljs-number">40</span>;
+<span class="hljs-comment">// 报错 Identifier 'count' has already been declared</span>
+
+<span class="hljs-comment">// 函数形参和函数内部的let声明变量重名，报错</span>
+function test(value) {
+    <span class="hljs-keyword">let</span> value = <span class="hljs-number">3</span>;
+}
+test()
+<span class="hljs-comment">// 报错 Identifier 'value' has already been declared</span>
+
+<span class="hljs-comment">// 在不同的作用域声明的变量重名是没问题的</span>
+<span class="hljs-keyword">let</span> <span class="hljs-built_in">count</span> = <span class="hljs-number">30</span>;
+<span class="hljs-keyword">if</span>(<span class="hljs-literal">true</span>) {
+  <span class="hljs-keyword">let</span> <span class="hljs-built_in">count</span> = <span class="hljs-number">40</span>;
+  <span class="hljs-comment">// 不同的作用域，不会报错</span>
+}
+</code></pre>
+<p>3、 声明没有预解析，不存在变量提升，有“临时死区”(TDZ)</p>
+<p>从块的开始到变量声明这段的区域被称为临时死区，ES6明确规定，如果区块中存在let和const命令，则这个区块对这些命令声明的变量从一开始就形成封闭作用域，只要在声明之前就使用这些变量（赋值，引用等等），就会报错。</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="if(true) {
+    console.log(typeof value);
+    // 报错 value is not defined
+
+    let value = 'blue';
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs cs"><code><span class="hljs-keyword">if</span>(<span class="hljs-literal">true</span>) {
+    console.log(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">value</span>);
+    <span class="hljs-comment">// 报错 value is not defined</span>
+
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">value</span> = <span class="hljs-string">'blue'</span>;
+}</code></pre>
+<p><b>注意：TDZ是区域是“块开始”到“变量声明”，下面的例子不报错</b></p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="// typeof 说是相对安全，确实是，永远拿不到想要的结果
+console.log(typeof value); // 打印 undefined，没有报错
+if(true) {
+    let value = 'red';
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs cs"><code><span class="hljs-comment">// typeof 说是相对安全，确实是，永远拿不到想要的结果</span>
+console.log(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">value</span>); <span class="hljs-comment">// 打印 undefined，没有报错</span>
+<span class="hljs-keyword">if</span>(<span class="hljs-literal">true</span>) {
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">value</span> = <span class="hljs-string">'red'</span>;
+}</code></pre>
+<h2 id="articleHeader3">3、 const声明：声明常量（如PI），值一旦被设定后不可更改</h2>
+<p>1、 常量声明的值是不可变的</p>
+<p><b>注意：const声明的对象不允许修改绑定，但可以修改该对象的属性值。</b></p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="const number = 6;
+number = 5;
+// 报错 Assignment to constant variable
+
+const obj = {number: 1};
+obj.number = 2; // 不报错
+
+obj = {number: 3};
+// 报错 Assignment to constant variable" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs autoit"><code><span class="hljs-keyword">const</span> <span class="hljs-built_in">number</span> = <span class="hljs-number">6</span><span class="hljs-comment">;</span>
+<span class="hljs-built_in">number</span> = <span class="hljs-number">5</span><span class="hljs-comment">;</span>
+// 报错 Assignment <span class="hljs-keyword">to</span> constant variable
+
+<span class="hljs-keyword">const</span> obj = {<span class="hljs-built_in">number</span>: <span class="hljs-number">1</span>}<span class="hljs-comment">;</span>
+obj.<span class="hljs-built_in">number</span> = <span class="hljs-number">2</span><span class="hljs-comment">; // 不报错</span>
+
+obj = {<span class="hljs-built_in">number</span>: <span class="hljs-number">3</span>}<span class="hljs-comment">;</span>
+// 报错 Assignment <span class="hljs-keyword">to</span> constant variable</code></pre>
+<p>2、 因为常量声明后值就不可更改了，所以声明时必须赋值</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="// 有效的常量
+const count = 30;
+
+// 报错 Missing initializer in const declaration
+const name;" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs delphi"><code><span class="hljs-comment">// 有效的常量</span>
+<span class="hljs-keyword">const</span> count = <span class="hljs-number">30</span>;
+
+<span class="hljs-comment">// 报错 Missing initializer in const declaration</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">name</span>;</code></pre>
+<p>3、 声明的常量具有块级作用域的特性</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="if(true) {
+    const number = 5;
+}
+console.log(number)
+// 报错 number is not defined" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs autoit"><code><span class="hljs-keyword">if</span>(<span class="hljs-literal">true</span>) {
+    <span class="hljs-keyword">const</span> <span class="hljs-built_in">number</span> = <span class="hljs-number">5</span><span class="hljs-comment">;</span>
+}
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">number</span>)
+// 报错 <span class="hljs-built_in">number</span> is <span class="hljs-literal">not</span> defined</code></pre>
+<p>4、 在同一个作用域内不能使用const声明同名的变量</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="var message = 'Hello';
+let age = 25;
+
+// 这两条语句都会报错
+const message = 'Good';
+const age = 30;" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs delphi"><code><span class="hljs-keyword">var</span> <span class="hljs-keyword">message</span> = <span class="hljs-string">'Hello'</span>;
+let age = <span class="hljs-number">25</span>;
+
+<span class="hljs-comment">// 这两条语句都会报错</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">message</span> = <span class="hljs-string">'Good'</span>;
+<span class="hljs-keyword">const</span> age = <span class="hljs-number">30</span>;</code></pre>
+<p>5、 声明没有预解析，不存在变量提升，有“临时死区”(TDZ)</p>
+<p><br></p>
+<p><b>总结：一张表格</b></p>
+<table>
+<thead><tr>
+<th>声明方式</th>
+<th>变量提升</th>
+<th>作用域</th>
+<th>是否需要初始值</th>
+<th>重复定义</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>var</td>
+<td>是</td>
+<td>函数级</td>
+<td>不需要</td>
+<td>允许</td>
+</tr>
+<tr>
+<td>let</td>
+<td>否</td>
+<td>块级</td>
+<td>不需要</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>const</td>
+<td>否</td>
+<td>块级</td>
+<td>需要</td>
+<td>不允许</td>
+</tr>
+</tbody>
+</table>
+<p><b>扩展：再提一下变量命名，不管是var、let、const声明的变量名，可以由数字，字母，下划线及美元符号组成，但是不能以数字开头。美元符号可以放到任何一个位置，甚至单独一个美元符号。</b></p>
+<h2 id="articleHeader4">4、 循环中的块作用域绑定</h2>
+<blockquote>循环中的let声明</blockquote>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="// 第一个对比
+// before
+for(var i = 0; i < 5; i++) {
+    // ... 省略一些代码
+}
+console.log(i)  // 5
+
+//after
+for(let i = 0; i < 5; i++) {
+    // ... 省略一些代码
+}
+console.log(i) // 报错 i is not defined
+
+
+// 第二个对比
+// before
+var funcs = [];
+for(var i = 0; i < 10; i++) {
+    funcs.push(() => {console.log(i)})
+}
+funcs.forEach((ele) => {
+    ele()
+})
+// 打印 10次 10
+
+// after
+var funcs = [];
+for(let i = 0; i < 10; i++) {
+    funcs.push(() => {console.log(i)})
+}
+funcs.forEach((ele) => {
+    ele()
+})
+// 打印 0 1 2 3 4 5 6 7 8 9" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs javascript"><code><span class="hljs-comment">// 第一个对比</span>
+<span class="hljs-comment">// before</span>
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+    <span class="hljs-comment">// ... 省略一些代码</span>
+}
+<span class="hljs-built_in">console</span>.log(i)  <span class="hljs-comment">// 5</span>
+
+<span class="hljs-comment">//after</span>
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+    <span class="hljs-comment">// ... 省略一些代码</span>
+}
+<span class="hljs-built_in">console</span>.log(i) <span class="hljs-comment">// 报错 i is not defined</span>
+
+
+<span class="hljs-comment">// 第二个对比</span>
+<span class="hljs-comment">// before</span>
+<span class="hljs-keyword">var</span> funcs = [];
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+    funcs.push(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<span class="hljs-built_in">console</span>.log(i)})
+}
+funcs.forEach(<span class="hljs-function">(<span class="hljs-params">ele</span>) =&gt;</span> {
+    ele()
+})
+<span class="hljs-comment">// 打印 10次 10</span>
+
+<span class="hljs-comment">// after</span>
+<span class="hljs-keyword">var</span> funcs = [];
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+    funcs.push(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<span class="hljs-built_in">console</span>.log(i)})
+}
+funcs.forEach(<span class="hljs-function">(<span class="hljs-params">ele</span>) =&gt;</span> {
+    ele()
+})
+<span class="hljs-comment">// 打印 0 1 2 3 4 5 6 7 8 9</span></code></pre>
+<p><b>注意：有一点很重要，let 声明在循环内部的行为是标准中专门定义的，它不一定与 let 不提升特性有关。</b></p>
+<blockquote>循环中的const声明</blockquote>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="// for 循环会报错
+for (const i = 0; i < 1; i++) {
+    console.log(i)
+}
+// 打印 0 ，然后报错 Assignment to constant variable.
+
+// for-in 和 for-of 不会报错
+var object = {
+    a: true,
+    b: true,
+    c: true
+};
+for (const key in object) {
+    // 不要在循环体内更改key的值，会报错
+    console.log(key)
+}
+// 打印 a b c" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs cs"><code><span class="hljs-comment">// for 循环会报错</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1</span>; i++) {
+    console.log(i)
+}
+<span class="hljs-comment">// 打印 0 ，然后报错 Assignment to constant variable.</span>
+
+<span class="hljs-comment">// for-in 和 for-of 不会报错</span>
+<span class="hljs-keyword">var</span> <span class="hljs-keyword">object</span> = {
+    a: <span class="hljs-literal">true</span>,
+    b: <span class="hljs-literal">true</span>,
+    c: <span class="hljs-literal">true</span>
+};
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key <span class="hljs-keyword">in</span> <span class="hljs-keyword">object</span>) {
+    <span class="hljs-comment">// 不要在循环体内更改key的值，会报错</span>
+    console.log(key)
+}
+<span class="hljs-comment">// 打印 a b c</span></code></pre>
+<p><b>注意：const可以应用在 for-in 和 for-of 循环中，是因为每次迭代不会修改已有绑定，而是会创建一个新绑定。</b></p>
+<h2 id="articleHeader5">5、 块级绑定最佳实践的进化</h2>
+<blockquote>ES6 早期</blockquote>
+<p>普遍认为默认使用let来替代var,对于写保护的变量使用const</p>
+<blockquote>ES6 使用中</blockquote>
+<p>普遍默认使用const，只有确实需要改变变量的值时使用let。因为大部分变量的值在初始化后不应再改变，而预料之外的变量值的改变是许多bug的源头。这样就可以在某种程度上实现代码的不可变，从而防止某些错误的发生。</p>
+<h2 id="articleHeader6">6、 全局变量将逐步与顶层对象的属性脱钩</h2>
+<p>顶层对象，在浏览器环境指的是window对象，在Node指的是global对象。</p>
+<p>为了保持兼容性，var命令和function命令声明的全局变量，依旧是顶层对象的属性；</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="var a = 1;
+window.a // 1" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs dart"><code><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;
+<span class="hljs-built_in">window</span>.a <span class="hljs-comment">// 1</span></code></pre>
+<p><span class="img-wrap"><img src="https://static.alili.tech/img/bVbgyJO?w=2378&amp;h=560" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="var 声明的a，在右侧 global 里面" title="var 声明的a，在右侧 global 里面" style="cursor: pointer"></span></p>
+<p>另一方面规定，let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。</p>
+<p><span class="img-wrap"><img src="https://static.alili.tech/img/bVbgyJP?w=2396&amp;h=666" del-src="https://static.alili.tech/v-5bbf1b3b/global/img/squares.svg" alt="图片描述" title="图片描述" style="cursor: pointer"></span></p>
+<p>上图可见let 声明的变量，并没有在Window对象里，而是一个新的Script对象。</p>
+<p><b>扩展：如果需要在浏览器中跨frame或window访问代码，仍然可以用var在全局对象下定义变量。</b></p>
+<h2 id="articleHeader7">7、 块级函数</h2>
+<p>从ECMAScript 6开始，在严格模式下，块里的函数作用域为这个块。ECMAScript 6之前不建议块级函数在严格模式下使用。</p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="'use strict';
+
+function f() {
+  return 1;
+}
+
+{
+  function f() {
+    return 2;
+  }
+}
+
+f() === 1; // true
+
+// f() === 2 在非严格模式下相等" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs javascript"><code><span class="hljs-meta">'use strict'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+}
+
+{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;
+  }
+}
+
+f() === <span class="hljs-number">1</span>; <span class="hljs-comment">// true</span>
+
+<span class="hljs-comment">// f() === 2 在非严格模式下相等</span></code></pre>
+<p><b>注意：在非严格模式下不要用块级函数，因为在非严格模式下，块中函数的声明表现奇怪，有兼容性风险</b></p>
+<div class="widget-codetool" style="display:none">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="if (shouldDefineZero) {
+   function zero() {     // DANGER: 兼容性风险
+      console.log(&quot;This is zero.&quot;);
+   }
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs javascript"><code><span class="hljs-keyword">if</span> (shouldDefineZero) {
+   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">zero</span>(<span class="hljs-params"></span>) </span>{     <span class="hljs-comment">// DANGER: 兼容性风险</span>
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This is zero."</span>);
+   }
+}</code></pre>
+<p>ECMAScript 6中，如果shouldDefineZero是false，则永远不会定义zero,因为这个块不执行。这是新标准定义的。然而，这里存在历史遗留问题，无论这个块是否执行，一些浏览器会定义zero。</p>
+<p>在严格模式下，所有支持ECMAScript 6的浏览器以相同的方式处理：只有在shouldDefineZero为true的情况下定义zero，并且作用域只是这个块内。</p>
+
+                
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016300953" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016300953</a></p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>ES6走走看看—由块级作用域引出的一场变革</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/dfea777f/">https://alili.tech/archive/dfea777f/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">块级作用域又称词法作用域，存在于：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">1、 块级声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader2"><span class="toc-number">3.</span> <span class="toc-text">2、 let声明：用来声明一个块级作用域变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">4.</span> <span class="toc-text">3、 const声明：声明常量（如PI），值一旦被设定后不可更改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader4"><span class="toc-number">5.</span> <span class="toc-text">4、 循环中的块作用域绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader5"><span class="toc-number">6.</span> <span class="toc-text">5、 块级绑定最佳实践的进化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader6"><span class="toc-number">7.</span> <span class="toc-text">6、 全局变量将逐步与顶层对象的属性脱钩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader7"><span class="toc-number">8.</span> <span class="toc-text">7、 块级函数</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">1.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">2.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

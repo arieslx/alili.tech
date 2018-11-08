@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="微前端打包构建微前端项目的打包,是有一些需要注意的点以webpack为例: amd模块在之前的文章,我们有提到我们的加载器,是基于System.js来做的.所以我们微前端的模块最终打包,是要符合模块规范的.我们使用的是amd模块规范来构建我们的模块. 指定基础路径因为模块打包后,调用模块出口文件的,是模块加载器.为了清晰的管理每个模块,并且正确的加载到我们每一个模块的资源,我们给模块的资源都指定一">
+<meta name="keywords" content="微前端,前端微服务化,前端自动化,解决方案,前端难题,Single,SPA,自动化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端微服务化解决方案6 - 构建与部署">
+<meta property="og:url" content="https://alili.tech/archive/ffb0c5ab/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="微前端打包构建微前端项目的打包,是有一些需要注意的点以webpack为例: amd模块在之前的文章,我们有提到我们的加载器,是基于System.js来做的.所以我们微前端的模块最终打包,是要符合模块规范的.我们使用的是amd模块规范来构建我们的模块. 指定基础路径因为模块打包后,调用模块出口文件的,是模块加载器.为了清晰的管理每个模块,并且正确的加载到我们每一个模块的资源,我们给模块的资源都指定一">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端微服务化解决方案6 - 构建与部署">
+<meta name="twitter:description" content="微前端打包构建微前端项目的打包,是有一些需要注意的点以webpack为例: amd模块在之前的文章,我们有提到我们的加载器,是基于System.js来做的.所以我们微前端的模块最终打包,是要符合模块规范的.我们使用的是amd模块规范来构建我们的模块. 指定基础路径因为模块打包后,调用模块出口文件的,是模块加载器.为了清晰的管理每个模块,并且正确的加载到我们每一个模块的资源,我们给模块的资源都指定一">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>前端微服务化解决方案6 - 构建与部署 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/ffb0c5ab/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/ffb0c5ab/",
+      "appid": "1613049289050283", 
+      "title": "前端微服务化解决方案6 - 构建与部署 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:05"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/5e00e43d/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/5ff0b366/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/ffb0c5ab/&text=前端微服务化解决方案6 - 构建与部署" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/ffb0c5ab/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/ffb0c5ab/&text=前端微服务化解决方案6 - 构建与部署" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/ffb0c5ab/&title=前端微服务化解决方案6 - 构建与部署" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/ffb0c5ab/&is_video=false&description=前端微服务化解决方案6 - 构建与部署" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=前端微服务化解决方案6 - 构建与部署&body=Check out this article: https://alili.tech/archive/ffb0c5ab/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/ffb0c5ab/&title=前端微服务化解决方案6 - 构建与部署" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/ffb0c5ab/&title=前端微服务化解决方案6 - 构建与部署" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/ffb0c5ab/&title=前端微服务化解决方案6 - 构建与部署" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/ffb0c5ab/&title=前端微服务化解决方案6 - 构建与部署" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微前端打包构建"><span class="toc-number">1.</span> <span class="toc-text">微前端打包构建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#amd模块"><span class="toc-number">1.1.</span> <span class="toc-text">amd模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指定基础路径"><span class="toc-number">1.2.</span> <span class="toc-text">指定基础路径</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署"><span class="toc-number">2.</span> <span class="toc-text">部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#微前端应用完整目录"><span class="toc-number">2.1.</span> <span class="toc-text">微前端应用完整目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置自动化"><span class="toc-number">2.2.</span> <span class="toc-text">配置自动化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关文章"><span class="toc-number">3.</span> <span class="toc-text">相关文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo"><span class="toc-number">4.</span> <span class="toc-text">Demo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">文章推荐</span></a></li></ol>
+    </div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        前端微服务化解决方案6 - 构建与部署
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-09-05T01:00:00.000Z" itemprop="datePublished">2018-09-05</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/MicroFrontend/">MicroFrontend</a>, <a class="tag-link" href="/tags/前端架构/">前端架构</a>, <a class="tag-link" href="/tags/微前端/">微前端</a>
+    </div>
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h1 id="微前端打包构建"><a href="#微前端打包构建" class="headerlink" title="微前端打包构建"></a>微前端打包构建</h1><p>微前端项目的打包,是有一些需要注意的点<br>以webpack为例:</p>
+<h2 id="amd模块"><a href="#amd模块" class="headerlink" title="amd模块"></a>amd模块</h2><p>在之前的文章,我们有提到我们的加载器,是基于System.js来做的.<br>所以我们微前端的模块最终打包,是要符合模块规范的.<br>我们使用的是<code>amd模块</code>规范来构建我们的模块.</p>
+<h2 id="指定基础路径"><a href="#指定基础路径" class="headerlink" title="指定基础路径"></a>指定基础路径</h2><p>因为模块打包后,调用模块出口文件的,是模块加载器.<br>为了清晰的管理每个模块,并且正确的加载到我们每一个模块的资源,<br>我们给模块的资源都指定一个<code>publicPath</code>.</p>
+<blockquote>
+<p>下面给出一个简单的 webpack 配置,这些配置我只是列出一些必要选项.<br>并不是一个完整的webpack配置,后续我会提供完整的微前端的Demo,提供大家参考<br>这些配置都是基于 <code>create-react-app</code> 的配置做的修改.<br>只要明白了配置的意图,明白我们打包出来的最终是一个什么样的包,<br>不管打包工具以后怎么变,技术栈怎么变,最后都是可以对接到微前端中来.</p>
+</blockquote>
+<p> 这里给出 <code>project.json</code> 的内容,便于后面的配置文件的阅读<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// project.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"name"</span>, <span class="comment">//模块名称</span></span><br><span class="line">    <span class="string">"path"</span>: <span class="string">"/project"</span>, <span class="comment">//模块url前缀</span></span><br><span class="line">    <span class="string">"prefix"</span>: <span class="string">"/module-prefix/"</span>, <span class="comment">//模块文件路径前缀</span></span><br><span class="line">    <span class="string">"main"</span>: <span class="string">"/module-prefix/main.js"</span>, <span class="comment">//模块渲染出口文件</span></span><br><span class="line">    <span class="string">"store"</span>: <span class="string">"/module-prefix/store.js"</span>,<span class="comment">//模块对外接口</span></span><br><span class="line">    <span class="string">"base"</span>: <span class="literal">true</span> <span class="comment">// 是否为baseapp</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 引入项目配置文件,也是前面说的 模块加载器必要文件之一</span></span><br><span class="line"><span class="keyword">const</span> projectConfig = <span class="built_in">require</span>(<span class="string">'./project.json'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> config = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    main: paths.appIndexJs, <span class="comment">//出口文件,模块加载器必要文件之一</span></span><br><span class="line">    store: paths.store <span class="comment">// 对外api的reducer文件,模块加载器必要文件之一</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: paths.appBuild,</span><br><span class="line">    filename: <span class="string">'[name].js?n=[chunkhash:8]'</span>,</span><br><span class="line">    chunkFilename: <span class="string">'static/js/[name].[chunkhash:8].chunk.js'</span>,</span><br><span class="line">    publicPath: projectConfig.prefix, <span class="comment">//在output中指定模块配置好的 publicPath</span></span><br><span class="line">    libraryTarget: <span class="string">'amd'</span>, <span class="comment">//对外输出 amd模块,便于 system.js加载</span></span><br><span class="line">    library: projectConfig.name, <span class="comment">//模块的名称</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        oneOf: [</span><br><span class="line">          &#123;</span><br><span class="line">            test: [<span class="regexp">/\.bmp$/</span>, /\.gif$/, /\.jpe?g$/, /\.png$/],</span><br><span class="line">            <span class="comment">// loader: 'happypack/loader?id=url',</span></span><br><span class="line">            loaders: [&#123;</span><br><span class="line">              loader: <span class="built_in">require</span>.resolve(<span class="string">'url-loader'</span>),</span><br><span class="line">              options: &#123;</span><br><span class="line">                limit: <span class="number">5000</span>,</span><br><span class="line">                name: <span class="string">'static/media/[name].[hash:8].[ext]'</span>,</span><br><span class="line">                publicPath: projectConfig.prefix, <span class="comment">//我们需要在静态文件的loader加上publicPath</span></span><br><span class="line">              &#125;,</span><br><span class="line">            &#125;]</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            test: <span class="regexp">/\.(js|jsx|mjs)$/</span>,</span><br><span class="line">            include: paths.appSrc,</span><br><span class="line">            loader: <span class="string">'happypack/loader?id=babel'</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">                name: <span class="string">'static/js/[name].[hash:8].[ext]'</span>,</span><br><span class="line">                publicPath: projectConfig.prefix, <span class="comment">//在静态文件的loader加上publicPath</span></span><br><span class="line">              &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            loader: <span class="built_in">require</span>.resolve(<span class="string">'file-loader'</span>),</span><br><span class="line">            exclude: [<span class="regexp">/\.(js|jsx|mjs)$/</span>, /\.html$/, /\.json$/],</span><br><span class="line">            options: &#123;</span><br><span class="line">              name: <span class="string">'static/media/[name].[hash:8].[ext]'</span>,</span><br><span class="line">              publicPath: projectConfig.prefix, <span class="comment">//在静态文件的loader加上publicPath</span></span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p>前端单页面的部署,不管怎么自动化,工具怎么变.<br>都是把打包好的静态文件,放到服务器的正确位置下.<br>微前端的部署,是一个应用聚合的过程,我们如何把一个个模块最后接入到一个完整的项目中的呢?</p>
+<h2 id="微前端应用完整目录"><a href="#微前端应用完整目录" class="headerlink" title="微前端应用完整目录"></a>微前端应用完整目录</h2><p>一般会放在一个nginx配置好的静态目录里,或者是其他web容器的一个静态目录.<br>看到这个目录结构,你应该能理解为什么要额外的配置 <code>publicPath</code> 了吧.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">├── index.html              // 首先浏览器会加载这个index.html,html里面会引入一个bootstrap.js的文件</span><br><span class="line">├── bootstrap.js            // 这个bootstrap.js是之前说的模块加载器打包过后的代码,</span><br><span class="line">│                           // 模块加载器会先加载 `project.config.js`,得到所有模块的配置.</span><br><span class="line">│                           // 然后才开始加载每个项目中的main.js文件,注册应用,注入store.js</span><br><span class="line">│</span><br><span class="line">├── project.config.js       // 这个文件存到是该项目的所有模块的配置,是代码自动生成的</span><br><span class="line">│                           // 之前有提到过项目配置自动化,是这个项目中唯一动态的文件.</span><br><span class="line">│                           // 目的是让模块的配置文件更新,或者新增新模块的时候,模块会自动挂载到项目中来</span><br><span class="line">│                           // 他会遍历每一个模块的project.json文件,取出内容,合并到一起</span><br><span class="line">│</span><br><span class="line">├── projectA                // 模块A目录</span><br><span class="line">│   ├── asset-manifest.json</span><br><span class="line">│   ├── favicon.ico</span><br><span class="line">│   ├── main.js             // 渲染用的出口文件</span><br><span class="line">│   ├── manifest.json</span><br><span class="line">│   ├── project.json        // 模块的配置文件</span><br><span class="line">│   ├── static</span><br><span class="line">│   │   ├── js</span><br><span class="line">│   │   │   ├── 0.86ae3ec3.chunk.js</span><br><span class="line">│   │   └── media</span><br><span class="line">│   │       └── logo.db0697c1.png</span><br><span class="line">│   └── store.js            //对外输出的store.js 文件</span><br><span class="line">└── projectB                // 模块B (重要文件的位置,与模块A是一致的)</span><br><span class="line">    ├── asset-manifest.json</span><br><span class="line">    ├── main.js</span><br><span class="line">    ├── manifest.json</span><br><span class="line">    ├── project.json</span><br><span class="line">    ├── static</span><br><span class="line">    │   ├── js</span><br><span class="line">    │   │   ├── 0.86ae3ec3.chunk.js</span><br><span class="line">    │   └── media</span><br><span class="line">    │       └── logo.db0697c1.png</span><br><span class="line">    └── store.js</span><br></pre></td></tr></table></figure>
+<h2 id="配置自动化"><a href="#配置自动化" class="headerlink" title="配置自动化"></a>配置自动化</h2><p>我们每个模块都有上面所描述的配置文件,当我们的项目多个模块的时候,我们需要把所有模块的配置文件聚合起来.<br>我这里也有写一个脚本.</p>
+<p><a href="https://www.npmjs.com/package/micro-auto-config" rel="external nofollow noopener noreferrer" target="_blank">micro-auto-config</a></p>
+<p>使用方法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install micro-auto-config -g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在项目根目录,用pm2启动该脚本,便可启动这个项目的配置自动化</span></span><br><span class="line">pm2 start micro-auto-config --name 你的项目名称-auto-config</span><br></pre></td></tr></table></figure>
+<p>这样之后 <code>project.config.js</code> 就会自动生成,以及模块变动之后也会重新生成.</p>
+<blockquote>
+<p>未完待续 …</p>
+</blockquote>
+<h1 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h1><p><a href="http://alili.tech/archive/ea599f7c/">前端微服务化解决方案1 - 思考</a></p>
+<p><a href="http://alili.tech/archive/11052bf4/">前端微服务化解决方案2 - Single-SPA</a></p>
+<p><a href="http://alili.tech/archive/1a60cede/">前端微服务化解决方案3 - 模块加载器</a></p>
+<p><a href="http://alili.tech/archive/a9a1f81b/">前端微服务化解决方案4 - 消息总线</a></p>
+<p><a href="http://alili.tech/archive/5ff0b366/">前端微服务化解决方案5 - 路由分发</a></p>
+<p><a href="http://alili.tech/archive/ffb0c5ab/">前端微服务化解决方案6 - 构建与部署</a></p>
+<p><a href="http://alili.tech/archive/5e00e43d/">前端微服务化解决方案7 - 静态数据共享</a></p>
+<p><a href="http://alili.tech/archive/ce685b9f/">前端微服务化解决方案8 - 二次构建</a></p>
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p><a href="http://microfrontend.alili.tech/" rel="external nofollow noopener noreferrer" target="_blank">前端微服务化 Micro Frontend Demo</a></p>
+<p><a href="https://github.com/Fantasy9527/lotus-scaffold-micro-frontend-portal" rel="external nofollow noopener noreferrer" target="_blank">微前端模块加载器</a></p>
+<p><a href="https://github.com/Fantasy9527/microfrontend-base-demo" rel="external nofollow noopener noreferrer" target="_blank">微前端Base App示例源码</a></p>
+<p><a href="https://github.com/Fantasy9527/microfrontend-submodule-demo" rel="external nofollow noopener noreferrer" target="_blank">微前端子项目示例源码</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/ffb0c5ab/">https://alili.tech/archive/ffb0c5ab/</a> <p></p><div><h1>文章推荐</h1><ul><li><a href="https://alili.tech/archive/22975f44/">Single-SPA微前端框架的使用Demo汇总</a></li><li><a href="https://alili.tech/archive/ea599f7c/">前端微服务化解决方案1 - 思考</a></li><li><a href="https://alili.tech/archive/11052bf4/">前端微服务化解决方案2 - Single-SPA</a></li><li><a href="https://alili.tech/archive/1a60cede/">前端微服务化解决方案3 - 模块加载器</a></li><li><a href="https://alili.tech/archive/a9a1f81b/">前端微服务化解决方案4 - 消息总线</a></li></ul></div>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微前端打包构建"><span class="toc-number">1.</span> <span class="toc-text">微前端打包构建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#amd模块"><span class="toc-number">1.1.</span> <span class="toc-text">amd模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指定基础路径"><span class="toc-number">1.2.</span> <span class="toc-text">指定基础路径</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署"><span class="toc-number">2.</span> <span class="toc-text">部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#微前端应用完整目录"><span class="toc-number">2.1.</span> <span class="toc-text">微前端应用完整目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置自动化"><span class="toc-number">2.2.</span> <span class="toc-text">配置自动化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关文章"><span class="toc-number">3.</span> <span class="toc-text">相关文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo"><span class="toc-number">4.</span> <span class="toc-text">Demo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.1.</span> <span class="toc-text"> 本文链接：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">文章推荐</span></a></li></ol>
+    </div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

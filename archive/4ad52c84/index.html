@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="&amp;#x6DF1;&amp;#x6D45;&amp;#x62F7;&amp;#x8D1D;&amp;#x7B80;&amp;#x4ECB;javascript&amp;#x4E2D;&amp;#x5BF9;&amp;#x4E8E;Object&amp;#x548C;Array&amp;#x8FD9;&amp;#x4E24;&amp;#x4E2A;&amp;#x7C7B;&amp;#x578B;&amp;#xFF0C;&amp;#x628A;&amp;#x4E00;&amp;#x4E2A;&amp;#x53D8;&amp;#x91CF;&amp;#x8D4B;&amp;#x">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript-深浅拷贝">
+<meta property="og:url" content="https://alili.tech/archive/4ad52c84/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="&amp;#x6DF1;&amp;#x6D45;&amp;#x62F7;&amp;#x8D1D;&amp;#x7B80;&amp;#x4ECB;javascript&amp;#x4E2D;&amp;#x5BF9;&amp;#x4E8E;Object&amp;#x548C;Array&amp;#x8FD9;&amp;#x4E24;&amp;#x4E2A;&amp;#x7C7B;&amp;#x578B;&amp;#xFF0C;&amp;#x628A;&amp;#x4E00;&amp;#x4E2A;&amp;#x53D8;&amp;#x91CF;&amp;#x8D4B;&amp;#x">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript-深浅拷贝">
+<meta name="twitter:description" content="&amp;#x6DF1;&amp;#x6D45;&amp;#x62F7;&amp;#x8D1D;&amp;#x7B80;&amp;#x4ECB;javascript&amp;#x4E2D;&amp;#x5BF9;&amp;#x4E8E;Object&amp;#x548C;Array&amp;#x8FD9;&amp;#x4E24;&amp;#x4E2A;&amp;#x7C7B;&amp;#x578B;&amp;#xFF0C;&amp;#x628A;&amp;#x4E00;&amp;#x4E2A;&amp;#x53D8;&amp;#x91CF;&amp;#x8D4B;&amp;#x">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>Javascript-深浅拷贝 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/4ad52c84/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/4ad52c84/",
+      "appid": "1613049289050283", 
+      "title": "Javascript-深浅拷贝 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:43:46"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/b265b7db/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/ffa82191/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/4ad52c84/&text=Javascript-深浅拷贝" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/4ad52c84/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/4ad52c84/&text=Javascript-深浅拷贝" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/4ad52c84/&title=Javascript-深浅拷贝" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/4ad52c84/&is_video=false&description=Javascript-深浅拷贝" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Javascript-深浅拷贝&body=Check out this article: https://alili.tech/archive/4ad52c84/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/4ad52c84/&title=Javascript-深浅拷贝" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/4ad52c84/&title=Javascript-深浅拷贝" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/4ad52c84/&title=Javascript-深浅拷贝" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/4ad52c84/&title=Javascript-深浅拷贝" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">深浅拷贝简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">浅拷贝（shallow copy）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">2.1.</span> <span class="toc-text">浅拷贝的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.简单赋值实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.2.</span> <span class="toc-text">Object.assign()实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">3.</span> <span class="toc-text">深拷贝（deep copy）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">3.1.</span> <span class="toc-text">深拷贝的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.1.</span> <span class="toc-text">Object.assign()实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.2.</span> <span class="toc-text">Array.slice()可以实现数组的深拷贝（数组中不能有Object和Array，Object和Array只是浅拷贝）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.3.</span> <span class="toc-text">JSON.stringify()和JSON.parse()实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.4.</span> <span class="toc-text">递归实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.5.</span> <span class="toc-text">Object.create()实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.6.</span> <span class="toc-text">jQuery.extend()实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.7.</span> <span class="toc-text">更多方法...敬请期待</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        Javascript-深浅拷贝
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-11-06T15:28:31.000Z" itemprop="datePublished">2018-11-06</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <h2 id="articleHeader0">&#x6DF1;&#x6D45;&#x62F7;&#x8D1D;&#x7B80;&#x4ECB;</h2><p>javascript&#x4E2D;&#x5BF9;&#x4E8E;Object&#x548C;Array&#x8FD9;&#x4E24;&#x4E2A;&#x7C7B;&#x578B;&#xFF0C;&#x628A;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x7ED9;&#x53E6;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#xFF1B;&#x6D45;&#x62F7;&#x8D1D;&#x53EA;&#x662F;&#x5BF9;&#x62F7;&#x8D1D;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x6DF1;&#x62F7;&#x8D1D;&#x662F;&#x5F7B;&#x5E95;&#x62F7;&#x8D1D;&#xFF0C;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x76F8;&#x540C;&#x7684;&#x5BF9;&#x8C61;</p><h2 id="articleHeader1">&#x6D45;&#x62F7;&#x8D1D;&#xFF08;shallow copy&#xFF09;</h2><p><strong>&#x6D45;&#x62F7;&#x8D1D;&#x53EA;&#x662F;&#x5BF9;&#x62F7;&#x8D1D;&#x5BF9;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x4E24;&#x8005;&#x76F8;&#x4E92;&#x5F71;&#x54CD;</strong></p><h3 id="articleHeader2">&#x6D45;&#x62F7;&#x8D1D;&#x7684;&#x5B9E;&#x73B0;</h3><h4>1.&#x7B80;&#x5355;&#x8D4B;&#x503C;&#x5B9E;&#x73B0;</h4><p>&#x4F8B;&#x5B50;&#xFF1A;obj2&#x62F7;&#x8D1D;&#x4E86;obj1&#xFF0C;obj2&#x6539;&#x53D8;&#xFF0C;obj1&#x4E5F;&#x4F1A;&#x6539;&#x53D8;&#xFF0C;&#x6539;&#x53D8;&#x4E4B;&#x540E;2&#x8005;&#x8FD8;&#x662F;&#x76F8;&#x540C;&#x7684;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    var obj1 = {a: 1}
+    var obj2 = obj1
+    obj2.b = 2
+    console.log(obj1) // {a: 1, b: 2}
+    console.log(obj2) //{a: 1, b: 2}
+    console.log(obj1 == obj2) // true" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    <span class="hljs-keyword">var</span> obj1 = {<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>}
+    <span class="hljs-keyword">var</span> obj2 = obj1
+    obj2.b = <span class="hljs-number">2</span>
+    <span class="hljs-built_in">console</span>.log(obj1) <span class="hljs-comment">// {a: 1, b: 2}</span>
+    <span class="hljs-built_in">console</span>.log(obj2) <span class="hljs-comment">//{a: 1, b: 2}</span>
+    <span class="hljs-built_in">console</span>.log(obj1 == obj2) <span class="hljs-comment">// true</span></code></pre><h4>Object.assign()&#x5B9E;&#x73B0;</h4><p>&#x4F8B;&#x5B50;&#xFF1A;&#x5F53;&#x7B2C;&#x4E00;&#x4E2A;&#x4F20;&#x53C2;&#x662F;&#x4F60;&#x9700;&#x8981;&#x62F7;&#x8D1D;&#x7684;&#x5BF9;&#x8C61;&#xFF08;PS&#xFF1A;Object.assign()&#x4E5F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6DF1;&#x62F7;&#x8D1D;&#xFF09;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    var obj1 = {a: 1}
+    var obj2 = Object.assign(obj1)
+    obj2.b = 2
+    console.log(obj1) // {a: 1, b: 2}
+    console.log(obj2) // {a: 1, b: 2}
+    console.log(obj1 == obj2) // true" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    <span class="hljs-keyword">var</span> obj1 = {<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>}
+    <span class="hljs-keyword">var</span> obj2 = <span class="hljs-built_in">Object</span>.assign(obj1)
+    obj2.b = <span class="hljs-number">2</span>
+    <span class="hljs-built_in">console</span>.log(obj1) <span class="hljs-comment">// {a: 1, b: 2}</span>
+    <span class="hljs-built_in">console</span>.log(obj2) <span class="hljs-comment">// {a: 1, b: 2}</span>
+    <span class="hljs-built_in">console</span>.log(obj1 == obj2) <span class="hljs-comment">// true</span></code></pre><h2 id="articleHeader3">&#x6DF1;&#x62F7;&#x8D1D;&#xFF08;deep copy&#xFF09;</h2><p><strong>&#x5F7B;&#x5E95;&#x62F7;&#x8D1D;&#xFF0C;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x76F8;&#x540C;&#x7684;&#x5BF9;&#x8C61;</strong></p><h3 id="articleHeader4">&#x6DF1;&#x62F7;&#x8D1D;&#x7684;&#x5B9E;&#x73B0;</h3><h4>Object.assign()&#x5B9E;&#x73B0;</h4><p>&#x4F8B;&#x5B50;&#xFF1A;&#x62F7;&#x8D1D;&#x5BF9;&#x8C61;&#x4E0D;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x4F20;&#x53C2;</p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    var obj1 = {a: 1}
+    var obj2 = Object.assign({}, obj1)
+    obj2.b = 2
+    console.log(obj1) // {a: 1}
+    console.log(obj2) // {a: 1, b: 2}
+    console.log(obj1 == obj2) // false" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    <span class="hljs-keyword">var</span> obj1 = {<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>}
+    <span class="hljs-keyword">var</span> obj2 = <span class="hljs-built_in">Object</span>.assign({}, obj1)
+    obj2.b = <span class="hljs-number">2</span>
+    <span class="hljs-built_in">console</span>.log(obj1) <span class="hljs-comment">// {a: 1}</span>
+    <span class="hljs-built_in">console</span>.log(obj2) <span class="hljs-comment">// {a: 1, b: 2}</span>
+    <span class="hljs-built_in">console</span>.log(obj1 == obj2) <span class="hljs-comment">// false</span></code></pre><h4>Array.slice()&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6570;&#x7EC4;&#x7684;&#x6DF1;&#x62F7;&#x8D1D;&#xFF08;&#x6570;&#x7EC4;&#x4E2D;&#x4E0D;&#x80FD;&#x6709;Object&#x548C;Array&#xFF0C;Object&#x548C;Array&#x53EA;&#x662F;&#x6D45;&#x62F7;&#x8D1D;&#xFF09;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    var arr1 = [1, [2]]
+    var arr2 = arr1.slice()
+    arr2[1].push(3)
+    arr2.push(4)
+    console.log(arr1) // [1, [2, 3]]
+    console.log(arr2) // [1, [2, 3], 4]
+    console.log(arr1 == arr2) // false" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    <span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, [<span class="hljs-number">2</span>]]
+    <span class="hljs-keyword">var</span> arr2 = arr1.slice()
+    arr2[<span class="hljs-number">1</span>].push(<span class="hljs-number">3</span>)
+    arr2.push(<span class="hljs-number">4</span>)
+    <span class="hljs-built_in">console</span>.log(arr1) <span class="hljs-comment">// [1, [2, 3]]</span>
+    <span class="hljs-built_in">console</span>.log(arr2) <span class="hljs-comment">// [1, [2, 3], 4]</span>
+    <span class="hljs-built_in">console</span>.log(arr1 == arr2) <span class="hljs-comment">// false</span></code></pre><h4>JSON.stringify()&#x548C;JSON.parse()&#x5B9E;&#x73B0;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    var obj1 = {a: 1}
+    var obj2 = JSON.parse(JSON.stringify(obj1))
+    console.log(obj1 == obj2) // false
+    obj2.b = 2
+    console.log(obj1) // {a: 1}
+    console.log(obj2) // {a: 1, b: 2}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    <span class="hljs-keyword">var</span> obj1 = {<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>}
+    <span class="hljs-keyword">var</span> obj2 = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(obj1))
+    <span class="hljs-built_in">console</span>.log(obj1 == obj2) <span class="hljs-comment">// false</span>
+    obj2.b = <span class="hljs-number">2</span>
+    <span class="hljs-built_in">console</span>.log(obj1) <span class="hljs-comment">// {a: 1}</span>
+    <span class="hljs-built_in">console</span>.log(obj2) <span class="hljs-comment">// {a: 1, b: 2}</span></code></pre><h4>&#x9012;&#x5F52;&#x5B9E;&#x73B0;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    var deepCopy = function(obj) {
+        if (typeof obj !== &apos;object&apos;) return;
+        var newObj = obj instanceof Array ? [] : {};
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                newObj[key] = typeof obj[key] === &apos;object&apos; ? deepCopy(obj[key]) : obj[key];
+            }
+        }
+        return newObj;
+    }
+    var obj1 = {a: 1}
+    var obj2 = deepCopy(obj1)
+    console.log(obj1 == obj2) // false
+    obj2.b = 2
+    console.log(obj1) // {a: 1}
+    console.log(obj2) // {a: 1, b: 2}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    <span class="hljs-keyword">var</span> deepCopy = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> obj !== <span class="hljs-string">&apos;object&apos;</span>) <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">var</span> newObj = obj <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span> ? [] : {};
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> obj) {
+            <span class="hljs-keyword">if</span> (obj.hasOwnProperty(key)) {
+                newObj[key] = <span class="hljs-keyword">typeof</span> obj[key] === <span class="hljs-string">&apos;object&apos;</span> ? deepCopy(obj[key]) : obj[key];
+            }
+        }
+        <span class="hljs-keyword">return</span> newObj;
+    }
+    <span class="hljs-keyword">var</span> obj1 = {<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>}
+    <span class="hljs-keyword">var</span> obj2 = deepCopy(obj1)
+    <span class="hljs-built_in">console</span>.log(obj1 == obj2) <span class="hljs-comment">// false</span>
+    obj2.b = <span class="hljs-number">2</span>
+    <span class="hljs-built_in">console</span>.log(obj1) <span class="hljs-comment">// {a: 1}</span>
+    <span class="hljs-built_in">console</span>.log(obj2) <span class="hljs-comment">// {a: 1, b: 2}</span></code></pre><h4>Object.create()&#x5B9E;&#x73B0;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    var deepCopy = function(obj) {
+        if (typeof obj !== &apos;object&apos;) return;
+        var newObj = obj instanceof Array ? [] : {};
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                newObj[key] = typeof obj[key] === &apos;object&apos; ? Object.create(obj[key]) : obj[key];
+            }
+        }
+        return newObj;
+    }
+    var obj1 = {a: 1}
+    var obj2 = deepCopy(obj1)
+    console.log(obj1 == obj2) // false
+    obj2.b = 2
+    console.log(obj1) // {a: 1}
+    console.log(obj2) // {a: 1, b: 2}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    <span class="hljs-keyword">var</span> deepCopy = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> obj !== <span class="hljs-string">&apos;object&apos;</span>) <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">var</span> newObj = obj <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span> ? [] : {};
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> obj) {
+            <span class="hljs-keyword">if</span> (obj.hasOwnProperty(key)) {
+                newObj[key] = <span class="hljs-keyword">typeof</span> obj[key] === <span class="hljs-string">&apos;object&apos;</span> ? <span class="hljs-built_in">Object</span>.create(obj[key]) : obj[key];
+            }
+        }
+        <span class="hljs-keyword">return</span> newObj;
+    }
+    <span class="hljs-keyword">var</span> obj1 = {<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>}
+    <span class="hljs-keyword">var</span> obj2 = deepCopy(obj1)
+    <span class="hljs-built_in">console</span>.log(obj1 == obj2) <span class="hljs-comment">// false</span>
+    obj2.b = <span class="hljs-number">2</span>
+    <span class="hljs-built_in">console</span>.log(obj1) <span class="hljs-comment">// {a: 1}</span>
+    <span class="hljs-built_in">console</span>.log(obj2) <span class="hljs-comment">// {a: 1, b: 2}</span></code></pre><h4>jQuery.extend()&#x5B9E;&#x73B0;</h4><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    var obj1 = {a: 1}
+    var obj2 = $.extend(true, {}, obj1)
+    console.log(obj1 == obj2) // false
+    obj2.b = 2
+    console.log(obj1) // {a: 1}
+    console.log(obj2) // {a: 1, b: 2}" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    <span class="hljs-keyword">var</span> obj1 = {<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>}
+    <span class="hljs-keyword">var</span> obj2 = $.extend(<span class="hljs-literal">true</span>, {}, obj1)
+    <span class="hljs-built_in">console</span>.log(obj1 == obj2) <span class="hljs-comment">// false</span>
+    obj2.b = <span class="hljs-number">2</span>
+    <span class="hljs-built_in">console</span>.log(obj1) <span class="hljs-comment">// {a: 1}</span>
+    <span class="hljs-built_in">console</span>.log(obj2) <span class="hljs-comment">// {a: 1, b: 2}</span></code></pre><p><strong>jQuery.extend()&#x6E90;&#x7801;</strong></p><div class="widget-codetool" style="display:none"><div class="widget-codetool--inner"><span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x5168;&#x9009;"></span> <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="    jQuery.extend = jQuery.fn.extend = function() {
+        var src, copyIsArray, copy, name, options, clone,
+            target = arguments[0] || {}, // &#x9ED8;&#x8BA4;&#x53D6;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x8D4B;&#x503C;&#x7ED9;target
+            i = 1,
+            length = arguments.length, // &#x83B7;&#x53D6;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;
+            deep = false; // &#x9ED8;&#x8BA4;&#x6D45;&#x62F7;&#x8D1D;
+
+        // Handle a deep copy situation
+        if ( typeof target === &quot;boolean&quot; ) { // &#x5982;&#x679C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x4E3A;boolean&#xFF0C;&#x90A3;&#x4E48;&#x628A;&#x8BE5;&#x53C2;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x5C40;&#x90E8;&#x53D8;&#x91CF;deep
+            deep = target;  
+            target = arguments[1] || {}; // &#x628A;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x8D4B;&#x503C;&#x7ED9;target
+            // skip the boolean and the target
+            i = 2;
+        }
+
+        // Handle case when target is a string or something (possible in deep copy)
+        if ( typeof target !== &quot;object&quot; &amp;&amp; !jQuery.isFunction(target) ) { // target&#x4E0D;&#x662F;object&#x7C7B;&#x578B;&#x6216;&#x8005;&#x4E0D;&#x662F;function&#xFF0C;&#x5C31;&#x8D4B;&#x503C;{}
+            target = {};
+        }
+
+        // extend jQuery itself if only one argument is passed
+        if ( length === i ) { // &#x5982;&#x679C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;i&#x5C31;&#x662F;1&#xFF0C;length&#x4E5F;&#x5C31;&#x662F;1&#xFF0C;&#x90A3;&#x4E48;&#x628A;target&#x8BBE;&#x7F6E;&#x4E3A;&#x8C03;&#x7528;&#x8005;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;jQuery&#x5BF9;&#x8C61;&#x672C;&#x8EAB;!&#x540C;&#x65F6;&#x628A;i&#x9012;&#x51CF;&#x4E3A;0
+            target = this; // this&#x5C31;&#x662F;jQuery
+            --i;
+        }
+
+        for ( ; i &lt; length; i++ ) { // &#x5FAA;&#x73AF;&#x53C2;&#x6570;
+            // Only deal with non-null/undefined values
+            if ( (options = arguments[ i ]) != null ) {
+                // Extend the base object
+                for ( name in options ) {
+                    src = target[ name ]; 
+                    copy = options[ name ];
+
+                    // Prevent never-ending loop
+                    if ( target === copy ) { // &#x9632;&#x6B62;&#x65E0;&#x4F11;&#x6B62;&#x5FAA;&#x73AF;
+                        continue;
+                    }
+
+                    // Recurse if we&apos;re merging plain objects or arrays
+                    // deep&#x662F;&#x5426;&#x6DF1;&#x62F7;&#x8D1D;&#xFF0C;copy&#x662F;&#x53C2;&#x6570;&#x5C5E;&#x6027;&#x503C;
+                    if ( deep &amp;&amp; copy &amp;&amp; ( jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)) ) ) {
+                        if ( copyIsArray ) { // &#x88AB;&#x62F7;&#x8D1D;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x662F;&#x6570;&#x7EC4;
+                            copyIsArray = false;
+                            clone = src &amp;&amp; jQuery.isArray(src) ? src : [];
+                        } else { // &#x4E0D;&#x662F;&#x6570;&#x7EC4;
+                            clone = src &amp;&amp; jQuery.isPlainObject(src) ? src : {};
+                        }
+
+                        // Never move original objects, clone them
+                        target[ name ] = jQuery.extend( deep, clone, copy );  // &#x9012;&#x5F52;~
+
+                    // Don&apos;t bring in undefined values
+                    } else if ( copy !== undefined ) {  // &#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x4E14;&#x5C5E;&#x6027;&#x503C;&#x4E0D;&#x4E3A;undefined
+                        target[ name ] = copy;
+                    }
+                }
+            }
+        }
+
+        // Return the modified object
+        return target;
+    };" title="" data-original-title="&#x590D;&#x5236;"></span> <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="&#x653E;&#x8FDB;&#x7B14;&#x8BB0;"></span></div></div><pre class="javascript hljs"><code class="javascript">    jQuery.extend = jQuery.fn.extend = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> src, copyIsArray, copy, name, options, clone,
+            target = <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>] || {}, <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x53D6;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x8D4B;&#x503C;&#x7ED9;target</span>
+            i = <span class="hljs-number">1</span>,
+            length = <span class="hljs-built_in">arguments</span>.length, <span class="hljs-comment">// &#x83B7;&#x53D6;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;</span>
+            deep = <span class="hljs-literal">false</span>; <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x6D45;&#x62F7;&#x8D1D;</span>
+
+        <span class="hljs-comment">// Handle a deep copy situation</span>
+        <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> target === <span class="hljs-string">&quot;boolean&quot;</span> ) { <span class="hljs-comment">// &#x5982;&#x679C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x4E3A;boolean&#xFF0C;&#x90A3;&#x4E48;&#x628A;&#x8BE5;&#x53C2;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x5C40;&#x90E8;&#x53D8;&#x91CF;deep</span>
+            deep = target;  
+            target = <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>] || {}; <span class="hljs-comment">// &#x628A;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x8D4B;&#x503C;&#x7ED9;target</span>
+            <span class="hljs-comment">// skip the boolean and the target</span>
+            i = <span class="hljs-number">2</span>;
+        }
+
+        <span class="hljs-comment">// Handle case when target is a string or something (possible in deep copy)</span>
+        <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> target !== <span class="hljs-string">&quot;object&quot;</span> &amp;&amp; !jQuery.isFunction(target) ) { <span class="hljs-comment">// target&#x4E0D;&#x662F;object&#x7C7B;&#x578B;&#x6216;&#x8005;&#x4E0D;&#x662F;function&#xFF0C;&#x5C31;&#x8D4B;&#x503C;{}</span>
+            target = {};
+        }
+
+        <span class="hljs-comment">// extend jQuery itself if only one argument is passed</span>
+        <span class="hljs-keyword">if</span> ( length === i ) { <span class="hljs-comment">// &#x5982;&#x679C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;i&#x5C31;&#x662F;1&#xFF0C;length&#x4E5F;&#x5C31;&#x662F;1&#xFF0C;&#x90A3;&#x4E48;&#x628A;target&#x8BBE;&#x7F6E;&#x4E3A;&#x8C03;&#x7528;&#x8005;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;jQuery&#x5BF9;&#x8C61;&#x672C;&#x8EAB;!&#x540C;&#x65F6;&#x628A;i&#x9012;&#x51CF;&#x4E3A;0</span>
+            target = <span class="hljs-keyword">this</span>; <span class="hljs-comment">// this&#x5C31;&#x662F;jQuery</span>
+            --i;
+        }
+
+        <span class="hljs-keyword">for</span> ( ; i &lt; length; i++ ) { <span class="hljs-comment">// &#x5FAA;&#x73AF;&#x53C2;&#x6570;</span>
+            <span class="hljs-comment">// Only deal with non-null/undefined values</span>
+            <span class="hljs-keyword">if</span> ( (options = <span class="hljs-built_in">arguments</span>[ i ]) != <span class="hljs-literal">null</span> ) {
+                <span class="hljs-comment">// Extend the base object</span>
+                <span class="hljs-keyword">for</span> ( name <span class="hljs-keyword">in</span> options ) {
+                    src = target[ name ]; 
+                    copy = options[ name ];
+
+                    <span class="hljs-comment">// Prevent never-ending loop</span>
+                    <span class="hljs-keyword">if</span> ( target === copy ) { <span class="hljs-comment">// &#x9632;&#x6B62;&#x65E0;&#x4F11;&#x6B62;&#x5FAA;&#x73AF;</span>
+                        <span class="hljs-keyword">continue</span>;
+                    }
+
+                    <span class="hljs-comment">// Recurse if we&apos;re merging plain objects or arrays</span>
+                    <span class="hljs-comment">// deep&#x662F;&#x5426;&#x6DF1;&#x62F7;&#x8D1D;&#xFF0C;copy&#x662F;&#x53C2;&#x6570;&#x5C5E;&#x6027;&#x503C;</span>
+                    <span class="hljs-keyword">if</span> ( deep &amp;&amp; copy &amp;&amp; ( jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)) ) ) {
+                        <span class="hljs-keyword">if</span> ( copyIsArray ) { <span class="hljs-comment">// &#x88AB;&#x62F7;&#x8D1D;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x662F;&#x6570;&#x7EC4;</span>
+                            copyIsArray = <span class="hljs-literal">false</span>;
+                            clone = src &amp;&amp; jQuery.isArray(src) ? src : [];
+                        } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// &#x4E0D;&#x662F;&#x6570;&#x7EC4;</span>
+                            clone = src &amp;&amp; jQuery.isPlainObject(src) ? src : {};
+                        }
+
+                        <span class="hljs-comment">// Never move original objects, clone them</span>
+                        target[ name ] = jQuery.extend( deep, clone, copy );  <span class="hljs-comment">// &#x9012;&#x5F52;~</span>
+
+                    <span class="hljs-comment">// Don&apos;t bring in undefined values</span>
+                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( copy !== <span class="hljs-literal">undefined</span> ) {  <span class="hljs-comment">// &#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x4E14;&#x5C5E;&#x6027;&#x503C;&#x4E0D;&#x4E3A;undefined</span>
+                        target[ name ] = copy;
+                    }
+                }
+            }
+        }
+
+        <span class="hljs-comment">// Return the modified object</span>
+        <span class="hljs-keyword">return</span> target;
+    };</code></pre><h4>&#x66F4;&#x591A;&#x65B9;&#x6CD5;...&#x656C;&#x8BF7;&#x671F;&#x5F85;</h4>
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<h2 id="原文标题"><a href="#原文标题" class="headerlink" title="原文标题"></a>原文标题</h2><p>Javascript-深浅拷贝</p>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000016548776" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/a/1190000016548776</a></p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/4ad52c84/">https://alili.tech/archive/4ad52c84/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader0"><span class="toc-number">1.</span> <span class="toc-text">深浅拷贝简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader1"><span class="toc-number">2.</span> <span class="toc-text">浅拷贝（shallow copy）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader2"><span class="toc-number">2.1.</span> <span class="toc-text">浅拷贝的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.简单赋值实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.2.</span> <span class="toc-text">Object.assign()实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#articleHeader3"><span class="toc-number">3.</span> <span class="toc-text">深拷贝（deep copy）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#articleHeader4"><span class="toc-number">3.1.</span> <span class="toc-text">深拷贝的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.1.</span> <span class="toc-text">Object.assign()实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.2.</span> <span class="toc-text">Array.slice()可以实现数组的深拷贝（数组中不能有Object和Array，Object和Array只是浅拷贝）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.3.</span> <span class="toc-text">JSON.stringify()和JSON.parse()实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.4.</span> <span class="toc-text">递归实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.5.</span> <span class="toc-text">Object.create()实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.6.</span> <span class="toc-text">jQuery.extend()实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.7.</span> <span class="toc-text">更多方法...敬请期待</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原文标题"><span class="toc-number">1.</span> <span class="toc-text">原文标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原文链接"><span class="toc-number">2.</span> <span class="toc-text">原文链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"> 本文链接：</span></a></li></ol>
+    </li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

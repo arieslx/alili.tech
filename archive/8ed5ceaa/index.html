@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html mip="" lang="zh">
+<head><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="wap-font-scale" content="no">
+    <meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34">
+    <meta name="sogou_site_verification" content="E8uWFBcf4a">
+    <meta name="description" content="对大部分的人来说（如果你写过CSS），Flexbox 可以说是完美，但它是否适合所有场景呢？  简而言之，我会给出几种可用的场景，需要你重新思考 Flexbox 模型的使用。 顺便说一句，本人是 Flexbox 的忠实粉丝，曾写过一篇  Flexbox 详解 ，可以算得上最全面的文章了。 当然，我们应该了解该如何使用 Flexbox，哪些情况不应该使用，以及用在哪些地方最好。 以下是我选出的最不应">
+<meta name="keywords" content="Alili,前端大爆炸,WEB BANG BANG BANG,web前端博客,前端模块化,前端工程,富应用开发,html5上传,前端数据监控,性能优化,网页制作,前端,js,html5,css,踩坑小报告,微前端,树莓派,前端开发,区块链,网络,Mongodb,Vue.js,Angular.js,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flexbox 很棒，但有些情况不适用">
+<meta property="og:url" content="https://alili.tech/archive/8ed5ceaa/index.html">
+<meta property="og:site_name" content="Alili">
+<meta property="og:description" content="对大部分的人来说（如果你写过CSS），Flexbox 可以说是完美，但它是否适合所有场景呢？  简而言之，我会给出几种可用的场景，需要你重新思考 Flexbox 模型的使用。 顺便说一句，本人是 Flexbox 的忠实粉丝，曾写过一篇  Flexbox 详解 ，可以算得上最全面的文章了。 当然，我们应该了解该如何使用 Flexbox，哪些情况不应该使用，以及用在哪些地方最好。 以下是我选出的最不应">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*GHWUvoGa5fZLrGRjQuSnKg.jpeg">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*bOjvKp2CL7WH6d8XdVkEnw.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*FqN2jAlgxrH02c0wrZZvoQ.jpeg">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*N9Ga3Z2OEBCEfdTzQcOPHg.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*om-VcwoLbwPf1IaAMzmOvw.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*xOzOdXwwEXLmRAVeS4r0wg.jpeg">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*lrWW6GkHG4n6AswnbJeq5g.jpeg">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*Tg2lj3QvdhqZNn0vB2ri2w.jpeg">
+<meta property="og:updated_time" content="2018-11-08T01:42:48.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flexbox 很棒，但有些情况不适用">
+<meta name="twitter:description" content="对大部分的人来说（如果你写过CSS），Flexbox 可以说是完美，但它是否适合所有场景呢？  简而言之，我会给出几种可用的场景，需要你重新思考 Flexbox 模型的使用。 顺便说一句，本人是 Flexbox 的忠实粉丝，曾写过一篇  Flexbox 详解 ，可以算得上最全面的文章了。 当然，我们应该了解该如何使用 Flexbox，哪些情况不应该使用，以及用在哪些地方最好。 以下是我选出的最不应">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1600/1*GHWUvoGa5fZLrGRjQuSnKg.jpeg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192x192.png">
+          
+        
+    
+    <!-- title -->
+    <title>Flexbox 很棒，但有些情况不适用 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title>
+    <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="manifest" href="/manifest.json">
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://alili.tech/archive/8ed5ceaa/">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <!-- 熊掌号  -->
+    <script type="application/ld+json">
+  {
+      "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+      "@id": "https://alili.tech/archive/8ed5ceaa/",
+      "appid": "1613049289050283", 
+      "title": "Flexbox 很棒，但有些情况不适用 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!", 
+      "images": [],
+      "pubDate": "2018-11-08T01:44:03"
+  } 
+</script>
+<script>
+  document.addEventListener("error", function (e) {
+    var elem = e.target;
+    if (elem.tagName.toLowerCase() == 'img') {
+      elem.style.display='none'
+    }
+  }, true);
+  </script>
+
+</head>
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')" style="display:none"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/archive/45bb437a/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$(&quot;#i-prev&quot;).toggle()" onmouseout="$(&quot;#i-prev&quot;).toggle()"></i></a></li>
+        
+        
+        <li><a class="icon" href="/archive/c8c91cd5/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$(&quot;#i-next&quot;).toggle()" onmouseout="$(&quot;#i-next&quot;).toggle()"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$(&quot;#i-top&quot;).toggle()" onmouseout="$(&quot;#i-top&quot;).toggle()"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$(&quot;#i-share&quot;).toggle()" onmouseout="$(&quot;#i-share&quot;).toggle()" onclick="$(&quot;#share&quot;).toggle();return false"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none">Previous post</span>
+      <span id="i-next" class="info" style="display:none">Next post</span>
+      <span id="i-top" class="info" style="display:none">Back to top</span>
+      <span id="i-share" class="info" style="display:none">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https://alili.tech/archive/8ed5ceaa/&text=Flexbox 很棒，但有些情况不适用" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://alili.tech/archive/8ed5ceaa/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://alili.tech/archive/8ed5ceaa/&text=Flexbox 很棒，但有些情况不适用" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://alili.tech/archive/8ed5ceaa/&title=Flexbox 很棒，但有些情况不适用" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://alili.tech/archive/8ed5ceaa/&is_video=false&description=Flexbox 很棒，但有些情况不适用" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Flexbox 很棒，但有些情况不适用&body=Check out this article: https://alili.tech/archive/8ed5ceaa/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://alili.tech/archive/8ed5ceaa/&title=Flexbox 很棒，但有些情况不适用" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://alili.tech/archive/8ed5ceaa/&title=Flexbox 很棒，但有些情况不适用" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://alili.tech/archive/8ed5ceaa/&title=Flexbox 很棒，但有些情况不适用" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://alili.tech/archive/8ed5ceaa/&title=Flexbox 很棒，但有些情况不适用" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+</ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">1. 把Flexbox当作一个网格系统使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">还能不能开心的玩耍了？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">可以在布局中将 Flexbox 作为唯一的网格系统使用吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">有什么注意事项吗？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">2. 完全控制其视觉位置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">难道 Flexbox 模型没有顺序属性么? </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">3. 多列布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">付诸行动</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+  </span>
+</div>
+    
+    <div class="content index width mx-auto px3 my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+        Flexbox 很棒，但有些情况不适用
+    </h1>
+    <div class="meta">
+      <div class="postdate">
+        <time datetime="2018-10-18T00:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+    </div>
+      <div class="article-tag">
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_container_page_pv">
+              <span id="busuanzi_value_page_pv">0</span>
+            </span>
+          
+      </div>
+      
+    </div>
+  </header>
+  
+  <div class="content" itemprop="articleBody">
+    <p>对大部分的人来说（如果你写过CSS），Flexbox 可以说是完美，但它是否适合所有场景呢？</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*GHWUvoGa5fZLrGRjQuSnKg.jpeg" alt=""></p>
+<p>简而言之，我会给出几种可用的场景，需要你重新思考 Flexbox 模型的使用。</p>
+<p>顺便说一句，本人是 Flexbox 的忠实粉丝，曾写过一篇 <a href="https://medium.freecodecamp.com/understanding-flexbox-everything-you-need-to-know-b4013d4dc9af" rel="external nofollow noopener noreferrer" target="_blank"> Flexbox 详解</a> ，可以算得上最全面的文章了。</p>
+<p>当然，我们应该了解该如何使用 Flexbox，哪些情况不应该使用，以及用在哪些地方最好。</p>
+<p>以下是我选出的最不应该是使用 Flexbox 的3种场景，并附带原因。</p>
+<h3><strong>1. 把Flexbox当作一个网格系统使用</strong></h3>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*bOjvKp2CL7WH6d8XdVkEnw.png" alt="">
+<a href="https://www.vikingcodeschool.com/web-design-basics/designing-with-grid-systems" rel="external nofollow noopener noreferrer" target="_blank">https://www.vikingcodeschool.com/web-design-basics/designing-with-grid-systems</a></p>
+<p>长久以来，很多人（包括我自己）都在滥用 CSS 盒模型。</p>
+<p>从复选框点击 hack 到“纯 CSS 图形”，我们似乎沉浸在各种奇淫巧技中 —— 各种让人觉得高大上或精通的技巧。</p>
+<p>我并不反对这样做，但其实我们曲解了 CSS 规范，不是吗？</p>
+<p>我们并没有将它们用在应该用的地方 —— 主要原因之一是可以做，之二是不得不做。有时候仅仅是出于兴趣（我觉得我属于这种）。</p>
+<p>也就是说，如果你选择在布局中将 Flexbox 模型当作网格系统使用，那么就算曲解了规范。</p>
+<h4><strong>还能不能开心的玩耍了？</strong></h4>
+<p>你当然可以用，但就像滥用 CSS 盒模型。</p>
+<p>其<a href="">设计初衷</a>并不是完备的网格系统。尽管你可以任意使用 Flexbox 模型，当然本人也曾瞎用，但其初衷不改。</p>
+<p><a href="">网格布局</a>  —— 在 2017 年火了，因为所有主流浏览器都开始支持。</p>
+<h4><strong>可以在布局中将 Flexbox 作为唯一的网格系统使用吗？</strong></h4>
+<p>额！当然不可以。</p>
+<p>为什么？</p>
+<p>如果仅仅是为了一个怎么复杂的布局，或简单的为了移动端而重构布局，确实有这种可能。</p>
+<p>其实你可以摆脱这种想法的，虽然曾经我试过只用 Flexbox 就可以完成复杂的布局 —— 仅仅是因为可以做，并探索 Flexbox 的可能性。</p>
+<h4><strong>有什么注意事项吗？</strong></h4>
+<p>有一点你一定要记住。</p>
+<p>如果你不得不兼容老版本的 IE 浏览器（它们还能支持些什么好功能么？），那会有一个大问题，因为用户什么都看不到 —— 任何东西都不会显示。</p>
+<p>但是，如果你在这些浏览器上使用 Flexbox 模型作为渐进增强，你的备用方案可能是表格布局，那么老版本 IE 用户能正常使用。</p>
+<p>Flexbox 也支持一些真正的 <a href="">网格系统</a> 才有的标准特性 —— 那些特性真的很棒。</p>
+<p>尽管它还不太“标准”。此处的标准指的是就像圣杯布局那样的常用。所以禁止将其作为一个完整的网格系统使用。</p>
+<p>后面会继续讨论。</p>
+<h3><strong>2. 完全控制其视觉位置</strong></h3>
+<p>能力越大责任越大 ...<em>然后滥用!</em> (我加的).</p>
+<p>网格布局最棒的特点之一就是无需考虑 html 源码的顺序而可以自由的指定内容的显示位置。</p>
+<h4><strong>难道 Flexbox 模型没有顺序属性么? </strong></h4>
+<p>其实是有的。</p>
+<p>但猫有四条腿，而人类只有两条。<em>PS：此处的意思是，毕竟还是有区别，不能同等对待不同的事物，即使外观类似</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*FqN2jAlgxrH02c0wrZZvoQ.jpeg" alt="">
+<a href="http://www.catster.com/topic/cat-dandy/" rel="external nofollow noopener noreferrer" target="_blank">http://www.catster.com/topic/cat-dandy/</a></p>
+<p>上面的猫星人很帅，但即使套上了西装，也还不是人类！毫无疑问，只有人才能算人类。</p>
+<p>这就跟通过顺序属性实现“排序”的 Flexbox 一样。</p>
+<p>仅适用于简单的重排场景，如下：</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*N9Ga3Z2OEBCEfdTzQcOPHg.png" alt="">
+flexbox重排之前</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*om-VcwoLbwPf1IaAMzmOvw.png" alt="">
+flexbox重排之后</p>
+<p>但是，它仍是基于元素的 html 源码顺序的。</p>
+<p>所以，其实还是没有脱离“猫人”的本质。</p>
+<p>其对源码顺序的处理与 <a href="https://www.w3.org/TR/css-grid-1/#overview" rel="external nofollow noopener noreferrer" target="_blank">CSS 网格布局</a>完全不同。网格布局是另一个话题，这里不会详细讨论。</p>
+<h3><strong>3. 多列布局</strong></h3>
+<p>我觉得应该不会有很多人会将 Flexbox 模型用来干这个，值得一提的是，除了Flexbox之外，CSS3 还提供其他增强布局方式 —— Flexbox 只是恰巧也能用来完成类似的功能。</p>
+<p>如果你想这样做，那么请考虑优先使用 CSS3 已提供的合适的布局方式。</p>
+<p><strong>i.</strong> <a href="https://www.w3.org/TR/2012/WD-css3-exclusions-20120503/" rel="external nofollow noopener noreferrer" target="_blank"><strong>排除特定形状</strong></a></p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*xOzOdXwwEXLmRAVeS4r0wg.jpeg" alt=""><a href="http://blogs.adobe.com/webplatform/2012/05/22/report-from-the-web-trenches-notes-from-the-may-2012-css-and-svg-w3c-working-group-hamburg-meetings/" rel="external nofollow noopener noreferrer" target="_blank">http://blogs.adobe.com/webplatform/2012/05/22/report-from-the-web-trenches-notes-from-the-may-2012-css-and-svg-w3c-working-group-hamburg-meetings/</a></p>
+<p>如果你需要构建复杂的布局，并想要让内容按自定义区域排版或要特定几何形状来包裹内容，请使用正确的方法。虽然你可以将其包裹在 flex-item（弹性项）中，但还是要使用正确的方法处理排除和内容包裹。</p>
+<p><strong>ii. 实现多列</strong></p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*lrWW6GkHG4n6AswnbJeq5g.jpeg" alt="">
+indesignsecrets.com</p>
+<p>多列布局是 <a href="http://www.adobe.com/products/indesign.html" rel="external nofollow noopener noreferrer" target="_blank">Indesign</a> 等传统桌面排版软件的核心功能，当某列调整大小或不能包含所有内容时，列内的文本会自动流入另一列。</p>
+<p>如果你需要在你项目中实现这个功能，CSS3 多列布局方式可以直接实现。</p>
+<p>所以，啰嗦一句，请使用正确的方式来实现此功能。</p>
+<p>可以让多列布局的某列也同时具有 flex-item（弹性项）特性么？我没有玩过 —— 不确定。</p>
+<p>总而言之，Flexbox 还是很棒的！真的很有用。</p>
+<p>非常有必要深入了解它，了解他们应该在何时何处使用。</p>
+<p>对于 Flexbox，其最大的优势是可在整体页面中为独立部分的自由布局。</p>
+<p>觉得不错？</p>
+<h3>付诸行动</h3>
+<p>想彻底掌握 Flexbox 和 CSS 网格。<a href="https://goo.gl/forms/5c9lgDcT2DQta0M63" rel="external nofollow noopener noreferrer" target="_blank"><em>让我知道如何联系你</em></a>，我非常乐意能帮到你。方便起见，我会免费赠送给你我写的 Flexbox Cheatsheet 指南。<a href="https://goo.gl/forms/5c9lgDcT2DQta0M63" rel="external nofollow noopener noreferrer" target="_blank">在这里注册</a>。</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*Tg2lj3QvdhqZNn0vB2ri2w.jpeg" alt="">
+注册免费送</p>
+
+          
+
+<h1 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h1><p>原文链接: <a href="https://www.zcfy.cc/article/flexbox-is-awesome-but-don-t-use-it-here-ohans-emmanuel-medium" rel="external nofollow noopener noreferrer" target="_blank">https://www.zcfy.cc/article/flexbox-is-awesome-but-don-t-use-it-here-ohans-emmanuel-medium</a><br>原文标题: Flexbox 很棒，但有些情况不适用<br>本文仅用于学习、研究和交流目的。转载请注明出处、完整链接以及原作者。<br>本文资源来源互联网，仅供学习研究使用，版权归该资源的合法拥有者所有，<br>原作者若认为本站侵犯了您的版权，请联系我们，我们会立即删除！</p>
+<p></p><h2> 本文链接：</h2> <a href="https://alili.tech/archive/8ed5ceaa/">https://alili.tech/archive/8ed5ceaa/</a> <p></p>
+  </div>
+</article>
+
+
+<!-- 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+ -->
+
+<div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Alili Color -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1769617155450062" data-ad-slot="6920805491" data-ad-format="link" data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', // 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', // 这里填写上面得到的APP KEY
+        placeholder: '说点什么?', // [v1.0.7 new]留言框占位提示文字
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer" target="_blank">Github</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">1. 把Flexbox当作一个网格系统使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">还能不能开心的玩耍了？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">可以在布局中将 Flexbox 作为唯一的网格系统使用吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">有什么注意事项吗？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">2. 完全控制其视觉位置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">难道 Flexbox 模型没有顺序属性么? </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">3. 多列布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">付诸行动</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#版权声明"><span class="toc-number"></span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text"> 本文链接：</span></a>
+    </li></ol></li></div>
+
+
+    <div id="actions-footer" style="display:none">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$(&quot;#toc-footer&quot;).toggle();return false"><i class="fa fa-list fa-lg" aria-hidden="true"></i> 目录</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast')"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$(&quot;#nav-footer&quot;).toggle();return false"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> 导航</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a>
+ </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" href="http://github.com/Fantasy9527" rel="external nofollow noopener noreferrer">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+ 
+
+ <p>Copyright &copy; 2018 Fan <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号 </a></p>
+ 
+</footer>
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Disqus Comments -->
+
+    <!-- <script type="text/javascript">
+        var disqus_shortname = 'alili-tech';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            if(window.location.host=="localhost:4000")return;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script> -->
+
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4":"https://jspassport.ssl.qhimg.com/11.0.1.js?05520debdbedd780ba345d83b7d5e6f4";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+        </script>
+
+<!-- <script async src="/js/jquery.min.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1541641382756')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>
